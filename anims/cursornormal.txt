@@ -1,0 +1,2 @@
+hotspot topleft
+frame  bitmaps/cursors/normal.png  5 

@@ -1,0 +1,61 @@
+[unitinfo]
+{
+	unitname=imp_a_cloudcar;
+	objectname=empire/a-cloudcar.s3o;
+	buildpic=imp_a_cloudcar.png;
+	icontype=air_light;
+	soundcategory=imp-a-cloudcar;
+	category=VTOL;
+
+	name=Combat Cloud Car;
+	description=Patrol Craft;
+	side=Empire;
+	maxdamage=210;
+	idleautoheal=0;
+	buildcostmetal=180;
+	buildcostenergy=2200;
+	buildtime=22;
+	footprintx=3;
+	footprintz=3;
+	mass=120000;
+	cobid=1;
+	collisionVolumeType=ellipsoid;
+	collisionVolumeScales=56 22 58;
+	collisionVolumeOffsets=0 0 0;
+
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	energyuse=15;
+
+	sightdistance=425;
+
+	canmove=1;
+	maxvelocity=6.2;
+	acceleration=1;
+	brakerate=0.3;
+	maxslope=10;
+
+	maxAcc=.2;
+	maxRudder=.004;
+	maxElevator=.005;
+	maxAileron=.004;
+
+	canfly=1;
+	cruisealt=90;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	weapon1=imp_a_cloudcar;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=160;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_GREEN;
+	}
+}

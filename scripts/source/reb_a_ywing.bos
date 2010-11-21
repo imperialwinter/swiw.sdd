@@ -1,0 +1,167 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, lwing, lengine, e1, rwing, rengine, e2, lgun, lflare, rgun, rflare, turret, tguns, tflare_l, tflare_r;
+piece  astromech, bomb, rbarrelpt, lbarrelpt;
+
+static-var  gun_2, gun_3, bMoving;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 lengine
+#define SMOKEPIECE3 rengine
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define SMALL_MUZZLE_FLASH_FX_RED 1024+1
+#define MED_MUZZLE_FLASH_FX_RED 1024+2
+#define exhaustfx 1024+3
+
+#define UNIT_ROOT base
+#define UNIT_BELOW_GROUND_DIST [-20]
+#define UNIT_RISE_SPEED [4]
+#define DUSTFX 1024+4
+#define DUSTFXPT1 base
+#define DUSTFXPT2 astromech
+#define DUSTFXPT3 e1
+#include "general/rebel_unit_build.h"
+
+Exhaust() {
+	while(1) {
+		if(bMoving) {
+			emit-sfx exhaustfx from e1;
+			emit-sfx exhaustfx from e2;
+		}		
+		sleep 20;
+	}
+}
+
+StartMoving() {
+	bMoving=1;
+}
+	
+StopMoving() {
+	bMoving=0;
+}
+
+Create() {
+	hide tflare_l;
+	hide tflare_r;
+	hide rflare;
+	hide lflare;
+	gun_2 = 0;
+	bMoving = 0;
+	start-script Exhaust();
+	start-script SmokeUnit_SWS();
+	call-script ConstructionAnim();
+	move base to y-axis 0 now;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = bomb;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = astromech;
+}
+
+QueryWeapon2(piecenum) {
+	if(!gun_2) {
+		piecenum = lbarrelpt;
+	}
+	if(gun_2) {
+		piecenum = rbarrelpt;
+	}
+}
+
+AimWeapon2(heading, pitch) {
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2;
+	turn lbarrelpt to y-axis heading now;
+	turn lbarrelpt to x-axis 0 - pitch now;
+	turn rbarrelpt to y-axis heading now;
+	turn rbarrelpt to x-axis 0 - pitch now;
+	return 1;
+}
+
+FireWeapon2() {
+	if(!gun_2) {
+		emit-sfx MED_MUZZLE_FLASH_FX_RED from lflare;
+	}
+	if(gun_2) {
+		emit-sfx MED_MUZZLE_FLASH_FX_RED from rflare;
+	}	
+	gun_2 = !gun_2;
+}
+
+AimFromWeapon2(piecenum)  {
+	piecenum = base;
+}
+
+QueryWeapon3(piecenum) {
+	if(!gun_3) {
+		piecenum = tflare_l;
+	}
+	if(gun_3) {
+		piecenum = tflare_r;
+	}
+}
+
+AimWeapon3(heading, pitch) {
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3;
+	turn turret to y-axis heading speed <400>;
+	turn tguns to x-axis 0 - pitch speed <400>;
+	wait-for-turn turret around y-axis;
+	return 1;
+}
+
+FireWeapon3() {
+	if(gun_3 == 0) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from tflare_l;
+	}
+	if(gun_3 == 1) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from tflare_r;
+	}	
+	gun_3 = !gun_3;
+}
+
+AimFromWeapon3(piecenum) {
+	piecenum = turret;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type FALL | SMOKE | FIRE;
+		explode bomb type FALL | SMOKE | FIRE;
+		explode rengine type FALL | SMOKE | FIRE;
+		explode astromech type FALL | SMOKE | FIRE;
+		explode lengine type FALL | SMOKE | FIRE;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type FALL | SMOKE | FIRE;
+		explode bomb type FALL | SMOKE | FIRE;
+		explode rengine type FALL | SMOKE | FIRE;
+		explode astromech type FALL | SMOKE | FIRE;
+		explode lengine type FALL | SMOKE | FIRE;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type FALL | SMOKE | FIRE;
+		explode bomb type FALL | SMOKE | FIRE;
+		explode rengine type FALL | SMOKE | FIRE;
+		explode astromech type FALL | SMOKE | FIRE;
+		explode lengine type FALL | SMOKE | FIRE;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type FALL | SMOKE | FIRE;
+	explode bomb type FALL | SMOKE | FIRE;
+	explode rengine type FALL | SMOKE | FIRE;
+	explode astromech type FALL | SMOKE | FIRE;
+	explode lengine type FALL | SMOKE | FIRE;
+}

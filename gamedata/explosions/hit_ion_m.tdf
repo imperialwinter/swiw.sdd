@@ -1,0 +1,123 @@
+//48 diameter
+
+[hit_ion_m] {
+	usedefaultexplosions=0;
+	
+	[lightning] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=-24 r48, r24, -24 r48;
+			delay=r24;
+			explosionGenerator=custom:hit_ion_m_lightning;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=24;
+	}
+	
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -6 r12, -6 r12, -6 r12;
+			width=16 r16;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.125;
+			color=0.75,0.75,1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=8; 
+	}
+	
+	[groundflash]{
+		flashsize=48;
+		flashalpha=0.5;
+		circlegrowth=6;
+		circlealpha=0;
+		ttl=12;
+		color=1,1,1;
+	}
+}
+
+[hit_ion_m_light] {
+	usedefaultexplosions=0;
+	
+	[lightning] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=-24 r48, r24, -24 r48;
+			delay=r24;
+			explosionGenerator=custom:hit_ion_m_lightning;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=8;
+	}
+	
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -6 r12, -6 r12, -6 r12;
+			width=16 r16;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.125;
+			color=0.75,0.75,1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=4; 
+	}
+	
+	[groundflash]{
+		flashsize=48;
+		flashalpha=0.5;
+		circlegrowth=6;
+		circlealpha=0;
+		ttl=8;
+		color=1,1,1;
+	}
+}
+
+[hit_ion_m_lightning] {
+	
+	[lightning] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=1 1 1 0.01   0 0 0 0;
+			Texture=lightning;
+			airdrag=0.9;
+			particleLife=4;
+			particleLifeSpread=2;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=8;
+			particleSizeSpread=16;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+

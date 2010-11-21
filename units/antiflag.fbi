@@ -1,0 +1,22 @@
+[unitinfo]
+{
+	unitname=antiflag;
+	objectname=nullpoint.s3o;
+	category=FLAG;
+
+	name=Antiflag;
+	description=For the antiflag weapon;
+	maxdamage=1;
+	buildcostmetal=1;
+	buildcostenergy=1;
+	buildtime=1;
+	footprintx=1;
+	footprintz=1;
+	mass=1;
+
+	sightdistance=1;
+	canmove=0;
+
+	weapon1=antiflag;
+	onlytargetcategory1=FLAG;
+}

@@ -1,0 +1,58 @@
+[unitinfo]
+{
+	unitname=imp_b_vehicleplant;
+	objectname=empire/b-vehicleplant.s3o;
+	buildpic=imp_b_vehicleplant.png;
+	corpse=imp_b_vehicleplant_dead;
+	icontype=factory_medium;
+	soundcategory=TANKPLANT;
+	category=GROUND FACTORY BUILDING;
+	tedclass=PLANT;
+	yardmap=cooooooooc oooooooooo oooooooooo oooccccooo cooccccooc oooccccooo oooccccooo oooccccooo cooccccooc cooccccooc cooccccooc ccoccccocc ccoccccocc ccoccccocc;
+
+	name=Vehicle Plant;
+	description=Produces Vehicles;
+	side=Empire;
+	maxdamage=3000;
+	idleautoheal=0;
+	buildcostmetal=1000;
+	buildcostenergy=3500;
+	buildtime=43;
+	footprintx=10;
+	footprintz=14;
+	cobid=12;
+	collisionVolumeType=box;
+	collisionVolumeScales=128 64 232;
+	collisionVolumeOffsets=0 32 16;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	metalstorage=400;
+	energystorage=200;
+
+	sightdistance=400;
+
+	builder=1;
+	workertime=1;
+
+	maxslope=20;
+	maxwaterdepth=5;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-imp.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=13;
+	BuildingGroundDecalSizeY=17;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:BUILDER_SPARKS_FX;
+	}
+}

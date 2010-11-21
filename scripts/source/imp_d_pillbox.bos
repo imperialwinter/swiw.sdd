@@ -1,0 +1,95 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, bunker, antennae, hatch1, hatch2, p1, p2, p3, p4, d1, d2, d3, d4;
+
+static-var  bAiming, men;
+
+#define SMOKEPIECE1 bunker
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 hatch1
+#define SMOKEPIECE4 antennae
+#include "general/smokeunit_sws.h"
+
+TransportPickup(unitid) {
+	if(get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [237.5]) {
+		if(men == 0) {
+			attach-unit unitid to p1;
+		}
+		if(men == 1) {
+			attach-unit unitid to p2;
+		}
+		if(men == 2) {
+			attach-unit unitid to p3;
+		}
+		if(men == 3) {
+			attach-unit unitid to p4;
+		}
+		move hatch1 to x-axis [0] speed [30];
+		move hatch2 to x-axis [0] speed [30];
+		wait-for-move hatch1 along x-axis;
+		move bunker to y-axis [0] speed [25];
+		++men;
+	}
+}
+
+TransportDrop(unitid) {
+	set BUSY to 1;
+	if(men == 4) {
+		attach-unit unitid to d4; }
+	if(men == 3) {
+		attach-unit unitid to d3; }
+	if(men == 2) {
+		attach-unit unitid to d2; }
+	if(men == 1) {
+		attach-unit unitid to d1; }
+	sleep 50;
+	drop-unit unitid;
+	--men;
+	set BUSY to 0;
+	if(men == 0) {
+		move bunker to y-axis [-6] speed [25];
+		wait-for-move bunker along y-axis;
+		move hatch1 to x-axis [-3] speed [30];
+		move hatch2 to x-axis [3] speed [30];
+	}
+	return 0;
+}
+
+Create() {
+	men = 0;
+	move bunker to y-axis [-6] now;
+	move hatch1 to x-axis [-3] now;
+	move hatch2 to x-axis [3] now;
+	start-script SmokeUnit_SWS();
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode antennae type FALL | SMOKE | BITMAP;
+		explode hatch1 type FALL | SMOKE | BITMAP;
+		explode hatch2 type FALL | FIRE | SMOKE;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode antennae type FALL | SMOKE | BITMAP;
+		explode hatch1 type FALL | SMOKE | BITMAP;
+		explode hatch2 type FALL | FIRE | SMOKE;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode antennae type FALL | SMOKE | BITMAP;
+		explode hatch1 type FALL | SMOKE | BITMAP;
+		explode hatch2 type FALL | FIRE | SMOKE;
+		return 0;
+	}
+	corpsetype = 3;
+	explode antennae type FALL | SMOKE | BITMAP;
+	explode hatch1 type FALL | SMOKE | BITMAP;
+	explode hatch2 type FALL | FIRE | SMOKE;
+	return 0;
+}

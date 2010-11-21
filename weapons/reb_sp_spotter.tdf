@@ -1,0 +1,26 @@
+[reb_sp_spotter]
+{
+	name=Spotter Tower warning;
+	rendertype=2;
+	turret=1;
+	tolerance=6000;
+
+	lineofsight=1;
+
+	range=650;
+	reloadtime=20;
+	weaponvelocity=1000;
+	areaofeffect=1;
+
+	soundstart=rebspotter_warning;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=0;
+	}
+}

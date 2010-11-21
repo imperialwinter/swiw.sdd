@@ -1,0 +1,59 @@
+[unitinfo]
+{
+	unitname=reb_i_trooper;
+	objectname=rebel/i-trooper.s3o;
+	buildpic=reb_i_trooper.png;
+	icontype=inf_light;
+	soundcategory=reb-i-trooper;
+	category=GROUND INFANTRY;
+
+	name=Fleet Trooper;
+	description=Rebel Soldier;
+	side=Rebels;
+	maxdamage=170;
+	buildcostmetal=40;
+	buildcostenergy=200;
+	buildtime=7;
+	power=45;
+	footprintx=1;
+	footprintz=1;
+	mass=100;
+	cobid=82;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+	smoothanim=0;
+	levelground=0;
+
+	sightdistance=500;
+	stealth=1;
+	seismicdistance=1000;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.6;
+	acceleration=0.14;
+	brakerate=0.25;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=REB_HUMAN_BLAST;
+	selfdestructas=REB_HUMAN_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=reb_i_trooper;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=190;
+	weapon2=reb_i_trooper;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_RED;
+	}
+}

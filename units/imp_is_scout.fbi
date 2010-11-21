@@ -1,0 +1,31 @@
+[unitinfo]
+{
+	unitname=imp_is_scout;
+	objectname=nullpoint.s3o;
+	buildpic=imp_is_scout.png;
+	category=GROUND;
+
+	name=Scout Squad;
+	description=2xSpeeder bike, 2xScout trooper;
+	side=Empire;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=285;
+	buildcostenergy=1600;
+	buildtime=35;
+	footprintx=1;
+	footprintz=1;
+	cobid=40;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=10;
+	maxwaterdepth=5;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+}

@@ -1,0 +1,21 @@
+[imp_p_estore_dead]
+{
+	object=wreckage/imp_p_estore/seq1_1.s3o;
+	description=Wrecked Storage;
+	metal=93;
+	damage=750;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}
+[imp_p_estore_heap]
+{
+	object=heaps/4x4f.s3o;
+	description=Wreckage;
+	metal=31;
+	damage=1500;
+	blocking=0;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}

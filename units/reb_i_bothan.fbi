@@ -1,0 +1,74 @@
+[unitinfo]
+{
+	unitname=reb_i_bothan;
+	objectname=rebel/i-bothan.s3o;
+	buildpic=reb_i_bothan.png;
+	corpse=reb_i_bothan_dead;
+	icontype=inf_scout;
+	soundcategory=reb-i-trooper;
+	category=GROUND INFANTRY;
+
+	name=Bothan Spy;
+	description=Bothan Spy. Can call in commandos;
+	side=Rebels;
+	maxdamage=190;
+	buildcostmetal=125;
+	buildcostenergy=400;
+	buildtime=26;
+	footprintx=1;
+	footprintz=1;
+	mass=100;
+	cobid=78;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=650;
+	stealth=1;
+	seismicdistance=1200;
+
+	cloakcost=5;
+	cloakcostmoving=10;
+	mincloakdistance=0;
+	initcloaked=1;
+
+	builder=1;
+	builddistance=50;
+	canbuild=1;
+	workertime=1;
+	shownanospray=0;
+	canassist=1;
+	canrepair=0;
+	canrestore=0;
+	canreclaim=0;
+	canbeassisted=0;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.7;
+	acceleration=0.14;
+	brakerate=0.25;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=REB_HUMAN_BLAST;
+	selfdestructas=REB_HUMAN_BLAST;
+
+	canattack=0;
+	canfight=0;
+
+	weapon1=reb_i_bothan;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:builder_eye;
+	}
+}
+[customparams]
+	{
+		decloakdistance=70;
+	}

@@ -1,0 +1,63 @@
+[unitinfo]
+{
+	unitname=imp_i_royalguard;
+	objectname=empire/i-royalguard.s3o;
+	buildpic=imp_i_royalguard.png;
+	icontype=inf_heavy;
+	soundcategory=imp-i-stormtrooper;
+	category=GROUND INFANTRY;
+
+	name=Royal Guard;
+	description=Elite Soldier;
+	side=Empire;
+	maxdamage=440;
+	damagemodifier=0.85;
+	buildcostmetal=50;
+	buildcostenergy=300;
+	buildtime=6;
+	footprintx=1;
+	footprintz=1;
+	mass=100;
+	cobid=33;
+	pushresistant=1;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+	smoothanim=0;
+
+	sightdistance=500;
+	stealth=1;
+	seismicdistance=1000;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.28;
+	acceleration=0.5;
+	brakerate=0.5;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+	cantbetransported=1;
+
+	selfdestructcountdown=1;
+	explodeas=IMP_HUMAN_BLAST;
+	selfdestructas=IMP_HUMAN_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=imp_i_royalguard;
+	badtargetcategory1=VTOL;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=190;
+	weapon2=imp_i_royalguard;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_RED;
+		explosiongenerator1=custom:impact_dust;
+		explosiongenerator2=custom:reentry_fx;
+	}
+}

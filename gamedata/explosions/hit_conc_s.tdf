@@ -1,0 +1,121 @@
+//48 diameter
+
+[hit_conc_s] {
+	usedefaultexplosions=0;
+	
+	[anim] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=-1 r2, -1 r2, -1 r2;
+			pos=0, 12, 0;
+			delay=0;
+			damage=24;
+			explosionGenerator=custom:inc_explosion3_slow;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=-1 r2, 0.5 r0.5, -1 r2;
+			gravity=0, -0.1, 0;
+			colorMap=1 1 1 0.01   1 1 0.5 0.01   1 0.5 0 0.01   0 0 0 0;
+			Texture=plasma2;
+			airdrag=0.9;
+			particleLife=16;
+			particleLifeSpread=8;
+			numParticles=48;
+			particleSpeed=1;
+			particleSpeedSpread=4;
+			particleSize=0.5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=15 r60;
+			directional=1;
+		}
+		unit=1;
+		count=1;
+	}
+	
+	[miss] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;
+			explosionGenerator=custom:hit_conc_s_miss;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -6 r12, -6 r12, -6 r12;
+			width=6 r4;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.125;
+			color=1,0.5,0.1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=8; 
+	}
+	
+	[groundflash]{
+		flashsize=32;
+		flashalpha=0.5;
+		circlegrowth=6;
+		circlealpha=0.25;
+		ttl=8;
+		color=1,0.5,0;
+	}
+}
+
+[hit_conc_s_miss] {
+	[dust]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.25 0.2 0.15 0.5  0 0 0 0;
+			size=3 r9;
+			length=6 r24;
+			sizeGrowth=1;
+			ttl=24;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=6;
+	}
+	
+	[water]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.45 0.45 0.5 0.5  0 0 0 0; 
+			size=3 r9;
+			length=6 r24;
+			sizeGrowth=1;
+			ttl=24;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		water=1;
+		count=6;
+	}
+}

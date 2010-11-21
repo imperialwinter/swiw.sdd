@@ -1,0 +1,192 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, tower, lift, blast, door1, door2, cap, fans, bpt, fm;
+
+static-var  isBuilding, isBuildingNow, randomSeed, isOpen;
+
+#define SIG_ACTIVATE			2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 tower
+#define SMOKEPIECE3 cap
+#define SMOKEPIECE4 cap
+#include "general/smokeunit_sws.h"
+
+#define droidpflash 1024+1
+
+Sounds() {
+	play-sound("imp_b_droidplant/fan_whoosh",6);
+	#define fan 0
+	play-sound("imp_b_droidplant/slam",25);
+	#define slam 1
+	play-sound("imp_b_droidplant/whir",60);
+	#define whir 2
+	play-sound("imp_b_droidplant/lid",25);
+	#define lid 3
+	play-sound("imp_b_droidplant/door",25);
+	#define door 4
+	play-sound("imp_b_droidplant/ambient1100",6);
+	#define ambient 5
+	play-sound("imp_b_droidplant/const1",25);
+	#define const1 6
+	play-sound("imp_b_droidplant/const2",25);
+	#define const2 7
+	play-sound("imp_b_droidplant/const3",25);
+	#define const3 8
+}
+
+Open() {
+	isOpen=1;
+	move bpt to y-axis [0] now;
+	get PLAY_SOUND(slam, 196608, 0, 0);
+	move lift to y-axis [0] speed [100];
+	wait-for-move lift along y-axis;
+	get PLAY_SOUND(whir, 196608, 0, 0);
+	turn blast to y-axis <0> speed <200>;
+	wait-for-turn blast around y-axis;
+	get PLAY_SOUND(lid, 196608, 0, 0);
+	move cap to y-axis [0] speed [100];
+	wait-for-move cap along y-axis;
+	get PLAY_SOUND(door, 196608, 0, 0);
+	turn door1 to y-axis <35> speed <200>;
+	turn door2 to y-axis <-35> speed <200>;
+}
+
+Close() {
+	get PLAY_SOUND(door, 196608, 0, 0);
+	turn door1 to y-axis <0> speed <200>;
+	turn door2 to y-axis <0> speed <200>;
+	wait-for-turn door1 around y-axis;
+	get PLAY_SOUND(lid, 196608, 0, 0);
+	move cap to y-axis [-17] speed [100];
+	wait-for-move cap along y-axis;
+	get PLAY_SOUND(whir, 196608, 0, 0);
+	turn blast to y-axis <180> speed <200>;
+	wait-for-turn blast around y-axis;
+	get PLAY_SOUND(slam, 196608, 0, 0);
+	move lift to y-axis [-14.5] speed [100];
+	wait-for-move lift along y-axis;
+	isOpen=0;
+}
+
+BuildStarted(unitID) {
+	var unitprog;
+	isBuildingNow = TRUE;
+	while(get UNIT_BUILD_PERCENT_LEFT(unitID)) {
+		unitprog = get UNIT_BUILD_PERCENT_LEFT(unitID);
+		if(unitprog == 20) {
+			start-script Open();
+		}
+		sleep 100;
+	}
+	sleep 500;
+	move bpt to y-axis [-100] now;
+	sleep 3000;
+	call-script Close();
+}
+
+BuildEnded(unitID) {
+	isBuildingNow = FALSE;
+}
+
+ConstAnims() {
+	var randsound;
+	if(isBuildingNow and !isOpen) {
+		randsound = rand(1,5);
+		if(randsound == 1) {
+			get PLAY_SOUND(const1, 196608, 0, 0);
+		} if(randsound == 2) {
+			get PLAY_SOUND(const2, 196608, 0, 0);
+		} if(randsound == 3) {
+			get PLAY_SOUND(const3, 196608, 0, 0);
+		}
+		emit-sfx droidpflash from fm;
+	}
+}
+
+BuildScript() {
+	while(1) {
+		if(isBuilding) {
+			set BUGGER_OFF to 1;
+			set YARD_OPEN to 1;
+			set INBUILDSTANCE to 1;
+			sleep rand(40,100) + randomSeed;
+			start-script ConstAnims();
+		}
+		while(!isBuilding) {
+			isBuildingNow = FALSE;
+			sleep 2000;
+			set BUGGER_OFF to 0;
+			set YARD_OPEN to 0;
+			set INBUILDSTANCE to 0;
+		}
+	}
+}
+
+FanLoop() {
+	while(1) {
+		get PLAY_SOUND(fan, 65536, 0, 0);
+		if(isBuildingNow) {
+			get PLAY_SOUND(ambient, 65536, 0, 0); }
+		sleep 1150;
+	}
+}
+
+Create() {
+	move cap to y-axis [-17] now;
+	move lift to y-axis [-14.5] now;
+	turn blast to y-axis <180> now;
+	randomSeed = rand(20,50);
+	set BUGGER_OFF to 0;
+	set YARD_OPEN to 0;
+	set INBUILDSTANCE to 0;
+	isBuilding = FALSE;
+	start-script BuildScript();
+	start-script SmokeUnit_SWS();
+	while(get BUILD_PERCENT_LEFT) {
+		sleep 1000;
+	}
+	start-script FanLoop();
+	spin fans around y-axis speed <50>;
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = bpt;
+}
+
+QueryBuildInfo(piecenum) {
+	piecenum = bpt;
+}
+
+Activate() {
+	signal SIG_ACTIVATE;
+	isBuilding = TRUE;
+}
+
+Deactivate() {
+	signal SIG_ACTIVATE;
+	set-signal-mask SIG_ACTIVATE;
+	isBuilding = FALSE;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

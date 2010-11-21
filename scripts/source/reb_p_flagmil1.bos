@@ -1,0 +1,88 @@
+#define TAK		
+
+#include "general/standard_commands.h"
+
+piece  base, door, exit;
+
+static-var isBuildingNow, isBuilding;
+
+#define SIG_ACTIVATE			2
+
+BuildStarted(unitID) {
+	var unitprog;
+	while(get UNIT_BUILD_PERCENT_LEFT(unitID)) {
+		unitprog = get UNIT_BUILD_PERCENT_LEFT(unitID);
+		if(unitprog <= 10) {
+			turn door to y-axis <-85> speed <40>;
+		}
+		sleep 100;
+	}
+	sleep 2000;
+	turn door to y-axis <0> speed <40>;
+}
+
+BuildScript() {
+	while(TRUE) {
+		if(isBuilding) {
+			sleep 100;
+			set BUGGER_OFF to 1;
+			set YARD_OPEN to 1;
+			set INBUILDSTANCE to 1;
+			isBuildingNow = TRUE;		
+		}
+		if(isBuilding) {
+			sleep 100;
+		}	
+		while(!isBuilding) {
+			sleep 500;
+			isBuildingNow = FALSE;
+			sleep 1;
+			set BUGGER_OFF to 0;
+			set YARD_OPEN to 0;
+			set INBUILDSTANCE to 0;
+		}
+	}
+}
+
+Create() {
+	start-script BuildScript();
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = exit;
+}
+
+Activate() {
+	signal SIG_ACTIVATE;
+	isBuilding = TRUE;
+}
+
+Deactivate() {
+	signal SIG_ACTIVATE;
+	set-signal-mask SIG_ACTIVATE;
+	isBuilding = FALSE;
+}
+
+QueryBuildInfo(piecenum) {
+	piecenum = exit;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type SHATTER | BITMAP;
+}

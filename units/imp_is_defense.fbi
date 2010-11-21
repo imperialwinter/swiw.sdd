@@ -1,0 +1,31 @@
+[unitinfo]
+{
+	unitname=imp_is_defense;
+	objectname=nullpoint.s3o;
+	buildpic=imp_is_defense.png;
+	category=GROUND;
+
+	name=Defense Squad;
+	description=2xRepeater trooper, 2xE-WEB;
+	side=Empire;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=350;
+	buildcostenergy=1450;
+	buildtime=50;  // a little under 0.8*total BT
+	footprintx=1;
+	footprintz=1;
+	cobid=38;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=10;
+	maxwaterdepth=5;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+}

@@ -1,0 +1,22 @@
+[reb_p_estore_dead]
+{
+	object=wreckage/reb_p_estore/seq1_2.s3o;
+	featuredead=reb_p_estore_heap;
+	description=Wrecked Storage;
+	metal=168;
+	damage=638;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}
+[reb_p_estore_heap]
+{
+	object=heaps/4x4f.s3o;
+	description=Wreckage;
+	metal=56;
+	damage=1276;
+	blocking=0;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}

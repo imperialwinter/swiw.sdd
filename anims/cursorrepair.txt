@@ -1,0 +1,24 @@
+hotspot center
+frame  bitmaps/cursors/repair/repair01.png  0.100
+frame  bitmaps/cursors/repair/repair02.png  0.100
+frame  bitmaps/cursors/repair/repair03.png  0.100
+frame  bitmaps/cursors/repair/repair04.png  0.100
+frame  bitmaps/cursors/repair/repair05.png  0.100
+frame  bitmaps/cursors/repair/repair06.png  0.100
+frame  bitmaps/cursors/repair/repair07.png  0.100
+frame  bitmaps/cursors/repair/repair08.png  0.100
+frame  bitmaps/cursors/repair/repair09.png  0.100
+frame  bitmaps/cursors/repair/repair10.png  0.100
+frame  bitmaps/cursors/repair/repair11.png  0.100
+frame  bitmaps/cursors/repair/repair12.png  0.100
+frame  bitmaps/cursors/repair/repair13.png  0.100
+frame  bitmaps/cursors/repair/repair14.png  0.100
+frame  bitmaps/cursors/repair/repair15.png  0.100
+frame  bitmaps/cursors/repair/repair16.png  0.100
+frame  bitmaps/cursors/repair/repair17.png  0.100
+frame  bitmaps/cursors/repair/repair18.png  0.100
+frame  bitmaps/cursors/repair/repair19.png  0.100
+frame  bitmaps/cursors/repair/repair20.png  0.100
+frame  bitmaps/cursors/repair/repair21.png  0.100
+frame  bitmaps/cursors/repair/repair22.png  0.100
+frame  bitmaps/cursors/repair/repair01.png  0.100

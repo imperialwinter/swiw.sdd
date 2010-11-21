@@ -1,0 +1,47 @@
+[unitinfo]
+{
+	unitname=imp_d_eweb;
+	objectname=empire/i-eweb.s3o;
+	buildpic=imp_i_eweb.png;
+	icontype=defense_lt;
+	soundcategory=imp-i-stormtrooper;
+	category=GROUND INFANTRY;
+
+	name=E-Web Trooper;
+	description=Deployed E-Web Soldier;
+	side=Empire;
+	maxdamage=220;
+	buildcostmetal=200;
+	buildcostenergy=800;
+	buildtime=22;
+	footprintx=1;
+	footprintz=1;
+	mass=200;
+	cobid=23;
+
+	reclaimable=0;
+	shownanoframe=0;
+
+	sightdistance=500;
+	seismicsignature=1;
+
+	canmove=0;
+
+	cantbetransported=1;
+
+	selfdestructcountdown=1;
+	explodeas=CIS_STAP_BLAST;
+	selfdestructas=CIS_STAP_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=imp_i_eweb;
+	badtargetcategory1=VTOL;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=270;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:MED_MUZZLE_FLASH_FX_RED;
+	}
+}

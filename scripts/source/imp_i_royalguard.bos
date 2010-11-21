@@ -1,0 +1,499 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece base, shoulders, head, podf, podb, podr, podl, torso, ruparm, luparm, rloarm, lloarm, pelvis, rthigh, lthigh;
+piece chest, lleg, rleg, gun_z, gun, flare, shield, reentry;
+
+static-var  bMoving, bAiming, runSpeed, maxAngle, randomSeed, packedUp, reentering, idleAnim, maxSpeed;
+
+#define SIG_DYING	4
+
+#define SMALL_MUZZLE_FLASH_FX_RED 1024+0
+#define landcloud 1024+1
+#define reentryfx 1024+2
+
+Sounds() {
+	play-sound("XPLOLRG3",25);
+	#define explosion 0
+}
+
+PackUp() {
+	bAiming=0;
+	runSpeed = 9;
+	set MAX_SPEED to 1;
+	set ARMORED to FALSE;
+	move pelvis	to y-axis [-2]		speed [125];
+	turn lloarm	to x-axis <-90>		speed <200>;
+	turn lloarm	to y-axis <0>		speed <200>;
+	turn lloarm	to z-axis <0>		speed <200>;
+	turn shoulders to x-axis <0>	speed <200>;
+
+	turn ruparm	to x-axis <0>		speed <200>;
+	turn ruparm	to y-axis <0>		speed <200>;
+	turn ruparm	to z-axis <5>		speed <200>;
+
+	turn rloarm	to x-axis <0>		speed <200>;
+	turn rloarm	to y-axis <0>		speed <200>;
+	turn rloarm	to z-axis <-10>		speed <200>;
+
+	turn gun_z	to x-axis <-5>		speed <500>;
+	turn gun_z	to y-axis <0>		speed <500>;
+	turn gun_z	to z-axis <-175>	speed <500>;
+
+	turn chest	to x-axis <-10>		speed <200>;
+ 	turn chest	to y-axis <0>		speed <200>;
+
+	turn torso	to x-axis <0>		speed <200>;
+ 	turn torso	to y-axis <0>		speed <200>;
+
+ 	turn luparm	to x-axis <0>		speed <200>;
+ 	turn luparm	to y-axis <0>		speed <200>;
+ 	turn luparm	to z-axis <0>		speed <200>;
+	wait-for-turn torso	around y-axis;
+
+	SET MAX_SPEED to maxSpeed;
+	maxAngle = 100;
+	packedUp = 1;
+		
+	sleep 10;
+	return 0;
+}
+
+Run() {
+	if(bMoving) {	
+		turn pelvis	to x-axis (<8>    * maxAngle) / 100	speed <80>   * runSpeed;
+		turn torso	to x-axis (<4>    * maxAngle) / 100	speed <80>   * runSpeed;
+		turn torso	to y-axis (<-20>  * maxAngle) / 100	speed <10>   * runSpeed;
+		move pelvis	to y-axis [0]				speed <200>  * runSpeed;
+	}
+	if(bMoving) {
+		turn rleg	to x-axis (<85>   * maxAngle) / 100	speed <30>   * runSpeed;
+		turn lleg	to x-axis (<25>   * maxAngle) / 100	speed <40>   * runSpeed;
+		turn rthigh	to x-axis (<-45>  * maxAngle) / 100	speed <20>   * runSpeed;
+		turn lthigh	to x-axis (<20>   * maxAngle) / 100	speed <20>   * runSpeed;
+
+		wait-for-move	pelvis		along y-axis;
+		move pelvis	to y-axis [1.75]			speed <160>  * runSpeed;
+	}
+
+	if(bMoving) {
+		turn rleg	to x-axis (<55>   * maxAngle) / 100	speed <60>   * runSpeed;
+		wait-for-turn	lthigh		around x-axis;
+
+		turn torso	to y-axis (<20>   * maxAngle) / 100	speed <10>   * runSpeed;
+		move pelvis	to y-axis [0]				speed <200>  * runSpeed;
+
+		turn lleg	to x-axis (<85>   * maxAngle) / 100	speed <30>   * runSpeed;
+		turn rleg	to x-axis (<25>   * maxAngle) / 100	speed <40>   * runSpeed;
+		turn lthigh	to x-axis (<-45>  * maxAngle) / 100	speed <20>   * runSpeed;
+	}
+	if(bMoving) {
+		turn rthigh	to x-axis (<20>   * maxAngle) / 100	speed <20>   * runSpeed;
+
+		wait-for-move pelvis along y-axis;
+
+		move pelvis	to y-axis [1.75]			speed <160>  * runSpeed;
+		turn lleg	to x-axis (<55>   * maxAngle) / 100	speed <60>   * runSpeed;
+		wait-for-turn	rthigh		around x-axis;
+	}
+}
+
+StartMoving() {
+	bMoving = TRUE;
+	return 0;
+}
+
+StopMoving() {
+	bMoving = FALSE;
+}
+
+RestoreAfterDelay() {
+	sleep 3000;
+	call-script PackUp();
+	bAiming = 0;
+	return 0;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = head;
+	return 0;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = flare;
+	return 0;
+}
+
+FireWeapon1() {
+	turn ruparm to x-axis <-20> speed <200>;
+	turn rloarm to x-axis <-100> speed <200>;
+	emit-sfx SMALL_MUZZLE_FLASH_FX_RED from flare;
+	sleep 80;
+	turn ruparm to x-axis <-30> speed <200>;
+	turn rloarm to x-axis <-90> speed <200>;
+	return 0;
+}
+
+AimWeapon1(heading,pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	bAiming=1;
+		runSpeed = 7;
+		SET MAX_SPEED to 1;
+		maxAngle = 1;
+		packedUp = 0;
+		set ARMORED to TRUE;
+		turn chest to x-axis <15> speed <200>;
+		turn chest to y-axis <-15> speed <200>;
+		move pelvis to y-axis [-0.625] speed [125];
+
+		turn lthigh to x-axis <-45> speed <200>;
+		turn lthigh to y-axis <15> speed <200>;
+		turn lleg to x-axis <45> speed <200>;
+
+		turn rthigh to x-axis <20> speed <200>;
+		turn rthigh to y-axis <15> speed <200>;
+		turn rleg to x-axis <45> speed <200>;
+		turn rleg to y-axis <-15> speed <200>;
+
+		turn ruparm to x-axis <-30> speed <500>;
+		turn ruparm to y-axis <30> speed <500>;
+		turn ruparm to z-axis <20> speed <500>;
+
+		turn rloarm to x-axis <-90> speed <500>;
+		turn rloarm to y-axis <0> speed <500>;
+		turn rloarm to z-axis <0> speed <500>;
+
+		turn gun_z to x-axis <20> speed <500>;
+		turn gun_z to y-axis <0> speed <500>;
+		turn gun_z to z-axis <10> speed <500>;
+		move gun_z to x-axis [0] speed [1250];
+
+		turn luparm to x-axis <-75> speed <500>;	
+		turn luparm to y-axis <15> speed <500>;
+		turn luparm to z-axis <0> speed <500>;
+
+		turn lloarm to x-axis <-30> speed <500>;
+		turn lloarm to y-axis <0> speed <500>;
+		turn lloarm to z-axis <55> speed <500>;
+
+		wait-for-turn rthigh around x-axis;
+		wait-for-turn rleg around x-axis;
+
+	turn torso to y-axis heading speed <300>;
+	turn shoulders to x-axis 0-pitch speed <150>;
+	wait-for-turn torso around y-axis;
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+#define TURN_RATE 1300
+
+AimWeapon2(heading, pitch) {
+	if(!bMoving and !bAiming) {
+		if(heading > <95> or heading < <-95>) {
+			while(heading > <95>) {
+				set HEADING to TURN_RATE + get HEADING;
+				heading = heading - TURN_RATE;
+				sleep 30;
+			}
+			while(heading < <-95>) {
+				set HEADING to 0 - TURN_RATE + get HEADING;
+				heading = heading + TURN_RATE;
+				sleep 30;
+			}
+		}
+	}
+	return 0;
+}
+
+IdleAnim01() {
+	idleAnim = 1;
+	var randvar;
+	randvar = rand(8,20);
+	turn torso to y-axis <1> * randvar speed <50>;
+	sleep 12 * randvar;
+	turn torso to y-axis <1> * randvar speed <50>;
+	wait-for-turn torso around y-axis;
+	idleAnim = 0;
+}
+
+IdleAnim02() {
+	idleAnim = 1;
+	var randvar;
+	randvar = rand(8,20);
+	turn torso to y-axis <-1> * randvar speed <50>;
+	sleep 12 * randvar;
+	turn torso to y-axis <-1> * randvar speed <50>;
+	wait-for-turn torso around y-axis;
+	idleAnim = 0;
+}
+
+MotionControl() {
+	set-signal-mask SIG_DYING;
+	var randIdleAnimation;
+	while(1) {
+		if(bMoving) {
+			if(!bAiming) {
+				call-script Run();
+			}
+		}
+		if(!bMoving) {
+			if(!bAiming) {
+				if(packedUp) {
+					turn rthigh to x-axis <0> speed <250>;
+					turn rleg to x-axis <0> speed <250>;
+					turn lthigh to x-axis <0> speed <250>;
+					turn lleg to x-axis <0> speed <250>;
+				//	move pelvis to y-axis [0] now;
+					if(!idleAnim) {
+						randIdleAnimation = rand(0,50);
+						if(randIdleAnimation == 1) {
+							start-script IdleAnim01();
+						}
+						if(randIdleAnimation == 2) {
+							start-script IdleAnim02();
+						}
+					}
+				}
+			}
+		}
+		sleep randomSeed;
+	}
+}
+
+Falling() {
+	while(reentering) {
+		emit-sfx reentryfx from reentry;
+		sleep 5;
+	}
+}
+
+Create() {
+	hide reentry;
+	hide flare;
+	hide shield;
+	hide gun_z;
+	maxSpeed = get MAX_SPEED;
+	move base to y-axis [3750] now;
+	randomSeed = rand(10,60);
+	bMoving = 0;
+	call-script PackUp();
+	while(get BUILD_PERCENT_LEFT) {
+		sleep 100; }
+	set MAX_SPEED to 1;
+	set ARMORED to TRUE;
+	start-script Falling();
+	reentering = 1;
+	move base to y-axis [0] speed [875];
+	wait-for-move base along y-axis;
+	reentering = 0;
+	get PLAY_SOUND(explosion, 196608, 0, 0);
+	emit-sfx landcloud from base;
+	hide base;
+	show shield;
+	show gun_z;
+	turn podf to x-axis <70> speed <150>;
+	turn podb to x-axis <-70> speed <150>;
+	turn podr to z-axis <-70> speed <150>;
+	turn podl to z-axis <70> speed <150>;
+	wait-for-turn podf around x-axis;
+	move podf to y-axis [-25] speed [125];
+	move podb to y-axis [-25] speed [125];
+	move podr to y-axis [-25] speed [125];
+	move podl to y-axis [-25] speed [125];
+	wait-for-move podf along y-axis;
+	hide podf;
+	hide podb;
+	hide podr;
+	hide podl;
+	set ARMORED to FALSE;
+	SET MAX_SPEED to maxSpeed;
+	start-script MotionControl();
+}
+
+
+#define MIN_CORPSENUM 445
+#define MAX_CORPSENUM 448
+#define USES_BMOVING 1
+#define STOP_UNIT 1
+#define PRE_ANIMATION \
+	hide shield;\
+	turn torso to y-axis <0> speed <200>;\
+	turn rthigh to x-axis <0> now;\
+	turn rleg to x-axis <0> now;\
+	turn lthigh to x-axis <0> now;\
+	turn lleg to x-axis <0> now;\
+	turn chest to x-axis <0> now;\
+	turn chest to y-axis <0> now;\
+	turn ruparm to x-axis <0> now;\
+	turn ruparm to y-axis <0> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <0> now;\
+	turn rloarm to y-axis <0> now;\
+	turn rloarm to z-axis <0> now;\
+	turn luparm to x-axis <0> now;\
+	turn luparm to y-axis <0> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <0> now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <0> now;\
+	
+
+#define ANIMATION0 \
+	hide shield;\
+	turn base to x-axis <-30> speed <90>;\
+	move pelvis to y-axis [2.5] speed [2.5];\
+	\
+	turn torso to x-axis <30> speed <90>;\
+	turn head to x-axis <20> speed <90>;\
+	turn ruparm to x-axis <-60> speed <100>;\
+	turn ruparm to y-axis <-20> speed <100>;\
+	turn ruparm to z-axis <20> speed <100>;\
+	turn rloarm to x-axis <-20> speed <100>;\
+	turn rloarm to z-axis <30> speed <100>;\
+	turn luparm to x-axis <-50> speed <100>;\
+	turn luparm to y-axis <20> speed <100>;\
+	turn lloarm to x-axis <-15> speed <100>;\
+	turn lloarm to y-axis <-25> speed <100>;\
+	turn lleg to x-axis <15> speed <100>;\
+	turn rthigh to x-axis <-24> speed <100>;\
+	wait-for-turn torso around x-axis;\
+	\
+	turn base to x-axis <-60> speed <110>;\
+	turn ruparm to x-axis <-40> speed <60>;\
+	turn luparm to x-axis <-35> speed <60>;\
+	turn luparm to z-axis <-40> speed <60>;\
+	turn head to x-axis <-20> speed <60>;\
+	turn rloarm to y-axis <-80> speed <65>;\
+	turn rthigh to x-axis <-15> speed <60>;\
+	turn rleg to x-axis <30> speed <100>;\
+	wait-for-turn base around x-axis;\
+	\
+	turn base to x-axis <-90> speed <130>;\
+	move pelvis to y-axis [0] speed [2.5];\
+	turn head to x-axis <10> speed <60>;\
+	turn torso to x-axis <5> speed <80>;\
+	turn ruparm to x-axis <0> speed <80>;\
+	turn rloarm to x-axis <5> speed <80>;\
+	turn rloarm to y-axis <-60> speed <80>;\
+	turn rloarm to z-axis <-15> speed <80>;\
+	turn luparm to x-axis <0> speed <80>;\
+	turn lloarm to x-axis <-25> speed <80>;\
+	turn lleg to x-axis <0> speed <80>;\
+	sleep 500;
+#define ANIMATION1 \
+	turn base to x-axis <45> speed <90>;\
+	turn torso to x-axis <-15> speed <70>;\
+	turn head to x-axis <-20> speed <70>;\
+	turn luparm to x-axis <-60> speed <60>;\
+	turn luparm to y-axis <0> speed <60>;\
+	turn luparm to z-axis <-20> speed <60>;\
+	turn lloarm to x-axis <-30> speed <60>;\
+	turn lloarm to y-axis <0> speed <60>;\
+	turn lloarm to z-axis <50> speed <60>;\
+	turn ruparm to x-axis <-45> speed <60>;\
+	turn ruparm to y-axis <0> speed <60>;\
+	turn ruparm to z-axis <0> speed <60>;\
+	turn rloarm to x-axis <0> speed <60>;\
+	turn rloarm to y-axis <0> speed <60>;\
+	turn rloarm to z-axis <-30> speed <60>;\
+	turn lthigh to x-axis <15> speed <70>;\
+	turn lleg to x-axis <10> speed <70>;\
+	turn rthigh to x-axis <-15> speed <70>;\
+	turn rleg to x-axis <30> speed <70>;\
+	wait-for-turn base around x-axis;\
+	\
+	turn base to x-axis <80> speed <110>;\
+	turn pelvis to x-axis <-15> speed <70>;\
+	turn torso to x-axis <25> speed <70>;\
+	turn luparm to x-axis <-150> speed <190>;\
+	turn ruparm to x-axis <-60> speed <70>;\
+	turn rloarm to y-axis <10> speed <70>;\
+	turn rloarm to z-axis <-140> speed <70>;\
+	turn lthigh to x-axis <20> speed <70>;\
+	turn rthigh to x-axis <20> speed <70>;\
+	wait-for-turn base around x-axis;\
+	\
+	turn head to x-axis <20> speed <110>;\
+	turn rleg to x-axis <0> speed <90>;\
+	wait-for-turn head around x-axis;
+#define ANIMATION2 \
+	move pelvis to y-axis [-7] speed [15];\
+	turn torso to x-axis <14> speed <140>;\
+	turn head to x-axis <17> speed <140>;\
+	turn rthigh to x-axis <-50> speed <200>;\
+	turn rthigh to y-axis <0> speed <200>;\
+	turn rthigh to z-axis <20> speed <200>;\
+	turn rleg to x-axis <140> speed <360>;\
+	turn lthigh to x-axis <-50> speed <200>;\
+	turn lthigh to y-axis <0> speed <200>;\
+	turn lthigh to z-axis <-20> speed <200>;\
+	turn lleg to x-axis <140> speed <360>;\
+	turn ruparm to x-axis <-40> speed <140>;\
+	turn ruparm to z-axis <4> speed <140>;\
+	turn rloarm to x-axis <0> speed <140>;\
+	turn rloarm to z-axis <-23> speed <140>;\
+	turn luparm to x-axis <-44> speed <260>;\
+	turn luparm to z-axis <-3> speed <260>;\
+	turn lloarm to x-axis <12> speed <260>;\
+	turn lloarm to z-axis <100> speed <260>;\
+	wait-for-turn lloarm around z-axis;\
+	wait-for-move pelvis along y-axis;\
+	\
+	move pelvis to y-axis [-7.75] speed [25];\
+	turn base to z-axis <-70> speed <100>;\
+	turn torso to z-axis <-10> speed <100>;\
+	turn head to z-axis <-30> speed <120>;\
+	turn lthigh to x-axis <-20> speed <140>;\
+	turn lthigh to z-axis <-10> speed <140>;\
+	turn lleg to x-axis <50> speed <140>;\
+	turn rthigh to z-axis <-20> speed <200>;\
+	turn rleg to x-axis <89> speed <140>;\
+	turn rleg to z-axis <-15> speed <140>;\
+	turn luparm to z-axis <20> speed <100>;\
+	turn lloarm to z-axis <60> speed <120>;\
+	turn ruparm to x-axis <-60> speed <120>;\
+	turn ruparm to z-axis <-20> speed <140>;\
+	turn rloarm to x-axis <-20> speed <120>;\
+	turn rloarm to z-axis <10> speed <120>;\
+	wait-for-turn rthigh around z-axis;\
+	wait-for-turn base around z-axis;
+#define ANIMATION3 \
+	turn base to x-axis <-45> speed <90>;\
+	move pelvis to y-axis [1.75] speed [15];\
+	turn torso to x-axis <-10> speed <90>;\
+	turn torso to y-axis <20> speed <90>;\
+	turn head to x-axis <15> speed <90>;\
+	turn head to y-axis <5> speed <90>;\
+	turn luparm to x-axis <-15> speed <120>;\
+	turn luparm to z-axis <-20> speed <120>;\
+	turn lloarm to x-axis <-40> speed <120>;\
+	turn lloarm to z-axis <10> speed <120>;\
+	turn ruparm to x-axis <-40> speed <120>;\
+	turn ruparm to z-axis <0> speed <120>;\
+	turn rloarm to x-axis <-20> speed <120>;\
+	turn rloarm to z-axis <-20> speed <120>;\
+	turn lthigh to x-axis <0> speed <130>;\
+	turn rthigh to x-axis <-15> speed <130>;\
+	wait-for-turn base around x-axis;\
+	\
+	turn base to x-axis <-82> speed <110>;\
+	wait-for-turn base around x-axis;\
+	\
+	turn head to x-axis <-15> speed <150>;\
+	turn torso to y-axis <10> speed <120>;\
+	turn lthigh to x-axis <0> speed <130>;\
+	turn rleg to x-axis <30> speed <130>;\
+	turn luparm to x-axis <10> speed <130>;\
+	turn lloarm to x-axis <0> speed <120>;\
+	turn ruparm to x-axis <-20> speed <120>;\
+	turn rloarm to z-axis <-50> speed <120>;\
+	turn rloarm to x-axis <-60> speed <120>;\
+	turn gun to y-axis <40> speed <120>;\
+	turn gun to z-axis <-20> speed <120>;\
+	wait-for-turn gun around y-axis;\
+	wait-for-turn rloarm around z-axis;\
+
+#include "general/randomcorpse.h"

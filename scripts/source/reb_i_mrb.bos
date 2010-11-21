@@ -1,0 +1,286 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, trooprotate, pelvis, lthigh, lleg, rthigh, rleg, torso, chest, head, head2, head3, helmet;
+piece  ruparm, rloarm, luparm, lloarm, rotate1, leg1, leg2, rotate2, rotate3, gun, fpt;
+
+static-var  bMoving, bAiming, runSpeed, maxAngle, randomSeed, packedUp, randHead, inBunker, maxSpeed;
+
+#include "general/rebel_randomhead.h"
+
+#define SMALL_MUZZLE_FLASH_FX_RED 1024+0
+
+CanCapture(capture) {
+	capture = 1;
+	if(bAiming) {
+		capture = 0;
+	}
+	return 1;
+}
+
+Deploy() {
+		runSpeed = 7;
+		SET MAX_SPEED to 1;
+		maxAngle = 1;
+		packedUp = 0;
+		turn pelvis to x-axis <20> speed <200>;
+		turn head to x-axis <-10> speed <200>;
+		turn torso to y-axis <0> speed <200>;
+		move pelvis to y-axis [-6.25] speed [250];
+		move pelvis to z-axis [0] speed [50];
+		move rotate1 to z-axis [0] speed [50];
+		
+		turn lthigh to x-axis <-110> speed <200>;
+		turn lthigh to y-axis <20> speed <200>;
+		turn lleg to x-axis <90> speed <200>;
+		
+		turn rthigh to x-axis <-30> speed <200>;
+		turn rleg to x-axis <110> speed <200>;
+		
+		turn luparm to x-axis <-78> speed <200>;
+		turn luparm to y-axis <-166> speed <200>;
+		turn luparm to z-axis <180> speed <200>;
+		
+		turn lloarm to x-axis <-65> speed <200>;
+		turn lloarm to y-axis <-160> speed <200>;
+		turn lloarm to z-axis <-90> speed <200>;
+		
+		turn ruparm to x-axis <-49> speed <200>;
+		
+		turn rloarm to x-axis <-70> speed <200>;
+		turn rloarm to y-axis <16> speed <200>;
+		turn rloarm to z-axis <-35> speed <200>;
+
+		turn rotate1 to x-axis <0> speed <120>;
+		turn rotate1 to y-axis <0> speed <120>;
+		turn rotate1 to z-axis <0> speed <120>;
+		move rotate1 to x-axis [0] speed [375];
+		move rotate1 to y-axis [0] speed [375];
+		move rotate1 to z-axis [0] speed [375];
+
+		turn rotate2 to y-axis <0> speed <60>;
+		turn leg1 to x-axis <0> speed <200>;
+		turn leg1 to y-axis <0> speed <200>;
+		turn leg1 to z-axis <0> speed <200>;
+		turn leg2 to x-axis <0> speed <200>;
+		turn leg2 to y-axis <0> speed <200>;
+		turn leg2 to z-axis <0> speed <200>;
+
+		wait-for-turn rotate2 around y-axis;
+}
+
+PackUp() {
+		bAiming=0;
+		runSpeed = 7;
+		SET MAX_SPEED to 1;
+		turn rotate3 to y-axis <0> speed <300>;
+		turn trooprotate to y-axis <0> speed <300>;
+		wait-for-turn rotate3 around y-axis;
+
+		turn leg1 to x-axis <90> speed <300>;
+		turn leg1 to z-axis <-10> speed <300>;
+		turn leg2 to x-axis <90> speed <300>;
+		turn leg2 to z-axis <10> speed <300>;
+		
+		turn luparm to x-axis <-30> speed <200>;
+		turn luparm to y-axis <0> speed <200>;
+		turn luparm to z-axis <0> speed <200>;
+ 	
+		turn lloarm to x-axis <-85> speed <100>;
+		turn lloarm to y-axis <0> speed <100>;
+		turn lloarm to z-axis <0> speed <100>;
+
+		turn pelvis to x-axis <0> speed <200>;
+		turn head to x-axis <0> speed <200>;
+		turn torso to y-axis <0> speed <200>;
+		turn rotate2 to y-axis <80> speed <100>;
+		turn rotate3 to y-axis <0> speed <100>;
+		sleep 300;
+
+		move pelvis to y-axis [0] speed [250];
+		move pelvis to z-axis [12.5] speed [25];
+		move rotate1 to z-axis [11.25] speed [25];
+		move rotate1 to y-axis [7.5] speed [250];
+		//move rotate1 to z-axis [-5] speed [375];
+
+		turn lthigh to x-axis <0> speed <200>;
+		turn lthigh to y-axis <0> speed <200>;
+		turn lleg to x-axis <0> speed <200>;
+
+		turn rthigh to x-axis <0> speed <200>;
+		turn rleg to x-axis <0> speed <200>;
+		sleep 300;
+
+		SET MAX_SPEED to maxSpeed;
+		maxAngle = 1;
+		packedUp = 1;
+		
+	sleep 10;
+	return(0);
+}
+
+setSFXoccupy(level) {
+	if(level == 0) {
+		var transport, tid;
+		tid = get TRANSPORT_ID;
+		transport = get COB_ID(tid);
+		
+		if(transport == 25) { //imp bunker
+			inBunker = 1;
+			bAiming = 1;
+			start-script Deploy();
+		}
+		if(transport == 104) { // imp pillbox
+			move fpt to y-axis [10] now;
+			inBunker = 1;
+			bAiming = 1;
+			start-script Deploy();
+		}
+	}
+	if(level != 0) {
+		move fpt to y-axis [0] now;
+		inBunker = 0;
+		bAiming = 0;
+		start-script PackUp();
+	}
+}
+
+HitByWeaponId(z,x,id,damage) {
+	if(inBunker) { return 0; }
+	if(!inBunker) { return 100; }
+}
+
+Run() {
+	if(bMoving) {
+		turn rleg to x-axis <85>/maxAngle speed <30>*runSpeed;	
+		turn lleg to x-axis <25>/maxAngle speed <40>*runSpeed;
+		turn rthigh to x-axis <-45>/maxAngle speed <20>*runSpeed;
+		turn lthigh to x-axis <20>/maxAngle speed <20>*runSpeed;
+	}
+	if(bMoving) { //run 2nd step
+		turn rleg to x-axis <55>/maxAngle speed <60>*runSpeed;
+		wait-for-turn lthigh around x-axis;
+
+		turn lleg to x-axis <85>/maxAngle speed <30>*runSpeed;
+		turn rleg to x-axis <25>/maxAngle speed <40>*runSpeed;
+		turn lthigh to x-axis <-45>/maxAngle speed <20>*runSpeed;
+	}
+	if(bMoving) { //run 2nd step
+		turn rthigh to x-axis <20>/maxAngle speed <20>*runSpeed;
+
+		turn lleg to x-axis <55>/maxAngle speed <60>*runSpeed;	
+		wait-for-turn rthigh around x-axis;
+	}
+}
+
+Activate() {
+	if(bAiming) {
+		return 0; }
+	if(!packedUp and !bAiming) {
+		call-script PackUp();
+	}
+}
+
+Deactivate() {
+	if(packedUp) {
+		call-script Deploy();
+	}
+}
+
+StartMoving() {
+	bMoving = TRUE;
+	return 0;
+}
+
+StopMoving() {
+	bMoving = FALSE;
+}
+
+RestoreAfterDelay() {
+	if(get ACTIVATION == TRUE) {
+		sleep 3000;
+		call-script PackUp();
+	}
+	bAiming = 0;
+	return 0;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = head;
+	return 0;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = fpt;
+	return 0;
+}
+
+FireWeapon1() {
+	var burst, counter;
+	burst = 4;
+	counter = 0;
+	while(counter < burst) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from fpt;
+		move gun to z-axis [-0.5] speed [750];
+		turn torso to x-axis <-5> speed <200>;
+		sleep 50;
+		move gun to z-axis [0] speed [750];
+		turn torso to x-axis <0> speed <200>;
+		sleep 50;
+		++counter;
+	}
+	return 0;
+}
+
+AimWeapon1(heading,pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	bAiming=1;
+	call-script Deploy();
+	turn rotate3 to y-axis heading speed <150>;
+	turn trooprotate to y-axis heading speed <150>;
+	wait-for-turn rotate3 around y-axis;
+	if(!inBunker) {
+		start-script RestoreAfterDelay();
+	}
+	return 1;
+}
+
+
+MotionControl() {
+	while(1) {
+		if(bMoving) {
+			if(!bAiming) {
+				call-script Run();
+			}
+		}
+		if(!bMoving) {
+			if(!bAiming) {
+				if(packedUp) {
+					turn rthigh to x-axis <0> speed <250>;
+					turn rleg to x-axis <0> speed <250>;
+					turn lthigh to x-axis <0> speed <250>;
+					turn lleg to x-axis <0> speed <250>;
+				}
+			}
+		}
+		sleep randomSeed;
+	}
+}
+
+Create() {
+	hide fpt;
+	randomSeed = rand(10,60);
+	bMoving = FALSE;
+	runSpeed = 7;
+	maxSpeed = get MAX_SPEED;
+	set MAX_SPEED to maxSpeed;
+	maxAngle = 1;
+	call-script ChooseRandomHead();
+	call-script PackUp();
+	start-script MotionControl();
+}
+
+Killed(severity, corpsetype) {
+}

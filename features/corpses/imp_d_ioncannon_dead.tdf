@@ -1,0 +1,22 @@
+[imp_d_ioncannon_dead]
+{
+	object=wreckage/imp_d_ioncannon/seq1_1.s3o;
+	featuredead=imp_d_ioncannon_heap;
+	description=Wrecked Ion Cannon;
+	metal=117;
+	damage=540;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[imp_d_ioncannon_heap]
+{
+	object=heaps/2x2C.s3o;
+	description=Wreckage;
+	metal=39;
+	damage=1080;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

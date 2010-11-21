@@ -1,0 +1,56 @@
+[unitinfo]
+{
+	unitname=imp_p_solar;
+	objectname=empire/p-solar.s3o;
+	buildpic=imp_p_solar.png;
+	corpse=imp_p_solar_dead;
+	icontype=building_light;
+	soundcategory=ARM_WIND;
+	category=GROUND RESOURCE BUILDING;
+	tedclass=ENERGY;
+	yardmap=o;
+
+	name=Solar Panel;
+	description=Produces Variable Amounts of Power;
+	side=Empire;
+	maxdamage=500;
+	idleautoheal=0;
+	buildcostmetal=75;
+	buildcostenergy=250;
+	buildtime=6;
+	footprintx=2;
+	footprintz=2;
+	cobid=47;
+	collisionVolumeType=box;
+	collisionVolumeScales=24 32 24;
+	collisionVolumeOffsets=0 1 0;
+
+	canrepeat=0;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	windgenerator=0.0001;
+
+	sightdistance=300;
+
+	activatewhenbuilt=1;
+
+	maxslope=20;
+	maxwaterdepth=5;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/resource-imp.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=5;
+	BuildingGroundDecalSizeY=5;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_BUILDING;
+	selfdestructas=MEDIUM_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+	}
+}

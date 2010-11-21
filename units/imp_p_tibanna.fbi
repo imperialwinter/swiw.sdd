@@ -1,0 +1,56 @@
+[unitinfo]
+{
+	unitname=imp_p_tibanna;
+	objectname=empire/p-tibanna.s3o;
+	buildpic=imp_p_tibanna.png;
+	icontype=building_heavy;
+	soundcategory=CORE_GEO;
+	category=GROUND RESOURCE BUILDING;
+	tedclass=ENERGY;
+	yardmap=ooooooooo ooooooooo ooooooooo ooooooooo ooooGoooo ooooooooo ooooooooo ooooooooo ooooooooo;
+
+	name=Tibanna Refinery;
+	description=Converts Gas to Power;
+	side=Empire;
+	maxdamage=2000;
+	idleautoheal=0;
+	buildcostmetal=800;
+	buildcostenergy=6800;
+	buildtime=76;
+	footprintx=11;
+	footprintz=11;
+	cobid=48;
+	collisionVolumeType=box;
+	collisionVolumeScales=160 56 152;
+	collisionVolumeOffsets=0 28 8;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	energymake=1000;
+
+	sightdistance=400;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	maxslope=20;
+	maxwaterdepth=5;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/imp-p-tibanna.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=16.5;
+	BuildingGroundDecalSizeY=16.5;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:tibsmoke;
+	}
+}

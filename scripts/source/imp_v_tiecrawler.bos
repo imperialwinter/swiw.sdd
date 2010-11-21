@@ -1,0 +1,250 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece	base, gundoor_l, gunstrut_l, gun_l, gundoor_r, gunstrut_r, gun_r, firept_l, firept_r, bubbles1, bubbles2;
+piece	tread1, tread2, tread3, tread4, tread5, tread6;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 gundoor_r
+#define SMOKEPIECE3 gundoor_l
+#define SMOKEPIECE4 bubbles1
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_GREEN 1024+1
+
+static-var bMoving, Counter, heading_01, pitch_01, heading_02, pitch_02, AlreadyEngaged1, AlreadyEngaged2;
+
+TreadControl(RandomSeed, TreadSection) {
+	RandomSeed = rand (200, 350);
+	while(1) {
+		if(!bMoving) {
+			sleep RandomSeed;
+		}
+		++TreadSection;
+		if(TreadSection == 7) {
+			TreadSection = 1;
+		}
+		if(bMoving) {
+			if(TreadSection == 1) {
+				show tread6;
+				hide tread1;
+			}
+			if(TreadSection == 2) {
+				show tread5;
+				hide tread6;
+			}
+			if(TreadSection == 3) {
+				show tread4;
+				hide tread5;
+			}
+			if(TreadSection == 4) {
+				show tread3;
+				hide tread4;
+			}
+			if(TreadSection == 5) {
+				show tread2;
+				hide tread3;
+			}
+			if(TreadSection == 6) {
+				show tread1;
+				hide tread2;
+			}
+			sleep 30;
+		}
+	}
+}
+
+StartMoving() {
+	bMoving = 1;
+	return 0;
+}
+
+StopMoving() {
+	bMoving = 0;
+	return 0;
+}
+
+Create() {
+	bMoving = 0;
+	hide firept_l;
+	hide firept_r;
+	hide bubbles1;
+	hide bubbles2;
+	hide tread2;
+	hide tread3;
+	hide tread4;
+	hide tread5;
+	hide tread6;
+	start-script TreadControl();
+	start-script SmokeUnit_SWS();
+}
+
+RestoreAfterDelay1() {
+	sleep 10000;
+	AlreadyEngaged1 = FALSE;
+	turn gunstrut_r to x-axis 0 speed <100>;
+	turn gun_r to y-axis 0 speed <100>;
+	move gunstrut_r to z-axis 0 speed [25];
+	move gunstrut_r to x-axis 0 speed [25];
+	wait-for-move gunstrut_r along x-axis;
+	wait-for-turn gunstrut_r around x-axis;
+	wait-for-turn gun_r around y-axis;
+	turn gundoor_r to y-axis 0 speed <100>;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	
+	if(!AlreadyEngaged1) {
+		turn gundoor_r to y-axis <-175> speed <400>;
+		wait-for-turn gundoor_r around y-axis;
+		turn gun_r to y-axis <-30> speed <200>;
+		move gunstrut_r to z-axis [5.5] speed [50];
+		move gunstrut_r to x-axis [4.5] speed [50];
+		wait-for-move gunstrut_r along z-axis;
+		AlreadyEngaged1 = TRUE;
+	}
+	
+	pitch_01 = pitch;
+	if(pitch_01 <= 32768 ) {
+		turn gunstrut_r to x-axis 0 - pitch speed <200.0>;
+	}
+	if(pitch_01 > 32768 )
+	{
+		turn gunstrut_r to x-axis pitch speed <200.0>;
+	}
+	heading_01 = heading;
+	if(heading_01 <= 32768 )
+	{
+		turn gun_r to y-axis heading speed <200.0>;
+	}
+	if(heading_01 > 32768 )
+	{
+		turn gun_r to y-axis 0 - heading speed <200.0>;
+	}
+	
+	wait-for-turn gunstrut_r around x-axis;
+	wait-for-turn gun_r around y-axis;
+	start-script RestoreAfterDelay1();
+	return 1;
+}
+
+FireWeapon1()
+{
+	emit-sfx MED_MUZZLE_FLASH_FX_GREEN from firept_r;
+	return 0;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = firept_r;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = firept_r;
+}
+
+RestoreAfterDelay2()
+{
+	sleep 10000;
+	AlreadyEngaged2 = FALSE;
+	turn gunstrut_l to x-axis 0 speed <100>;
+	turn gun_l to y-axis 0 speed <100>;
+	move gunstrut_l to z-axis 0 speed [25];
+	move gunstrut_l to x-axis 0 speed [25];
+	wait-for-move gunstrut_l along x-axis;
+	wait-for-turn gunstrut_l around x-axis;
+	wait-for-turn gun_l around y-axis;
+	turn gundoor_l to y-axis 0 speed <100>;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2;
+	
+	if(!AlreadyEngaged2)
+	{
+		turn gundoor_l to y-axis <175> speed <400>;
+		wait-for-turn gundoor_l around y-axis;
+		turn gun_l to y-axis <30> speed <200>;
+		move gunstrut_l to z-axis [5.5] speed [50];
+		move gunstrut_l to x-axis [-4.5] speed [50];
+		wait-for-move gunstrut_l along z-axis;
+		AlreadyEngaged2 = TRUE;
+	}
+
+	pitch_02 = pitch;
+	if(pitch_02 <= 32768) {
+		turn gunstrut_l to x-axis 0 - pitch speed <200>;
+	}
+	if(pitch_02 > 32768) {
+		turn gunstrut_l to x-axis pitch speed <200>;
+	}
+	heading_02 = heading;
+	if(heading_02 <= 32768) {
+		turn gun_l to y-axis heading speed <200>;
+	}
+	if(heading_02 > 32768) {
+		turn gun_l to y-axis 0 - heading speed <200>;
+	}
+	wait-for-turn gunstrut_l around x-axis;
+	wait-for-turn gun_l around y-axis;
+	start-script RestoreAfterDelay2();
+	return 1;
+}
+
+FireWeapon2() {
+	emit-sfx MED_MUZZLE_FLASH_FX_GREEN from firept_l;
+	return 0;
+}
+
+AimFromWeapon2(piecenum) {
+	piecenum = firept_l;
+}
+
+QueryWeapon2(piecenum) {
+	piecenum = firept_l;
+}
+
+Killed(severity, corpsetype) {
+	hide tread2;
+	hide tread3;
+	hide tread4;
+	hide tread5;
+	hide tread6;
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode gundoor_r type FALL | SMOKE | FIRE | BITMAP;
+		explode gundoor_l type FALL | SMOKE | FIRE | BITMAP;
+		explode gun_r type FALL | SMOKE | FIRE | BITMAP;
+		explode gun_l type SHATTER;
+		explode tread1 type SHATTER;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode gundoor_r type SHATTER;
+		explode gundoor_l type FALL | SMOKE | FIRE | BITMAP;
+		explode tread1 type SHATTER;
+		explode gun_l type SHATTER;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode gundoor_r type SHATTER;
+		explode gundoor_l type FALL | SMOKE | FIRE | BITMAP;
+		explode gun_r type FALL | SMOKE | FIRE | BITMAP;
+		explode gun_l type SHATTER;
+		explode tread1 type SHATTER;
+		return 0;
+	}
+	corpsetype = 3;
+	explode gundoor_r type FALL | SMOKE | FIRE | BITMAP;
+	explode gundoor_l type FALL | SMOKE | FIRE | BITMAP;
+	explode gun_r type FALL | SMOKE | FIRE | BITMAP;
+	explode gun_l type SHATTER;
+}

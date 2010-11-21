@@ -1,0 +1,74 @@
+[unitinfo]
+{
+	unitname=imp_a_laat;
+	objectname=empire/a-laat.s3o;
+	buildpic=imp_a_laat.png;
+	icontype=air_trans;
+	soundcategory=reb-a-vwing;
+	category=VTOL TAKESGROUNDFIRE;
+
+	name=LAAT;
+	description=Low Altitude Assault Transport;
+	side=Empire;
+	maxdamage=900;
+	idleautoheal=0;
+	buildcostmetal=507;
+	buildcostenergy=10140;
+	buildtime=79;
+	footprintx=3;
+	footprintz=3;
+	mass=600000;
+	cobid=2;
+	collisionVolumeType=cylZ;
+	collisionVolumeScales=32 56 124;
+	collisionVolumeOffsets=0 0 0;
+
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	energyuse=25;
+
+	sightdistance=500;
+
+	canmove=1;
+	maxvelocity=6;
+	acceleration=0.1;
+	brakerate=3;
+	turnrate=600;
+
+	transportsize=1;
+	transportcapacity=6;
+	transportmass=650;
+	//isfireplatform=1;
+	releaseheld=1;
+	transportunloadmethod=2;
+
+	canfly=1;
+	hoverattack=1;
+	cruisealt=200;
+	factoryheadingtakeoff=0;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	weapon1=old_a_laatlaser;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 -0.5 1;
+	maxangledif1=120;
+	weapon2=old_a_laatbeam;
+	onlytargetcategory2=GROUND VTOL;
+	weaponmaindir2=-21 -0.5 16;
+	maxangledif2=120;
+	weapon3=old_a_laatbeam;
+	onlytargetcategory3=GROUND VTOL;
+	weaponmaindir3=21 -0.5 16;
+	maxangledif3=120;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:SMALL_MUZZLE_FLASH_FX_RED;
+		explosiongenerator2=custom:MED_MUZZLE_FLASH_FX_GREEN;
+	}
+}

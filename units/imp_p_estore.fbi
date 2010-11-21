@@ -1,0 +1,56 @@
+[unitinfo]
+{
+	unitname=imp_p_estore;
+	objectname=empire/p-estore.s3o;
+	buildpic=imp_p_estore.png;
+	corpse=imp_p_estore_dead;
+	icontype=building_medium;
+	soundcategory=CORE_ESTOR;
+	category=GROUND RESOURCE BUILDING;
+	tedclass=ENERGY;
+	yardmap=oooo oooo oooo oooo;
+
+	name=Capacitor;
+	description=Increases Power Storage;
+	side=Empire;
+	maxdamage=2000;
+	idleautoheal=0;
+	buildcostmetal=250;
+	buildcostenergy=700;
+	buildtime=75;
+	footprintx=5;
+	footprintz=5;
+	cobid=41;
+	collisionVolumeType=cylY;
+	collisionVolumeScales=64 112 64;
+	collisionVolumeOffsets=0 8 0;
+
+	canrepeat=0;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	energystorage=3000;
+
+	sightdistance=400;
+
+	activatewhenbuilt=1;
+
+	maxslope=15;
+	maxwaterdepth=5;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/resource-imp.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=8;
+	BuildingGroundDecalSizeY=8;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+	}
+}

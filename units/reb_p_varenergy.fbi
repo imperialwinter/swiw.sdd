@@ -1,0 +1,68 @@
+[unitinfo]
+{
+	unitname=reb_p_varenergy;
+	objectname=rebel/p-varenergy.s3o;
+	buildpic=reb_p_varenergy.png;
+	corpse=reb_p_varenergy_dead;
+	icontype=building_light;
+	soundcategory=ARM_SOLAR;
+	category=GROUND RESOURCE BUILDING;
+	tedclass=ENERGY;
+
+	name=Mobile Generator;
+	description=Light Energy Production;
+	side=Rebels;
+	maxdamage=540;
+	idleautoheal=0;
+	buildcostmetal=95;
+	buildcostenergy=480;
+	buildtime=12;
+	footprintx=3;
+	footprintz=3;
+	mass=18000;
+	cobid=92;
+	pushresistant=1;
+	collisionVolumeType=box;
+	collisionVolumeScales=18 32 64;
+	collisionVolumeOffsets=0 6 0;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	canguard=0;
+	canfight=0;
+
+	energymake=20;
+	energyuse=10;
+
+	sightdistance=400;
+	//onoffable=1;
+
+	canmove=1;
+	canhover=1;
+	movementclass=HOVER3x3;
+	maxvelocity=1.42;
+	acceleration=0.06;
+	brakerate=0.1;
+	turnrate=300;
+	maxslope=20;
+	maxwaterdepth=20;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_BUILDING;
+	selfdestructas=SMALL_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+	}
+	[customParams] {
+		toggle1=2;
+		toggle1on=Unpark;
+		toggle1off=Park;
+		toggle1tooltipname=Parked status;
+		toggle1tooltip=When parked, it cannot be moved. Moving causes 50% of its power production to be wasted;
+	}
+}

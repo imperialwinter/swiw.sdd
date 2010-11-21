@@ -1,0 +1,12 @@
+[imp_c_condroid_dead_seq1]
+{
+	object=wreckage/imp_c_condroid/seq1.s3o;
+	description=Wrecked Con. Droid;
+	featuredead=cond_heap;
+	metal=32;
+	damage=375;
+	blocking=1;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

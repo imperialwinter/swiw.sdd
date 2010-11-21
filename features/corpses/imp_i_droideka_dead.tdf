@@ -1,0 +1,23 @@
+[imp_i_droideka_dead]
+{
+	object=corpses/imp_i_droideka/seq1.s3o;
+	featuredead=imp_i_droideka_heap;
+	description=Wrecked Droid;
+	metal=105;
+	damage=300;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=1;
+}
+[imp_i_droideka_heap]
+{
+	object=heaps/2x2C.s3o;
+	description=Wreckage;
+	metal=35;
+	damage=600;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

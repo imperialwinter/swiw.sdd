@@ -1,0 +1,59 @@
+[unitinfo]
+{
+	unitname=imp_i_rockettrooper;
+	objectname=empire/i-rockettrooper.s3o;
+	buildpic=imp_i_rockettrooper.png;
+	//corpse=imp_i_rockettrooper_dead;
+	icontype=inf_aa;
+	soundcategory=imp-i-rockettrooper;
+	category=GROUND INFANTRY;
+
+	name=Missile Trooper;
+	description=Anti Aircraft Soldier;
+	side=Empire;
+	maxdamage=220;
+	buildcostmetal=70;
+	buildcostenergy=300;
+	buildtime=8;
+	power=45;
+	footprintx=1;
+	footprintz=1;
+	mass=100;
+	cobid=32;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+
+	sightdistance=500;
+	stealth=1;
+	seismicdistance=850;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.42;
+	acceleration=0.5;
+	brakerate=0.5;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=IMP_HUMAN_BLAST;
+	selfdestructas=IMP_HUMAN_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=imp_i_rockettrooper;
+	badtargetcategory1=GROUND;
+	onlytargetcategory1=VTOL;
+	canattackground=0;
+	//weaponmaindir1=0 0 1;
+	//maxangledif1=190;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_RED;
+	}
+}

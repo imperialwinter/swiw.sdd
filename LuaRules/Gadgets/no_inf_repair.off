@@ -1,0 +1,34 @@
+--TODO: Figure out a way to block area repairs, or wait for next engine release
+
+function gadget:GetInfo()
+	return {
+		name      = "No infantry repair",
+		desc      = "Blocks repairing of infantry",
+		author    = "Gnome",
+		date      = "November 2008",
+		license   = "PD",
+		layer     = 0,
+		enabled   = true
+	}
+end
+
+if (gadgetHandler:IsSyncedCode()) then
+
+function gadget:AllowCommand(u, ud, team, cmd, param, opt)
+	if cmd == CMD.REPAIR then
+		if(Spring.ValidUnitID(param[1])) then
+			local ud = UnitDefs[Spring.GetUnitDefID(param[1])]
+			if(ud.customParams.norepair == "1") then
+				return false
+			else
+				return true
+			end
+		else
+			return true
+		end
+	else
+		return true
+	end
+end
+
+end

@@ -1,0 +1,56 @@
+[unitinfo]
+{
+	unitname=reb_p_estore;
+	objectname=rebel/p-estore.s3o;
+	buildpic=reb_p_estore.png;
+	corpse=reb_p_estore_dead;
+	icontype=building_medium;
+	soundcategory=ARM_ESTOR;
+	category=GROUND RESOURCE BUILDING;
+	tedclass=ENERGY;
+	yardmap=oooo oooo oooo cooo;
+
+	name=Capacitor;
+	description=Increases Power Storage;
+	side=Rebels;
+	maxdamage=1700;
+	idleautoheal=0;
+	buildcostmetal=400;
+	buildcostenergy=900;
+	buildtime=41;
+	footprintx=4;
+	footprintz=4;
+	cobid=85;
+	collisionVolumeType=cylY;
+	collisionVolumeScales=64 112 64;
+	collisionVolumeOffsets=0 0 0;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	energystorage=3600;
+
+	sightdistance=400;
+
+	activatewhenbuilt=1;
+
+	maxslope=20;
+	maxwaterdepth=5;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-reb.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=7;
+	BuildingGroundDecalSizeY=7;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+	}
+}

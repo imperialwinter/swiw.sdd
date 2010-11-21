@@ -1,0 +1,175 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece base, body, lpontoon, rpontoon, tturret, tgun, tbarrel, tflare;
+piece storm_body, armrotator, storm_larm, storm_rarm;
+piece guns, lbarrel, lflare, rbarrel, rflare;
+piece w1, w2, w3, w4;
+
+static-var  wake, gun_1, bMoving, bAiming, mainGunHeading;
+
+#define SIG_MOVE 8
+
+#define SMOKEPIECE1 body
+#define SMOKEPIECE2 lpontoon
+#define SMOKEPIECE3 rpontoon
+#define SMOKEPIECE4 tturret
+#include "general/smokeunit_sws.h"
+
+#define SMALL_MUZZLE_FLASH_FX_RED 1024+1
+#define LARGE_MUZZLE_FLASH_FX_RED 1024+2
+
+StartMoving() {
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	bMoving = 1;
+	while(1) {
+		if(wake <= 3) {
+			emit-sfx 5 from w1;
+			emit-sfx 5 from w2;
+			emit-sfx 5 from w3;
+			emit-sfx 5 from w4;
+			emit-sfx 3 from w1;
+			emit-sfx 3 from w2;
+			emit-sfx 3 from w3;
+			emit-sfx 3 from w4;
+		}
+		sleep 300;
+	}
+}
+
+StopMoving() {
+	bMoving = 0;
+	return 0;
+}
+
+setSFXoccupy(crap) {
+	wake = crap;
+	if(wake > 2) {
+		set UPRIGHT to 0;
+	}
+	if(wake < 3) {
+		set UPRIGHT to 1;
+	}
+}
+
+Create() {
+	hide tflare;
+	hide rflare;
+	hide lflare;
+	gun_1 = 0;
+	bAiming = 0;
+	bMoving = 0;
+	mainGunHeading = 0;
+	start-script SmokeUnit_SWS();
+}
+
+RestoreWeapon1() {
+	sleep 3000;
+	turn guns to x-axis 0 speed <50>;
+	turn body to y-axis 0 speed <80>;
+	wait-for-turn body around y-axis;
+	mainGunHeading = 0;
+	bAiming = 0;
+}
+
+QueryWeapon1(piecenum) {
+	if(!gun_1) {
+		piecenum = rflare;
+	}
+	if(gun_1) {
+		piecenum = lflare;
+	}
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = guns;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	bAiming = 1;
+	mainGunHeading = heading;
+	turn body to y-axis heading speed <80>;
+	turn guns to x-axis 0 - pitch speed <100>;
+	wait-for-turn guns around x-axis;
+	wait-for-turn body around y-axis;
+	start-script RestoreWeapon1();
+	return 1;
+}
+
+FireWeapon1() {
+	return 0;
+}
+
+Shot1(springsucks) {
+	++gun_1;
+	if(gun_1 > 1) {
+		gun_1 = 0;
+	}
+	if(gun_1 == 0) {
+		emit-sfx LARGE_MUZZLE_FLASH_FX_RED from rflare;
+		emit-sfx LARGE_MUZZLE_FLASH_FX_RED from lflare;
+		move rbarrel to z-axis [-15] speed [200];
+		move lbarrel to z-axis [-15] speed [200];
+		sleep 150;
+		move rbarrel to z-axis [0] speed [25];
+		move lbarrel to z-axis [0] speed [25];
+	}
+}
+
+RestoreWeapon2() {
+	sleep 10000;
+	turn tturret to y-axis 0 speed <90>;
+	turn tgun to x-axis 0 speed <100>;
+}
+
+AimWeapon2(heading, pitch) {
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2;
+	if(mainGunHeading < 0) {
+		heading = mainGunHeading - mainGunHeading + heading;
+	}
+	if(mainGunHeading > 0) {
+		heading = heading - mainGunHeading;
+	}
+	turn tturret to y-axis heading speed <120>;
+	turn tgun to x-axis 0 - pitch speed <120>;
+	turn armrotator to x-axis pitch speed <120>;
+	wait-for-turn tturret around y-axis;
+	wait-for-turn tgun around x-axis;
+	start-script RestoreWeapon2();
+	return 1;
+}
+
+FireWeapon2() {
+	var counter;
+	while(counter <= 8) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from tflare;	
+		move tbarrel to z-axis [-2.5] now;
+		sleep 20;
+		move tbarrel to z-axis [0] speed [25];
+		++counter;
+		sleep 90;
+	}
+}
+
+AimFromWeapon2(piecenum) {
+	piecenum = armrotator;
+}
+
+QueryWeapon2(piecenum) {
+	piecenum = tflare;
+}
+
+Killed(severity, corpsetype) {
+	corpsetype = 1;
+	hide storm_body; hide armrotator; hide storm_larm; hide storm_rarm;
+	explode lbarrel type FALL | FIRE | SMOKE | EXPLODE_ON_HIT;
+	explode rbarrel type FALL | FIRE | SMOKE | EXPLODE_ON_HIT;
+	explode tturret type FALL | SMOKE;
+	explode tgun type FALL | SMOKE;
+	return 0;
+}

@@ -1,0 +1,60 @@
+[cis_v_hailfire]
+{
+	name=Hailfire Burst Missile;
+	model=weapons/w_conc_sml.s3o;
+	rendertype=1;
+	turret=1;
+	tolerance=4000;
+	explosiongenerator=custom:hit_hailfire;
+	explosionspeed=65536;
+	cegtag=tag_hailfire;
+
+	lineofsight=1;
+	selfprop=1;
+	firestarter=70;
+
+	range=650;
+	reloadtime=7.4;
+	burst=6;
+	burstrate=0.4;
+	startvelocity=300;
+	weaponacceleration=100;
+	weaponvelocity=400;
+	areaofeffect=196;
+	burnblow=1;
+	wobble=5000;
+	trajectoryheight=1;
+	weapontimer=10;
+	flighttime=2;
+	smoketrail=1;
+
+	soundstart=cis_v_hailfire/fire1;
+	soundstartvolume=10;
+	soundhit=XPLOSML2;
+	soundhitvolume=10;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	avoidfeature=0;
+	collidefeature=1;
+	noselfdamage=1;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=blank;
+
+	[damage]
+	{
+		default=72;
+		no_armor=72;
+		light_armor=72;
+		medium_armor=72;
+		heavy_armor=72;
+		ion_damage=72;
+		flag=0.000001;
+	}
+}

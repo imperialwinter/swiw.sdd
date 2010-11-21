@@ -1,0 +1,172 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece torso, ruparm, luparm, rloarm, lloarm, pelvis, rthigh, lthigh;
+piece chest, lleg, rleg, comp1, comp2, blink, head;
+
+static-var  bMoving, inBunker, runSpeed, maxAngle, randomSeed, alreadyEngaged, cantCloak, maxSpeed;
+
+#define BUILDER_EYE_FX 1024+0
+#define SIG_DYING 4
+
+#define NORMAL_SPEED 14
+#define NORMAL_MAX_ANGLE 150
+#define CLOAK_MAX_SPEED [1.42]
+#define CLOAK_SPEED 9
+#define CLOAK_MAX_ANGLE 100
+
+Run() {
+	set-signal-mask SIG_DYING;
+	var cloaked;
+	while(1) {
+
+		cloaked = get CLOAKED;
+		if(cloaked) {
+			set MAX_SPEED to [1.42];
+			maxAngle = CLOAK_MAX_ANGLE;
+			runSpeed = CLOAK_SPEED;
+		}
+		if(!cloaked) {
+			set MAX_SPEED to maxSpeed;
+			maxAngle = NORMAL_MAX_ANGLE;
+			runSpeed = NORMAL_SPEED;
+		}
+
+		if(bMoving) {	
+			turn pelvis	to x-axis (<8>    * maxAngle) / 100	speed <80>   * runSpeed;
+			turn torso	to x-axis (<4>    * maxAngle) / 100	speed <80>   * runSpeed;
+			turn torso	to y-axis (<-20>  * maxAngle) / 100	speed <10>   * runSpeed;
+			move pelvis	to y-axis [0]				speed <200>  * runSpeed;
+		}
+		if(bMoving) {
+			turn rleg	to x-axis (<85>   * maxAngle) / 100	speed <30>   * runSpeed;
+			turn lleg	to x-axis (<25>   * maxAngle) / 100	speed <40>   * runSpeed;
+			turn rthigh	to x-axis (<-45>  * maxAngle) / 100	speed <20>   * runSpeed;
+			turn lthigh	to x-axis (<20>   * maxAngle) / 100	speed <20>   * runSpeed;
+
+			wait-for-move	pelvis		along y-axis;
+			move pelvis	to y-axis [1.75]			speed <160>  * runSpeed;
+		}
+
+		if(bMoving) {
+			turn rleg	to x-axis (<55>   * maxAngle) / 100	speed <60>   * runSpeed;
+			wait-for-turn	lthigh		around x-axis;
+
+			turn torso	to y-axis (<20>   * maxAngle) / 100	speed <10>   * runSpeed;
+			move pelvis	to y-axis [0]				speed <200>  * runSpeed;
+
+			turn lleg	to x-axis (<85>   * maxAngle) / 100	speed <30>   * runSpeed;
+			turn rleg	to x-axis (<25>   * maxAngle) / 100	speed <40>   * runSpeed;
+			turn lthigh	to x-axis (<-45>  * maxAngle) / 100	speed <20>   * runSpeed;
+		}
+		if(bMoving) {
+			turn rthigh	to x-axis (<20>   * maxAngle) / 100	speed <20>   * runSpeed;
+
+			wait-for-move pelvis along y-axis;
+
+			move pelvis	to y-axis [1.75]			speed <160>  * runSpeed;
+			turn lleg	to x-axis (<55>   * maxAngle) / 100	speed <60>   * runSpeed;
+			wait-for-turn	rthigh		around x-axis;
+		}
+		if(!bMoving) {
+			turn pelvis to x-axis <20> speed <200>;
+			move pelvis to y-axis [-5] speed [25];
+		
+			turn lthigh to x-axis <-110> speed <200>;
+			turn lthigh to y-axis <20> speed <200>;
+			turn lleg to x-axis <90> speed <200>;
+
+			turn rthigh to x-axis <-30> speed <200>;
+			turn rleg to x-axis <110> speed <200>;
+
+			turn luparm to x-axis <-56> speed <200>;
+			turn luparm to y-axis <0> speed <200>;
+			turn luparm to z-axis <0> speed <200>;
+
+			turn lloarm to x-axis <-50> speed <200>;
+			turn lloarm to y-axis <-71> speed <200>;
+			turn lloarm to z-axis <-39> speed <200>;
+
+			turn ruparm to x-axis <-49> speed <200>;
+			turn ruparm to y-axis <0> speed <200>;
+			turn ruparm to z-axis <-13> speed <200>;
+
+			turn rloarm to x-axis <-40> speed <200>;
+			turn rloarm to y-axis <30> speed <200>;
+			turn rloarm to z-axis <0> speed <200>;
+		
+			move comp1 to z-axis [1] speed [250];
+			turn comp1 to x-axis <33> speed <200>;
+			turn comp1 to y-axis <67> speed <200>;
+			turn comp1 to z-axis <-102> speed <200>;
+			turn comp2 to z-axis <90> speed <200>;
+			emit-sfx BUILDER_EYE_FX from blink;
+			sleep randomSeed + 1000;
+		}
+		sleep randomSeed;
+	}
+}
+
+StartBuilding(heading,pitch) {
+	set INBUILDSTANCE to 1;
+}
+
+StopBuilding() {
+	set INBUILDSTANCE to 0;
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = pelvis;
+}
+
+Create() {
+	randomSeed = rand(10,60);
+	bMoving = 0;
+	runSpeed = NORMAL_SPEED;
+	maxAngle = NORMAL_MAX_ANGLE;
+	maxSpeed = get MAX_SPEED;
+	start-script Run();
+}
+
+StartMoving() {
+	turn pelvis to x-axis <0> speed <200>;
+	move pelvis to y-axis [0] speed [25];
+		
+	turn lthigh to x-axis <0> speed <200>;
+	turn lthigh to y-axis <0> speed <200>;
+	turn lleg to x-axis <0> speed <200>;
+
+	turn rthigh to x-axis <0> speed <200>;
+	turn rleg to x-axis <0> speed <200>;
+
+	turn luparm to x-axis <0> speed <200>;
+	turn luparm to y-axis <0> speed <200>;
+	turn luparm to z-axis <0> speed <200>;
+
+	turn lloarm to x-axis <0> speed <200>;
+	turn lloarm to y-axis <0> speed <200>;
+	turn lloarm to z-axis <0> speed <200>;
+
+	turn ruparm to x-axis <0> speed <200>;
+	turn ruparm to y-axis <0> speed <200>;
+	turn ruparm to z-axis <0> speed <200>;
+
+	turn rloarm to x-axis <0> speed <200>;
+	turn rloarm to y-axis <0> speed <200>;
+	turn rloarm to z-axis <0> speed <200>;
+		
+	move comp1 to z-axis [0] speed [250];
+	turn comp1 to x-axis <0> speed <200>;
+	turn comp1 to y-axis <0> speed <200>;
+	turn comp1 to z-axis <0> speed <200>;
+	turn comp2 to z-axis <0> speed <200>;
+	bMoving = TRUE;
+}
+
+StopMoving() {
+	bMoving = FALSE;
+}
+
+Killed(severity, corpsetype) {
+}

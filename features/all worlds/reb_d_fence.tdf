@@ -1,0 +1,14 @@
+[reb_d_fence]
+{
+	object=rebel/d-fence.s3o;
+	description=Tank Trap;
+	metal=0;
+	damage=1000;
+	footprintx=3;
+	footprintz=3;
+	reclaimable=1;
+	upright=1;
+	collisionVolumeType=box;
+	collisionVolumeScales=48 16 48;
+	collisionVolumeOffsets=0 8 0;
+}

@@ -1,0 +1,113 @@
+[HEAVY_LASER_FX]
+{
+[smoke]
+	{
+	[properties]
+      		{
+         		color = 0.2 r0.5;
+         		startSize = 3;
+         		sizeExpansion = 0.3;
+         		ageSpeed=0.025;
+         		size = 1;
+         		sizeGrowth = 0;
+         		pos = 5 r-5, 1 r-1, 5 r-5;
+         		speed=0, 0.1 r0.3, 0;
+      		}
+	air=1;
+      	water=1;
+      	ground=1;
+      	count=6;
+   	}
+[particlesystem_flash01_HEAVY_LASER_FX]
+	{
+		class=CExploSpikeProjectile;
+		[properties]
+		{
+		dir=-4.5 r9,-4.5 r9,-4.5 r9;
+		width=0.2 r0.2;
+		length=1 r1;
+		alpha=0.8;
+		alphadecay=0.1 r 0.05;
+		color=1.0,1.0,0.8;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=5; 
+	}
+[particlesystem_flash02_HEAVY_LASER_FX]
+	{
+		class=CExploSpikeProjectile;
+		[properties]
+		{
+		dir=-4.5 r9,-4.5 r9,-4.5 r9;
+		width=0.2 r0.2;
+		length=1.25 r1.25;
+		alpha=0.8;
+		alphadecay=0.1 r 0.05;
+		color=1.0,1.0,0.3;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=5; 
+	}
+[particlesystem_flash03_HEAVY_LASER_FX]
+	{
+		class=CExploSpikeProjectile;
+		[properties]
+		{
+		dir=-4.5 r9,-4.5 r9,-4.5 r9;
+		width=0.2 r0.2;
+		length=1.5 r 1.5;
+		alpha=0.8;
+		alphadecay=0.1 r0.05;
+		color=1.0,0.8,0.1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=5; 
+	}
+[groundflash]
+   	{
+      	flashSize = 4;
+      	flashAlpha = 0.5;
+      	circleGrowth = 0;
+      	circleAlpha = 0;
+      	ttl = 15;
+      	color = 1.0, 0.8, 0.3;
+	air=1;
+     	ground=1;
+      	water=1;
+	}
+[particlesystem_dirt_HEAVY_LASER_FX]
+	{
+		class=CSphereParticleSpawner;
+		[properties]
+		{
+		sizeGrowth=-0.005;
+		sizeMod=1.0;
+		pos=0, 1.0, 0;
+		emitVector=0, 1, 0;
+		gravity=0, -0.1, 0;
+		colorMap=1.0 1.0 1.0 1.0    1.0 1.0 1.0 1.0;
+		Texture=Dirt002;
+		airdrag=1;
+		particleLife=60;
+		particleLifeSpread=10;
+		numParticles=15;
+		particleSpeed=1;
+		particleSpeedSpread=0.5;
+		particleSize=0.5;
+		particleSizeSpread=0.5;
+		emitRot=0;
+		emitRotSpread=60;
+		directional=1;
+		}
+	air=1;
+	water=0;
+	ground=1;
+	count=1;
+	}
+}

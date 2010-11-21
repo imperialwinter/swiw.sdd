@@ -1,0 +1,109 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  body, lwing, lflare, rwing, rflare, barrelpt, e1, e2, e3, e4;
+
+static-var  bMoving, gun_2;
+
+#define SMOKEPIECE1 body
+#define SMOKEPIECE2 body
+#define SMOKEPIECE3 body
+#define SMOKEPIECE4 body
+#include "general/smokeunit_sws.h"
+
+#define exhaustfx 1024+1
+
+#define UNIT_ROOT body
+#define UNIT_BELOW_GROUND_DIST [-20]
+#define UNIT_RISE_SPEED [4]
+#define DUSTFX 1024+2
+#define DUSTFXPT1 body
+#include "general/rebel_unit_build.h"
+
+#define CRASHCONTROL_BASE	body	//MUST specify this explicitly
+#define CRASHCONTROL_PIECE0	rwing	//MUST specify this explicitly
+#define CRASHCONTROL_PIECE1	lwing	//MUST specify this explicitly
+#define CRASHCONTROL_SFX0	1027	//MUST specify this explicitly
+#define CRASHCONTROL_SFX1	1028	//MUST specify this explicitly
+#define CRASHCONTROL_SFXSMOKE	1027	//sfx to emit, optional
+
+#include "general/crashcontrol2.h"
+
+Exhaust() {
+	while(1) {
+		if(bMoving) {
+			emit-sfx exhaustfx from e1;
+			emit-sfx exhaustfx from e2;
+			emit-sfx exhaustfx from e3;
+			emit-sfx exhaustfx from e4;
+		}		
+		sleep 20;
+	}
+}
+
+StartMoving() {
+	bMoving=1;
+}
+	
+StopMoving() {
+	bMoving=0;
+}
+
+Create() {
+	gun_2 = 0;
+	bMoving = 0;
+	start-script Exhaust();
+	start-script SmokeUnit_SWS();
+	call-script ConstructionAnim();
+	move body to y-axis 0 now;
+	start-script CrashControl();
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = barrelpt;
+}
+
+QueryWeapon2(piecenum) {
+	if(!gun_2) {
+		piecenum = lflare;
+	}
+	if(gun_2) {
+		piecenum = rflare;
+	}
+}
+
+AimWeapon2(heading, pitch) {
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2;
+	turn lflare to y-axis heading now;
+	turn rflare to y-axis heading now;
+	turn lflare to x-axis pitch now;
+	turn rflare to x-axis pitch now;
+	return 1;
+}
+
+FireWeapon2() {
+	gun_2 = !gun_2;
+}
+
+Killed(severity, corpsetype) {
+	call-script CrashKilled();
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode body type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode body type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode body type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode body type SHATTER | BITMAP;
+}

@@ -1,0 +1,198 @@
+[f_tat_lrg01]
+{
+	object=features/tatooine/f_tat_lrg01.s3o;
+	description=Building;
+	metal=0;
+	damage=5000;
+	footprintx=16;
+	footprintz=12;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=Box;
+	CollisionVolumeScales=240 50 170;
+	CollisionVolumeOffsets=0 25 0;
+}
+[f_tat_lrg02]
+{
+	object=features/tatooine/f_tat_lrg02.s3o;
+	description=Building;
+	metal=0;
+	damage=5000;
+	footprintx=12;
+	footprintz=12;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=Box;
+	CollisionVolumeScales=180 60 180;
+	CollisionVolumeOffsets=0 30 0;
+}
+[f_tat_med01]
+{
+	object=features/tatooine/f_tat_med01.s3o;
+	description=Building;
+	metal=0;
+	damage=5000;
+	footprintx=9;
+	footprintz=7;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=Box;
+	CollisionVolumeScales=135 40 90;
+	CollisionVolumeOffsets=0 20 0;
+}
+[f_tat_med02]
+{
+	object=features/tatooine/f_tat_med02.s3o;
+	description=Building;
+	metal=0;
+	damage=5000;
+	footprintx=7;
+	footprintz=9;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=Box;
+	CollisionVolumeScales=115 50 120;
+	CollisionVolumeOffsets=0 25 0;
+}
+[f_tat_silo01]
+{
+	object=features/tatooine/f_tat_silo01.s3o;
+	description=Silo;
+	metal=0;
+	damage=2000;
+	footprintx=3;
+	footprintz=3;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=CylY;
+	CollisionVolumeScales=45 65 45;
+	CollisionVolumeOffsets=0 0 0;
+}
+[f_tat_silo02]
+{
+	object=features/tatooine/f_tat_silo02.s3o;
+	description=Silo;
+	metal=0;
+	damage=2000;
+	footprintx=5;
+	footprintz=5;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=CylY;
+	CollisionVolumeScales=80 65 80;
+	CollisionVolumeOffsets=0 0 0;
+}
+[f_tat_sm01]
+{
+	object=features/tatooine/f_tat_sm01.s3o;
+	description=Building;
+	metal=0;
+	damage=2000;
+	footprintx=5;
+	footprintz=5;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=Box;
+	CollisionVolumeScales=80 42 80;
+	CollisionVolumeOffsets=0 21 0;
+}
+[f_tat_sm02]
+{
+	object=features/tatooine/f_tat_sm02.s3o;
+	description=Building;
+	metal=0;
+	damage=2000;
+	footprintx=6;
+	footprintz=10;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=Box;
+	CollisionVolumeScales=100 42 140;
+	CollisionVolumeOffsets=0 21 0;
+}
+[f_tat_sm03]
+{
+	object=features/tatooine/f_tat_sm03.s3o;
+	description=Building;
+	metal=0;
+	damage=2000;
+	footprintx=6;
+	footprintz=4;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=Box;
+	CollisionVolumeScales=90 42 70;
+	CollisionVolumeOffsets=0 21 0;
+}
+[f_tat_sm04]
+{
+	object=features/tatooine/f_tat_sm04.s3o;
+	description=Building;
+	metal=0;
+	damage=2000;
+	footprintx=4;
+	footprintz=8;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=Box;
+	CollisionVolumeScales=70 50 105;
+	CollisionVolumeOffsets=0 25 0;
+}
+[f_tat_vaporator]
+{
+	object=features/tatooine/f_tat_vaporator.s3o;
+	description=Moisture Vaporator;
+	metal=0;
+	damage=2000;
+	footprintx=1;
+	footprintz=1;
+	upright=1;
+	noselect=1;
+	blocking=1;
+	flammable=0;
+	indestructible=1;
+	reclaimable=0;
+	CollisionVolumeType=CylY;
+	CollisionVolumeScales=11 55 11;
+	CollisionVolumeOffsets=0 0 0;
+}

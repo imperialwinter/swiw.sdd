@@ -1,0 +1,92 @@
+[unitinfo]
+{
+	unitname=reb_commander;
+	objectname=rebel/commander.s3o;
+	buildpic=reb_commander.png;
+	corpse=reb_commander_dead;
+	icontype=commander_reb;
+	soundcategory=CORE_COM;
+	category=COMMANDER IONTARGETABLE GROUND;
+	tedclass=COMMANDER;
+
+	name=M-C-V;
+	description=Mobile Command Vehicle;
+	side=Rebels;
+	maxdamage=3500;
+	buildcostmetal=1200;
+	buildcostenergy=3800;
+	buildtime=75;
+	footprintx=4;
+	footprintz=4;
+	mass=500;
+	cobid=73;
+	pushresistant=1;
+	//collisionVolumeType=cylZ;
+	//collisionVolumeScales=56 36 96;
+	//collisionVolumeOffsets=0 2 0;
+
+	commander=1;
+	hidedamage=1;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	metalmake=1;
+	energymake=35;
+	energyuse=1;
+
+	sightdistance=400;
+	radardistance=450;
+	sonardistance=450;
+
+	builder=1;
+	builddistance=60;
+	canbuild=1;
+	workertime=1.2;
+	shownanospray=0;
+	repairspeed=1.8;
+	canassist=1;
+
+	activatewhenbuilt=1;
+
+	canmove=1;
+	canhover=1;
+	movementclass=HOVER3x3;
+	maxvelocity=1.6;
+	acceleration=0.12; //0.06
+	brakerate=1;
+	turnrate=400;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=10;
+	explodeas=LARGE_UNIT;
+	selfdestructas=LARGE_UNIT;
+
+	nochasecategory=VTOL;
+	badtargetcategory=VTOL;
+
+	weapon1=reb_commander_repeater;
+	onlytargetcategory1=GROUND VTOL;
+	badtargetcategory1=VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=170;
+	weapon2=reb_commander_sidegun;
+	onlytargetcategory2=GROUND VTOL;
+	badtargetcategory2=VTOL;
+	weaponmaindir2=-1 0 0;
+	maxangledif2=170;
+	weapon3=reb_commander_sidegun;
+	onlytargetcategory3=GROUND VTOL;
+	badtargetcategory3=VTOL;
+	weaponmaindir3=1 0 0;
+	maxangledif3=170;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:BUILDER_SPARKS_FX;
+		explosiongenerator2=custom:SMALL_MUZZLE_FLASH_FX_RED;
+		explosiongenerator3=custom:SMALL_MUZZLE_FLASH_FX_BLUE;
+	}
+}

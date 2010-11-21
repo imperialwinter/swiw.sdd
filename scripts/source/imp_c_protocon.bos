@@ -1,0 +1,164 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece	base, podl, podr, uparm, loarm, wrist, claw1, claw2;
+piece	sparks;
+
+static-var  isBuilding, isMoving, overWater, randSleep, animation;
+
+#define SIG_BUILD	2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 podr
+#define SMOKEPIECE3 podl
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define BUILDER_SPARKS_FX 1024+1
+
+Sounds() {
+	play-sound("Argh_Electrical_Crackle_Short",25);
+    #define crackle_short 0
+	play-sound ("Argh_Hydraulic_Low", 25);
+    #define hydraulic_low 1
+	play-sound ("Argh_Hydraulic_High", 25);
+    #define hydraulic_high 2
+}
+
+BuilderScript() {
+	while(1) {
+		randSleep = rand(1000, 1500);
+		if(isBuilding) {
+			animation = rand(1, 5);
+			if(animation == 1) {
+				turn uparm to x-axis <20> speed <20>;
+				turn loarm to x-axis <-10> speed <20>;
+				turn wrist to z-axis <0> speed <20>;
+				turn claw1 to x-axis <-40> speed <20>;
+				turn claw2 to x-axis <40> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks;
+				get PLAY_SOUND(crackle_short, 196608, 0, 0);
+			}	
+			if(animation == 2) {
+				turn uparm to x-axis <35> speed <20>;
+				turn loarm to x-axis <-20> speed <20>;
+				turn wrist to z-axis <-90> speed <20>;
+				turn claw1 to x-axis <-20> speed <20>;
+				turn claw2 to x-axis <20> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks;
+				get PLAY_SOUND(hydraulic_low, 196608, 0, 0);
+			}	
+			if(animation == 3) {
+				turn uparm to x-axis <60> speed <20>;
+				turn loarm to x-axis <-40> speed <20>;
+				turn wrist to z-axis <0> speed <20>;
+				turn claw1 to x-axis <0> speed <20>;
+				turn claw2 to x-axis <0> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks;
+				get PLAY_SOUND(crackle_short, 196608, 0, 0);
+			}		
+			if(animation == 4) {
+				turn uparm to x-axis <80> speed <20>;
+				turn loarm to x-axis <-70> speed <20>;
+				turn wrist to z-axis <-90> speed <20>;
+				turn claw1 to x-axis <-20> speed <20>;
+				turn claw2 to x-axis <20> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks;
+				get PLAY_SOUND(hydraulic_high, 196608, 0, 0);
+			}	
+			if(animation == 5) {
+				turn uparm to x-axis <100> speed <20>;
+				turn loarm to x-axis <-85> speed <20>;
+				turn wrist to z-axis <0> speed <20>;
+				turn claw1 to x-axis <0> speed <20>;
+				turn claw2 to x-axis <0> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks;
+				get PLAY_SOUND(crackle_short, 196608, 0, 0);
+			}
+			sleep randSleep;
+		}
+		sleep randSleep;
+	}		
+}
+
+WakeFX(RandomSeed) {
+	while(1) {
+		RandomSeed = rand(150,400);
+		sleep RandomSeed;
+		if(overWater <= 3) {
+			emit-sfx 5 from base;
+			emit-sfx 3 from base;
+		}
+	}
+}
+
+setSFXoccupy(WaterLevel) {
+	overWater = WaterLevel;
+}
+
+Create() {
+	hide sparks;
+	turn uparm to x-axis <110> now;
+	turn loarm to x-axis <-105> now;
+
+	isMoving = 0;
+	isBuilding = 0;
+	overWater = 0;
+
+	start-script WakeFX();
+	start-script SmokeUnit_SWS();
+	start-script BuilderScript();
+}
+
+StartMoving() {
+ 	isMoving = 1;
+}
+
+StopMoving() {
+	isMoving = 0;
+}
+
+StartBuilding(heading,pitch) {
+	signal SIG_BUILD;
+	isBuilding = 1;
+	set INBUILDSTANCE to 1;
+	turn podl to z-axis <45> speed <150>;
+	turn podr to z-axis <-45> speed <150>;
+}
+
+StopBuilding() {
+	set-signal-mask SIG_BUILD;
+	set INBUILDSTANCE to 0;	
+	isBuilding = 0;
+	turn uparm to x-axis <110> speed <20>;
+	turn loarm to x-axis <-105> speed <15>;
+	turn claw1 to x-axis <0> speed <20>;
+	turn claw2 to x-axis <0> speed <20>;
+	turn podl to z-axis <0> speed <15>;
+	turn podr to z-axis <0> speed <15>;
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = sparks;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

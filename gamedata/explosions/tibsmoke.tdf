@@ -1,0 +1,40 @@
+[tibsmoke]
+{
+	[tibsmoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+		sizeGrowth=0.2;
+		sizeMod=1.0;
+
+        	pos=0 r15, 0, 0 r15;
+         	emitVector=0, 0, 0;
+		gravity=0, 1.3, 0;
+
+		colorMap=0 0 0 0.0	0 0 0 0.0	0.5 0.4 0.15 0.2		0 0 0 0.0;
+		Texture=tibanna;
+		airdrag=0.5;
+
+		particleLife=150;
+		particleLifeSpread=8;
+
+		numParticles=5;
+
+		particleSpeed=0.2;
+		particleSpeedSpread=1;
+		particleSize=15;
+		particleSizeSpread=10;
+
+		emitRot=90;
+		emitRotSpread=0;
+
+		directional=0;
+		useAirLos=1;
+		}
+	water=1;
+	air=1;
+	ground=1;
+	count=1;
+	}
+}

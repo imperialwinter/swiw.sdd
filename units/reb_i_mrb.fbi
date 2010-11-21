@@ -1,0 +1,57 @@
+[unitinfo]
+{
+	unitname=reb_i_mrb;
+	objectname=rebel/i-mrb.s3o;
+	buildpic=reb_i_mrb.png;
+	corpse=reb_i_mrb_dead;
+	icontype=inf_special;
+	soundcategory=reb-i-trooper;
+	category=GROUND INFANTRY;
+
+	name=Fleet Trooper;
+	description=Mobile Medium-Repeater Blaster;
+	side=Rebels;
+	maxdamage=260;
+	buildcostmetal=120;
+	buildcostenergy=630;
+	buildtime=25;
+	footprintx=1;
+	footprintz=1;
+	mass=150;
+	cobid=79;
+	pushresistant=1;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=500;
+	stealth=1;
+	seismicdistance=1000;
+	seismicsignature=1;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	canmove=1;
+	movementclass=WALKER2x2;
+	maxvelocity=1.38;
+	acceleration=0.04;
+	brakerate=0.09;
+	turnrate=900;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=REB_HUMAN_BLAST;
+	selfdestructas=REB_HUMAN_BLAST;
+
+	weapon1=reb_i_mrb;
+	onlytargetcategory1=GROUND TAKESGROUNDFIRE;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:MED_MUZZLE_FLASH_FX_RED;
+	}
+}

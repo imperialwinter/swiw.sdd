@@ -1,0 +1,23 @@
+hotspot center
+frame  bitmaps/cursors/revive/revive01.png  0.100
+frame  bitmaps/cursors/revive/revive02.png  0.100
+frame  bitmaps/cursors/revive/revive03.png  0.100
+frame  bitmaps/cursors/revive/revive04.png  0.100
+frame  bitmaps/cursors/revive/revive05.png  0.100
+frame  bitmaps/cursors/revive/revive06.png  0.100
+frame  bitmaps/cursors/revive/revive07.png  0.100
+frame  bitmaps/cursors/revive/revive08.png  0.100
+frame  bitmaps/cursors/revive/revive09.png  0.100
+frame  bitmaps/cursors/revive/revive10.png  0.100
+frame  bitmaps/cursors/revive/revive11.png  0.100
+frame  bitmaps/cursors/revive/revive12.png  0.100
+frame  bitmaps/cursors/revive/revive13.png  0.100
+frame  bitmaps/cursors/revive/revive14.png  0.100
+frame  bitmaps/cursors/revive/revive15.png  0.100
+frame  bitmaps/cursors/revive/revive16.png  0.100
+frame  bitmaps/cursors/revive/revive17.png  0.100
+frame  bitmaps/cursors/revive/revive18.png  0.100
+frame  bitmaps/cursors/revive/revive19.png  0.100
+frame  bitmaps/cursors/revive/revive20.png  0.100
+frame  bitmaps/cursors/revive/revive19.png  0.100
+frame  bitmaps/cursors/revive/revive20.png  0.100

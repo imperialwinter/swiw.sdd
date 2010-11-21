@@ -1,0 +1,50 @@
+[unitinfo]
+{
+	unitname=reb_p_flagmil1;
+	objectname=rebel/p-flagmil1.s3o;
+	buildpic=reb_p_flagmil1.png;
+	icontype=flag_reb_mil1;
+	soundcategory=COR_MEX;
+	category=GROUND RESOURCE DEFENSE BUILDING;
+	tedclass=PLANT;
+	yardmap=ooooooooo;
+
+	name=Territorial Fortification;
+	description=Holds Territory;
+	side=Rebels;
+	maxdamage=3500;
+	idleautoheal=0;
+	buildcostmetal=560;
+	buildcostenergy=8400;
+	buildtime=72;
+	footprintx=4;
+	footprintz=4;
+	cobid=87;
+	collisionVolumeType=cylY;
+	collisionVolumeScales=48 56 48;
+	collisionVolumeOffsets=0 12 0;
+
+	activatewhenbuilt=1;
+	metalstorage=150;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=400;
+
+	builder=1;
+	workertime=1;
+
+	maxslope=10;
+
+	selfdestructcountdown=1;
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_RED;
+	}
+}

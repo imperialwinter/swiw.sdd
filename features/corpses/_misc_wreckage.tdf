@@ -1,0 +1,105 @@
+[misc_wreckage_2x2a]
+{
+	object=heaps/2x2a.s3o;
+	featuredead=misc_wreckage_2x2a2;
+	description=Misc. Wreckage;
+	metal=75;
+	damage=200;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[misc_wreckage_2x2a2]
+{
+	object=heaps/2x2a2.s3o;
+	featuredead=misc_wreckage_2x2a3;
+	description=Misc. Wreckage;
+	metal=50;
+	damage=200;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[misc_wreckage_2x2a3]
+{
+	object=heaps/2x2a3.s3o;
+	description=Misc. Wreckage;
+	metal=25;
+	damage=200;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[misc_wreckage_2x2b]
+{
+	object=heaps/2x2b.s3o;
+	featuredead=misc_wreckage_2x2b2;
+	description=Misc. Wreckage;
+	metal=75;
+	damage=200;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[misc_wreckage_2x2b2]
+{
+	object=heaps/2x2b2.s3o;
+	featuredead=misc_wreckage_2x2b3;
+	description=Misc. Wreckage;
+	metal=50;
+	damage=200;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[misc_wreckage_2x2b3]
+{
+	object=heaps/2x2b3.s3o;
+	description=Misc. Wreckage;
+	metal=25;
+	damage=200;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[misc_wreckage_2x2c]
+{
+	object=heaps/2x2c.s3o;
+	featuredead=misc_wreckage_2x2c2;
+	description=Misc. Wreckage;
+	metal=75;
+	damage=200;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[misc_wreckage_2x2c2]
+{
+	object=heaps/2x2c2.s3o;
+	featuredead=misc_wreckage_2x2c3;
+	description=Misc. Wreckage;
+	metal=50;
+	damage=200;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[misc_wreckage_2x2c3]
+{
+	object=heaps/2x2c3.s3o;
+	description=Misc. Wreckage;
+	metal=25;
+	damage=200;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

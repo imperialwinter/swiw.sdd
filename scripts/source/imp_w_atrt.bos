@@ -1,0 +1,213 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece	body, gun, flare, scout_trooper, scout_pelvis, scout_torso, scout_head, scout_luparm, scout_lloarm, scout_ruparm, scout_rloarm, scout_lthigh, scout_lleg, scout_rthigh, scout_rleg;
+piece	pelvis, lthigh, lleg, lcalf, lfoot, rthigh, rleg, rcalf, rfoot;
+
+static-var  bMoving, bAiming, prevHeading;
+
+#define SMOKEPIECE1 body
+#define SMOKEPIECE2 body
+#define SMOKEPIECE3 body
+#define SMOKEPIECE4 body
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_RED 1024+1
+
+StartMoving() {
+	bMoving = TRUE;
+}
+
+StopMoving() {
+	bMoving = FALSE;
+}
+
+LookWhereYoureGoing() {
+	var heading;
+	prevHeading = 0;
+	while(1) {
+		if(!bAiming) {
+			heading = get HEADING;
+			if(heading != prevHeading) {
+				turn scout_head to y-axis heading - prevHeading speed <90>;
+				prevHeading = heading;
+			}
+		}
+		sleep 500;
+	}
+}
+
+Run() {
+	var randIdleAnimation, randomSeed, stillMoving;
+	randomSeed = rand (200, 350);
+	while(1) {
+		if(!bMoving) { // HALT ANIMATION
+			wait-for-turn rfoot around x-axis;
+			wait-for-turn rthigh around x-axis;
+			wait-for-turn lfoot around x-axis;
+			wait-for-turn lthigh around x-axis;
+
+			move body to y-axis [0] speed [7500];
+			turn pelvis to y-axis <0> speed <1500>;
+			turn body to z-axis <0> speed <1500>;
+
+			turn lthigh to x-axis <0> speed <1500>;
+			turn lleg to x-axis <0> speed <1500>;
+			turn lcalf to x-axis <0> speed <1500>;
+			turn lfoot to x-axis <0> speed <1500>;
+
+			turn rthigh to x-axis <0> speed <1500>;
+			turn rleg to x-axis <0> speed <1500>;
+			turn rcalf to x-axis <0> speed <1500>;
+			turn rfoot to x-axis <0> speed <1500>;
+			stillMoving=0;
+			sleep randomSeed;
+		}
+		++stillMoving;
+		if(stillMoving == 5) {
+			stillMoving = 1;
+		}
+		if(bMoving) {
+			if(stillMoving == 1) { // LEFT FOOT FULL FORWARDS
+				move body to y-axis [2.5] speed [25];
+				turn body to z-axis <5> speed <25>;
+				turn pelvis to z-axis <-5> speed <25>;
+
+				turn lthigh to x-axis <-7> speed <185>;
+				turn lleg to x-axis <-74> speed <305>;
+				turn lcalf to x-axis <63> speed <645>;
+				turn lfoot to x-axis <35> speed <530>;
+
+				turn rthigh to x-axis <15> speed <75>;
+				turn rleg to x-axis <13> speed <65>;
+				turn rcalf to x-axis <0> speed <0>;
+				turn rfoot to x-axis <-10> speed <50>;
+
+				wait-for-turn lcalf around x-axis;
+			}
+			if(stillMoving == 2) { // LEFT FOOT LANDS, BODY TOP
+				move body to y-axis [1.25] speed [25];	
+				turn body to z-axis <0> speed <25>;
+				turn pelvis to z-axis <0> speed <25>;
+
+				turn lthigh to x-axis <0> speed <35>;
+				turn lleg to x-axis <0> speed <370>;
+				turn lcalf to x-axis <0> speed <315>;
+				turn lfoot to x-axis <0> speed <175>;
+
+				turn rthigh to x-axis <30> speed <75>;
+				turn rleg to x-axis <-13> speed <130>;
+				turn rcalf to x-axis <-66> speed <330>;
+				turn rfoot to x-axis <71> speed <405>;
+
+				wait-for-turn rfoot around x-axis;
+			}
+			if(stillMoving == 3) { // RIGHT FOOT FULL FORWARDS
+				move body to y-axis [2.5] speed [25];
+				turn body to z-axis <-5> speed <25>;
+				turn pelvis to z-axis <5> speed <25>;
+
+				turn rthigh to x-axis <-7> speed <185>;
+				turn rleg to x-axis <-74> speed <305>;
+				turn rcalf to x-axis <63> speed <645>;
+				turn rfoot to x-axis <35> speed <530>;
+
+				turn lthigh to x-axis <15> speed <75>;
+				turn lleg to x-axis <13> speed <65>;
+				turn lcalf to x-axis <0> speed <0>;
+				turn lfoot to x-axis <-10> speed <50>;
+
+				wait-for-turn rcalf around x-axis;
+			}
+			if(stillMoving == 4) { // RIGHT FOOT LANDS, BODY TOP
+				move body to y-axis [1.25] speed [25];	
+				turn body to z-axis <0> speed <25>;
+				turn pelvis to z-axis <0> speed <25>;
+
+				turn rthigh to x-axis <0> speed <35>;
+				turn rleg to x-axis <0> speed <370>;
+				turn rcalf to x-axis <0> speed <315>;
+				turn rfoot to x-axis <0> speed <175>;
+
+				turn lthigh to x-axis <30> speed <75>;
+				turn lleg to x-axis <-13> speed <130>;
+				turn lcalf to x-axis <-66> speed <330>;
+				turn lfoot to x-axis <71> speed <405>;
+
+				wait-for-turn lfoot around x-axis;
+			}
+		}
+	}
+}
+
+Create() {
+	hide flare;
+	start-script Run();
+	start-script LookWhereYoureGoing();
+	start-script SmokeUnit_SWS();
+}
+
+RestoreAfterDelay() {
+	sleep 2000;
+	turn gun to y-axis <0> speed <100>;
+	turn scout_head to y-axis <0> speed <100>;
+	bAiming = 0;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	bAiming = 1;
+	turn gun to y-axis heading speed <150>;
+	turn scout_head to y-axis heading speed <200>;
+	wait-for-turn gun around y-axis;
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = gun;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = flare;
+}
+
+FireWeapon1() {
+	emit-sfx MED_MUZZLE_FLASH_FX_RED from flare;
+}
+
+#define TURN_RATE 600
+
+AimWeapon2(heading, pitch) {
+	if(!bMoving and !bAiming) {
+		if(heading > <95> or heading < <-95>) {
+			while(heading > <95>) {
+				set HEADING to TURN_RATE + get HEADING;
+				heading = heading - TURN_RATE;
+				sleep 30;
+			}
+			while(heading < <-95>) {
+				set HEADING to 0 - TURN_RATE + get HEADING;
+				heading = heading + TURN_RATE;
+				sleep 30;
+			}
+		}
+	}
+	return 0;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode body type FALL | SMOKE;
+		return 0;
+	}
+	if(severity > 25) {
+		corpsetype = 2;
+		explode body type FALL | FIRE | SMOKE | EXPLODE_ON_HIT;
+		return 0;
+	}
+	return 0;
+}

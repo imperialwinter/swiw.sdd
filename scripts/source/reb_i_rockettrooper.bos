@@ -1,0 +1,119 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece base, torso, shoulders, ruparm, luparm, rloarm, lloarm, pelvis, rthigh, lthigh;
+piece chest, lleg, rleg, gun, flare, head, head2, head3, helmet;
+
+static-var  bMoving, runSpeed, maxAngle, randomSeed, alreadyEngaged, inBunker, randHead, idleAnim, maxSpeed;
+
+#include "general/rebel_randomhead.h"
+
+#define REBEL 1
+#define USE_RIFLE_STANCE2
+#define NORMAL_SPEED 9
+#define NORMAL_MAX_ANGLE 100
+#define SLOW_SPEED 4.5
+#define SLOW_MAX_ANGLE 50
+#define QUERY_PIECENUM1 flare
+#define MUZZLEFLASH1 1024+0
+#define BURST1 3
+#define BURST_RATE1 330
+#include "general/infantry.h"
+
+Create() {
+	hide QUERY_PIECENUM1;
+	bMoving = 0;
+	randomSeed = rand(10,60);
+	maxSpeed = get MAX_SPEED;
+	call-script ChooseRandomHead();
+	call-script WeaponReady();
+	start-script MotionControl();
+}
+
+#define MIN_CORPSENUM 535
+#define MAX_CORPSENUM 536
+#define USES_BMOVING 1
+#define STOP_UNIT 1
+#define RAND_HEAD 1
+#define PRE_ANIMATION	turn torso to y-axis <0> speed <70>;
+
+#define ANIMATION0 \
+	turn base to x-axis <-30> speed <90>;\
+	move pelvis to y-axis [2.5] speed [2.5];\
+	\
+	turn torso to x-axis <30> speed <90>;\
+	turn head to x-axis <20> speed <90>;\
+	turn ruparm to x-axis <-60> speed <100>;\
+	turn ruparm to y-axis <-20> speed <100>;\
+	turn ruparm to z-axis <20> speed <100>;\
+	turn rloarm to x-axis <-20> speed <100>;\
+	turn rloarm to z-axis <30> speed <100>;\
+	turn luparm to x-axis <-50> speed <100>;\
+	turn luparm to y-axis <20> speed <100>;\
+	turn lloarm to x-axis <-15> speed <100>;\
+	turn lloarm to y-axis <-25> speed <100>;\
+	turn lleg to x-axis <15> speed <100>;\
+	turn rthigh to x-axis <-24> speed <100>;\
+	wait-for-turn torso around x-axis;\
+	\
+	turn base to x-axis <-60> speed <110>;\
+	turn ruparm to x-axis <-40> speed <60>;\
+	turn luparm to x-axis <-35> speed <60>;\
+	turn luparm to z-axis <-40> speed <60>;\
+	turn head to x-axis <-20> speed <60>;\
+	turn rloarm to y-axis <-80> speed <65>;\
+	turn rthigh to x-axis <-15> speed <60>;\
+	turn rleg to x-axis <30> speed <100>;\
+	wait-for-turn base around x-axis;\
+	\
+	turn base to x-axis <-90> speed <130>;\
+	move pelvis to y-axis [0] speed [2.5];\
+	turn head to x-axis <10> speed <60>;\
+	turn torso to x-axis <5> speed <80>;\
+	turn ruparm to x-axis <0> speed <80>;\
+	turn rloarm to x-axis <5> speed <80>;\
+	turn rloarm to y-axis <-60> speed <80>;\
+	turn rloarm to z-axis <-15> speed <80>;\
+	turn luparm to x-axis <0> speed <80>;\
+	turn lloarm to x-axis <-25> speed <80>;\
+	turn lleg to x-axis <0> speed <80>;\
+	sleep 500;
+#define ANIMATION1 \
+	turn base to x-axis <45> speed <90>;\
+	turn torso to x-axis <-15> speed <70>;\
+	turn head to x-axis <-20> speed <70>;\
+	turn luparm to x-axis <-60> speed <60>;\
+	turn luparm to y-axis <0> speed <60>;\
+	turn luparm to z-axis <-20> speed <60>;\
+	turn lloarm to x-axis <-30> speed <60>;\
+	turn lloarm to y-axis <0> speed <60>;\
+	turn lloarm to z-axis <50> speed <60>;\
+	turn ruparm to x-axis <-45> speed <60>;\
+	turn ruparm to y-axis <0> speed <60>;\
+	turn ruparm to z-axis <0> speed <60>;\
+	turn rloarm to x-axis <0> speed <60>;\
+	turn rloarm to y-axis <0> speed <60>;\
+	turn rloarm to z-axis <-30> speed <60>;\
+	turn lthigh to x-axis <15> speed <70>;\
+	turn lleg to x-axis <10> speed <70>;\
+	turn rthigh to x-axis <-15> speed <70>;\
+	turn rleg to x-axis <30> speed <70>;\
+	wait-for-turn base around x-axis;\
+	\
+	turn base to x-axis <80> speed <110>;\
+	turn pelvis to x-axis <-15> speed <70>;\
+	turn torso to x-axis <25> speed <70>;\
+	turn luparm to x-axis <-150> speed <190>;\
+	turn ruparm to x-axis <-60> speed <70>;\
+	turn rloarm to y-axis <10> speed <70>;\
+	turn rloarm to z-axis <-140> speed <70>;\
+	turn lthigh to x-axis <20> speed <70>;\
+	turn rthigh to x-axis <20> speed <70>;\
+	wait-for-turn base around x-axis;\
+	\
+	turn head to x-axis <20> speed <110>;\
+	turn rleg to x-axis <0> speed <90>;\
+	wait-for-turn head around x-axis;
+
+#include "general/randomcorpse.h"

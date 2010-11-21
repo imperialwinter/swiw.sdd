@@ -1,0 +1,60 @@
+[unitinfo]
+{
+	unitname=imp_i_eweb;
+	objectname=empire/i-eweb.s3o;
+	buildpic=imp_i_eweb.png;
+	corpse=imp_i_eweb_dead;
+	icontype=inf_special;
+	soundcategory=imp-i-stormtrooper;
+	category=GROUND INFANTRY;
+
+	name=E-Web Trooper;
+	description=Mobile E-Web Soldier;
+	side=Empire;
+	maxdamage=340;
+	buildcostmetal=180;
+	buildcostenergy=800;
+	buildtime=30;
+	footprintx=1;
+	footprintz=1;
+	mass=220;
+	cobid=29;
+	pushresistant=1;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+
+	sightdistance=500;
+	seismicsignature=1;
+	seismicdistance=850;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	canmove=1;
+	movementclass=WALKER2x2;
+	maxvelocity=1.29;
+	acceleration=0.04;
+	brakerate=0.2;
+	turnrate=400;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=CIS_STAP_BLAST;
+	selfdestructas=CIS_STAP_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=imp_i_eweb;
+	onlytargetcategory1=GROUND TAKESGROUNDFIRE;
+	weapon2=imp_i_eweb;
+	onlytargetcategory2=GROUND TAKESGROUNDFIRE;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:MED_MUZZLE_FLASH_FX_RED;
+	}
+}
+

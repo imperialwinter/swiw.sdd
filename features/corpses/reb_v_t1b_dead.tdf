@@ -1,0 +1,22 @@
+[reb_v_t1b_dead]
+{
+	object=wreckage/reb_v_t1b/seq1.s3o;
+	featuredead=reb_v_t1b_heap;
+	description=Wrecked Tank;
+	metal=138;
+	damage=338;
+	footprintx=2;
+	footprintz=4;
+	reclaimable=1;
+}
+[reb_v_t1b_heap]
+{
+	object=heaps/3x3c.s3o;
+	description=Wreckage;
+	metal=46;
+	damage=676;
+	blocking=0;
+	footprintx=3;
+	footprintz=3;
+	reclaimable=1;
+}

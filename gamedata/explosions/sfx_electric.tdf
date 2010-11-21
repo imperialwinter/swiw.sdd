@@ -1,0 +1,60 @@
+//single-frame electric sparks
+[sfx_electric] {
+	[electricity] {
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=1 1 1 0.01   1 1 1 0.01;
+			Texture=lightning;
+			airdrag=0.1;
+			particleLife=1;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.1;
+			particleSpeedSpread=0;
+			particleSize=16;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=dir;
+			gravity=0, -0.1, 0;
+			colorMap=0.75 0.75 1 0.01   0.5 0.5 0.5 0.01   0 0 0 0;
+			Texture=plasma2;
+			airdrag=0.98;
+			particleLife=32;
+			particleLifeSpread=16;
+			numParticles=4;
+			particleSpeed=1;
+			particleSpeedSpread=4;
+			particleSize=0.5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}

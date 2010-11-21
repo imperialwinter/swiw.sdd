@@ -1,0 +1,66 @@
+[unitinfo]
+{
+	unitname=reb_v_landspeeder;
+	objectname=rebel/v-landspeeder.s3o;
+	buildpic=reb_v_landspeeder.png;
+	corpse=reb_v_landspeeder_dead;
+	icontype=veh_scout;
+	soundcategory=Reb_Hover_Light;
+	category=IONTARGETABLE GROUND TANK;
+
+	name=Landspeeder;
+	description=Scout Craft;
+	side=Rebels;
+	maxdamage=470;
+	idleautoheal=0;
+	buildcostmetal=25;
+	buildcostenergy=500;
+	buildtime=9;
+	footprintx=2;
+	footprintz=2;
+	mass=1600;
+	cobid=100;
+	collisionVolumeType=box;
+	collisionVolumeScales=32 12 56;
+	collisionVolumeOffsets=0 5 0;
+
+	upright=1;
+	shownanoframe=0;
+
+	energyuse=3;
+
+	radardistance=1200;
+	sightdistance=850;
+	seismicdistance=1000;
+	stealth=1;
+
+	activatewhenbuilt=1;
+
+	canmove=1;
+	movementclass=HOVER2x2;
+	maxvelocity=4;
+	acceleration=1.5;
+	brakerate=0.5;
+	turnrate=400;
+	maxslope=16;
+	turninplace=0;
+
+	canhover=1;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	canattack=0;
+	canfight=0;
+
+	weapon1=old_sc_atrt; //dummy weapon so the guy turns his head to look at things
+	weaponmaindir1=0 0 1;
+	maxangledif1=60;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+	}
+}

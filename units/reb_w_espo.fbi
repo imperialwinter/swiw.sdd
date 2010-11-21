@@ -1,0 +1,61 @@
+[unitinfo]
+{
+	unitname=reb_w_espo;
+	objectname=rebel/w-espo.s3o;
+	buildpic=reb_w_espo.png;
+	corpse=reb_w_espo_dead;
+	icontype=veh_light;
+	soundcategory=reb_w_espo;
+	category=IONTARGETABLE GROUND WALKER;
+	tedclass=WALKER;
+
+	name=Espo Walker;
+	description=Security Walker;
+	side=Rebels;
+	maxdamage=1415;
+	idleautoheal=0;
+	buildcostmetal=270;
+	buildcostenergy=3000;
+	buildtime=34;
+	footprintx=2;
+	footprintz=2;
+	mass=1000;
+	cobid=98;
+	collisionVolumeType=box;
+	collisionVolumeScales=20 48 32;
+	collisionVolumeOffsets=0 -4 -4;
+
+	upright=1;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=540;
+
+	canmove=1;
+	movementclass=WALKER2x2;
+	maxvelocity=2;
+	acceleration=0.1;
+	brakerate=0.18;
+	turnrate=600;
+	maxslope=17;
+	maxwaterdepth=12;
+	turninplace=0;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	nochasecategory=VTOL;
+
+	weapon1=reb_w_espo;
+	onlytargetcategory1=GROUND;
+	weaponmaindir1=0 0 1;
+	maxangledif1=80;
+	weapon2=old_w_atrt;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:reb_w_espo;
+		explosiongenerator2=custom:constdust;
+	}
+}

@@ -1,0 +1,56 @@
+[unitinfo]
+{
+	unitname=reb_i_rockettrooper;
+	objectname=rebel/i-rockettrooper.s3o;
+	buildpic=reb_i_rockettrooper.png;
+	icontype=inf_aa;
+	soundcategory=reb-i-rockettrooper;
+	category=GROUND INFANTRY;
+
+	name=Missile Trooper;
+	description=Anti Aircraft Soldier;
+	side=Rebels;
+	maxdamage=160;
+	buildcostmetal=50;
+	buildcostenergy=400;
+	buildtime=9;
+	footprintx=1;
+	footprintz=1;
+	mass=100;
+	cobid=80;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=500;
+	stealth=1;
+	seismicdistance=1000;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.56;
+	acceleration=0.1;
+	brakerate=0.5;
+	turnrate=1000;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=REB_HUMAN_BLAST;
+	selfdestructas=REB_HUMAN_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=reb_i_rockettrooper;
+	badtargetcategory1=GROUND;
+	onlytargetcategory1=VTOL;
+	canattackground=0;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_RED;
+	}
+}

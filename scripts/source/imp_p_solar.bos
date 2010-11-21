@@ -1,0 +1,79 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece	base, turret;
+
+static-var	lastspeed, lastdir;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 turret
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 turret
+#include "general/smokeunit_sws.h"
+
+#include "StateChg.h"
+
+Go() {
+	turn turret to x-axis lastspeed speed <20>;
+	turn turret to y-axis lastdir speed <20>;
+}
+
+Stop() {
+}
+
+#define ACTIVATECMD			call-script Go();
+#define DEACTIVATECMD		call-script Stop();
+#include "StateChg.h"
+
+Create()
+{
+	lastspeed = 1820;
+	lastdir = 0;
+	while(get BUILD_PERCENT_LEFT) {
+		sleep 100; }
+	call-script InitState();
+	start-script SmokeUnit_SWS();
+}
+
+Activate() {
+	start-script RequestState(0);
+}
+
+Deactivate() {
+	start-script RequestState(1);
+}
+
+SetSpeed(fanspeed) {
+		lastspeed = fanspeed;
+		lastspeed = lastspeed / -16; //+30 energy = ~65000, so 65000/16 will be about 22 degrees
+		if(lastspeed < -4000) { //~22 degrees is the max it can pitch without looking horrible
+			lastspeed = -4000; }
+		turn turret to x-axis lastspeed speed <20>;
+}
+
+SetDirection(dir) {
+		lastdir = dir;
+		turn turret to y-axis dir speed <20>;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+	return 0;
+}

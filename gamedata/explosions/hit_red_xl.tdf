@@ -1,0 +1,154 @@
+//96 diameter
+
+[hit_red_xl] {
+	usedefaultexplosions=0;
+	[anim] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 16, 0;
+			delay=0;
+			damage=32;
+			explosionGenerator=custom:inc_explosion2;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=-1 r2, 0.5 r0.5, -1 r2;
+			gravity=0, -0.1, 0;
+			colorMap=1 1 1 0.01   1 1 0.5 0.01   1 0.5 0 0.01   0 0 0 0;
+			Texture=plasma2;
+			airdrag=0.9;
+			particleLife=16;
+			particleLifeSpread=8;
+			numParticles=96;
+			particleSpeed=2;
+			particleSpeedSpread=8;
+			particleSize=0.5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=15 r60;
+			directional=1;
+		}
+		unit=1;
+		count=1;
+	}
+	
+	[miss] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;
+			explosionGenerator=custom:hit_red_xl_miss;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -6 r12, -6 r12, -6 r12;
+			width=8 r4;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.08;
+			color=1,0.1,0.1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=32; 
+	}
+	
+	[groundflash]{
+		flashsize=96;
+		flashalpha=0.5;
+		circlegrowth=6;
+		circlealpha=0;
+		ttl=12;
+		color=1,0,0;
+	}
+}
+
+[hit_red_xl_miss] {
+	[dust]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.25 0.2 0.15 0.5  0 0 0 0;
+			size=4 r24;
+			length=8 r64;
+			sizeGrowth=1;
+			ttl=48;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=8;
+	}
+	
+	[darkdust]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.2 0.15 0.1 0.5  0 0 0 0;
+			size=4 r24;
+			length=8 r64;
+			sizeGrowth=1;
+			ttl=48;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=8;
+	}
+	
+	[dirt]{
+		class = CDirtProjectile;
+		[properties]{
+			alpha=255;
+			alphaFalloff=5;
+			size=6 r4;
+			sizeExpansion=0;
+			slowdown=0.95;
+			color=0.4 r0.1, 0.3 r0.1, 0.2 r0.1;
+			texture=randdots;
+			pos=-2 r4, 2 r2, -2 r4;
+			speed=-2 r4, 2 r2, -2 r4;
+		}
+		ground=1;
+		count=32;
+	}
+	
+	[water]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.45 0.45 0.5 0.5  0 0 0 0; 
+			size=4 r24;
+			length=8 r64;
+			sizeGrowth=1;
+			ttl=48;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		water=1;
+		count=16;
+	}
+}

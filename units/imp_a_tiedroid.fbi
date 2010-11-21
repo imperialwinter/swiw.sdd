@@ -1,0 +1,66 @@
+[unitinfo]
+{
+	unitname=imp_a_tiedroid;
+	objectname=empire/a-tiedroid.s3o;
+	buildpic=imp_a_tiedroid.png;
+	icontype=air_scout;
+	soundcategory=imp-a-tiedroid;
+	category=VTOL;
+
+	name=TIE Drone;
+	description=Unarmed Droid Scout;
+	side=Empire;
+	maxdamage=125;
+	idleautoheal=0;
+	buildcostmetal=33;
+	buildcostenergy=650;
+	buildtime=11;
+	footprintx=2;
+	footprintz=2;
+	mass=150000;
+	cobid=5;
+	collisionVolumeType=box;
+	collisionVolumeScales=40 20 36;
+	collisionVolumeOffsets=0 8 0;
+
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	energyuse=5;
+
+	sightdistance=600;
+	radardistance=800;
+
+	canmove=1;
+	maxvelocity=10.6;
+	acceleration=2;
+	brakerate=0.6;
+	turnrate=400;
+
+	maxAcc=.4;
+	maxRudder=.004;
+	maxElevator=.006;
+	maxAileron=.005;
+
+	canfly=1;
+	cruisealt=250;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=TIE_BLAST;
+	selfdestructas=TIE_BLAST;
+
+	canattack=0;
+	canfight=0;
+
+	weapon1=imp_a_tiedroid;
+//	badtargetcategory1=GROUND;
+//	onlytargetcategory1=GROUND VTOL;
+//	weaponmaindir1=0 0 1;
+//	maxangledif1=60;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_GREEN;
+	}
+}

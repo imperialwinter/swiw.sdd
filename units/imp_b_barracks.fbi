@@ -1,0 +1,55 @@
+[unitinfo]
+{
+	unitname=imp_b_barracks;
+	objectname=empire/b-barracks.s3o;
+	buildpic=imp_b_barracks.png;
+	corpse=imp_b_barracks_dead;
+	icontype=factory_light;
+	soundcategory=KBOTPLANT;
+	category=GROUND FACTORY BUILDING;
+	tedclass=PLANT;
+	yardmap=oooooooocc oooooooooc oooocccooo oooocccooo ooccccccoo ooccccccoo ooccccccoo ooccccccoo oocccccooc cccccccccc;
+
+	name=Barracks;
+	description=Infantry Center;
+	side=Empire;
+	maxdamage=3000;
+	idleautoheal=0;
+	buildcostmetal=750;
+	buildcostenergy=1250;
+	buildtime=38;
+	footprintx=10;
+	footprintz=10;
+	cobid=10;
+	collisionVolumeType=box;
+	collisionVolumeScales=152 40 140;
+	collisionVolumeOffsets=0 20 0;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=400;
+
+	builder=1;
+	workertime=1;
+	shownanospray=0;
+
+	maxslope=20;
+	maxwaterdepth=5;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-imp.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=13;
+	BuildingGroundDecalSizeY=13;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+	}
+}

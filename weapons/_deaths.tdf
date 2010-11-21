@@ -1,0 +1,543 @@
+[cis_droid_blast]
+{
+	name=Droid Explosion;
+	rendertype=4;
+	turret=1;
+	explosiongenerator=custom:death_xs;
+
+	ballistic=1;
+
+	range=50;
+	reloadtime=3.6;
+	weaponvelocity=250;
+	areaofeffect=50;
+
+	soundstart=Argh_LargeGun;
+	soundhit=Argh_LargeExplosion;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=10;
+		no_armor=10;
+		light_armor=10;
+		medium_armor=10;
+		heavy_armor=10;
+		ion_damage=10;
+		flag=0.000001;
+	}
+}
+[cis_stap_blast]
+{
+	name=STAP Explosion;
+	rendertype=4;
+	turret=1;
+	explosiongenerator=custom:death_xs;
+
+	ballistic=1;
+
+	range=50;
+	reloadtime=3.6;
+	weaponvelocity=250;
+	areaofeffect=50;
+
+	soundstart=Argh_LargeGun;
+	soundhit=Argh_LargeExplosion;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=10;
+		no_armor=10;
+		light_armor=10;
+		medium_armor=10;
+		heavy_armor=10;
+		ion_damage=10;
+		flag=0.000001;
+	}
+}
+[imp_flame_blast]
+{
+	name=Dead Humanoid;
+	explosiongenerator=custom:imp_i_flametrooper_death;
+
+	range=150;
+	reloadtime=3.6;
+	weaponvelocity=800;
+	areaofeffect=96;
+
+	soundstart=extiny;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=0.000001;
+		no_armor=112;
+		light_armor=112;
+		medium_armor=112;
+		heavy_armor=112;
+		ion_damage=112;
+		flag=0.000001;
+	}
+}
+[imp_human_blast]
+{
+	name=Dead Humanoid;
+	explosiongenerator=custom:NULL_FX;
+
+	range=150;
+	reloadtime=3.6;
+	weaponvelocity=800;
+	areaofeffect=1;
+
+	soundstart=extiny;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=0.000001;
+		no_armor=0.000001;
+		light_armor=0.000001;
+		medium_armor=0.000001;
+		heavy_armor=0.000001;
+		ion_damage=0.000001;
+	}
+}
+[imp_pro_blast]
+{
+	name=Probe droid explosion;
+	rendertype=4;
+	turret=1;
+
+	ballistic=1;
+
+	range=300;
+	reloadtime=3.6;
+	weaponvelocity=250;
+	areaofeffect=128;
+
+	soundstart=Argh_LargeGun;
+	soundhit=Argh_LargeExplosion;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=0.000001;
+		no_armor=200;
+		light_armor=200;
+		medium_armor=200;
+		heavy_armor=200;
+		ion_damage=200;
+		flag=0.000001;
+	}
+}
+[imp_pro_explo]
+{
+	name=Probe droid explosion;
+	rendertype=4;
+	turret=1;
+
+	ballistic=1;
+
+	range=200;
+	reloadtime=3.6;
+	weaponvelocity=250;
+	areaofeffect=200;
+
+	soundstart=Argh_LargeGun;
+	soundhit=Argh_LargeExplosion;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=0.000001;
+		no_armor=150;
+		light_armor=150;
+		medium_armor=150;
+		heavy_armor=150;
+		ion_damage=150;
+		flag=0.000001;
+	}
+}
+[tie_blast]
+{
+	name=TIE Explosion;
+	rendertype=4;
+	turret=1;
+	explosiongenerator=custom:death_tie;
+
+	ballistic=1;
+
+	range=50;
+	reloadtime=3.6;
+	weaponvelocity=250;
+	areaofeffect=50;
+
+	soundstart=Argh_LargeGun;
+	soundhit=Argh_LargeExplosion;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=0.000001;
+		no_armor=50;
+		light_armor=50;
+		medium_armor=50;
+		heavy_armor=50;
+		ion_damage=50;
+		flag=0.000001;
+	}
+}
+[reb_human_blast]
+{
+	name=Dead Humanoid;
+	explosiongenerator=custom:NULL_FX;
+
+	range=150;
+	reloadtime=3.6;
+	weaponvelocity=800;
+	areaofeffect=1;
+
+	soundstart=extiny;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=0.000001;
+		no_armor=0.000001;
+		light_armor=0.000001;
+		medium_armor=0.000001;
+		heavy_armor=0.000001;
+		ion_damage=0.000001;
+		flag=0.000001;
+	}
+}
+[reb_torp_blast]
+{
+	name=Torpedo Launcher Explosion;
+	explosiongenerator=custom:IMP_TIE_BOMB_FX;
+
+	range=200;
+	reloadtime=3.6;
+	weaponvelocity=800;
+	areaofeffect=160;
+	edgeeffectiveness=.7;
+
+	soundstart=XPLOMED4;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=90;
+		flag=0.000001;
+	}
+}
+[small_building]
+{
+	name=Small Building Explosion;
+	rendertype=4;
+	turret=1;
+	explosiongenerator=custom:SMALL_BUILDING_EXPLOSION_FX;
+	explosionspeed=65536;
+
+	ballistic=1;
+	firestarter=70;
+
+	range=1;
+	reloadtime=1;
+	weaponvelocity=1;
+	areaofeffect=128;
+	edgeeffectiveness=0.5;
+
+	soundstart=Argh_LargeGun;
+	soundstartvolume=10;
+	soundhit=XPLOSML3;
+	soundhitvolume=10;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=400;
+		no_armor=100;
+		light_armor=400;
+		medium_armor=400;
+		heavy_armor=400;
+		ion_damage=400;
+		flag=0.000001;
+	}
+}
+[medium_building]
+{
+	name=Medium Building Explosion;
+	rendertype=4;
+	turret=1;
+	explosiongenerator=custom:MEDIUM_BUILDING_EXPLOSION_FX;
+	explosionspeed=65536;
+
+	ballistic=1;
+	firestarter=70;
+
+	range=1;
+	reloadtime=1;
+	weaponvelocity=1;
+	areaofeffect=256;
+	edgeeffectiveness=0.5;
+
+	soundstart=Argh_LargeGun;
+	soundstartvolume=10;
+	soundhit=XPLOMED1;
+	soundhitvolume=10;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=650;
+		no_armor=100;
+		light_armor=650;
+		medium_armor=650;
+		heavy_armor=650;
+		ion_damage=650;
+		flag=0.000001;
+	}
+}
+[large_building]
+{
+	name=Large Building Explosion;
+	rendertype=4;
+	turret=1;
+	explosiongenerator=custom:death_xxl;
+	explosionspeed=65536;
+
+	ballistic=1;
+	firestarter=70;
+
+	range=1;
+	reloadtime=1;
+	weaponvelocity=1;
+	areaofeffect=384;
+	edgeeffectiveness=0.5;
+
+	soundstart=Argh_LargeGun;
+	soundstartvolume=10;
+	soundhit=XPLOLRG4;
+	soundhitvolume=10;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=900;
+		no_armor=100;
+		light_armor=900;
+		medium_armor=900;
+		heavy_armor=900;
+		ion_damage=900;
+		flag=0.000001;
+	}
+}
+[small_unit]
+{
+	name=Small Unit Explosion;
+	rendertype=4;
+	turret=1;
+	explosiongenerator=custom:death_xs;
+	explosionspeed=65536;
+
+	ballistic=1;
+	firestarter=70;
+
+	range=1;
+	reloadtime=1;
+	weaponvelocity=1;
+	areaofeffect=64;
+	edgeeffectiveness=0.5;
+
+	soundstart=Argh_LargeGun;
+	soundstartvolume=10;
+	soundhit=XPLOMED2;
+	soundhitvolume=10;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=200;
+		no_armor=200;
+		light_armor=200;
+		medium_armor=200;
+		heavy_armor=200;
+		ion_damage=200;
+		flag=0.000001;
+	}
+}
+[medium_unit]
+{
+	name=Medium Unit Explosion;
+	rendertype=4;
+	turret=1;
+	explosiongenerator=custom:MEDIUM_BUILDING_EXPLOSION_FX;
+	explosionspeed=65536;
+
+	ballistic=1;
+	firestarter=70;
+
+	range=1;
+	reloadtime=1;
+	weaponvelocity=1;
+	areaofeffect=128;
+	edgeeffectiveness=0.5;
+
+	soundstart=Argh_LargeGun;
+	soundstartvolume=10;
+	soundhit=XPLOLRG3;
+	soundhitvolume=10;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=350;
+		no_armor=350;
+		light_armor=350;
+		medium_armor=350;
+		heavy_armor=350;
+		ion_damage=350;
+		flag=0.000001;
+	}
+}
+[medium_unit_groundtransport]
+{
+	name=Medium Unit Explosion;
+	rendertype=4;
+	turret=1;
+	explosiongenerator=custom:MEDIUM_BUILDING_EXPLOSION_FX;
+	explosionspeed=65536;
+
+	ballistic=1;
+	firestarter=70;
+
+	range=1;
+	reloadtime=1;
+	weaponvelocity=1;
+	areaofeffect=192;
+	edgeeffectiveness=0.5;
+
+	soundstart=Argh_LargeGun;
+	soundstartvolume=10;
+	soundhit=XPLOLRG3;
+	soundhitvolume=10;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=350;
+		no_armor=350;
+		light_armor=50;
+		medium_armor=350;
+		heavy_armor=350;
+		ion_damage=50;
+		flag=0.000001;
+	}
+}
+[large_unit]
+{
+	name=Large Unit Explosion;
+	rendertype=4;
+	turret=1;
+	explosiongenerator=custom:LARGE_BUILDING_EXPLOSION_FX;
+	explosionspeed=65536;
+
+	ballistic=1;
+	firestarter=70;
+
+	range=1;
+	reloadtime=1;
+	weaponvelocity=1;
+	areaofeffect=256;
+	edgeeffectiveness=0.5;
+
+	soundstart=Argh_LargeGun;
+	soundstartvolume=10;
+	soundhit=XPLOLRG4;
+	soundhitvolume=10;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=500;
+		no_armor=500;
+		light_armor=500;
+		medium_armor=500;
+		heavy_armor=500;
+		ion_damage=500;
+		flag=0.000001;
+	}
+}

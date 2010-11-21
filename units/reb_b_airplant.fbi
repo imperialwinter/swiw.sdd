@@ -1,0 +1,58 @@
+[unitinfo]
+{
+	unitname=reb_b_airplant;
+	objectname=rebel/b-airplant.s3o;
+	buildpic=reb_b_airplant.png;
+	corpse=reb_b_airplant_dead;
+	icontype=factory_medium;
+	soundcategory=AIRPLANT;
+	category=GROUND FACTORY BUILDING;
+	tedclass=PLANT;
+	yardmap=ooooooooo occccoooo occccoooo occccoooo occcccooo occcccooo occccccco ooooooooy;
+
+	name=Air Base;
+	description=Produces Starfighters;
+	side=Rebels;
+	maxdamage=4600;
+	idleautoheal=0;
+	buildcostmetal=1200;
+	buildcostenergy=2640;
+	buildtime=46;
+	footprintx=12;
+	footprintz=12;
+	cobid=68;
+	collisionVolumeType=box;
+	collisionVolumeScales=168 72 152;
+	collisionVolumeOffsets=-8 26 -8;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	metalstorage=200;
+	energystorage=200;
+
+	sightdistance=400;
+	radardistance=1200;
+
+	builder=1;
+	workertime=1;
+
+	maxslope=20;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/reb-b-airplant.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=15;
+	BuildingGroundDecalSizeY=15;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+	}
+}

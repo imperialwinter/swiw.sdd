@@ -1,0 +1,72 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece base, torso, shoulders, ruparm, luparm, rloarm, lloarm, pelvis, rthigh, lthigh;
+piece chest, lleg, rleg, gun, flare, head;
+
+static-var  bMoving, runSpeed, maxAngle, randomSeed, alreadyEngaged, inBunker, idleAnim, maxSpeed;
+
+#define USE_SBD_STANCE
+#define NORMAL_SPEED 9
+#define NORMAL_MAX_ANGLE 75
+#define SLOW_SPEED 4.5
+#define SLOW_SPEED_MODIFIER <0.5>
+#define SLOW_MAX_ANGLE 50
+#define QUERY_PIECENUM1 flare
+#define MUZZLEFLASH1 1024+0
+#include "general/infantry.h"
+
+Create() {
+	hide QUERY_PIECENUM1;
+	bMoving = 0;
+	idleAnim = 0;
+	randomSeed = rand(10,60);
+	maxSpeed = get MAX_SPEED;
+	call-script WeaponReady();
+	start-script MotionControl();
+}
+
+#define TURN_RATE 1300
+
+AimWeapon2(heading, pitch) {
+	if(!bMoving) {
+		if(heading > <95> or heading < <-95>) {
+			while(heading > <95>) {
+				set HEADING to TURN_RATE + get HEADING;
+				heading = heading - TURN_RATE;
+				sleep 30;
+			}
+			while(heading < <-95>) {
+				set HEADING to 0 - TURN_RATE + get HEADING;
+				heading = heading + TURN_RATE;
+				sleep 30;
+			}
+		}
+	}
+	if(inBunker == 1) {
+		return 1;
+	}
+	return 0;
+}
+
+FireWeapon2() { }
+
+Killed(severity, corpsetype) {
+	hide flare;
+	hide luparm;
+	hide rloarm;
+	explode lloarm type FALL | SMOKE;
+	explode ruparm type FALL | SMOKE;
+	hide lloarm;
+	hide ruparm;
+	sleep 300;
+	explode torso type FALL | SMOKE | FIRE;
+	hide torso;
+	sleep 300;
+	explode lleg type FALL | SMOKE;
+	explode rleg type FALL | SMOKE;
+	hide lleg;
+	hide rleg;
+	explode pelvis type FALL;
+}

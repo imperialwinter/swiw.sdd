@@ -1,0 +1,108 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  root, dummy, dust1, dust2, base, riser, wing1, ext1, wing2, ext2, wing3, ext3, wing4, ext4;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 riser
+#define SMOKEPIECE3 wing1
+#define SMOKEPIECE4 riser
+#include "general/smokeunit_sws.h"
+
+Anim() {
+	var active;
+	move base to y-axis [0] speed [16];
+	wait-for-move base along y-axis;
+	while(1) {
+		active = get ACTIVATION;
+		if(active) {
+			move riser to y-axis [20] speed [20];
+			turn wing1 to x-axis <140> speed <70>;
+			turn wing2 to z-axis <140> speed <70>;
+			turn wing3 to x-axis <-140> speed <70>;
+			turn wing4 to z-axis <-140> speed <70>;
+			turn ext1 to x-axis <5> speed <70>;
+			move ext1 to z-axis [-2.5] speed [5];
+			turn ext2 to z-axis <5> speed <70>;
+			move ext2 to x-axis [2.5] speed [5];
+			turn ext3 to x-axis <-5> speed <70>;
+			move ext3 to z-axis [2.5] speed [5];
+			turn ext4 to z-axis <-5> speed <70>;
+			move ext4 to x-axis [-2.5] speed [5];
+			wait-for-turn wing4 around z-axis;
+			spin riser around y-axis speed <10>;
+		}
+		if(!active) {
+			stop-spin riser around y-axis decelerate <2>;
+			turn ext1 to x-axis <0> speed <70>;
+			move ext1 to z-axis [0] speed [5];
+			turn ext2 to z-axis <0> speed <70>;
+			move ext2 to x-axis [0] speed [5];
+			turn ext3 to x-axis <0> speed <70>;
+			move ext3 to z-axis [0] speed [5];
+			turn ext4 to z-axis <0> speed <70>;
+			move ext4 to x-axis [0] speed [5];
+			turn wing1 to x-axis <0> speed <80>;
+			turn wing2 to z-axis <0> speed <80>;
+			turn wing3 to x-axis <0> speed <80>;
+			turn wing4 to z-axis <0> speed <80>;
+			wait-for-turn wing4 around z-axis;
+			move riser to y-axis [0] speed [20];
+		}
+		sleep 500;
+	}
+}
+
+#define SCAFFOLD_PIECE dummy
+#define SCAFFOLD_BELOW_GROUND_DIST [-50]
+#define BUILDING_ROOT base
+#define BUILDING_BELOW_GROUND_DIST [-40]
+#define BUILDING_RISE_SPEED [16]
+#define DUSTFX 1024+1
+#define DUST_ROOT dummy
+#define DUSTFXPT1 dust1
+#define DUSTFXPT2 dust2
+#define EXTRA start-script Anim();
+
+#include "general/scaffolds.h"
+
+#define ONOFF 2
+
+Create() {
+	start-script Smokeunit_SWS();
+	start-script ConstructionAnim();
+}
+
+RestoreActivation() {
+	set-signal-mask ONOFF;
+	sleep 5000;
+	set ACTIVATION to TRUE;
+}
+
+HitByWeaponId(z,x,id,damage) {
+	signal ONOFF;
+	set ACTIVATION to FALSE;
+	start-script RestoreActivation();
+	return 100;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

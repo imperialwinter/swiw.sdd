@@ -1,0 +1,93 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  root, scaffolds, dustrot, dust1, base, turret, chair, man, head, mount, gun, f1;
+
+#define SMOKEPIECE1 turret
+#define SMOKEPIECE2 mount
+#define SMOKEPIECE3 turret
+#define SMOKEPIECE4 mount
+#include "general/smokeunit_sws.h"
+
+#define SMALL_MUZZLE_FLASH_FX_BLUE 1024+2
+
+#define SCAFFOLD_PIECE scaffolds
+#define SCAFFOLD_BELOW_GROUND_DIST [-30]
+#define BUILDING_ROOT base
+#define BUILDING_BELOW_GROUND_DIST [-75]
+#define BUILDING_RISE_SPEED [5.2]
+#define DUSTFX 1024+1
+#define DUST_ROOT dustrot
+#define DUSTFXPT1 dust1
+
+#include "general/scaffolds.h"
+
+Create() {
+	hide f1;
+	start-script SmokeUnit_SWS();
+	call-script ConstructionAnim();
+	move BUILDING_ROOT to y-axis [0] now;
+}
+
+Restore() {
+	sleep 5000;
+	stop-spin gun around z-axis decelerate <20>;
+	turn chair to x-axis <0> speed <300>;
+	turn mount to x-axis <0> speed <300>;
+	turn head to x-axis <0> speed <100>;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	spin gun around z-axis speed <1200>;
+	turn turret to y-axis heading speed <700>;
+	turn chair to x-axis <0> - (pitch / 2) speed <550>;
+	turn mount to x-axis <0> - (pitch / 2) speed <550>;
+	turn head to x-axis <0> - (pitch / 2) speed <130>;
+	wait-for-turn turret around y-axis;
+	wait-for-turn chair around x-axis;
+	start-script Restore();
+	return 1;
+}
+
+FireWeapon1() {
+	emit-sfx SMALL_MUZZLE_FLASH_FX_BLUE from f1;
+}
+
+QueryPrimary(piecenum) {
+	piecenum = f1;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = head;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode chair type BITMAP;
+		explode turret type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 1;
+		explode chair type FALL | SMOKE | BITMAP;
+		explode turret type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 2;
+		explode turret type FALL | SMOKE | BITMAP;
+		explode gun type FALL | SMOKE | BITMAP;
+		explode chair type FALL | SMOKE | BITMAP;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 2;
+	explode turret type FALL | SMOKE | FIRE | BITMAP;
+	explode gun type FALL | SMOKE | FIRE | BITMAP;
+	explode chair type FALL | SMOKE | FIRE | BITMAP;
+	explode base type BITMAP;
+}

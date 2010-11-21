@@ -1,0 +1,65 @@
+[unitinfo]
+{
+	unitname=imp_a_tiebomber;
+	objectname=empire/a-tiebomber.s3o;
+	buildpic=imp_a_tiebomber.png;
+	icontype=air_special;
+	soundcategory=imp_a_tiebomber;
+	category=VTOL;
+
+	name=TIE Bomber;
+	description=Bomber;
+	side=Empire;
+	maxdamage=535;
+	idleautoheal=0;
+	buildcostmetal=400;
+	buildcostenergy=8450;
+	buildtime=47;
+	footprintx=2;
+	footprintz=2;
+	mass=300000;
+	cobid=4;
+	collisionVolumeType=cylZ;
+	collisionVolumeScales=56 32 48;
+	collisionVolumeOffsets=0 0 0;
+
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	energyuse=25;
+
+	sightdistance=550;
+
+	canmove=1;
+	maxvelocity=4.8;
+	acceleration=1;
+	brakerate=0.1;
+	turnrate=100;
+
+	maxAcc=.18;
+	maxRudder=.004;
+	maxElevator=.006;
+	maxAileron=.005;
+
+	canfly=1;
+	cruisealt=250;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_UNIT;
+	selfdestructas=MEDIUM_UNIT;
+
+	nochasecategory=VTOL;
+
+	weapon1=imp_a_tiebomber;
+	onlytargetcategory1=GROUND;
+	weapon2=imp_a_tiebomber_laser;
+	onlytargetcategory2=GROUND VTOL;
+	weaponmaindir2=0 0 1;
+	maxangledif2=60;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_GREEN;
+	}
+}

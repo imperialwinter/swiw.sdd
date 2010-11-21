@@ -1,0 +1,59 @@
+[unitinfo]
+{
+	unitname=reb_v_t2b;
+	objectname=rebel/v-t2b.s3o;
+	buildpic=reb_v_t2b.png;
+	corpse=reb_v_t2b_dead;
+	icontype=veh_medium;
+	soundcategory=Reb_Hover_Light;
+	category=IONTARGETABLE GROUND TANK;
+
+	name=Trackata 2-B;
+	description=Support Hover Tank;
+	side=Rebels;
+	maxdamage=2300;
+	idleautoheal=0;
+	buildcostmetal=660;
+	buildcostenergy=6000;
+	buildtime=48;
+	footprintx=4;
+	footprintz=4;
+	mass=22500;
+	cobid=102;
+	collisionVolumeType=box;
+	collisionVolumeScales=44 24 88;
+	collisionVolumeOffsets=0 8 6;
+
+	shownanoframe=0;
+	levelground=0;
+
+	energyuse=8;
+
+	sightdistance=500;
+
+	canmove=1;
+	movementclass=HOVER3x3;
+	maxvelocity=2.1;
+	acceleration=0.05;
+	brakerate=0.08;
+	turnrate=450;
+	maxslope=16;
+	turninplace=0;
+
+	canhover=1;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_UNIT;
+	selfdestructas=MEDIUM_UNIT;
+
+	nochasecategory=VTOL;
+
+	weapon1=reb_v_t2bcannon;
+	onlytargetcategory1=GROUND;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:LARGE_MUZZLE_FLASH_FX_RED;
+		explosiongenerator2=custom:constdust;
+	}
+}

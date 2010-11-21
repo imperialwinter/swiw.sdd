@@ -1,0 +1,21 @@
+[electric1] {
+	[electricity] {
+		class=CBitmapMuzzleFlame;
+		[properties] {
+			dir=dir;
+			colorMap=0.8 0.9 1 0.03	0.5 0.6 0.8 0.05	0 0 0 0.01;
+			size=15;
+			length=40;
+			sizeGrowth=0.01;
+			ttl=12;
+			frontOffset=0.05;
+			sideTexture=electric1;
+			frontTexture=blank;
+		}
+		water=1;
+		air=1;
+		underwater=1;
+		ground=1;
+		count=1;
+	}
+}

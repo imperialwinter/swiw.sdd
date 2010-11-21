@@ -1,0 +1,58 @@
+[reb_a_airspeeder]
+{
+	name=Airspeeder Laser;
+	rendertype=1;
+	turret=1;
+	tolerance=6000;
+	interceptedbyshieldtype=2;
+	explosiongenerator=custom:hit_red_xs;
+	explosionspeed=65536;
+
+	lineofsight=1;
+	firestarter=0;
+
+	range=400;
+	reloadtime=0.47;
+	energypershot=5;
+	weaponvelocity=600;
+	areaofeffect=8;
+
+	soundstart=LASRMAS2;
+	soundstartvolume=10;
+	soundhit=LASRHIT1;
+	soundhitvolume=10;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	avoidfeature=0;
+	collidefeature=1;
+	noselfdamage=1;
+
+	rgbcolor=1.0 0.1 0;
+	rgbcolor2=1 0.3 0.1;
+
+	beamweapon=1;
+	thickness=3.5;
+	duration=0.045;
+	intensity=0.85;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=002_fancy_plasmabolt;
+	texture2=beam_no_ends;
+
+	[damage]
+	{
+		default=45;
+		no_armor=45;
+		light_armor=45;
+		medium_armor=45;
+		heavy_armor=45;
+		ion_damage=45;
+		flag=0.000001;
+	}
+}

@@ -1,0 +1,67 @@
+[unitinfo]
+{
+	unitname=reb_a_awing;
+	objectname=rebel/a-awing.s3o;
+	buildpic=reb_a_awing.png;
+	icontype=air_aa;
+	soundcategory=reb_a_awing;
+	category=VTOL;
+
+	name=A-Wing;
+	description=Interceptor;
+	side=Rebels;
+	maxdamage=620;
+	idleautoheal=0;
+	buildcostmetal=610;
+	buildcostenergy=9150;
+	buildtime=54;
+	footprintx=3;
+	footprintz=3;
+	mass=140000;
+	cobid=61;
+	collisionVolumeType=ellipsoid;
+	collisionVolumeScales=32 16 48;
+	collisionVolumeOffsets=0 0 0;
+
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	energyuse=25;
+
+	sightdistance=550;
+
+	canmove=1;
+	maxvelocity=10.1;
+	acceleration=2;
+	brakerate=0.6;
+	turnrate=400;
+
+	maxAcc=.4;
+	maxRudder=.004;
+	maxElevator=.006;
+	maxAileron=.005;
+
+	canfly=1;
+	cruisealt=250;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=TIE_BLAST;
+	selfdestructas=TIE_BLAST;
+
+	weapon1=reb_a_awing;
+	badtargetcategory1=GROUND;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=60;
+	weapon2=reb_a_awing_missile;
+	badtargetcategory2=GROUND;
+	onlytargetcategory2=VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_RED;
+		explosiongenerator2=custom:exhaust_awing;
+		explosiongenerator3=custom:constdust;
+	}
+}

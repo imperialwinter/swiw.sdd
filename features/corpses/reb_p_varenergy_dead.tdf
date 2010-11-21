@@ -1,0 +1,23 @@
+[reb_p_varenergy_dead]
+{
+	object=wreckage/reb_p_varenergy/seq1.s3o;
+	description=Wreckage;
+	featuredead=reb_p_varenergy_heap;
+	metal=20;
+	damage=590;
+	blocking=1;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}
+[reb_p_varenergy_heap]
+{
+	object=heaps/4x4f.s3o;
+	description=Wreckage;
+	metal=13;
+	damage=590;
+	blocking=0;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}

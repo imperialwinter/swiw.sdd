@@ -1,0 +1,112 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, rod, leg1, leg2, leg3, rotate, gun, fpt;
+piece  stormrot, pelvis, torso, head, luparm, lloarm, ruparm, rloarm, lthigh, lleg, rthigh, rleg;
+
+static-var  bAiming, randomSeed;
+
+#define SMALL_MUZZLE_FLASH_FX_RED 1024+0
+
+AimFromWeapon1(piecenum) {
+	piecenum = head;
+	return 0;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = fpt;
+	return 0;
+}
+
+FireWeapon1() {
+	var burst, counter;
+	burst = 2;
+	counter = 0;
+	while(counter < burst) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from fpt;
+		move gun to z-axis [-0.5] speed [750];
+		turn ruparm to x-axis <-15> speed <200>;
+		turn luparm to x-axis <-15> speed <200>;
+		turn torso to x-axis <-5> speed <200>;
+		sleep 80;
+		move gun to z-axis [0] speed [750];
+		turn ruparm to x-axis <-21> speed <200>;
+		turn luparm to x-axis <-21> speed <200>;
+		turn torso to x-axis <0> speed <200>;
+		sleep 80;
+		++counter;
+	}
+	return 0;
+}
+
+AimWeapon1(heading,pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	bAiming=1;
+		turn pelvis to x-axis <20> speed <200>;
+		turn head to x-axis <-10> speed <200>;
+		turn torso to y-axis <0> speed <200>;
+		move pelvis to y-axis [-1.25] speed [250];
+		
+		turn lthigh to x-axis <-60> speed <200>;
+		turn lthigh to y-axis <20> speed <200>;
+		turn lthigh to z-axis <0> speed <200>;
+		turn lleg to x-axis <40> speed <200>;
+		
+		turn rthigh to x-axis <-50> speed <200>;
+		turn rthigh to y-axis <-30> speed <200>;
+		turn rthigh to z-axis <0> speed <200>;
+		turn rleg to x-axis <40> speed <200>;
+		
+		turn luparm to x-axis <-21> speed <200>;
+		turn luparm to y-axis <-13> speed <200>;
+		turn luparm to z-axis <-32> speed <200>;
+		
+		turn lloarm to x-axis <-62> speed <200>;
+		turn lloarm to y-axis <80> speed <200>;
+		turn lloarm to z-axis <95> speed <200>;
+		
+		turn ruparm to x-axis <-21> speed <200>;
+		turn ruparm to y-axis <13> speed <200>;
+		turn ruparm to z-axis <32> speed <200>;
+		
+		turn rloarm to x-axis <-62> speed <200>;
+		turn rloarm to y-axis <-80> speed <200>;
+		turn rloarm to z-axis <-95> speed <200>;
+		
+		turn rod to x-axis <0> speed <120>;
+		turn rod to y-axis <0> speed <120>;
+		turn rod to z-axis <0> speed <120>;
+		move pelvis to z-axis [0] speed [375];
+		move rod to y-axis [0] speed [375];
+		move rod to z-axis [0] speed [375];
+		move rod to x-axis [0] speed [375];
+		
+		turn leg1 to x-axis <0> speed <200>;
+		turn leg1 to y-axis <0> speed <200>;
+		turn leg1 to z-axis <0> speed <200>;
+		turn leg2 to x-axis <0> speed <200>;
+		turn leg2 to y-axis <0> speed <200>;
+		turn leg2 to z-axis <0> speed <200>;
+		turn leg3 to x-axis <0> speed <200>;
+		turn leg3 to y-axis <0> speed <200>;
+		turn leg3 to z-axis <0> speed <200>;
+		
+		wait-for-turn ruparm around y-axis;
+		wait-for-turn rloarm around x-axis;
+		wait-for-turn rod around x-axis;
+	turn rotate to y-axis heading speed <150>;
+	turn stormrot to y-axis heading speed <150>;
+	wait-for-turn rotate around y-axis;
+	return 1;
+}
+
+Create() {
+	hide fpt;
+	randomSeed = rand(100,150);
+	call-script AimWeapon1(0,0);
+}
+
+Killed(severity, corpsetype) {
+}

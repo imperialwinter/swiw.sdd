@@ -1,0 +1,192 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, tower1, tower2, bpt, exp1, exp2, exp3;
+piece  l1, l2, l3, l4, l5, l6, l7, l8;
+piece  r1, r2, r3, r4, r5, r6, r7, r8;
+
+static-var  isBuilding, isBuildingNow;
+
+#define SIG_ACTIVATE			2
+
+#define small_explosion 1024+1
+#define large_explosion 1024+2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+OpenDoors() {
+	turn r8 to y-axis <-5.625> speed <20>;
+	turn l8 to y-axis <5.625> speed <20>;
+	wait-for-turn r8 around y-axis;
+	turn r7 to y-axis <-5.625> speed <20>;
+	turn l7 to y-axis <5.625> speed <20>;
+	wait-for-turn r7 around y-axis;
+	turn r6 to y-axis <-5.625> speed <20>;
+	turn l6 to y-axis <5.625> speed <20>;
+	wait-for-turn r6 around y-axis;
+	turn r5 to y-axis <-5.625> speed <20>;
+	turn l5 to y-axis <5.625> speed <20>;
+	wait-for-turn r5 around y-axis;
+	turn r4 to y-axis <-5.625> speed <20>;
+	turn l4 to y-axis <5.625> speed <20>;
+	wait-for-turn r4 around y-axis;
+	turn r3 to y-axis <-5.625> speed <20>;
+	turn l3 to y-axis <5.625> speed <20>;
+	wait-for-turn r3 around y-axis;
+	turn r2 to y-axis <-5.625> speed <20>;
+	turn l2 to y-axis <5.625> speed <20>;
+	wait-for-turn r2 around y-axis;
+	turn r1 to y-axis <-2> speed <20>;
+	turn l1 to y-axis <2> speed <20>;
+	wait-for-turn r1 around y-axis;
+}
+
+CloseDoors(delay) {
+	sleep delay;
+	turn r1 to y-axis <0> speed <20>;
+	turn l1 to y-axis <0> speed <20>;
+	wait-for-turn r1 around y-axis;
+	turn r2 to y-axis <0> speed <20>;
+	turn l2 to y-axis <0> speed <20>;
+	wait-for-turn r2 around y-axis;
+	turn r3 to y-axis <0> speed <20>;
+	turn l3 to y-axis <0> speed <20>;
+	wait-for-turn r3 around y-axis;
+	turn r4 to y-axis <0> speed <20>;
+	turn l4 to y-axis <0> speed <20>;
+	wait-for-turn r4 around y-axis;
+	turn r5 to y-axis <0> speed <20>;
+	turn l5 to y-axis <0> speed <20>;
+	wait-for-turn r5 around y-axis;
+	turn r6 to y-axis <0> speed <20>;
+	turn l6 to y-axis <0> speed <20>;
+	wait-for-turn r6 around y-axis;
+	turn r7 to y-axis <0> speed <20>;
+	turn l7 to y-axis <0> speed <20>;
+	wait-for-turn r7 around y-axis;
+	turn r8 to y-axis <0> speed <20>;
+	turn l8 to y-axis <0> speed <20>;
+	wait-for-turn r8 around y-axis;
+}
+
+BuildStarted(unitID) {
+	var unitprog;
+	while(get UNIT_BUILD_PERCENT_LEFT(unitID)) {
+		unitprog = get UNIT_BUILD_PERCENT_LEFT(unitID);
+		if(unitprog <= 20) {
+			start-script OpenDoors();
+		}
+		sleep 100;
+	}
+	start-script CloseDoors(5000);
+}
+
+BuildScript() {
+	while(TRUE) {
+		if(isBuilding) {
+			sleep 100;
+			set BUGGER_OFF to 1;
+			set YARD_OPEN to 1;
+			set INBUILDSTANCE to 1;
+			isBuildingNow = TRUE;		
+		}
+		if(isBuilding) {
+			sleep 100;
+		}	
+		while(!isBuilding) {
+			sleep 500;
+			isBuildingNow = FALSE;
+			sleep 1;
+			set BUGGER_OFF to 0;
+			set YARD_OPEN to 0;
+			set INBUILDSTANCE to 0;
+		}
+	}
+}
+
+Create() {
+	hide bpt;
+	start-script BuildScript();
+	start-script SmokeUnit_SWS();
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = bpt;
+}
+
+Activate() {
+	signal SIG_ACTIVATE;
+	isBuilding = TRUE;
+}
+
+Deactivate() {
+	signal SIG_ACTIVATE;
+	set-signal-mask SIG_ACTIVATE;
+	isBuilding = FALSE;
+}
+
+StartBuilding(heading,pitch) {
+	move bpt to y-axis [-75] now;
+	sleep 8000;
+	move bpt to y-axis [0] now;
+	turn bpt to y-axis <45> now;
+}
+
+StopBuilding() {
+}
+
+QueryBuildInfo(piecenum) {
+	piecenum = bpt;
+}
+
+Killed(severity, corpsetype) {
+/*	emit-sfx small_explosion from r1;
+	sleep rand(50,300);
+	emit-sfx small_explosion from bpt;
+	sleep rand(50,300);
+	emit-sfx small_explosion from exp1;
+	sleep rand(50,300);
+	emit-sfx small_explosion from tower1;
+	sleep rand(50,300);
+	emit-sfx small_explosion from exp2;
+	sleep rand(50,300);
+	emit-sfx small_explosion from exp3;
+	sleep rand(50,300);
+	emit-sfx small_explosion from tower2;
+	sleep rand(50,300);
+	emit-sfx small_explosion from r1;
+	sleep rand(50,300);
+	emit-sfx small_explosion from bpt;
+	sleep rand(50,300);
+	emit-sfx small_explosion from exp1;
+	sleep rand(50,300);
+	emit-sfx small_explosion from tower1;
+	sleep rand(50,300);
+	emit-sfx small_explosion from exp2;
+	sleep rand(50,300);
+	emit-sfx small_explosion from exp3;
+	sleep rand(50,300);
+	emit-sfx small_explosion from tower2;
+	sleep rand(50,300);
+	emit-sfx large_explosion from bpt;
+	sleep 2000; */
+	if(severity <= 25) {
+		corpsetype = 1;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		return 0;
+	}
+	corpsetype = 3;
+	return 0;
+}

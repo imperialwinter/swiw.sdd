@@ -1,0 +1,31 @@
+//single-frame flame
+[sfx_flame] {
+	[flame] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=1 1 1 0.5   0 0 0 0.5   0 0 0 0;
+			Texture=fireball;
+			airdrag=0.95;
+			particleLife=16;
+			particleLifeSpread=16;
+			numParticles=1;
+			particleSpeed=1;
+			particleSpeedSpread=2;
+			particleSize=4;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}

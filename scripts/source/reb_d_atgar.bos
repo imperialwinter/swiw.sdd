@@ -1,0 +1,90 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  root, scaffolds, dustrot, dust1, base, rotate, trooper, dish, barrel, flare;
+
+#define SIG_AIM				2
+
+#define SMOKEPIECE1 dish
+#define SMOKEPIECE2 rotate
+#define SMOKEPIECE3 trooper
+#define SMOKEPIECE4 dish
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_RED 1024+1
+
+#define SCAFFOLD_PIECE scaffolds
+#define SCAFFOLD_BELOW_GROUND_DIST [-20]
+#define BUILDING_ROOT base
+#define BUILDING_BELOW_GROUND_DIST [-17]
+#define BUILDING_RISE_SPEED [1.1]
+#define DUSTFX 1024+2
+#define DUST_ROOT dustrot
+#define DUSTFXPT1 dust1
+
+#include "general/scaffolds.h"
+
+Create() {
+	hide flare;
+	start-script SmokeUnit_SWS();
+	call-script ConstructionAnim();
+	move BUILDING_ROOT to y-axis [0] now;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	turn rotate to y-axis heading speed <60>;
+	wait-for-turn rotate around y-axis;
+	return (1);
+}
+
+FireWeapon1() {
+	emit-sfx MED_MUZZLE_FLASH_FX_RED from flare;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = dish;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = flare;
+}
+
+Killed(severity, corpsetype) {
+	hide flare;
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode barrel type BITMAPONLY | BITMAP;
+		explode base type BITMAPONLY | BITMAP;
+		explode flare type BITMAPONLY | BITMAP;
+		explode rotate type BITMAPONLY | BITMAP;
+		explode dish type BITMAPONLY | BITMAP;
+		return (0);
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode barrel type FALL | BITMAP;
+		explode base type BITMAPONLY | BITMAP;
+		explode flare type FALL | BITMAP;
+		explode rotate type SHATTER | BITMAP;
+		explode dish type FALL | BITMAP;
+		return (0);
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode barrel type FALL | SMOKE | FIRE | EXPLODE_ON_HIT | BITMAP;
+		explode base type BITMAPONLY | BITMAP;
+		explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT | BITMAP;
+		explode rotate type SHATTER | BITMAP;
+		explode dish type FALL | SMOKE | FIRE | EXPLODE_ON_HIT | BITMAP;
+		return (0);
+	}
+	corpsetype = 3;
+	explode barrel type FALL | SMOKE | FIRE | EXPLODE_ON_HIT | BITMAP;
+	explode base type BITMAPONLY | BITMAP;
+	explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT | BITMAP;
+	explode rotate type SHATTER | EXPLODE_ON_HIT | BITMAP;
+	explode dish type FALL | SMOKE | FIRE | EXPLODE_ON_HIT | BITMAP;
+}

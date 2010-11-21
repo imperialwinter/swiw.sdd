@@ -1,0 +1,73 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece base, pod, bar, barrelpt1, barrelpt2, flare1, flare2, wing1, wing2, e1;
+
+static-var  gun_1;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_GREEN 1024+1
+
+#define CRASHCONTROL_BASE	pod	//MUST specify this explicitly
+#define CRASHCONTROL_PIECE0	wing1	//MUST specify this explicitly
+#define CRASHCONTROL_PIECE1	wing2	//MUST specify this explicitly
+#define CRASHCONTROL_SFX0	1026	//MUST specify this explicitly
+#define CRASHCONTROL_SFX1	1027	//MUST specify this explicitly
+#define CRASHCONTROL_SFXSMOKE	1026	//sfx to emit, optional
+
+#include "general/crashcontrol2.h"
+
+Create() {
+	hide flare1;
+	hide flare2;
+	gun_1 = 0;
+	start-script SmokeUnit_SWS();
+	start-script CrashControl();
+}
+
+QueryWeapon1(piecenum) {
+	if(!gun_1) {
+		piecenum = barrelpt2;
+	}
+	if(gun_1) {
+		piecenum = barrelpt1;
+	}
+}
+
+AimWeapon1(heading, pitch) {
+	turn barrelpt1 to y-axis heading now;
+	turn barrelpt2 to y-axis heading now;
+	turn barrelpt1 to x-axis 0 - pitch now;
+	turn barrelpt2 to x-axis 0 - pitch now;
+	return 1;
+}
+
+FireWeapon1() {
+	if(!gun_1) {
+		emit-sfx MED_MUZZLE_FLASH_FX_GREEN from flare2;
+	}
+	if(gun_1) {
+		emit-sfx MED_MUZZLE_FLASH_FX_GREEN from flare1;
+	}
+	gun_1 = !gun_1;
+}
+
+Killed(severity, corpsetype) {
+	call-script CrashKilled();
+	if(severity <= 25) {
+		explode pod type FALL | SMOKE | FIRE;
+		return 0;
+	}
+	if(severity <= 50) {
+		explode pod type FALL | SMOKE | FIRE;
+		return 0;
+	}
+	explode pod type SHATTER | SMOKE | FIRE;
+}

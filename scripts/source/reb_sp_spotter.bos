@@ -1,0 +1,147 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece   root, scaffolds, dustrot, dust1, base, bucket, rotate, body, uparms, loarms, binoculars, legs, antenna;
+
+static-var buildangle;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define SCAFFOLD_PIECE scaffolds
+#define SCAFFOLD_BELOW_GROUND_DIST [-50]
+#define BUILDING_ROOT base
+#define BUILDING_BELOW_GROUND_DIST [-25]
+#define BUILDING_RISE_SPEED [3]
+#define DUSTFX 1024+1
+#define DUST_ROOT dustrot
+#define DUSTFXPT1 dust1
+#define DUSTFXPT2 base
+#define EXTRA move bucket to y-axis [0] speed [50];\
+			  turn uparms to x-axis <10> speed <40>;
+
+#include "general/scaffolds.h"
+
+#define SMALL_BUILDING_EXPLOSION_FX 1024+2
+
+#define SIG_DYING 4
+
+lua_SpawnFeature(featureNum, headingOffset, corpsetype) { return 0; }
+
+Sounds() {
+	play-sound("wilhelm",25);
+    #define wilhelm 0
+}
+
+ArmMovement() {
+	var blah;
+	blah = rand(0,100);
+	if(blah < 90) {
+		turn uparms to x-axis <0> speed <40>;
+	}
+	if(blah >= 90) {
+		turn uparms to x-axis <45> speed <40>;
+		sleep 5000;
+	}
+}
+
+Scan() {
+	set-signal-mask SIG_DYING;
+	var turnangle;
+	while(get BUILD_PERCENT_LEFT) {
+		sleep 100;
+	}
+	while(1) {
+		turnangle = (90 * rand(1,4));
+		turn rotate to y-axis (<1> * turnangle) speed <90>;
+		wait-for-turn rotate around y-axis;
+		call-script ArmMovement();
+		sleep rand(300,1200);
+	}
+}
+
+Create() {
+	buildangle = rand(1, 65535);
+	turn base to y-axis buildangle now;
+	turn uparms to x-axis <45> now;
+	move bucket to y-axis [-45] now;
+	start-script Scan();
+	call-script ConstructionAnim();
+	move BUILDING_ROOT to y-axis [0] now;
+}
+
+Killed(severity, corpsetype) {
+	signal SIG_DYING;
+	var scream, corpse;
+	corpsetype = 1;
+	corpse = 245;
+	scream = rand(1,100);
+	explode antenna type FALL | SMOKE | EXPLODE_ON_HIT | BITMAP;
+	turn body to x-axis <80> speed <300>;
+	turn legs to x-axis <-60> speed <300>;
+	turn loarms to x-axis <60> speed <300>;
+	wait-for-turn body around x-axis;
+	if(scream < 11) {
+		get PLAY_SOUND(wilhelm, 196608, 0, 0);
+	}
+
+	turn body to x-axis <120> speed <320>;
+	turn uparms to x-axis <-30> speed <320>;
+	wait-for-turn body around x-axis;
+
+	move body to z-axis [11] speed [20];
+	move body to y-axis [-5] speed [20];
+	turn body to x-axis <180> speed <250>;
+	turn uparms to x-axis <30> speed <150>;
+	wait-for-move body along y-axis;
+	wait-for-turn body around x-axis;
+	move body to y-axis [-30] speed [50];
+	turn body to x-axis <-90> speed <250>;
+
+	wait-for-move body along y-axis;
+	move body to y-axis [-52] speed [100];
+	wait-for-move body along y-axis;
+	turn legs to x-axis <0> speed <200>;
+	turn uparms to x-axis <80> speed <200>;
+	move bucket to y-axis [-5] speed [20];
+	wait-for-turn legs around x-axis;
+	
+	wait-for-move bucket along y-axis;
+	move bucket to y-axis [-15] speed [50];
+	wait-for-move bucket along y-axis;
+	move bucket to y-axis [-35] speed [100];
+	wait-for-move bucket along y-axis;
+	
+	emit-sfx SMALL_BUILDING_EXPLOSION_FX from root;
+	turn bucket to x-axis <35> speed <200>;
+	wait-for-turn bucket around x-axis;
+	
+	call-script lua_SpawnFeature(corpse, buildangle, corpsetype);
+	return 0;
+}
+
+/*	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		explode bucket type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		explode bucket type FALL | BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		explode bucket type FALL | SMOKE | BITMAP;
+		return 0;
+	}
+	corpsetype = 2;
+	explode base type BITMAP;
+	explode bucket type FALL | SMOKE | FIRE | BITMAP; */

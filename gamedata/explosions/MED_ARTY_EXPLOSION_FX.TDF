@@ -1,0 +1,124 @@
+[MED_ARTY_EXPLOSION_FX]
+{
+[particlesystem_fragment_MED_ARTY_EXPLOSION_FX01]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+		sizeGrowth=-0.02;
+		sizeMod=1.0;
+		pos=0, 1.0, 0;
+		emitVector=0, 1, 0;
+		gravity=0, -0.03, 0;
+		colorMap=1.0 1.0 0.8 0.1     0.3 0.2 0.2 1.0   0.1 0.1 0.1 1.0    0.0 0.0 0.0 0.01;
+		Texture=circularthingy;
+		airdrag=0.97;
+		particleLife=120;
+		particleLifeSpread=10;
+		numParticles=45;
+		particleSpeed=1.5;
+		particleSpeedSpread=1;
+		particleSize=1;
+		particleSizeSpread=0.25;
+		emitRot=0;
+		emitRotSpread=60;
+		directional=0;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+[particlesystem_flame_MED_ARTY_EXPLOSION_FX01]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+		sizeGrowth=-0.75;
+		sizeMod=1.0;
+		pos=0, 1.0, 0;
+		emitVector=0, 1, 0;
+		gravity=0, 0, 0;
+		colorMap=1.0 1.0 0.8 0.1     1.0 0.8 0.25 0.5    0.0 0.0 0.0 0.01;
+		Texture=GenericFireBall;
+		airdrag=0.91;
+		particleLife=15;
+		particleLifeSpread=0;
+		numParticles=15;
+		particleSpeed=2;
+		particleSpeedSpread=1;
+		particleSize=25;
+		particleSizeSpread=10;
+		emitRot=0;
+		emitRotSpread=90;
+		directional=0;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+[particlesystem_flash01_MED_ARTY_EXPLOSION_FX01]
+	{
+		class=CExploSpikeProjectile;
+		[properties]
+		{
+		dir=-20 r40,-20 r40,-20 r40;
+		width=0.2 r0.2;
+		length=1 r1;
+		alpha=0.8;
+		alphadecay=0.1 r 0.05;
+		color=1.0,1.0,0.8;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=15; 
+	}
+[particlesystem_flash02_MED_ARTY_EXPLOSION_FX01]
+	{
+		class=CExploSpikeProjectile;
+		[properties]
+		{
+		dir=-22.5 r45,-22.5 r45,-22.5 r45;
+		width=0.2 r0.2;
+		length=1.25 r1.25;
+		alpha=0.8;
+		alphadecay=0.1 r 0.05;
+		color=1.0,1.0,0.3;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=15; 
+	}
+[particlesystem_flash03_MED_ARTY_EXPLOSION_FX01]
+	{
+		class=CExploSpikeProjectile;
+		[properties]
+		{
+		dir=-15 r30,-15 r30,-15 r30;
+		width=0.2 r0.2;
+		length=1.5 r 1.5;
+		alpha=0.8;
+		alphadecay=0.1 r0.05;
+		color=1.0,0.8,0.1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=10; 
+	}
+[groundflash]
+   	{
+      	flashSize = 20;
+      	flashAlpha = 0.6;
+      	circleGrowth = 0;
+      	circleAlpha = 0;
+      	ttl = 30;
+      	color = 1, 0.7, 0.3;
+	air=1;
+     	ground=1;
+      	water=0;
+	}
+}

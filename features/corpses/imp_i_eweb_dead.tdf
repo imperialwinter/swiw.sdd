@@ -1,0 +1,22 @@
+[imp_i_eweb_dead]
+{
+	object=corpses/imp_i_eweb/seq1.s3o;
+	featuredead=imp_i_eweb_heap;
+	description=Wrecked E-Web;
+	metal=54;
+	damage=75;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[imp_i_eweb_heap]
+{
+	object=heaps/2x2C.s3o;
+	description=Wreckage;
+	metal=18;
+	damage=75;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

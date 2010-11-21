@@ -1,0 +1,94 @@
+[LARGE_MUZZLE_FLASH_FX_BLUE]
+{
+	[groundflash]
+	{
+		flashSize = 15;
+		flashAlpha = 1;
+		circleGrowth = 0;
+		circleAlpha = 0;
+		ttl = 15;
+		color = 0,0.5,0.85;
+		air=1;
+		water=1;
+		ground=1;
+	}
+  	 [BitmapMuzzleFlame]
+   	{
+	class = CBitmapMuzzleFlame;
+      	[properties]
+      		{
+         		dir = dir;
+         		colorMap=0.3 0.7 1.0 1.0      0.0 0.5 1.0 1.0      0 0 0 0.01; 
+          		size=6;
+          		length=15;
+          		sizeGrowth=-0.5;
+          		ttl=5;
+          		frontOffset=0.1;
+          		sideTexture=small_muzzle_side;
+          		frontTexture=small_muzzle_back;
+      		}
+	water=1;
+	air=1;
+   	underwater=1;
+   	ground=1;
+   	count=1;
+   	}
+[particlesystem_fireball_LARGE_MUZZLE_FLASH_FX_BLUE01]
+	{
+		class=CSphereParticleSpawner;
+		[properties]
+		{
+		sizeGrowth=-0.05 r-0.05;
+		sizeMod=1.0;
+		pos=0, 0, 0;
+		emitVector=dir;
+		gravity=0, 0, 0;
+		colorMap=1.0 1.0 1.0 0.1    0.0 0.5 0.7 1.0    0 0 0 0.01;
+		Texture=DynamicFake;
+		airdrag=0.96;
+		particleLife=15;
+		particleLifeSpread=10;
+		numParticles=10;
+		particleSpeed=0.5;
+		particleSpeedSpread=0.1;
+		particleSize=4;
+		particleSizeSpread=2;
+		emitRot=75;
+		emitRotSpread=15;
+		directional=0;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+[particlesystem_fireball_LARGE_MUZZLE_FLASH_FX_BLUE02]
+	{
+		class=CSphereParticleSpawner;
+		[properties]
+		{
+		sizeGrowth=-0.05 r-0.05;
+		sizeMod=1.0;
+		pos=0, 0, 0;
+		emitVector=dir;
+		gravity=0, 0, 0;
+		colorMap=1.0 1.0 1.0 0.1    0.4 1.0 0.5 0.1    0.3 1.0 0.6 0.1    0.2 1.0 0.7 1.0    0 0 0 0.01;
+		Texture=GenericFireball;
+		airdrag=0.92;
+		particleLife=15;
+		particleLifeSpread=10;
+		numParticles=10;
+		particleSpeed=0.5;
+		particleSpeedSpread=0.1;
+		particleSize=3;
+		particleSizeSpread=1;
+		emitRot=65;
+		emitRotSpread=25;
+		directional=0;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+}

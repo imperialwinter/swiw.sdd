@@ -1,0 +1,55 @@
+[unitinfo]
+{
+	unitname=reb_b_barracks;
+	objectname=rebel/b-barracks.s3o;
+	buildpic=reb_b_barracks.png;
+	corpse=reb_b_barracks_dead;
+	icontype=factory_light;
+	soundcategory=reb-b-barracks;
+	category=GROUND FACTORY BUILDING;
+	tedclass=PLANT;
+	yardmap=cccooooo ccoooooo ccoooooo ccoooooo ccoccooo ccoccooo ccoccooo ccoccooo;
+
+	name=Barracks;
+	description=Infantry Center;
+	side=Rebels;
+	maxdamage=2040;
+	idleautoheal=0;
+	buildcostmetal=550;
+	buildcostenergy=850;
+	buildtime=25;
+	footprintx=8;
+	footprintz=8;
+	cobid=69;
+	collisionVolumeType=box;
+	collisionVolumeScales=128 44 128;
+	collisionVolumeOffsets=0 22 -8;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=400;
+
+	builder=1;
+	workertime=1;
+
+	maxslope=20;
+	maxwaterdepth=5;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-reb.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=11;
+	BuildingGroundDecalSizeY=11;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+	}
+}

@@ -1,0 +1,57 @@
+[unitinfo]
+{
+	unitname=imp_i_battledroid;
+	objectname=empire/i-battledroid.s3o;
+	buildpic=imp_i_battledroid.png;
+	corpse=imp_i_battledroid_dead;
+	icontype=inf_light_droid;
+	soundcategory=imp-i-battledroid;
+	category=IONTARGETABLE GROUND DROID;
+
+	name=Battle Droid;
+	description=Combat Droid;
+	side=Empire;
+	maxdamage=130;
+	idleautoheal=0;
+	buildcostmetal=10;
+	buildcostenergy=300;
+	buildtime=6; //4 - had to be changed to suit animation of droidlab
+	footprintx=1;
+	footprintz=1;
+	mass=100;
+	cobid=26;
+
+	upright=1;
+	shownanoframe=0;
+
+	energyuse=1;
+
+	sightdistance=400;
+	seismicsignature=1;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.52;
+	acceleration=0.14;
+	brakerate=0.25;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=CIS_DROID_BLAST;
+	selfdestructas=CIS_DROID_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=cis_i_battledroidlaser;
+	onlytargetcategory1=GROUND VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_RED;
+	}
+}

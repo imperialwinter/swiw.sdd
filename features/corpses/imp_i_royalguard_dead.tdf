@@ -1,0 +1,44 @@
+[imp_i_royalguard_dead_seq1]
+{
+	object=corpses/imp_i_royalguard/seq1.s3o;
+	description=Dead Guard;
+	metal=1;
+	damage=120;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[imp_i_royalguard_dead_seq2]
+{
+	object=corpses/imp_i_royalguard/seq2.s3o;
+	description=Dead Guard;
+	metal=1;
+	damage=120;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[imp_i_royalguard_dead_seq3]
+{
+	object=corpses/imp_i_royalguard/seq3.s3o;
+	description=Dead Guard;
+	metal=1;
+	damage=120;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[imp_i_royalguard_dead_seq4]
+{
+	object=corpses/imp_i_royalguard/seq4.s3o;
+	description=Dead Guard;
+	metal=1;
+	damage=120;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}

@@ -1,0 +1,24 @@
+[SMALL_MUZZLE_FLASH_FX_RED]
+{
+  	 [BitmapMuzzleFlame]
+   	{
+	class = CBitmapMuzzleFlame;
+      	[properties]
+      		{
+         		dir = dir;
+         		colorMap=1.0 1.0 0.5 1.0      1.0 0.5 0.25 1.0      0 0 0 0.01; 
+          		size=2;
+          		length=5;
+          		sizeGrowth=-0.5;
+          		ttl=5;
+          		frontOffset=0.1;
+          		sideTexture=small_muzzle_side;
+          		frontTexture=small_muzzle_back;
+      	}
+	water=1;   
+	air=1;
+   	underwater=1;
+   	ground=1;
+   	count=1;
+   	}
+}

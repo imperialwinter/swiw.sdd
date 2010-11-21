@@ -1,0 +1,59 @@
+[unitinfo]
+{
+	unitname=reb_i_wookiee;
+	objectname=rebel/i-wookiee.s3o;
+	buildpic=reb_i_wookiee.png;
+	icontype=inf_heavy;
+	soundcategory=reb-i-wookiee;
+	category=GROUND INFANTRY;
+
+	name=Wookiee;
+	description=Rebel Soldier;
+	side=Rebels;
+	maxdamage=640;
+	buildcostmetal=140;
+	buildcostenergy=450;
+	buildtime=19;
+	power=45;
+	footprintx=1;
+	footprintz=1;
+	mass=150;
+	cobid=84;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=500;
+	stealth=1;
+	seismicdistance=1000;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.38;
+	acceleration=0.14;
+	brakerate=0.25;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=REB_HUMAN_BLAST;
+	selfdestructas=REB_HUMAN_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=reb_i_wookiee;
+	badtargetcategory1=VTOL;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=190;
+	weapon2=reb_i_wookiee;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_BLUE;
+	}
+}

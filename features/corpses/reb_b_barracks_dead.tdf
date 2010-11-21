@@ -1,0 +1,22 @@
+[reb_b_barracks_dead]
+{
+	object=wreckage/reb_b_barracks/seq1.s3o;
+	featuredead=reb_b_barracks_heap;
+	description=Wrecked Barracks;
+	metal=204;
+	damage=750;
+	footprintx=9;
+	footprintz=6;
+	reclaimable=1;
+}
+[reb_b_barracks_heap]
+{
+	object=heaps/5x5b.s3o;
+	description=Wreckage;
+	metal=68;
+	damage=1500;
+	blocking=0;
+	footprintx=5;
+	footprintz=5;
+	reclaimable=1;
+}

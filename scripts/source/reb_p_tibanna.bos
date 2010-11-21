@@ -1,0 +1,52 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece root, base, fans, scaffolds, dustrot, dust1, dust2;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define SCAFFOLD_PIECE scaffolds
+#define SCAFFOLD_BELOW_GROUND_DIST [-50]
+#define BUILDING_ROOT base
+#define BUILDING_BELOW_GROUND_DIST [-80]
+#define BUILDING_RISE_SPEED [1.75]
+#define DUSTFX 1024+1
+#define DUST_ROOT dustrot
+#define DUSTFXPT1 dust1
+#define DUSTFXPT2 dust2
+#define EXTRA spin fans around y-axis speed <10>*rand(1,10);
+
+#include "general/scaffolds.h"
+
+Sounds() {
+	play-sound("imp_b_droidplant/fan_whoosh",3);
+	#define fan 0
+}
+
+Tibanna() {
+	while(1) {
+		get PLAY_SOUND(fan, 32768, 0, 0);
+		sleep 1400;
+	}
+}
+
+Create() {
+	start-script SmokeUnit_SWS();
+	call-script ConstructionAnim();
+	start-script Tibanna();
+	move BUILDING_ROOT to y-axis [0] now;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode fans type SHATTER | FALL | SMOKE | FIRE;
+		return 0;
+	}
+	return 0;
+}

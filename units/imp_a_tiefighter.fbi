@@ -1,0 +1,68 @@
+[unitinfo]
+{
+	unitname=imp_a_tiefighter;
+	objectname=empire/a-tiefighter.s3o;
+	buildpic=imp_a_tiefighter.png;
+	icontype=air_light;
+	soundcategory=imp-a-tie;
+	category=VTOL;
+
+	name=TIE Fighter;
+	description=Fighter;
+	side=Empire;
+	maxdamage=325;
+	idleautoheal=0;
+	buildcostmetal=163;
+	buildcostenergy=3250;
+	buildtime=28;
+	footprintx=2;
+	footprintz=2;
+	mass=200000;
+	cobid=6;
+	collisionVolumeType=box;
+	collisionVolumeScales=32 40 32;
+	collisionVolumeOffsets=0 8 0;
+
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	energyuse=12;
+
+	sightdistance=550;
+
+	canmove=1;
+	maxvelocity=7.2;
+	acceleration=2;
+	brakerate=0.6;
+	turnrate=500;
+
+	maxAcc=0.35;
+	maxRudder=.004;
+	maxElevator=.006;
+	maxAileron=.005;
+
+	maxbank=0.10;
+	maxpitch=0.25;
+	turnradius=700;
+
+	canfly=1;
+	cruisealt=250;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=TIE_BLAST;
+	selfdestructas=TIE_BLAST;
+
+	weapon1=imp_a_tiefighter;
+	badtargetcategory1=GROUND;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=120;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_GREEN;
+		explosiongenerator2=custom:sfx_flame;
+		explosiongenerator3=custom:sfx_electric;
+	}
+}

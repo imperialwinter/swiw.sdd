@@ -1,0 +1,38 @@
+[unitinfo]
+{
+	unitname=reb_sp_bomb;
+	objectname=nullpoint.s3o;
+	buildpic=reb_sp_bomb.png;
+	soundcategory=MINE;
+	category=GROUND;
+	yardmap=o;
+
+	name=LX-3 Proton Charge;
+	description=Demolition Device;
+	side=Rebels;
+	maxdamage=50;
+	idleautoheal=0;
+	buildcostmetal=1;
+	buildcostenergy=1;
+	buildtime=1;
+	footprintx=1;
+	footprintz=1;
+	cobid=95;
+
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=55;
+
+	init_cloaked=1;
+	cloakcost=7;
+	mincloakdistance=10;
+
+	maxslope=15;
+
+	selfdestructcountdown=1;
+	explodeas=reb_sp_bomb;
+	selfdestructas=reb_sp_bomb;
+	kamikaze=1;
+	kamikazedistance=40;
+}

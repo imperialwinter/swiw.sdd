@@ -1,0 +1,139 @@
+//lasts ~8 frames
+//use damage to set size, dir to set orientation
+[inc_explosion3] {
+	[frame01] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=0;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion3_frame01;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame02] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=1;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion3_frame02;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame03] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=2;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion3_frame03;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion3_frame01] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion3_01;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion3_frame02] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion3_02;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion3_frame03] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion3_03;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}

@@ -1,0 +1,40 @@
+[reb_i_sniper_dead_seq1] {
+	object=corpses/reb_i_sniper/seq1.s3o;
+	description=Dead Sniper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_sniper_dead_seq2] {
+	object=corpses/reb_i_sniper/seq2.s3o;
+	description=Dead Sniper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_sniper_dead_seq3] {
+	object=corpses/reb_i_sniper/seq3.s3o;
+	description=Dead Sniper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_sniper_dead_seq4] {
+	object=corpses/reb_i_sniper/seq4.s3o;
+	description=Dead Sniper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}

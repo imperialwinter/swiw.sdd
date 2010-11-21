@@ -1,0 +1,74 @@
+[unitinfo]
+{
+	unitname=imp_v_groundtransport;
+	objectname=empire/v-groundtransport.s3o;
+	buildpic=imp_v_groundtransport.png;
+	corpse=imp_v_groundtransport_dead;
+	icontype=veh_trans;
+	soundcategory=imp-v-groundtransport;
+	category=IONTARGETABLE GROUND TANK;
+
+	name=Troop Carrier;
+	description=Ground Transportation;
+	side=Empire;
+	maxdamage=2000;
+	idleautoheal=0;
+	buildcostmetal=300;
+	buildcostenergy=3000;
+	buildtime=31;
+	footprintx=4;
+	footprintz=4;
+	mass=300000;
+	cobid=55;
+	collisionVolumeType=box;
+	collisionVolumeScales=64 40 80;
+	collisionVolumeOffsets=0 10 0;
+
+	upright=1;
+	shownanoframe=0;
+
+	sightdistance=400;
+	seismicsignature=1;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	canmove=1;
+	movementclass=HOVER3x3LOWSLOPE;
+	maxvelocity=3;
+	acceleration=0.04;
+//	brakerate=0.05;
+	turnrate=375;
+	maxslope=25;
+	maxwaterdepth=255;
+	turninplace=0;
+
+	canhover=1;
+
+	leavetracks=1;
+	trackwidth=60;
+	trackoffset=5;
+	trackstrength=5;
+	trackstretch=1;
+	tracktype=imp_v_groundtransport;
+
+	transportsize=1;
+	transportcapacity=10;
+	transportmass=1000;
+	//releaseheld=1;
+
+	selfdestructcountdown=1;
+	explodeas=medium_unit_groundtransport;
+	selfdestructas=medium_unit_groundtransport;
+
+	nochasecategory=VTOL;
+
+	weapon1=old_v_tx130laser;
+	badtargetcategory1=VTOL;
+	onlytargetcategory1=GROUND VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_RED;
+	}
+}

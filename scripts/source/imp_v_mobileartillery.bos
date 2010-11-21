@@ -1,0 +1,142 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, turret, sleeve, barrel, firept;
+piece  l1, s1, l2, s2, l3, s3, l4, s4, l5, s5, l6, s6;
+piece  wake1, wake2, wake3;
+
+static-var  bAiming, wake, fireHeading, maxSpeed;
+
+#define SIG_MOVE			8
+
+#define SMOKEPIECE1 l1
+#define SMOKEPIECE2 sleeve
+#define SMOKEPIECE3 barrel
+#define SMOKEPIECE4 l6
+#include "general/smokeunit_sws.h"
+
+#define LARGE_MUZZLE_FLASH_FX_BLUE 1024+1
+
+StartMoving() {
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	while(1) {
+		if(wake <= 3) {
+			emit-sfx 5 from wake1;
+			emit-sfx 5 from wake2;
+			emit-sfx 5 from wake3;
+			emit-sfx 3 from wake1;
+			emit-sfx 3 from wake2;
+			emit-sfx 3 from wake3;
+		}
+		sleep 300;
+	}
+}
+
+setSFXoccupy(crap) {
+	wake = crap;
+	if(wake > 2) {
+		set UPRIGHT to 0;
+	}
+	if(wake < 3) {
+		set UPRIGHT to 1;
+	}
+}
+
+MotionControl() {
+	var oldheading;
+	oldheading = get HEADING;
+	while(1) {
+		if(!bAiming) {
+			set MAX_SPEED to maxSpeed;
+		}
+		if(bAiming) {
+			set MAX_SPEED to maxSpeed / 4;
+		}
+		sleep 100;
+	}
+}
+
+Create() {
+	hide firept;
+	maxSpeed = get MAX_SPEED;
+	start-script MotionControl();
+	start-script SmokeUnit_SWS();
+}
+
+RestoreAfterDelay() {
+	sleep 2000;
+	turn turret to y-axis 0 speed <40>;
+	turn sleeve to x-axis 0 speed <40>;
+	bAiming = 0;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	if(wake <= 3) {
+		bAiming = 0;
+		return 0; }
+	bAiming = 1;
+	fireHeading = heading;
+	turn turret to y-axis heading speed <40>;
+	turn sleeve to x-axis 0 - pitch speed <30>;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+FireWeapon1() {
+	emit-sfx LARGE_MUZZLE_FLASH_FX_BLUE from firept;
+	move barrel to z-axis [-15.5] speed [500];
+	sleep 100;
+	move barrel to z-axis [0] speed [20];
+	if(fireHeading <= <45> and fireHeading >= <-45>) {
+		turn base to x-axis <-3> speed <150>;
+		wait-for-turn base around x-axis;
+		turn base to x-axis <0> speed <20>;
+	}
+	if(fireHeading >= <46> and fireHeading <= <135>) { //to the unit's left
+		turn base to z-axis <-3> speed <150>;
+		wait-for-turn base around z-axis;
+		turn base to z-axis <0> speed <20>;
+	}
+	if(fireHeading <= <-46> and fireHeading >= <-135>) { //to the unit's right
+		turn base to z-axis <3> speed <150>;
+		wait-for-turn base around z-axis;
+		turn base to z-axis <0> speed <20>;
+	}
+	if(fireHeading >= <136> or fireHeading <= <-136>) { //rear
+		turn base to x-axis <3> speed <150>;
+		wait-for-turn base around x-axis;
+		turn base to x-axis <0> speed <20>;
+	}
+	
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = turret;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = firept;
+}
+
+Killed(severity, corpsetype) {
+	hide firept;
+	if(severity <= 25) {
+		corpsetype = 1;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 2;
+		return 0;
+	}
+	corpsetype = 3;
+}

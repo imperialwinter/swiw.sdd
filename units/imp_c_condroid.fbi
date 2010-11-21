@@ -1,0 +1,69 @@
+[unitinfo]
+{
+	unitname=imp_c_condroid;
+	objectname=empire/c-condroid.s3o;
+	buildpic=imp_c_condroid.png;
+	corpse=imp_c_condroid_dead_seq1;
+	icontype=inf_con;
+	soundcategory=ARM_CHOVER;
+	category=IONTARGETABLE GROUND DROID CONSTRUCTOR;
+
+	name=Construction Droid;
+	description=Constructor level 1;
+	side=Empire;
+	maxdamage=500;
+	idleautoheal=0;
+	buildcostmetal=150;
+	buildcostenergy=1300;
+	buildtime=31;
+	footprintx=2;
+	footprintz=2;
+	mass=1600;
+	cobid=13;
+	collisionVolumeType=cylZ;
+	collisionVolumeScales=28 16 40;
+	collisionVolumeOffsets=0 6 4;
+
+	upright=1;
+	shownanoframe=0;
+
+	canfight=0;
+
+	metalmake=0.1;
+	metalstorage=50;
+	energymake=4;
+	energystorage=80;
+	energyuse=4;
+
+	sightdistance=400;
+	radardistance=60;
+	seismicsignature=1;
+
+	builder=1;
+	builddistance=50;
+	canbuild=1;
+	workertime=1;
+	shownanospray=0;
+	canassist=1;
+	repairspeed=1.5;
+
+	canmove=1;
+	movementclass=HOVER2x2;
+	maxvelocity=2.5;
+	acceleration=0.02;
+	brakerate=1;
+	turnrate=500;
+	maxslope=16;
+
+	canhover=1;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:BUILDER_SPARKS_FX;
+	}
+}

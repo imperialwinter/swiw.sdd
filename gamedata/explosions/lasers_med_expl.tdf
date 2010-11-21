@@ -1,0 +1,153 @@
+[laser_med_red] {
+	usedefaultexplosions=0;
+	[GROUNDFLASH] {
+		flashsize=35;
+		flashalpha=0.9;
+		circlegrowth=1;
+		circlealpha=1;
+		ttl=3;
+		color=1,0,0;
+	}
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.4, 0;
+			colorMap=1 1 1 0.01   1 0.7 0.2 0.01   0 0 0 0.01;
+			Texture=plasma2;
+			airdrag=0.97;
+			particleLife=8;
+			particleLifeSpread=0;
+			numParticles=25;
+			particleSpeed=3;
+			particleSpeedSpread=2;
+			particleSize=1.25;
+			particleSizeSpread=2.5;
+			emitRot=0;
+			emitRotSpread=80;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	[melt] {
+		class=CExpGenSpawner;
+		[properties] {
+			pos=0, 0, 0;  
+			delay=0;				  
+			explosionGenerator=custom:melt_med_120;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}
+[laser_med_blue] {
+	usedefaultexplosions=0;
+	[GROUNDFLASH] {
+		flashsize=35;
+		flashalpha=0.9;
+		circlegrowth=1;
+		circlealpha=1;
+		ttl=3;
+		color=0.0, 0.1, 0.9;
+	}
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.4, 0;
+			colorMap=1 1 1 0.01   0.2 0.7 1 0.01   0 0 0 0.01;
+			Texture=plasma2;
+			airdrag=0.97;
+			particleLife=8;
+			particleLifeSpread=0;
+			numParticles=25;
+			particleSpeed=3;
+			particleSpeedSpread=2;
+			particleSize=1.25;
+			particleSizeSpread=2.5;
+			emitRot=0;
+			emitRotSpread=80;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	[melt] {
+		class=CExpGenSpawner;
+		[properties] {
+			pos=0, 0, 0;  
+			delay=0;				  
+			explosionGenerator=custom:melt_med_120;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}
+[laser_med_green] {
+	usedefaultexplosions=0;
+	[GROUNDFLASH] {
+		flashsize=30;
+		flashalpha=1;
+		circlegrowth=0;
+		circlealpha=0;
+		ttl=3;
+		color=0,1,0;
+	}
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.4, 0;
+			colorMap=1 1 1 0.01   1 0.7 0.2 0.01   0 0 0 0.01;
+			Texture=plasma2;
+			airdrag=0.97;
+			particleLife=15;
+			particleLifeSpread=0;
+			numParticles=25;
+			particleSpeed=6;
+			particleSpeedSpread=2;
+			particleSize=1.3;
+			particleSizeSpread=2.5;
+			emitRot=0;
+			emitRotSpread=80;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	[meltage] {
+		class=CExpGenSpawner;
+		[properties] {
+			pos=0, 0, 0;  
+			delay=0;				  
+			explosionGenerator=custom:melt_med_120;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}

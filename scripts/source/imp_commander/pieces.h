@@ -1,0 +1,10 @@
+piece	base, door1, door2, wall, wdoor1, wdoor2;
+piece	tl1base, tl1turret, tl1sleeves, tl1b1, tl1f1, tl1b2, tl1f2;
+piece	tl2base, tl2turret, tl2sleeves, tl2b1, tl2f1, tl2b2, tl2f2;
+piece	tl3base, tl3turret, tl3sleeves, tl3b1, tl3f1, tl3b2, tl3f2;
+piece	tl4base, tl4turret, tl4sleeves, tl4b1, tl4f1, tl4b2, tl4f2;
+piece	dishriser, dishturret, dish, antennae, banners, shield1, shield2, bpt;
+piece	l1aa1base, l1aa1turret, l1aa1trooper, l1aa1b1, l1aa1f1, l1aa1b2, l1aa1f2, l1aa1b3, l1aa1f3, l1aa1b4, l1aa1f4;
+piece	l1aa2base, l1aa2turret, l1aa2trooper, l1aa2b1, l1aa2f1, l1aa2b2, l1aa2f2, l1aa2b3, l1aa2f3, l1aa2b4, l1aa2f4;
+piece	l2aa1base, l2aa1turret, l2aa1b1, l2aa1f1, l2aa1b2, l2aa1f2, l2aa1b3, l2aa1f3, l2aa1b4, l2aa1f4;
+piece	l2aa2base, l2aa2turret, l2aa2b1, l2aa2f1, l2aa2b2, l2aa2f2, l2aa2b3, l2aa2f3, l2aa2b4, l2aa2f4;

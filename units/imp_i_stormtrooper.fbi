@@ -1,0 +1,61 @@
+[unitinfo]
+{
+	unitname=imp_i_stormtrooper;
+	objectname=empire/i-stormtrooper.s3o;
+	buildpic=imp_i_stormtrooper.png;
+	icontype=inf_medium;
+	soundcategory=imp-i-stormtrooper;
+	category=GROUND INFANTRY;
+
+	name=Stormtrooper;
+	description=Imperial Soldier;
+	side=Empire;
+	maxdamage=220;
+	buildcostmetal=40;
+	buildcostenergy=300;
+	buildtime=8;
+	power=45;
+	footprintx=1;
+	footprintz=1;
+	mass=100;
+	cobid=35;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+	smoothanim=0;
+
+	sightdistance=500;
+	stealth=1;
+	seismicdistance=850;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.42;
+	acceleration=0.5;
+	brakerate=0.5;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=IMP_HUMAN_BLAST;
+	selfdestructas=IMP_HUMAN_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=imp_i_stormtrooper;
+	badtargetcategory1=VTOL;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=190;
+	weapon2=imp_i_stormtrooper;
+	badtargetcategory2=VTOL;
+	onlytargetcategory2=GROUND VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_RED;
+	}
+}

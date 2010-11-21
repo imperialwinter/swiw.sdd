@@ -1,0 +1,7 @@
+piece null;
+
+Create() {
+}
+
+Killed(severity, corpsetype) {
+}

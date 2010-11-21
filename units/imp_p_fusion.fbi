@@ -1,0 +1,57 @@
+[unitinfo]
+{
+	unitname=imp_p_fusion;
+	objectname=empire/p-fusion.s3o;
+	buildpic=imp_p_fusion.png;
+	corpse=imp_p_fusion_dead;
+	icontype=building_medium;
+	soundcategory=CORE_FUS;
+	category=GROUND RESOURCE BUILDING;
+	tedclass=ENERGY;
+	yardmap=oooooooooooooooo;
+
+	name=Fusion Generator;
+	description=Produces Power;
+	side=Empire;
+	maxdamage=2050;
+	idleautoheal=0;
+	buildcostmetal=715;
+	buildcostenergy=2150;
+	buildtime=55;
+	footprintx=5;
+	footprintz=5;
+	cobid=44;
+	collisionVolumeType=box;
+	collisionVolumeScales=80 104 36;
+	collisionVolumeOffsets=0 12 0;
+
+	canrepeat=0;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	energymake=325;
+
+	sightdistance=400;
+
+	activatewhenbuilt=1;
+
+	maxslope=20;
+	maxwaterdepth=5;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/resource-imp.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=8;
+	BuildingGroundDecalSizeY=8;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_BUILDING;
+	selfdestructas=MEDIUM_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:electric1;
+	}
+}

@@ -1,0 +1,176 @@
+// 32 diameter
+
+[hit_blue_s] {
+	usedefaultexplosions=0;
+	
+	[mainhit] {
+		class=heatcloud;
+		[properties] {
+			texture = explo;
+			heat = 8;
+			maxheat = 16;
+			heatFalloff = 1;
+			size = 1;
+			sizeGrowth = 3;
+			pos = 0, 1, 0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=-1 r2, 0.5 r0.5, -1 r2;
+			gravity=0, -0.1, 0;
+			colorMap=1 1 1 0.01   1 1 0.5 0.01   1 0.5 0 0.01   0 0 0 0;
+			Texture=plasma2;
+			airdrag=0.9;
+			particleLife=16;
+			particleLifeSpread=8;
+			numParticles=16;
+			particleSpeed=1;
+			particleSpeedSpread=4;
+			particleSize=0.5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=15 r60;
+			directional=1;
+		}
+		unit=1;
+		count=1;
+	}
+	
+	[miss] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;
+			explosionGenerator=custom:hit_blue_s_miss;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[melt] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;
+			explosionGenerator=custom:inc_melt_s;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[steam] {
+		class=CExpGenSpawner;
+		[properties]
+		{
+			dir=dir;
+			pos=0, 0, 0; 
+			delay=i1;
+			explosionGenerator=custom:hit_blue_s_steam; 
+		}
+		nounit=1;
+		count=4;
+	}
+	
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -4 r8, -4 r8, -4 r8;
+			width=2 r1;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.125;
+			color=0.1,0.1,1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=8; 
+	}
+	
+	[groundflash]{
+		flashsize=32;
+		flashalpha=0.5;
+		circlegrowth=6;
+		circlealpha=0;
+		ttl=8;
+		color=0,0,1;
+	}
+}
+
+[hit_blue_s_miss] {
+	[dust]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.25 0.2 0.15 0.5  0 0 0 0;
+			size=2 r6;
+			length=4 r16;
+			sizeGrowth=1;
+			ttl=16;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=4;
+	}
+	
+	[water]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.45 0.45 0.5 0.5  0 0 0 0; 
+			size=2 r6;
+			length=4 r16;
+			sizeGrowth=1;
+			ttl=16;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		water=1;
+		count=4;
+	}
+}
+
+[hit_blue_s_steam] {
+	[steam]{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 1, 0;
+			colorMap=0.5 0.5 0.5 0.5   0.05 0.05 0.05 0.05;
+			Texture=smokesmall;
+			airdrag=0.75;
+			particleLife=12;
+			particleLifeSpread=8;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=2;
+			particleSize=6;
+			particleSizeSpread=4;
+			emitRot=0;
+			emitRotSpread=5;
+			directional=0;
+			alwaysVisible=0;
+		}
+		water=1;
+		count=1;
+	}
+}

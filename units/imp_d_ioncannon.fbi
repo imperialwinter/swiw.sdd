@@ -1,0 +1,51 @@
+[unitinfo]
+{
+	unitname=imp_d_ioncannon;
+	objectname=empire/d-ioncannon.s3o;
+	buildpic=imp_d_ioncannon.png;
+	corpse=imp_d_ioncannon_dead;
+	icontype=defense_medium;
+	soundcategory=GUARD;
+	category=GROUND DEFENSE BUILDING;
+	yardmap=oooooo;
+
+	name=Ion Turret;
+	description=Anti-Vehicle Defense;
+	side=Empire;
+	maxdamage=1440;
+	idleautoheal=0;
+	buildcostmetal=300;
+	buildcostenergy=2400;
+	buildtime=29;
+	footprintx=3;
+	footprintz=3;
+	cobid=24;
+	collisionVolumeType=box;
+	collisionVolumeScales=32 32 32;
+	collisionVolumeOffsets=0 4 0;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=400;
+
+	maxslope=20;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-imp.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=6;
+	BuildingGroundDecalSizeY=6;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_BUILDING;
+	selfdestructas=MEDIUM_BUILDING;
+
+	weapon1=imp_d_ioncannon;
+	onlytargetcategory1=IONTARGETABLE BUILDING;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+	}
+}

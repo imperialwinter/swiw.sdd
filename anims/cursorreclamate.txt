@@ -1,0 +1,16 @@
+hotspot center
+frame  bitmaps/cursors/reclaim/reclaim01.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim02.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim03.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim04.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim05.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim06.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim07.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim08.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim09.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim10.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim11.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim12.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim13.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim14.png  0.100
+frame  bitmaps/cursors/reclaim/reclaim15.png  0.200

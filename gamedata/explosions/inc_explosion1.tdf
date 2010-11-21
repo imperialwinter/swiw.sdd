@@ -1,0 +1,1219 @@
+//use damage to set size, dir to set orientation
+[inc_explosion1] {
+	[frame01] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=0;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame01;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame02] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=1;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame02;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame03] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=2;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame03;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame04] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=3;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame04;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame05] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=4;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame05;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame06] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=5;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame06;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame07] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=6;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame07;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame08] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=7;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame08;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame09] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=8;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame09;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame10] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=9;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame10;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame11] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=10;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame11;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame12] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=11;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame12;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame13] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=12;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame13;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame14] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=13;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame14;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame15] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=14;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame15;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame16] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=15;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame16;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame17] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=16;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame17;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame18] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=17;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame18;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame19] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=18;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame19;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame20] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=19;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame20;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame21] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=20;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame21;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame22] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=21;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame22;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame23] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=22;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame23;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame24] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=23;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame24;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame25] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=24;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame25;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame26] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=25;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame26;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[frame27] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=dir;
+			pos=0, 0, 0;
+			delay=26;
+			damage=d1;
+			explosionGenerator=custom:inc_explosion1_frame27;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame01] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_01;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame02] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_02;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame03] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_03;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame04] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_04;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame05] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_05;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame06] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_06;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame07] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_07;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame08] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_08;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame09] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_09;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame10] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_10;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame11] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_11;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame12] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_12;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame13] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_13;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame14] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_14;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame15] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_15;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame16] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_16;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame17] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_17;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame18] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_18;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame19] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_19;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame20] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_20;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame21] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_21;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame22] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_22;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame23] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_23;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame24] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_24;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame25] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_25;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_explosion1_frame26] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01  0 0 0 0;
+			Texture=explosion1_26;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+//fadeout over a few frames
+[inc_explosion1_frame27] {
+	[frame] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0  1 1 1 0.01   0.75 0.75 0.75 0.01   0.5 0.5 0.5 0.01   0.25 0.25 0.25 0.01   0 0 0 0;
+			Texture=explosion1_27;
+			airdrag=1;
+			particleLife=5;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=d1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}

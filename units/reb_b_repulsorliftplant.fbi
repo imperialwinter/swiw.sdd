@@ -1,0 +1,59 @@
+[unitinfo]
+{
+	unitname=reb_b_repulsorliftplant;
+	objectname=rebel/b-repulsorliftplant.s3o;
+	buildpic=reb_b_repulsorliftplant.png;
+	corpse=reb_b_repulsorliftplant_dead;
+	icontype=factory_medium;
+	soundcategory=TANKPLANT;
+	category=GROUND FACTORY BUILDING;
+	tedclass=PLANT;
+	yardmap=ccccoooocc cccooooooc ccocoooocc cooooooocc occccccooo occccccooo occccccooo occccccooo occccccooo occccccooo occccccooo occccccooo;
+
+	name=Repulsorlift Plant;
+	description=Produces Repulsorlift Vehicles;
+	side=Rebels;
+	maxdamage=5160;
+	idleautoheal=0;
+	buildcostmetal=1100;
+	buildcostenergy=3800;
+	buildtime=46;
+	footprintx=10;
+	footprintz=12;
+	cobid=71;
+	collisionVolumeType=cylZ;
+	collisionVolumeScales=144 96 192;
+	collisionVolumeOffsets=0 0 0;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	metalstorage=400;
+	energystorage=200;
+
+	sightdistance=400;
+
+	builder=1;
+	workertime=1;
+
+	maxslope=20;
+	maxwaterdepth=5;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/reb-b-repulsorliftplant.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=18;
+	BuildingGroundDecalSizeY=20;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:BUILDER_SPARKS_FX;
+		explosiongenerator2=custom:constdust;
+	}
+}

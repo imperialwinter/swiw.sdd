@@ -1,0 +1,9 @@
+hotspot center
+frame  bitmaps/cursors/centroid/centroid01.png  0.100
+frame  bitmaps/cursors/centroid/centroid02.png  0.100
+frame  bitmaps/cursors/centroid/centroid03.png  0.100
+frame  bitmaps/cursors/centroid/centroid04.png  0.100
+frame  bitmaps/cursors/centroid/centroid05.png  0.100
+frame  bitmaps/cursors/centroid/centroid04.png  0.100
+frame  bitmaps/cursors/centroid/centroid03.png  0.100
+frame  bitmaps/cursors/centroid/centroid02.png  0.100

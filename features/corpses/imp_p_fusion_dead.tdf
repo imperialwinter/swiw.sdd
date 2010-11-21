@@ -1,0 +1,23 @@
+[imp_p_fusion_dead]
+{
+	object=wreckage/imp_p_fusion/seq1.s3o;
+	featuredead=imp_p_fusion_heap;
+	description=Wreckage;
+	metal=49;
+	damage=590;
+	blocking=1;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}
+[imp_p_fusion_heap]
+{
+	object=heaps/3x3c.s3o;
+	description=Wreckage;
+	metal=16;
+	damage=190;
+	blocking=0;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}

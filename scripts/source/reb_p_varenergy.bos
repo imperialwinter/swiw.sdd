@@ -1,0 +1,107 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, wheel, w1, w2, w3, root, scaffolds, dustrot, dust1, dust2;
+
+static-var wake, bMoving, maxSpeed, bParked;
+
+#define SIG_DYING 2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 wheel
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 wheel
+#include "general/smokeunit_sws.h"
+
+#define SCAFFOLD_PIECE scaffolds
+#define SCAFFOLD_BELOW_GROUND_DIST [-50]
+#define BUILDING_ROOT base
+#define BUILDING_BELOW_GROUND_DIST [-50]
+#define BUILDING_RISE_SPEED [7.5]
+#define DUSTFX 1024+1
+#define DUST_ROOT dustrot
+#define DUSTFXPT1 dust1
+#define DUSTFXPT2 dust2
+
+#include "general/scaffolds.h"
+
+Toggle(cmdtype,value) {
+	bParked = value;
+}
+
+WakeFX() {
+	set-signal-mask SIG_DYING;
+	var moveorders, RandomSeed;
+	while(1) {
+		RandomSeed = rand(150,400);//varied here to give the wakes some variety, it looks lame when they "pump" at the same time every time, need to fix that elsewhere, frankly
+		sleep RandomSeed;
+		if(wake <= 3) {
+			set ACTIVATION to 1;
+			spin wheel around x-axis speed <-25>;
+			emit-sfx 5 from w1;
+			emit-sfx 3 from w1;
+			emit-sfx 5 from w2;
+			emit-sfx 3 from w2;
+			emit-sfx 5 from w3;
+			emit-sfx 3 from w3;
+		}
+		if(bMoving) {
+			set ACTIVATION to 1;
+			spin wheel around x-axis speed <-25>;
+		}
+		if(wake > 3 and !bMoving) {
+			set ACTIVATION to 0;
+			spin wheel around x-axis speed <-50>;
+		}
+		if(bParked == 1) {
+			set MAX_SPEED to 1;
+			move base to y-axis [-12.5] speed [25];
+		}
+		if(bParked == 0) {
+			set MAX_SPEED to maxSpeed;
+			move base to y-axis [0] speed [25];
+		}
+	}
+}
+
+setSFXoccupy(crap) {
+	wake = crap;
+	if(wake > 2) {
+		set UPRIGHT to 0;
+	}
+	if(wake < 3) {
+		set UPRIGHT to 1;
+	}
+}
+
+StartMoving() {
+	while(bParked == 1) { sleep 500; }
+	if(bParked == 0) { //even though it can't move in hold pos, it still gets the move order which starts this function
+		bMoving = TRUE;
+	}
+}
+
+StopMoving() {
+	bMoving = FALSE;
+}
+
+Create() {
+	bMoving = FALSE;
+	bParked = FALSE;
+	maxSpeed = get MAX_SPEED;
+	start-script SmokeUnit_SWS();
+	call-script ConstructionAnim();
+	move BUILDING_ROOT to y-axis [0] now;
+	start-script WakeFX();
+}
+
+Killed(severity, corpsetype) {
+	signal SIG_DYING;
+	corpsetype = 1;
+	move base to x-axis [20] speed [30];
+	move base to y-axis [10] speed [10];
+	turn base to z-axis <95> speed <90>;
+	wait-for-turn base around z-axis;
+	return 0;
+}

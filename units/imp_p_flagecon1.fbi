@@ -1,0 +1,57 @@
+[unitinfo]
+{
+	unitname=imp_p_flagecon1;
+	objectname=empire/p-flagecon1.s3o;
+	buildpic=imp_p_flagecon1.png;
+	icontype=flag_imp_eco1;
+	soundcategory=COR_MEX;
+	category=GROUND RESOURCE BUILDING;
+	tedclass=METAL;
+	yardmap=ooooooooo;
+
+	name=Territorial Weapon Cache;
+	description=Increases Territory Importance;
+	side=Empire;
+	maxdamage=620;
+	idleautoheal=0;
+	buildcostmetal=170;
+	buildcostenergy=4200;
+	buildtime=37;
+	footprintx=4;
+	footprintz=4;
+	cobid=25;
+	collisionVolumeType=box;
+	collisionVolumeScales=48 56 32;
+	collisionVolumeOffsets=0 -4 0;
+
+	canrepeat=0;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	metalstorage=150;
+	extractsmetal=0.0018;
+	energyuse=100;
+
+	sightdistance=400;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	maxslope=10;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-imp.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=6;
+	BuildingGroundDecalSizeY=6;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_BUILDING;
+	selfdestructas=MEDIUM_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+	}
+}

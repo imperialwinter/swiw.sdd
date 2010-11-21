@@ -1,0 +1,17 @@
+hotspot center
+frame  bitmaps/cursors/patrol/patrol01.png  0.100
+frame  bitmaps/cursors/patrol/patrol02.png  0.100
+frame  bitmaps/cursors/patrol/patrol03.png  0.100
+frame  bitmaps/cursors/patrol/patrol04.png  0.100
+frame  bitmaps/cursors/patrol/patrol05.png  0.100
+frame  bitmaps/cursors/patrol/patrol06.png  0.100
+frame  bitmaps/cursors/patrol/patrol07.png  0.100
+frame  bitmaps/cursors/patrol/patrol08.png  0.100
+frame  bitmaps/cursors/patrol/patrol09.png  0.100
+frame  bitmaps/cursors/patrol/patrol10.png  0.100
+frame  bitmaps/cursors/patrol/patrol11.png  0.100
+frame  bitmaps/cursors/patrol/patrol12.png  0.100
+frame  bitmaps/cursors/patrol/patrol13.png  0.100
+frame  bitmaps/cursors/patrol/patrol14.png  0.100
+frame  bitmaps/cursors/patrol/patrol15.png  0.100
+frame  bitmaps/cursors/patrol/patrol16.png  0.100

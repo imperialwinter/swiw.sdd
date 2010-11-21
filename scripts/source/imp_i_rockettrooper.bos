@@ -1,0 +1,29 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece base, torso, ruparm, luparm, rloarm, lloarm, pelvis, rthigh, lthigh;
+piece shoulders, chest, lleg, rleg, gun, flare, head;
+
+static-var  bMoving, runSpeed, maxAngle, randomSeed, alreadyEngaged, inBunker, idleAnim, maxSpeed;
+
+#define USE_ROCKET_STANCE1
+#define NORMAL_SPEED 9
+#define NORMAL_MAX_ANGLE 100
+#define SLOW_SPEED 7
+#define SLOW_MAX_ANGLE 77
+#define QUERY_PIECENUM1 flare
+#define MUZZLEFLASH1 1024+0
+#include "general/infantry.h"
+
+Create() {
+	hide QUERY_PIECENUM1;
+	bMoving = 0;
+	randomSeed = rand(10,60);
+	maxSpeed = get MAX_SPEED;
+	call-script WeaponReady();
+	start-script MotionControl();
+}
+
+Killed(severity, corpsetype) {
+}

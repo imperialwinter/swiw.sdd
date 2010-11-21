@@ -1,0 +1,11 @@
+piece null;
+
+lua_DropShip(shipNum) { return 0; }
+
+Create() {
+	sleep 100;
+//	call-script lua_DropShip(1);
+}
+
+Killed(severity, corpsetype) {
+}

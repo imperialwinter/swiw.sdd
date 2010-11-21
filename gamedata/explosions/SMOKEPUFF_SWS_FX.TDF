@@ -1,0 +1,72 @@
+//////////////////////////////////////////////////////SWS Smokescript.  Falls under the SWS license.
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+[SMOKEPUFF_SWS_FX]
+{
+[delayspawner01_SMOKEPUFF_SWS_SmokeColumn]
+	{
+		class=CExpGenSpawner;
+		[properties]
+		{
+		delay=1 i10;
+		explosionGenerator=custom:SMOKEPUFF_SWS_SPAWNSYSTEM;
+		useAirLos=0;
+		alwaysVisible=0;
+		}
+	water=1;
+	air=1;
+	ground=1;
+	count=1;
+	}
+}
+
+[SMOKEPUFF_SWS_SPAWNSYSTEM]
+{
+[delayspawner01_SMOKEPUFF_SWS_SmokeColumn]
+	{
+		class=CExpGenSpawner;
+		[properties]
+		{
+		delay=1 i5;
+		explosionGenerator=custom:SMOKEPUFF_SWS_SMOKESPAWN;
+		useAirLos=0;
+		alwaysVisible=0;
+		}
+	water=1;
+	air=1;
+	ground=1;
+	count=3 r3;
+	}
+}
+
+[SMOKEPUFF_SWS_SMOKESPAWN] {
+	[fakesmoke] {
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0.15;
+			sizemod=1;
+			pos=-1 r2, 0, -1 r2;
+			emitvector=0, 1, 0;
+			gravity=0, 0.02, 0;
+			colormap=0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0 0 0 0;
+			texture=GenericSmokeCloud;
+			airdrag=1;
+			particlelife=30;
+			particlelifespread=25;
+			numparticles=3;
+			particlespeed=0;
+			particlespeedspread=0.5;
+			particlesize=2;
+			particlesizespread=1;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}

@@ -1,0 +1,60 @@
+[unitinfo]
+{
+	unitname=imp_p_flagmil1;
+	objectname=empire/p-flagmil1.s3o;
+	buildpic=imp_p_flagmil1.png;
+	icontype=flag_imp_mil1;
+	soundcategory=COR_MEX;
+	category=GROUND RESOURCE DEFENSE BUILDING;
+	tedclass=METAL;
+	yardmap=ooooooooo;
+
+	name=Territorial Fortification;
+	description=Holds Territory;
+	side=Empire;
+	maxdamage=4900;
+	idleautoheal=0;
+	buildcostmetal=650;
+	buildcostenergy=2000;
+	buildtime=100;
+	footprintx=4;
+	footprintz=4;
+	cobid=25;
+
+	canrepeat=0;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	metalstorage=150;
+
+	sightdistance=500;
+
+	activatewhenbuilt=1;
+
+	maxslope=10;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-imp.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=6;
+	BuildingGroundDecalSizeY=6;
+
+	transportsize=1;
+	transportcapacity=6;
+	transportmass=650;
+	isfireplatform=1;
+	releaseheld=0;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_BUILDING;
+	selfdestructas=SMALL_BUILDING;
+
+	weapon1=imp_p_flagmil1;
+	onlytargetcategory1=GROUND;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_GREEN;
+	}
+}

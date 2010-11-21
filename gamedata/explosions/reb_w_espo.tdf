@@ -1,0 +1,33 @@
+[reb_w_espo] //thanks to quantum, he rocks! Please credit him if you use this effect.
+{
+	[BitmapMuzzleFlame]
+	{
+		class = CBitmapMuzzleFlame;
+		[properties]
+		{
+			dir = dir;
+			colorMap=1 0.2 0 0.1	1 0.1 0 0.01	0 0 0 0.01; 
+			size=5;
+			length=6;
+			sizeGrowth=1;
+			ttl=3;
+			frontOffset=0.1;
+			sideTexture=plasma2;
+			frontTexture=flowerflash;
+		}
+		water=1;
+		air=1;
+		underwater=1;
+		ground=1;
+		count=1;
+	}
+	[groundflash]
+	{
+		flashsize=10;
+		flashalpha=0.9;
+		circlegrowth=0;
+		circlealpha=1;
+		ttl=3;
+		color=1,0,0;
+	}
+}

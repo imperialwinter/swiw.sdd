@@ -1,0 +1,62 @@
+[unitinfo]
+{
+	unitname=reb_a_shuttle;
+	objectname=rebel/a-shuttle.s3o;
+	buildpic=reb_a_shuttle.png;
+	icontype=air_trans;
+	soundcategory=reb-a-vwing;
+	category=VTOL TAKESGROUNDFIRE;
+
+	name=Air Shuttle;
+	description=Infantry Transport;
+	side=Rebels;
+	maxdamage=600;
+	idleautoheal=0;
+	buildcostmetal=350;
+	buildcostenergy=4500;
+	buildtime=34;
+	footprintx=4;
+	footprintz=4;
+	mass=450000;
+	cobid=62;
+	collisionVolumeType=box;
+	collisionVolumeScales=48 44 112;
+	collisionVolumeOffsets=0 -2 3;
+
+	upright=1;
+	shownanoframe=0;
+	levelground=0;
+	collisionspherescale=1;
+
+	energyuse=15;
+
+	sightdistance=400;
+
+	canmove=1;
+	maxvelocity=6;
+	acceleration=0.3;
+	brakerate=5;
+	turnrate=500;
+	maxslope=10;
+
+	transportsize=1;
+	transportcapacity=10;
+	transportmass=1000;
+	transportunloadmethod=2;
+
+	floater=1;
+
+	canfly=1;
+	cruisealt=50;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+	}
+}

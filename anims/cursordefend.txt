@@ -1,0 +1,13 @@
+hotspot center
+frame  bitmaps/cursors/defend/defend01.png  0.100
+frame  bitmaps/cursors/defend/defend02.png  0.100
+frame  bitmaps/cursors/defend/defend03.png  0.100
+frame  bitmaps/cursors/defend/defend04.png  0.100
+frame  bitmaps/cursors/defend/defend05.png  0.100
+frame  bitmaps/cursors/defend/defend06.png  0.100
+frame  bitmaps/cursors/defend/defend07.png  0.100
+frame  bitmaps/cursors/defend/defend06.png  0.100
+frame  bitmaps/cursors/defend/defend05.png  0.100
+frame  bitmaps/cursors/defend/defend04.png  0.100
+frame  bitmaps/cursors/defend/defend03.png  0.100
+frame  bitmaps/cursors/defend/defend02.png  0.100

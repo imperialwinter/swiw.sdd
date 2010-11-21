@@ -1,0 +1,60 @@
+[unitinfo]
+{
+	unitname=imp_b_airplant;
+	objectname=empire/b-airplant.s3o;
+	buildpic=imp_b_airplant.png;
+	corpse=imp_b_airplant_dead;
+	icontype=factory_medium;
+	soundcategory=AIRPLANT;
+	category=GROUND FACTORY BUILDING;
+	tedclass=PLANT;
+	yardmap=oooooooooooooo oooooooooooooo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo oooooooooooooo oooooooooooooo;
+
+	name=Air Base;
+	description=Produces Starfighters;
+	side=Empire;
+	maxdamage=5000;
+	idleautoheal=0;
+	buildcostmetal=1300;
+	buildcostenergy=2700;
+	buildtime=43;
+	footprintx=14;
+	footprintz=14;
+	cobid=9;
+	collisionVolumeType=box;
+	collisionVolumeScales=200 104 200;
+	collisionVolumeOffsets=0 37 0;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	metalstorage=200;
+	energystorage=200;
+
+	sightdistance=400;
+	radardistance=1200;
+
+	builder=1;
+	workertime=1;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/imp-b-airplant.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=14;
+	BuildingGroundDecalSizeY=14;
+
+	maxslope=20;
+	maxwaterdepth=5;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:building_explosion_small;
+		explosiongenerator2=custom:building_explosion_large;
+	}
+}

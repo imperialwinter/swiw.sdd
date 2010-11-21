@@ -1,0 +1,63 @@
+[unitinfo]
+{
+	unitname=reb_v_ulav;
+	objectname=rebel/v-ulav.s3o;
+	buildpic=reb_v_ulav.png;
+	corpse=reb_v_ulav_dead;
+	icontype=veh_light;
+	soundcategory=Reb_Hover_Light;
+	category=IONTARGETABLE GROUND TANK;
+
+	name=ULAV;
+	description=Ultra-Light Attack Vehicle;
+	side=Rebels;
+	maxdamage=1650;
+	idleautoheal=0;
+	buildcostmetal=275;
+	buildcostenergy=4900;
+	buildtime=38;
+	footprintx=3;
+	footprintz=3;
+	mass=15500;
+	cobid=103;
+	collisionVolumeType=ellipsoid;
+	collisionVolumeScales=36 18 52;
+	collisionVolumeOffsets=0 0 0;
+
+	shownanoframe=0;
+	levelground=0;
+
+	energymake=0.2;
+	energyuse=2;
+
+	sightdistance=400;
+
+	canmove=1;
+	movementclass=HOVER2x2;
+	maxvelocity=3.9;
+	acceleration=0.06;
+	brakerate=0.1;
+	turnrate=500;
+	maxslope=16;
+	turninplace=0;
+
+	canhover=1;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	nochasecategory=VTOL;
+
+	weapon1=reb_v_ulavlaser;
+	badtargetcategory1=VTOL;
+	onlytargetcategory1=GROUND VTOL;
+	weapon2=reb_v_ulavstunner;
+	onlytargetcategory2=IONTARGETABLE;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_RED;
+		explosiongenerator2=custom:constdust;
+	}
+}

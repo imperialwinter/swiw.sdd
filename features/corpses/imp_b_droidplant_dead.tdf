@@ -1,0 +1,22 @@
+[imp_b_droidplant_dead]
+{
+	object=wreckage/imp_b_droidplant/seq1.s3o;
+	featuredead=imp_b_droidplant_heap;
+	description=Wrecked Plant;
+	metal=300;
+	damage=975;
+	footprintx=8;
+	footprintz=8;
+	reclaimable=1;
+}
+[imp_b_droidplant_heap]
+{
+	object=heaps/5x5b.s3o;
+	description=Wreckage;
+	metal=100;
+	damage=1950;
+	blocking=0;
+	footprintx=5;
+	footprintz=5;
+	reclaimable=1;
+}

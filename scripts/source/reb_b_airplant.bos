@@ -1,0 +1,218 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  root, scaffolds, dustrot, dust1, dust2, base, hall, antenna, bptroot, bpt;
+piece  building, crates, ladders, console, r2, pipes;
+
+static-var  isBuilding, isBuildingNow;
+
+#define SIG_ACTIVATE			2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define SCAFFOLD_PIECE scaffolds
+#define SCAFFOLD_BELOW_GROUND_DIST [-150]
+#define BUILDING_ROOT base
+#define BUILDING_BELOW_GROUND_DIST [-120]
+#define BUILDING_RISE_SPEED [4]
+#define DUSTFX 1024+1
+#define DUST_ROOT dustrot
+#define DUSTFXPT1 dust1
+#define DUSTFXPT2 dust2
+#include "general/scaffolds.h"
+/*
+BuildStarted(unitID) {
+	var unitprog, hp;
+	move bpt to y-axis [-55] now;;
+	while(get UNIT_BUILD_PERCENT_LEFT(unitID)) {
+		hp = get UNIT_BUILD_PERCENT_LEFT(unitID);
+		move bpt to y-axis (([-25] * hp)/100) speed [6];
+		emit-sfx DUSTFX from bptroot;
+		sleep rand(500, 1100);
+	}
+	turn bpt to y-axis rand(<0>,<-15>) now;
+}
+*/
+/*
+DroidAnim() {
+	var dir, current;
+	current = 1;
+	while(get BUILD_PERCENT_LEFT) {
+		sleep 100;
+	}
+	while(1) {
+		if(current == 0) {
+			dir = rand(0,1); }
+		if(current == 1) {
+			dir = rand(0,2); }
+		if(current == 2) {
+			dir = rand(1,4); }
+		if(current == 3) {
+			dir = rand(2,5);
+				if(dir == 4) { dir = 3; } } // don't move through the crates
+		if(current == 4) {
+			dir = rand(2,5);
+				if(dir == 3) { dir = 4; } } // don't move through the crates
+		if(current == 5) {
+			dir = rand(3,6); }
+		if(current == 6) {
+			dir = rand(5,8); }
+		if(current == 7) {
+			dir = rand(6,8); }
+		if(current == 8) {
+			dir = rand(6,8); }
+		
+		
+		if(dir == 0) {
+			move droid to z-axis [25] speed [25];
+			wait-for-move droid along z-axis;
+			sleep 500;
+			current = 0;
+		}
+		if(dir == 1) {
+			move droid to z-axis [0] speed [25];
+			move droid to x-axis [0] speed [25];
+			wait-for-move droid along z-axis;
+			wait-for-move droid along x-axis;
+			sleep 500;
+			current = 1;
+		}
+		if(dir == 2) {
+			move droid to z-axis [-20] speed [25];
+			wait-for-move droid along z-axis;
+			move droid to x-axis [-12.5] speed [25];
+			wait-for-move droid along x-axis;
+			sleep 100;
+			current = 2;
+		}
+		if(dir == 3) {
+			move droid to z-axis [-62.5] speed [25];
+			move droid to x-axis [-37.5] speed [25];
+			wait-for-move droid along z-axis;
+			wait-for-move droid along x-axis;
+			sleep 800;
+			current = 3;
+		}
+		if(dir == 4) {
+			move droid to z-axis [-37.5] speed [25];
+			move droid to x-axis [0] speed [25];
+			wait-for-move droid along z-axis;
+			wait-for-move droid along x-axis;
+			sleep 600;
+			current = 4;
+		}
+		if(dir == 5) {
+			move droid to z-axis [-75] speed [25];
+			move droid to x-axis [37.5] speed [25];
+			wait-for-move droid along z-axis;
+			wait-for-move droid along x-axis;
+			sleep 1000;
+			current = 5;
+		}
+		if(dir == 6) {
+			move droid to z-axis [-50] speed [25];
+			move droid to x-axis [50] speed [25];
+			wait-for-move droid along z-axis;
+			wait-for-move droid along x-axis;
+			sleep 1000;
+			current = 6;
+		}
+		if(dir == 7) {
+			move droid to z-axis [0] speed [25];
+			move droid to x-axis [87.5] speed [25];
+			wait-for-move droid along z-axis;
+			wait-for-move droid along x-axis;
+			sleep 800;
+			current = 7;
+		}
+		if(dir == 8) {
+			move droid to z-axis [25] speed [25];
+			move droid to x-axis [62.5] speed [25];
+			wait-for-move droid along z-axis;
+			wait-for-move droid along x-axis;
+			sleep 500;
+			current = 8;
+		}
+			
+		sleep 10;
+	}
+}
+*/
+
+BuildScript() {
+	while(1) {
+		if(isBuilding) {
+			sleep 100;
+			set BUGGER_OFF to 1;
+			set YARD_OPEN to 1;
+			set INBUILDSTANCE to 1;
+			isBuildingNow = TRUE;		
+		}
+		if(isBuilding) {
+			sleep 100;
+		}	
+		while(!isBuilding) {
+			sleep 500;
+			isBuildingNow = FALSE;
+			set BUGGER_OFF to 0;
+			set YARD_OPEN to 0;
+			set INBUILDSTANCE to 0;
+		}
+		sleep 10;
+	}
+}
+
+Create() {
+	isBuilding = 0;
+	isBuildingNow = 0;
+	start-script SmokeUnit_SWS();
+	start-script BuildScript();
+	call-script ConstructionAnim();
+	move BUILDING_ROOT to y-axis [0] now;
+	//start-script DroidAnim();
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = bpt;
+}
+
+Activate() {
+	signal SIG_ACTIVATE;
+	isBuilding = TRUE;
+}
+
+Deactivate() {
+	signal SIG_ACTIVATE;
+	set-signal-mask SIG_ACTIVATE;
+	isBuilding = FALSE;
+}
+
+QueryBuildInfo(piecenum) {
+	piecenum = bpt;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+	return 0;
+}

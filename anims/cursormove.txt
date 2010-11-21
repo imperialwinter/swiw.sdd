@@ -1,0 +1,9 @@
+hotspot center
+frame  bitmaps/cursors/move/move01.png  0.100
+frame  bitmaps/cursors/move/move02.png  0.100
+frame  bitmaps/cursors/move/move03.png  0.100
+frame  bitmaps/cursors/move/move04.png  0.100
+frame  bitmaps/cursors/move/move05.png  0.100
+frame  bitmaps/cursors/move/move04.png  0.100
+frame  bitmaps/cursors/move/move03.png  0.100
+frame  bitmaps/cursors/move/move02.png  0.100

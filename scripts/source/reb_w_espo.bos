@@ -1,0 +1,164 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, torso, b1, f1, lthigh, lleg, lfoot, rthigh, rleg, rfoot;
+
+static-var  bMoving, bAiming;
+
+#define SIG_MOVE			2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 lthigh
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 rthigh
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_RED 1024+1
+
+#define UNIT_ROOT base
+#define UNIT_BELOW_GROUND_DIST [-60]
+#define UNIT_RISE_SPEED [4]
+#define DUSTFX 1024+2
+#define DUSTFXPT1 torso
+#include "general/rebel_unit_build.h"
+
+Walk() {
+	sleep rand(10,60); //desync the espo animations relative to each other
+	while(1) {
+		if(!bMoving) {
+			turn torso to x-axis <0> speed <70>;
+			turn torso to y-axis <0> speed <80>;
+			move torso to y-axis [0] speed [40];
+			turn lthigh to x-axis <0> speed <70>;
+			turn lthigh to y-axis <0> speed <70>;
+			turn lleg to x-axis <0> speed <70>;
+			turn lfoot to x-axis <0> speed <70>;
+			turn rthigh to x-axis <0> speed <70>;
+			turn rthigh to y-axis <0> speed <70>;
+			turn rleg to x-axis <0> speed <70>;
+			turn rfoot to x-axis <0> speed <140>;
+			sleep 50;
+		}
+		
+		
+		if(bMoving) {
+			turn torso to x-axis <10> speed <70>;
+		}
+		
+		if(bMoving) {
+			turn torso to y-axis <-5> speed <80>;
+			move torso to y-axis [-1.2] speed [10];
+			turn lthigh to x-axis <-20> speed <200>;
+			turn lthigh to y-axis <-5> speed <50>;
+			turn lleg to x-axis <-40> speed <300>;
+			turn lfoot to x-axis <25> speed <160>;
+			turn rthigh to x-axis <0> speed <100>;
+			turn rleg to x-axis <0> speed <100>;
+		//	turn rfoot to x-axis <-10> speed <150>;
+			wait-for-turn lthigh around x-axis;
+		}
+		if(bMoving) {
+			move torso to y-axis [0] speed [10];
+			turn lthigh to x-axis <-55> speed <160>;
+			turn lleg to x-axis <5> speed <260>;
+			turn rthigh to x-axis <30> speed <250>;
+			turn rleg to x-axis <-20> speed <10>;
+			turn rfoot to x-axis <25> speed <160>;
+			turn torso to y-axis <5> speed <80>;
+			turn lthigh to y-axis <10> speed <100>;
+			turn rthigh to y-axis <5> speed <100>;
+			wait-for-turn lthigh around x-axis;
+		}
+		if(bMoving) {
+			turn lthigh to x-axis <0> speed <100>;
+			turn lleg to x-axis <0> speed <100>;
+		//	turn lfoot to x-axis <-10> speed <150>;
+			turn rthigh to x-axis <-20> speed <200>;
+			turn rthigh to y-axis <-5> speed <50>;
+			turn rleg to x-axis <-40> speed <300>;
+			turn rfoot to x-axis <25> speed <160>;
+			move torso to y-axis [-1.2] speed [20];
+			wait-for-turn rthigh around x-axis;
+		}
+		if(bMoving) {
+			move torso to y-axis [0] speed [10];
+			turn lthigh to x-axis <30> speed <250>;
+			turn lleg to x-axis <-20> speed <10>;
+			turn lfoot to x-axis <25> speed <160>;
+			turn rthigh to x-axis <-55> speed <160>;
+			turn rleg to x-axis <5> speed <260>;
+			wait-for-turn rthigh around x-axis;
+		}
+	}
+}
+
+Create() {
+	hide f1;
+	bMoving = 0;
+	bAiming = 0;
+	start-script SmokeUnit_SWS();
+	start-script Walk();
+	call-script ConstructionAnim();
+	move base to y-axis 0 now;
+}
+
+StartMoving() {
+	bMoving = 1;
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+}
+
+StopMoving() {
+	bMoving = 0;
+	signal SIG_MOVE;
+}
+
+Restore() {
+	sleep 3000;
+	bAiming = 0;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	bAiming = 1;
+	start-script Restore();
+	return 1;
+}
+
+FireWeapon1() {
+	emit-sfx MED_MUZZLE_FLASH_FX_RED from f1;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = f1;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = torso;
+}
+
+#define TURN_RATE 600
+
+AimWeapon2(heading, pitch) {
+	if(!bMoving and !bAiming) {
+		if(heading > <95> or heading < <-95>) {
+			while(heading > <95>) {
+				set HEADING to TURN_RATE + get HEADING;
+				heading = heading - TURN_RATE;
+				sleep 30;
+			}
+			while(heading < <-95>) {
+				set HEADING to 0 - TURN_RATE + get HEADING;
+				heading = heading + TURN_RATE;
+				sleep 30;
+			}
+		}
+	}
+	return 0;
+}
+
+Killed(severity, corpsetype) {
+	return 0;
+}

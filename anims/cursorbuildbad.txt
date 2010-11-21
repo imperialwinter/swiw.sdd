@@ -1,0 +1,9 @@
+hotspot center
+frame  bitmaps/cursors/buildbad/buildbad01.png  0.100
+frame  bitmaps/cursors/buildbad/buildbad02.png  0.150
+frame  bitmaps/cursors/buildbad/buildbad03.png  0.300
+frame  bitmaps/cursors/buildbad/buildbad04.png  0.600
+frame  bitmaps/cursors/buildbad/buildbad05.png  1.000
+frame  bitmaps/cursors/buildbad/buildbad04.png  0.600
+frame  bitmaps/cursors/buildbad/buildbad03.png  0.300
+frame  bitmaps/cursors/buildbad/buildbad02.png  0.150

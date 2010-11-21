@@ -1,0 +1,60 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, sphere, pipe, upgreebles1, upgreebles2, greebles, crates, c1, c2, c3, smoke1;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 sphere
+#define SMOKEPIECE3 upgreebles1
+#define SMOKEPIECE4 upgreebles2
+#include "general/smokeunit_sws.h"
+
+#define smoke 1024+0
+
+SmokeStack() {
+	while(1) {
+		if(get ACTIVATION) {
+			emit-sfx smoke from smoke1;
+		}
+		sleep 100;
+	}
+}
+
+Create() {
+	turn base to y-axis rand(<-20>,<20>) now;
+	turn crates to y-axis rand(<-160>,<160>) now;
+	turn c1 to y-axis rand(<-40>,<25>) now;
+	turn c2 to y-axis rand(<0>,<70>) now;
+	turn c3 to y-axis rand(<-50>,<0>) now;
+	start-script SmokeStack();
+	start-script SmokeUnit_SWS();
+}
+
+Activate() {
+	return 0;
+}
+
+Deactivate() {
+	return 0;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

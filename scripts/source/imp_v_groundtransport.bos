@@ -1,0 +1,188 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece base, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6; 
+piece hatch, rotate, gun, barrel, flare, storm_body, storm_head, storm_uparms, storm_loarms;
+piece shoulder, arm;
+
+static-var  men, RandomSeed, LockoutWheels, manup, bMoving;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 wheel1
+#define SMOKEPIECE3 wheel5
+#define SMOKEPIECE4 rotate
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_RED 1024+1
+
+setSFXoccupy(crap) {
+	var random;
+	random = rand(200,300);
+	while(1) {
+		crap = get GROUND_WATER_HEIGHT(get PIECE_XZ(base)) / [1];
+	//	get PRINT(crap);
+		if(crap <= -10) {
+			move base to y-axis [-20] speed [30];
+			if(bMoving) {
+				set UPRIGHT to 1;
+				emit-sfx 5 from wheel1;
+				emit-sfx 5 from wheel4;
+				emit-sfx 5 from base;
+			}
+		}
+		if(crap > -10 and crap < 0) {
+			move base to y-axis [0] speed [30];
+			set UPRIGHT to 0;
+		}
+		if(crap >= 0) {
+			move base to y-axis [0] speed [30];
+			set UPRIGHT to 0;
+		}
+		sleep random;
+	}
+}
+
+TransportPickup(unitid) {
+	if(get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [200]) {
+		attach-unit unitid to base;
+		++men;
+	}
+}
+
+TransportDrop(unitid, position) {
+	var depth, pos;
+	depth = get GROUND_HEIGHT(get PIECE_XZ(base));
+	if(depth < 3) {
+		return 0;
+	}
+	pos = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+	set BUSY to 1;
+	turn shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+	attach-unit unitid to arm;
+	move arm to z-axis pos speed [10000];
+	wait-for-move arm along z-axis;
+	drop-unit unitid;
+	move arm to z-axis [0] now;
+	wait-for-move arm along z-axis;
+	sleep 1;
+	set BUSY to 0;
+	--men;
+}
+
+StartMoving() {
+	if(LockoutWheels) {
+		return 0;
+	}
+	spin wheel1 around x-axis speed <190> accelerate <75>;
+	spin wheel2 around x-axis speed <190> accelerate <75>;
+	spin wheel3 around x-axis speed <190> accelerate <75>;
+	spin wheel4 around x-axis speed <190> accelerate <75>;
+	spin wheel5 around x-axis speed <190> accelerate <75>;
+	spin wheel6 around x-axis speed <190> accelerate <75>;
+	bMoving=1;
+}
+
+StopMoving() {
+	bMoving=0;
+	stop-spin wheel1 around x-axis;
+	stop-spin wheel2 around x-axis;
+	stop-spin wheel3 around x-axis;
+	stop-spin wheel4 around x-axis;
+	stop-spin wheel5 around x-axis;
+	stop-spin wheel6 around x-axis;
+}
+
+RestoreAfterDelay() {
+	sleep 3000;
+	turn rotate to y-axis <0> speed <90>;
+	turn gun to x-axis <0> speed <90>;
+}
+
+GunMonitor() {
+	while(1) {
+		if(men > 3 and !manup) {
+			turn hatch to z-axis <-170> speed <150>;
+			wait-for-turn hatch around z-axis;
+			move storm_body to y-axis [7.5] speed [10];
+			turn storm_uparms to x-axis <0> speed <60>;
+			turn storm_loarms to x-axis <0> speed <60>;
+			wait-for-turn storm_loarms around x-axis;
+			manup = 1;
+		}
+		if(men < 4 and manup) {
+			manup = 0;
+			turn storm_loarms to x-axis <50> speed <60>;
+			turn storm_uparms to x-axis <20> speed <60>;
+			move storm_body to y-axis [0] speed [12.5];
+			wait-for-turn storm_loarms around x-axis;
+			wait-for-move storm_body along y-axis;
+			turn hatch to z-axis <0> speed <60>;
+			wait-for-turn hatch around z-axis;
+			start-script RestoreAfterDelay();
+		}
+		sleep 500;
+	}
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	if(!manup) {
+		return 0;
+	}
+	turn rotate to y-axis heading speed <120>;
+	turn gun to x-axis 0 - pitch speed <120>;
+	wait-for-turn rotate around y-axis;
+	wait-for-turn gun around x-axis;
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+FireWeapon1() {
+	emit-sfx MED_MUZZLE_FLASH_FX_RED from flare;	
+	move barrel to z-axis [-2.5] speed [1250];
+	wait-for-move barrel along z-axis;
+	move barrel to z-axis [0] speed [25];
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = storm_head;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = flare;
+}
+
+Create() {
+	RandomSeed = rand(100,300);
+	hide flare;
+	turn storm_uparms to x-axis <20> now;
+	turn storm_loarms to x-axis <50> now;
+	men = 0;
+	manup = 0;
+	start-script SmokeUnit_SWS();
+	start-script GunMonitor();
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		explode gun type FALL;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		explode gun type FALL;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

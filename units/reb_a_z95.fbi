@@ -1,0 +1,67 @@
+[unitinfo]
+{
+	unitname=reb_a_z95;
+	objectname=rebel/a-z95.s3o;
+	buildpic=reb_a_z95.png;
+	icontype=air_light;
+	soundcategory=reb-a-twing;
+	category=VTOL;
+
+	name=Z-95 Headhunter;
+	description=Fighter;
+	side=Rebels;
+	maxdamage=600;
+	idleautoheal=0;
+	buildcostmetal=195;
+	buildcostenergy=3900;
+	buildtime=33;
+	footprintx=3;
+	footprintz=3;
+	mass=250000;
+	cobid=67;
+	collisionVolumeType=box;
+	collisionVolumeScales=32 16 64;
+	collisionVolumeOffsets=0 0 0;
+
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	energyuse=15;
+
+	sightdistance=400;
+
+	canmove=1;
+	maxvelocity=6.8;
+	acceleration=1.5;
+	brakerate=0.5;
+	turnrate=400;
+
+	maxAcc=.35;
+	maxRudder=.004;
+	maxElevator=.006;
+	maxAileron=.005;
+
+	canfly=1;
+	cruisealt=250;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=TIE_BLAST;
+	selfdestructas=TIE_BLAST;
+
+	weapon1=reb_a_z95;
+	onlytargetcategory1=GROUND;
+	weapon2=reb_a_z95_laser;
+	onlytargetcategory2=GROUND VTOL;
+	badtargetcategory2=GROUND;
+	weaponmaindir2=0 0 1;
+	maxangledif2=60;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:exhaust_z95;
+		explosiongenerator2=custom:constdust;
+		explosiongenerator3=custom:sfx_flame;
+		explosiongenerator4=custom:sfx_electric;
+	}
+}

@@ -1,0 +1,39 @@
+[unitinfo]
+{
+	unitname=imp_pf_flagadv1;
+	objectname=nullpoint.s3o;
+	buildpic=imp_is_assault.bmp;
+	category=FLAG;
+
+	name=Strategic Control Building;
+	description=Holds Territory;
+	side=Empire;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=1;
+	buildcostenergy=1;
+	buildtime=1;
+	footprintx=1;
+	footprintz=1;
+	cobid=49;
+
+	canrepeat=0;
+	shownanoframe=0;
+	levelground=0;
+
+	extractsmetal=0.0009;
+	metalstorage=50;
+	energyuse=15;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	maxslope=10;
+	maxwaterdepth=5;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+	[customparams] {
+		dontcount=1;
+	}
+}

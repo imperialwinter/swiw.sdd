@@ -1,0 +1,69 @@
+[unitinfo]
+{
+	unitname=reb_i_veterantrooper;
+	objectname=rebel/i-veterantrooper.s3o;
+	buildpic=reb_i_veterantrooper.png;
+	icontype=inf_medium;
+	soundcategory=reb-i-commando;
+	category=GROUND INFANTRY;
+
+	name=Commando;
+	description=Alliance Commando;
+	side=Rebels;
+	maxdamage=260;
+	buildcostmetal=50;
+	buildcostenergy=400;
+	buildtime=42;
+	footprintx=1;
+	footprintz=1;
+	mass=100;
+	cobid=83;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=650;
+	stealth=1;
+	seismicdistance=1200;
+	seismicsignature=0;
+
+	cancapture=1;
+
+	cloakcost=5;
+	cloakcostmoving=10;
+	mincloakdistance=0; //50
+	initcloaked=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.85;
+	acceleration=0.14;
+	brakerate=0.25;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=REB_HUMAN_BLAST;
+	selfdestructas=REB_HUMAN_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=reb_i_veterantrooperlaser;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=190;
+	weapon2=reb_i_veterantrooperlaser;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_RED;
+	}
+}
+
+[customparams]
+	{
+		decloakdistance=65;
+	}

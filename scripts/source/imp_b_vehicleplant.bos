@@ -1,0 +1,128 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, poles, fldoor, frdoor, tldoor, trdoor, bpt, s1, s2, s3, s4;
+
+static-var  isBuilding, isBuildingNow;
+
+#define SIG_ACTIVATE			2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define BUILDER_SPARKS_FX 1024+1
+
+OpenDoors() {
+	turn tldoor to z-axis <90> speed <50>;
+	turn trdoor to z-axis <-90> speed <50>;
+	turn fldoor to y-axis <90> speed <50>;
+	turn frdoor to y-axis <-90> speed <50>;
+	wait-for-turn tldoor around z-axis;
+	wait-for-turn fldoor around y-axis;
+	move tldoor to y-axis [-37.5] speed [75];
+	move trdoor to y-axis [-37.5] speed [75];
+	wait-for-move tldoor along y-axis;
+	move bpt to y-axis [0] now;
+}
+
+CloseDoors(delay) {
+	sleep 5000;
+	move tldoor to y-axis [0] speed [50];
+	move trdoor to y-axis [0] speed [50];
+	wait-for-move tldoor along y-axis;
+	turn tldoor to z-axis <0> speed <50>;
+	turn trdoor to z-axis <0> speed <50>;
+	turn fldoor to y-axis <0> speed <50>;
+	turn frdoor to y-axis <0> speed <50>;
+}
+
+BuildStarted(unitID) {
+	var unitprog;
+	while(get UNIT_BUILD_PERCENT_LEFT(unitID)) {
+		unitprog = get UNIT_BUILD_PERCENT_LEFT(unitID);
+		if(unitprog <= 20) {
+			start-script OpenDoors();
+		}
+		sleep 100;
+	}
+	start-script CloseDoors(5000);
+}
+
+BuildScript() {
+	while(TRUE) {
+		if(isBuilding) {
+			sleep 100;
+			set BUGGER_OFF to 1;
+			set YARD_OPEN to 1;
+			set INBUILDSTANCE to 1;
+			isBuildingNow = TRUE;
+		}
+		if(isBuilding) {
+			sleep 100;
+		}	
+		while(!isBuilding) {
+			sleep 2000;
+			isBuildingNow = FALSE;
+			sleep 1;
+			set BUGGER_OFF to 0;
+			set YARD_OPEN to 0;
+			set INBUILDSTANCE to 0;
+		}
+	}
+}
+
+Create() {
+	start-script BuildScript();
+	start-script SmokeUnit_SWS();
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = bpt;
+}
+
+Activate() {
+	signal SIG_ACTIVATE;
+	isBuilding = TRUE;
+}
+
+Deactivate() {
+	signal SIG_ACTIVATE;
+	set-signal-mask SIG_ACTIVATE;
+	isBuilding = FALSE;
+}
+
+StartBuilding(heading,pitch) {
+	move bpt to y-axis [-75] now;
+}
+
+StopBuilding() {
+}
+
+QueryBuildInfo(piecenum) {
+	piecenum = bpt;
+}
+
+Killed(severity, corpsetype)
+{
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

@@ -1,0 +1,64 @@
+[imp_i_eweb]
+{
+	name=E-Web Repeating Blaster;
+	rendertype=1;
+	turret=1;
+	tolerance=500;
+	interceptedbyshieldtype=2;
+	explosiongenerator=custom:hit_red_s;
+	explosionspeed=65536;
+	cegtag=light_sm_red;
+
+	lineofsight=1;
+	firestarter=0;
+
+	range=600;
+	reloadtime=0.17;
+	energypershot=2;
+//	burst=2;
+//	burstrate=0.19;
+
+	sprayangle=100;
+	targetmoveerror=0.05;
+	weaponvelocity=600;
+	areaofeffect=48;
+
+	soundstart=imp_inf_EWEB_fire;
+	soundstartvolume=10;
+	soundhit=LASRHIT1;
+	soundhitvolume=10;
+
+	avoidfriendly=1;
+	collidefriendly=0;
+	avoidfeature=0;
+	collidefeature=1;
+	noselfdamage=1;
+
+	rgbcolor=1.0 0.1 0;
+	rgbcolor2=1 0.3 0.1;
+
+	beamweapon=1;
+	thickness=2.5;
+	duration=0.02;
+	intensity=0.85;
+
+	collisionsize=16;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=002_fancy_plasmabolt;
+	texture2=beam_no_ends;
+
+	[damage]
+	{
+		default=40;
+		no_armor=40;
+		light_armor=40;
+		medium_armor=40;
+		heavy_armor=40;
+		ion_damage=40;
+		flag=0.000001;
+	}
+}

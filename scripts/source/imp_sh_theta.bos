@@ -1,0 +1,8 @@
+piece base;
+
+Create() {
+	sleep 100;
+}
+
+Killed(severity, corpsetype) {
+}

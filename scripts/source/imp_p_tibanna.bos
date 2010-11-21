@@ -1,0 +1,62 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, hangar, silo, lfans, tower, tfans, pipes;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 hangar
+#define SMOKEPIECE3 silo
+#define SMOKEPIECE4 pipes
+#include "general/smokeunit_sws.h"
+
+#define tibsmoke 1024+1
+
+Sounds() {
+	play-sound("imp_b_droidplant/fan_whoosh",3);
+	#define fan 0
+}
+
+Tibanna() {
+	while(1) {
+	//	emit-sfx tibsmoke from tower;
+		get PLAY_SOUND(fan, 32768, 0, 0);
+		sleep 1150;
+	}
+}
+
+Create() {
+	while(get BUILD_PERCENT_LEFT) {
+		sleep 100;
+	}
+	spin lfans around y-axis speed <10> * rand(1,10);
+	spin tfans around y-axis speed <10> * rand(1,10);
+	start-script SmokeUnit_SWS();
+	start-script Tibanna();
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		explode silo type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type FALL | FIRE | SMOKE | BITMAP;
+		explode hangar type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode hangar type FALL | FIRE | SMOKE | BITMAP;
+		explode tower type SHATTER | BITMAP;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode tower type FALL | FIRE | SMOKE | BITMAP;
+	explode silo type SHATTER | BITMAP;
+	explode base type BITMAP;
+}

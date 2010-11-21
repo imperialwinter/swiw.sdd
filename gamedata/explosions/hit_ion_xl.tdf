@@ -1,0 +1,45 @@
+//96 diameter
+
+[hit_ion_xl] {
+	usedefaultexplosions=0;
+	
+	[lightning] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=-48 r96, r48, -48 r96;
+			delay=r24;
+			explosionGenerator=custom:inc_ion_lightning;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=24;
+	}
+	
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -12 r24, -12 r24, -12 r24;
+			width=16 r16;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.125;
+			color=0.75,0.75,1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=8; 
+	}
+	
+	[groundflash]{
+		flashsize=96;
+		flashalpha=0.5;
+		circlegrowth=6;
+		circlealpha=0;
+		ttl=12;
+		color=1,1,1;
+	}
+}

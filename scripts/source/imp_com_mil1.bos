@@ -1,0 +1,64 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+#include "imp_commander/pieces.h"
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 dishriser
+#define SMOKEPIECE3 shield1
+#define SMOKEPIECE4 shield2
+#include "general/smokeunit_sws.h"
+
+#include "imp_commander/l1aa.h"
+#include "imp_commander/build.h"
+
+Create()
+{
+	//flares are ALWAYS hidden
+	#include "imp_commander/create_flares.h"
+	
+	//next, hide the inactive upgrades for this variant
+	hide banners;
+	hide shield1; hide shield2;
+	hide dishriser; hide dishturret; hide dish;
+	hide tl1base; hide tl1turret; hide tl1sleeves; hide tl1b1; hide tl1b2;
+	hide tl2base; hide tl2turret; hide tl2sleeves; hide tl2b1; hide tl2b2;
+	hide tl3base; hide tl3turret; hide tl3sleeves; hide tl3b1; hide tl3b2;
+	hide tl4base; hide tl4turret; hide tl4sleeves; hide tl4b1; hide tl4b2;
+	hide l2aa1base; hide l2aa1turret; hide l2aa1b1; hide l2aa1b2; hide l2aa1b3; hide l2aa1b4;
+	hide l2aa2base; hide l2aa2turret; hide l2aa2b1; hide l2aa2b2; hide l2aa2b3; hide l2aa2b4;
+
+	turn l1aa1base to y-axis <-90> now;
+	turn l1aa2base to y-axis <90> now;
+
+	move l1aa1base to y-axis [213.5] now;
+	move l1aa2base to y-axis [213.5] now;
+	move wall to y-axis [200] now;
+
+	aa_1 = -1;
+	aa_2 = -1;
+
+	start-script SmokeUnit_SWS();
+	start-script BuildScript();
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

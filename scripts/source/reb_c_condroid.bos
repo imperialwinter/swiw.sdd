@@ -1,0 +1,254 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, rod, eye, ball;
+piece  luparm, larm1, larm2, lhand, lclaw1, lclaw2;
+piece  ruparm, rarm1, rarm2, rarm3, rhand, rclaw1, rclaw2, rpt;
+piece  sparks, eye_fx;
+
+static-var  isBuilding, isMoving, overWater, randomSleep, animation;
+
+#define SMOKEPIECE1 rod
+#define SMOKEPIECE2 ball
+#define SMOKEPIECE3 ball
+#define SMOKEPIECE4 rod
+#include "general/smokeunit_sws.h"
+
+#define UNIT_ROOT base
+#define UNIT_BELOW_GROUND_DIST [-40]
+#define UNIT_RISE_SPEED [4]
+#define DUSTFX 1024+3
+#define DUSTFXPT1 eye
+#include "general/rebel_unit_build.h"
+
+#define BUILDER_EYE_FX 1024+1
+#define BUILDER_SPARKS_FX 1024+2
+
+Sounds() {
+	play-sound("Argh_Electrical_Crackle_Short",25);
+    #define crackle_short 0
+	play-sound ("Argh_Hydraulic_Low", 25);
+    #define hydraulic_low 1
+	play-sound ("Argh_Hydraulic_High", 25);
+    #define hydraulic_high 2
+}
+
+BuilderScript() {
+	while(1) {
+		randomSleep = rand(1000, 1500);
+		while(isBuilding) {
+			animation = rand(1, 5);
+			if(animation == 1) {
+				move rarm2 to y-axis [0] speed [50];
+				turn ruparm to x-axis <0> speed <20>;
+				turn larm1 to z-axis <0> speed <20>;
+				turn lhand to z-axis <0> speed <20>;
+				turn lclaw1 to z-axis <40> speed <20>;
+				turn lclaw2 to z-axis <-40> speed <20>;
+				turn rclaw1 to x-axis <40> speed <20>;
+				turn rclaw2 to x-axis <-40> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks;
+				get PLAY_SOUND(crackle_short, 196608, 0, 0);
+			}
+			if(animation == 2) {
+				turn ruparm to x-axis <-15> speed <20>;
+				turn rarm3 to x-axis <-20> speed <20>;
+				turn lclaw1 to z-axis <20> speed <20>;
+				turn lclaw2 to z-axis <-20> speed <20>;
+				turn rclaw1 to x-axis <20> speed <20>;
+				turn rclaw2 to x-axis <-20> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks;
+				get PLAY_SOUND(hydraulic_low, 196608, 0, 0);
+			}	
+			if(animation == 3) {
+				turn luparm to x-axis <-60> speed <20>;
+				move rarm2 to y-axis [3.75] speed [50]; 
+				turn rarm3 to x-axis <-40> speed <20>;
+				turn lclaw1 to z-axis <0> speed <20>;
+				turn lclaw2 to z-axis <0> speed <20>;
+				turn rclaw1 to x-axis <10> speed <20>;
+				turn rclaw2 to x-axis <-10> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks;
+				get PLAY_SOUND(crackle_short, 196608, 0, 0);
+			}	
+			if(animation == 4) {
+				turn ruparm to x-axis <40> speed <20>;
+				turn rarm3 to x-axis <-70> speed <20>;
+				turn rhand to x-axis <-10> speed <20>;
+				turn lclaw1 to z-axis <20> speed <20>;
+				turn lclaw2 to z-axis <20> speed <20>;
+				turn rclaw1 to x-axis <20> speed <20>;
+				turn rclaw2 to x-axis <-20> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks;
+				get PLAY_SOUND(hydraulic_high, 196608, 0, 0);
+			}
+			if(animation == 5) {
+				move rarm2 to y-axis [0] speed [50];
+				turn ruparm to x-axis <20> speed <20>;
+				turn rarm1 to x-axis <-65> speed <20>;
+				turn rarm3 to x-axis <-60> speed <20>;
+				turn rhand to y-axis <90> speed <20>;
+				turn luparm to x-axis <-35> speed <20>;
+				turn larm1 to z-axis <40> speed <20>;
+				turn larm2 to z-axis <80> speed <20>;
+				turn lhand to z-axis <40> speed <20>;
+				turn lclaw1 to z-axis <0> speed <20>;
+				turn lclaw2 to z-axis <0> speed <20>;
+				turn rclaw1 to x-axis <0> speed <20>;
+				turn rclaw2 to x-axis <0> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks;
+				get PLAY_SOUND(crackle_short, 196608, 0, 0);
+			}
+			sleep randomSleep;
+		}
+		sleep randomSleep;
+	}		
+}
+
+MoveAnimation() {
+	randomSleep = rand(500,1500);
+	if(isMoving) {
+		turn ball to x-axis <25> speed <90>;
+		turn luparm to x-axis <25> speed <90>;
+		turn ruparm to x-axis <25> speed <90>;
+		sleep randomSleep;
+	}
+	if(isMoving) {	
+		turn ball to x-axis <-10> speed <60>;
+		turn luparm to x-axis <-10> speed <60>;
+		turn ruparm to x-axis <-10> speed <60>;
+		sleep randomSleep;
+	}
+	if(isMoving) {
+		turn ball to x-axis <0> speed <40>;
+		turn luparm to x-axis <0> speed <40>;
+		turn ruparm to x-axis <0> speed <40>;
+		sleep randomSleep;
+	}
+}
+
+MotionControl(just_moved, RandomSeed) {
+	RandomSeed = rand (200,250);
+	just_moved = TRUE;
+	while(1) {
+		if(isMoving) {
+			if(isBuilding) {
+				sleep RandomSeed * 2;
+			}
+			if(!isBuilding) {
+				turn rarm1 to x-axis <-65> speed <150>;
+				turn rarm3 to x-axis <-60> speed <150>;
+				turn rhand to y-axis <90> speed <150>;
+				turn larm1 to z-axis <40> speed <150>;
+				turn larm2 to z-axis <80> speed <150>;
+				turn lhand to z-axis <40> speed <150>;
+				call-script MoveAnimation();
+			}
+			just_moved = TRUE;
+		}
+		if(!isMoving) {
+			if(just_moved and isBuilding) {
+				just_moved = FALSE;
+			}
+			if(just_moved and !isBuilding) {
+				turn rod to y-axis <0> speed <200>;
+				turn ruparm to x-axis <20> speed <150>;
+				turn rarm1 to x-axis <-65> speed <150>;
+				turn rarm3 to x-axis <-60> speed <150>;
+				turn rhand to y-axis <90> speed <150>;
+				turn luparm to x-axis <-35> speed <150>;
+				turn larm1 to z-axis <40> speed <150>;
+				turn larm2 to z-axis <80> speed <150>;
+				turn lhand to z-axis <40> speed <150>;
+				just_moved = FALSE;
+			}
+			sleep RandomSeed;
+		}
+	}
+}
+
+WakeFX(RandomSeed) {
+	while(1) {
+		RandomSeed = rand(150,400);
+		sleep RandomSeed;
+		emit-sfx BUILDER_EYE_FX from eye_fx;
+		if(overWater <= 3) {
+			emit-sfx 5 from base;
+			emit-sfx 3 from base;
+		}
+	}
+}
+
+setSFXoccupy(WaterLevel) {
+	overWater = WaterLevel;
+}
+
+Create() {
+	hide sparks;
+	hide eye_fx;
+	turn ruparm to x-axis <20> now;
+	turn rarm1 to x-axis <-65> now;
+	turn rarm3 to x-axis <-60> now;
+	turn rhand to y-axis <90> now;
+	turn luparm to x-axis <-35> now;
+	turn larm1 to z-axis <40> now;
+	turn larm2 to z-axis <80> now;
+	turn lhand to z-axis <40> now;
+
+	isMoving = 0;
+	isBuilding = 0;
+	overWater = 0;
+	
+	start-script WakeFX();
+	start-script SmokeUnit_SWS();
+	start-script BuilderScript();
+	start-script MotionControl();
+	call-script ConstructionAnim();
+	move base to y-axis 0 now;
+}
+
+StartMoving() {
+ 	isMoving = 1;
+}
+
+StopMoving() {
+	isMoving = 0;
+}
+
+StartBuilding(heading,pitch) {
+	isBuilding = 1;
+	turn rod to y-axis heading speed <100>;
+	wait-for-turn rod around y-axis;
+	set INBUILDSTANCE to 1;
+}
+
+StopBuilding() {
+	turn rod to y-axis <0> speed <100>;
+	set INBUILDSTANCE to 0;	
+	isBuilding = 0;
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = base;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode ball type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode ball type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode ball type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode ball type BITMAP;
+}

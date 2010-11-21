@@ -1,0 +1,57 @@
+[unitinfo]
+{
+	unitname=imp_i_flametrooper;
+	objectname=empire/i-flametrooper.s3o;
+	buildpic=imp_i_flametrooper.png;
+	icontype=inf_heavy;
+	soundcategory=imp-i-reptrooper;
+	category=GROUND INFANTRY;
+
+	name=Flame Trooper;
+	description=Imperial Flame-Thrower Soldier;
+	side=Empire;
+	maxdamage=270;
+	buildcostmetal=80;
+	buildcostenergy=300;
+	buildtime=11;
+	power=50;
+	footprintx=1;
+	footprintz=1;
+	mass=200;
+	cobid=30;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+	smoothanim=0;
+
+	sightdistance=500;
+	stealth=1;
+	seismicdistance=850;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.56;
+	acceleration=0.5;
+	brakerate=0.5;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=imp_flame_blast;
+	selfdestructas=IMP_FLAME_BLAST;
+
+	weapon1=imp_i_flametrooper;
+	onlytargetcategory1=INFANTRY DROID TANK WALKER DEFENSE BUILDING CONSTRUCTOR COMMANDER;
+	weaponmaindir1=0 0 1;
+	maxangledif1=190;
+	weapon2=imp_i_flametrooper;
+	onlytargetcategory2=INFANTRY DROID TANK WALKER DEFENSE BUILDING CONSTRUCTOR COMMANDER;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+	}
+}

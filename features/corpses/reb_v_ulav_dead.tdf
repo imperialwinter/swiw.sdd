@@ -1,0 +1,22 @@
+[reb_v_ulav_dead]
+{
+	object=wreckage/reb_v_ulav/seq1_1.s3o;
+	featuredead=reb_v_ulav_heap;
+	description=Wrecked ULAV;
+	metal=111;
+	damage=375;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
+[reb_v_ulav_heap]
+{
+	object=heaps/2x2C.s3o;
+	description=Wreckage;
+	metal=37;
+	damage=750;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

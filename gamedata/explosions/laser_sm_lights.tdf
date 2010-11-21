@@ -1,0 +1,48 @@
+[light_sm_red] {
+	[light_sm_red] {
+		class=CSimpleGroundFlash;
+		[properties] {
+			texture=groundflash;
+			size=15;
+			sizeGrowth=0;
+			ttl=5;
+			colorMap=1 0 0 0.1    0 0 0 0.01;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+[light_sm_blue] {
+	[light_sm_blue] {
+		class=CSimpleGroundFlash;
+		[properties] {
+			texture=groundflash;
+			size=15;
+			sizeGrowth=0;
+			ttl=5;
+			colorMap=0 0.1 0.9 0.1    0 0 0 0.01;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+[light_sm_green] {
+	[light_sm_green] {
+		class=CSimpleGroundFlash;
+		[properties] {
+			texture=groundflash;
+			size=15;
+			sizeGrowth=0;
+			ttl=5;
+			colorMap=0.1 0.9 0 0.1    0 0 0 0.01;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}

@@ -1,0 +1,35 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+Create() {
+	start-script SmokeUnit_SWS();
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type SHATTER | BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type SHATTER | BITMAP;
+}

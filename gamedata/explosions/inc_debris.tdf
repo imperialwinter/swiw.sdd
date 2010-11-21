@@ -1,0 +1,184 @@
+//dir sets direction
+//damage sets initial velocity, lasts ~1s per initial velocity
+
+[inc_debris] {
+	[debris] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, -0.1, 0;
+			colorMap=0 0 0 1   0 0 0 1   0 0 0 1   0 0 0 1   0 0 0 0;
+			Texture=debris;
+			airdrag=0.97;
+			particleLife=d20;
+			particleLifeSpread=d5;
+			numParticles=1;
+			particleSpeed=d0.5;
+			particleSpeedSpread=d1;
+			particleSize=8;
+			particleSizeSpread=4;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_debris2] {
+	[debris] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, -0.1, 0;
+			colorMap=0 0 0 1   0 0 0 1   0 0 0 1   0 0 0 1   0 0 0 0;
+			Texture=debris2;
+			airdrag=0.97;
+			particleLife=d20;
+			particleLifeSpread=d5;
+			numParticles=1;
+			particleSpeed=d0.5;
+			particleSpeedSpread=d1;
+			particleSize=16;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[inc_debris_flaming_light] {
+	[debris] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, -0.1, 0;
+			colorMap=1 1 1 1   1 1 0 1   1 0 0 1   0 0 0 1   0 0 0 0;
+			Texture=debris;
+			airdrag=0.97;
+			particleLife=d20;
+			particleLifeSpread=d5;
+			numParticles=1;
+			particleSpeed=d1;
+			particleSpeedSpread=0;
+			particleSize=8;
+			particleSizeSpread=4;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[trail] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, i0.02y0 -0.1x0x0, 0;
+			colorMap=0.25 0.25 0.25 0.5   0 0 0 0;
+			Texture=smokesmall;
+			airdrag=0.97;
+			particleLife=0.5 i0.01y0 d20x0;
+			particleLifeSpread=8;
+			numParticles=1;
+			particleSpeed=i0.02y0 d1x0;
+			particleSpeedSpread=0;
+			particleSize=8 i-0.1;
+			particleSizeSpread=1 i-0.01;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=50;
+	}
+}
+
+[inc_debris_flaming_dark] {
+	[debris] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, -0.1, 0;
+			colorMap=1 1 1 1   1 1 0 1   1 0 0 1   0 0 0 1   0 0 0 0;
+			Texture=debris;
+			airdrag=0.97;
+			particleLife=d20;
+			particleLifeSpread=d5;
+			numParticles=1;
+			particleSpeed=d1;
+			particleSpeedSpread=0;
+			particleSize=8;
+			particleSizeSpread=4;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[trail] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, i0.02y0 -0.1x0x0, 0;
+			colorMap=0.1 0.1 0.1 0.5   0 0 0 0;
+			Texture=smokesmall;
+			airdrag=0.97;
+			particleLife=0.5 i0.01y0 d20x0;
+			particleLifeSpread=8;
+			numParticles=1;
+			particleSpeed=i0.02y0 d1x0;
+			particleSpeedSpread=0;
+			particleSize=8 i-0.1;
+			particleSizeSpread=1 i-0.01;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=50;
+	}
+}

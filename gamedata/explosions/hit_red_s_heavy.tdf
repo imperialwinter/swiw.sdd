@@ -1,0 +1,245 @@
+// 32 diameter
+
+[hit_red_s_heavy] {
+	usedefaultexplosions=0;
+	
+	[anim] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 4, 0;
+			dir=-1 r2, -1 r2, -1 r2;
+			delay=0;
+			explosionGenerator=custom:inc_explosion3_slow;
+		}
+		ground=1;
+		count=1;
+	}
+	
+	[flames] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=-2 r4, 0, -2 r4;
+			dir=-1 r2, -1 r2, -1 r2;
+			delay=i4 r2;
+			damage=6 r2;
+			explosionGenerator=custom:hit_red_s_heavy_flames;
+		}
+		ground=1;
+		unit=1;
+		count=16;
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=-1 r2, 0.5 r0.5, -1 r2;
+			gravity=0, -0.1, 0;
+			colorMap=1 1 1 0.01   1 1 0.5 0.01   1 0.5 0 0.01   0 0 0 0;
+			Texture=plasma2;
+			airdrag=0.9;
+			particleLife=16;
+			particleLifeSpread=8;
+			numParticles=64;
+			particleSpeed=1;
+			particleSpeedSpread=4;
+			particleSize=0.5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=15 r60;
+			directional=1;
+		}
+		unit=1;
+		count=1;
+	}
+	
+	[miss] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;
+			explosionGenerator=custom:hit_red_s_heavy_miss;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[melt] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;
+			explosionGenerator=custom:inc_melt_m;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[steam] {
+		class=CExpGenSpawner;
+		[properties]
+		{
+			dir=dir;
+			pos=0, 0, 0; 
+			delay=i1;
+			explosionGenerator=custom:hit_red_s_heavy_steam; 
+		}
+		nounit=1;
+		count=12;
+	}
+	
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -4 r8, -4 r8, -4 r8;
+			width=4 r4;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.08;
+			color=1,0.1,0.1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=16; 
+	}
+	
+	[groundflash]{
+		flashsize=64;
+		flashalpha=0.75;
+		circlegrowth=3;
+		circlealpha=0;
+		ttl=12;
+		color=1,0,0;
+	}
+}
+
+[hit_red_s_heavy_miss] {
+	[dust]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.25 0.2 0.15 0.75  0 0 0 0;
+			size=3 r9;
+			length=8 r32;
+			sizeGrowth=1;
+			ttl=32;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=6;
+	}
+	
+	[dirt]{
+		class = CDirtProjectile;
+		[properties]{
+			alpha=255;
+			alphaFalloff=5;
+			size=6 r4;
+			sizeExpansion=0;
+			slowdown=0.95;
+			color=0.4 r0.1, 0.3 r0.1, 0.2 r0.1;
+			texture=randdots;
+			pos=-2 r4, 2 r2, -2 r4;
+			speed=-2 r4, 2 r2, -2 r4;
+		}
+		ground=1;
+		count=24;
+	}
+	
+	[dust_dark]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.2 0.15 0.1 0.75  0 0 0 0;
+			size=3 r9;
+			length=8 r32;
+			sizeGrowth=1;
+			ttl=32;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=6;
+	}
+	
+	[water]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.45 0.45 0.5 0.5  0 0 0 0; 
+			size=3 r9;
+			length=8 r32;
+			sizeGrowth=1;
+			ttl=32;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		water=1;
+		count=12;
+	}
+}
+
+[hit_red_s_heavy_steam] {
+	[steam]{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 1, 0;
+			colorMap=0.5 0.5 0.5 0.5   0.05 0.05 0.05 0.05;
+			Texture=smokesmall;
+			airdrag=0.75;
+			particleLife=12;
+			particleLifeSpread=8;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=2;
+			particleSize=6;
+			particleSizeSpread=4;
+			emitRot=0;
+			emitRotSpread=5;
+			directional=0;
+			alwaysVisible=0;
+		}
+		water=1;
+		count=1;
+	}
+}
+
+[hit_red_s_heavy_flames] {
+	[flames] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 4, 0;
+			dir=-1 r2, -1 r2, -1 r2;
+			delay=0;
+			damage=6 r2;
+			explosionGenerator=custom:inc_explosion2_slowrise;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[groundflash]{
+		flashsize=24;
+		flashalpha=0.125;
+		circlegrowth=3;
+		circlealpha=0;
+		ttl=16;
+		color=1,0.75,0.5;
+	}
+}

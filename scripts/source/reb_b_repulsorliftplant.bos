@@ -1,0 +1,139 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  root, scaffolds, dustrot, dust1, dust2;
+piece  base, tower, crates, nrg1base, nrg1, nrg2base, nrg2, thing, tent, bpt;
+piece  crane, farm1, farm2, farm3, rarm1, rarm2, rarm3;
+
+static-var  isBuilding, isBuildingNow;
+
+#define SIG_ACTIVATE			2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 tower
+#define SMOKEPIECE3 crane
+#define SMOKEPIECE4 nrg1
+#include "general/smokeunit_sws.h"
+
+#define BUILDER_SPARKS_FX 1024+1
+#define constdust 1024+2
+
+#define SCAFFOLD_PIECE scaffolds
+#define SCAFFOLD_BELOW_GROUND_DIST [-150]
+#define BUILDING_ROOT base
+#define BUILDING_BELOW_GROUND_DIST [-100]
+#define BUILDING_RISE_SPEED [1.75]
+#define DUSTFX 1024+2
+#define DUST_ROOT dustrot
+#define DUSTFXPT1 dust1
+#define DUSTFXPT2 dust2
+#define EXTRA	spin nrg1 around y-axis speed <10>;\
+				spin nrg2 around y-axis speed <10>;\
+				turn tent to z-axis <0> speed <30>;
+
+#include "general/scaffolds.h"
+
+BuildStarted(unitID) {
+	var unitprog, cobid;
+	isBuildingNow = TRUE;
+	cobid = get COB_ID(unitid);
+	while(get UNIT_BUILD_PERCENT_LEFT(unitID)) {
+		unitprog = get UNIT_BUILD_PERCENT_LEFT(unitID);
+		if(unitprog <= 10) {
+		//	if(cobid == 60 OR cobid == 65) { //airspeeder or vwing
+				turn tent to z-axis <-90> speed <30>;
+		//	}
+		}
+		sleep 100;
+	}
+	isBuildingNow = FALSE;
+	sleep 2000;
+	turn tent to z-axis <0> speed <30>;
+}
+
+ArmAnims() {
+	if(isBuildingNow) {
+		move crane to z-axis ([1] * rand(0,107)) speed [30];
+		turn farm1 to z-axis rand(<-60>,<-20>) speed <120>;
+		turn farm2 to z-axis rand(<-120>,<-80>) speed <120>;
+		turn farm3 to z-axis <180> speed <120>;
+		turn rarm1 to z-axis rand(<-60>,<-20>) speed <120>;
+		turn rarm2 to z-axis rand(<-120>,<-80>) speed <120>;
+		turn rarm3 to z-axis <180> speed <120>;
+		emit-sfx BUILDER_SPARKS_FX from farm3;
+		emit-sfx BUILDER_SPARKS_FX from rarm3;
+		wait-for-move crane along x-axis;
+	}
+}
+
+BuildScript() {
+	while(1) {
+		if(isBuilding) {
+			sleep 100;
+			set BUGGER_OFF to 1;
+			set YARD_OPEN to 1;
+			set INBUILDSTANCE to 1;
+			start-script ArmAnims();		
+		}
+		if(!isBuilding) {
+			sleep 2000;
+			isBuildingNow = FALSE;
+			set BUGGER_OFF to 0;
+			set YARD_OPEN to 0;
+			set INBUILDSTANCE to 0;
+			move crane to z-axis [0] speed [30];
+		}
+		sleep 10;
+	}
+}
+
+Create() {
+	isBuilding = 0;
+	isBuildingNow = 0;
+	turn tent to z-axis <-90> now;
+	start-script SmokeUnit_SWS();
+	start-script BuildScript();
+	call-script ConstructionAnim();
+	move BUILDING_ROOT to y-axis [0] now;
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = bpt;
+}
+
+Activate() {
+	signal SIG_ACTIVATE;
+	isBuilding = TRUE;
+}
+
+Deactivate() {
+	signal SIG_ACTIVATE;
+	set-signal-mask SIG_ACTIVATE;
+	isBuilding = FALSE;
+}
+
+QueryBuildInfo(piecenum) {
+	piecenum = bpt;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+	return 0;
+}

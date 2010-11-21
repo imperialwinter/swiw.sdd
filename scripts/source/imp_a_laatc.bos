@@ -1,0 +1,124 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  body, wings, larm, rarm, lgun, lpt, rgun, rpt, link, cockpit, r_flare, l_flare, rarm_FX, larm_FX;
+
+static-var  gun_1, buildPercent, parentID;
+
+#define SMOKEPIECE1 body
+#define SMOKEPIECE2 rarm
+#define SMOKEPIECE3 wings
+#define SMOKEPIECE4 wings
+#include "general/smokeunit_sws.h"
+
+#define SMALL_MUZZLE_FLASH_FX_RED 1024+1
+
+/*
+#define SIG_DROPSHIP 2
+
+lua_KillMe(selfD, reclaim) { return 0; }
+
+TakeoffAnim() {
+	signal SIG_DROPSHIP;
+	move body to y-axis [1000] speed [100];
+	wait-for-move body along y-axis;
+	call-script lua_KillMe(0, 1);
+}
+
+LandingAnim() {
+	set-signal-mask SIG_DROPSHIP;
+	turn rarm to z-axis <0> now;
+	turn larm to z-axis <0> now;
+	buildPercent = get UNIT_BUILD_PERCENT_LEFT(parentID);
+	while(buildPercent != -1) {
+		move body to y-axis [0 + buildPercent] now;
+		buildPercent = get UNIT_BUILD_PERCENT_LEFT(parentID);
+		get PRINT(buildPercent);
+	}
+	turn rarm to z-axis <75> now;
+	turn larm to z-axis <-75> now;
+	call-script TakeoffAnim();
+}
+
+DropshipUnit(unitID) {
+}
+
+BuildStarted(unitID) {
+	move body to y-axis [1000] now;
+	parentID = unitid;
+	get PRINT(unitID);
+	SET MAX_SPEED to 1;
+	start-script LandingAnim();
+}
+*/
+Create() {
+	gun_1 = 0;
+	turn rarm to z-axis <75> now;
+	turn larm to z-axis <-75> now;
+}
+
+QueryWeapon1(piecenum) {
+	if(!gun_1) {
+		piecenum = lpt;
+	}
+	if(gun_1) {
+		piecenum = rpt;
+	}
+}
+ 
+FireWeapon1() {
+	if(!gun_1) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from l_flare;
+	}
+	if(gun_1) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from r_flare;
+	}
+	gun_1 = !gun_1;
+}
+ 
+AimWeapon1(heading, pitch) {
+	turn lpt to x-axis 0 - pitch now;
+	turn lpt to y-axis heading now;
+	turn rpt to x-axis 0 - pitch now;
+	turn rpt to y-axis heading now;
+	return(1);
+}
+ 
+AimFromWeapon1(piecenum) {
+	piecenum = cockpit;
+}
+ 
+QueryTransport(piecenum, springsucks) {
+	piecenum = link;
+}
+ 
+BeginTransport(height) {
+	move link to y-axis (0 - height) now;
+	turn rarm to z-axis <35> now;
+	turn larm to z-axis <-35> now;
+}
+ 
+EndTransport() {
+	turn rarm to z-axis <75> now;
+	turn larm to z-axis <-75> now;
+}
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode body type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode body type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode body type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode body type BITMAP;
+}

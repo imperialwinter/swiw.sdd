@@ -1,0 +1,72 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece	root, base, turret, flare, scaffolds, dustrot, dust1;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 turret
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 turret
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_RED 1024+2
+
+#define SCAFFOLD_PIECE scaffolds
+#define SCAFFOLD_BELOW_GROUND_DIST [-50]
+#define BUILDING_ROOT base
+#define BUILDING_BELOW_GROUND_DIST [-75]
+#define BUILDING_RISE_SPEED [5.25]
+#define DUSTFX 1024+1
+#define DUST_ROOT dustrot
+#define DUSTFXPT1 dust1
+
+#include "general/scaffolds.h"
+
+Create() {
+	hide flare;
+	start-script SmokeUnit_SWS();
+	call-script ConstructionAnim();
+	move BUILDING_ROOT to y-axis [0] now;
+}
+
+RestoreAfterDelay() {
+	sleep 30000;
+	turn turret to y-axis 0 speed <30>;
+	turn flare to x-axis 0 speed <30>;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = turret;
+	return 0;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = flare;
+	return 0;
+}
+
+FireWeapon1() {
+	emit-sfx MED_MUZZLE_FLASH_FX_RED from flare;
+	return 0;
+}
+
+AimWeapon1(heading,pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	if(pitch > <30>) {
+		set CHANGE_TARGET to 1;
+	}
+	turn turret to y-axis heading speed <110>;
+	turn flare to x-axis 0 - pitch speed <54>;
+	wait-for-turn turret around y-axis;
+	wait-for-turn flare around x-axis;
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+Killed(severity, corpsetype) {
+	explode turret type FALL | SMOKE | FIRE;
+	hide base;
+	return(0);	
+}

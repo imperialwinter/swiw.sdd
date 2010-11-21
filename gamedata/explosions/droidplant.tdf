@@ -1,0 +1,21 @@
+[droidpflash] {
+	[exhaust] {
+		class=CBitmapMuzzleFlame;
+		[properties] {
+			dir=dir;
+			colorMap=1 1 0.1 0.01	0.6 0.6 0 0.01	0 0 0 0.01;
+			size=60;
+			length=20;
+			sizeGrowth=0;
+			ttl=4;
+			frontOffset=0.05;
+			sideTexture=blank;
+			frontTexture=uglynovaexplo;
+		}
+		water=1;
+		air=1;
+		underwater=1;
+		ground=1;
+		count=1;
+	}
+}

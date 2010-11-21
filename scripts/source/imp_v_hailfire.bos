@@ -1,0 +1,133 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, lpipes, lmount, lwheel, rpipes, rmount, rwheel, lpod, lflare, rpod, rflare;
+
+static-var  restore_delay, gun_1, bAiming, bMoving;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 rmount
+#define SMOKEPIECE3 lpod
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define cis_v_hailfire_firefx 1024+1
+
+StartMoving() {
+	spin rwheel around x-axis speed <150>;
+	spin lwheel around x-axis speed <150>;
+	bMoving = 1;
+}
+
+StopMoving() {
+	spin rwheel around x-axis speed <0>;
+	spin lwheel around x-axis speed <0>;
+	bMoving = 0;
+}
+
+Create() {
+	restore_delay = 3000;
+	gun_1 = 0;
+	bAiming = 0;
+	bMoving = 0;
+	turn rmount to z-axis <-12> now;
+	turn lmount to z-axis <12> now;
+	turn lpod to z-axis <45> now;
+	turn rpod to z-axis <-45> now;
+	start-script SmokeUnit_SWS();
+}
+
+RestoreAfterDelay() {
+	sleep restore_delay;
+	turn lpod to y-axis <0> speed <90>;
+	turn rpod to y-axis <0> speed <90>;
+	turn lpod to x-axis <0> speed <90>;
+	turn rpod to x-axis <0> speed <90>;
+	bAiming = 0;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	turn lpod to y-axis heading speed <90>;
+	turn rpod to y-axis heading speed <90>;
+	turn lpod to x-axis <0> - pitch speed <90>;
+	turn rpod to x-axis <0> - pitch speed <90>;
+	bAiming = 1;
+	wait-for-turn lpod around y-axis;
+	wait-for-turn lpod around x-axis;
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+FireWeapon1() {
+	var counter;
+	counter = 0;
+	while(counter < 6) {
+		if(!gun_1) {
+			emit-sfx cis_v_hailfire_firefx from lflare;
+		}
+		if(gun_1) {
+			emit-sfx cis_v_hailfire_firefx from rflare;
+		}
+		++counter;
+		sleep 400;
+	}
+	gun_1 = !gun_1;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = base;
+}
+
+QueryWeapon1(piecenum) {
+	if(!gun_1) {
+		piecenum = lflare;
+	}
+	if(gun_1) {
+		piecenum = rflare;
+	}
+}
+
+#define TURN_RATE 270
+
+AimWeapon2(heading, pitch) {
+	if(!bMoving and !bAiming) {
+		if(heading > <95> or heading < <-95>) {
+			while(heading > <95>) {
+				set HEADING to TURN_RATE + get HEADING;
+				heading = heading - TURN_RATE;
+				sleep 30;
+			}
+			while(heading < <-95>) {
+				set HEADING to 0 - TURN_RATE + get HEADING;
+				heading = heading + TURN_RATE;
+				sleep 30;
+			}
+		}
+	}
+	return 0;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode lpod type FALL | SMOKE | BITMAP;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode rpod type FALL | SMOKE | FIRE | BITMAP;
+	explode base type BITMAP;
+}

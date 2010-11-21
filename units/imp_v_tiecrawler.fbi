@@ -1,0 +1,70 @@
+[unitinfo]
+{
+	unitname=imp_v_tiecrawler;
+	objectname=empire/v-tiecrawler.s3o;
+	buildpic=imp_v_tiecrawler.png;
+	corpse=imp_v_tiecrawler_dead;
+	icontype=veh_medium;
+	soundcategory=CORE_TANK;
+	category=IONTARGETABLE GROUND TANK;
+
+	name=TIE Crawler;
+	description=Anti-infantry Century Tank;
+	side=Empire;
+	maxdamage=6000;
+	idleautoheal=0;
+	buildcostmetal=660;
+	buildcostenergy=4900;
+	buildtime=43;
+	footprintx=3;
+	footprintz=3;
+	mass=17000;
+	cobid=58;
+	collisionVolumeType=box;
+	collisionVolumeScales=60 22 56;
+	collisionVolumeOffsets=0 11 0;
+
+	shownanoframe=0;
+
+	energyuse=12;
+
+	sightdistance=400;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=TANK3x3AMPHIB;
+	maxvelocity=1.8;
+	acceleration=0.025;
+	brakerate=0.1;
+	turnrate=400;
+	maxslope=12;
+	maxwaterdepth=255;
+	TurnInPlace=0;
+
+	leavetracks=1;
+	trackwidth=54;
+	trackoffset=8;
+	trackstrength=7;
+	trackstretch=1;
+	tracktype=stdtank;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_UNIT;
+	selfdestructas=MEDIUM_UNIT;
+
+	nochasecategory=VTOL;
+
+	weapon1=imp_v_tiecrawler;
+	onlytargetcategory1=GROUND;
+	weaponmaindir1=1 0 0;
+	maxangledif1=200;
+	weapon2=imp_v_tiecrawler;
+	onlytargetcategory2=GROUND;
+	weaponmaindir2=-1 0 0;
+	maxangledif2=200;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_GREEN;
+	}
+}

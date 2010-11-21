@@ -1,0 +1,154 @@
+[cis_i_droidekalaser]
+{
+	name=Destroyer Cannon;
+	rendertype=1;
+	turret=1;
+	tolerance=500;
+	interceptedbyshieldtype=2;
+	explosiongenerator=custom:hit_red_xs;
+	explosionspeed=65536;
+	cegtag=light_sm_red;
+
+	lineofsight=1;
+	firestarter=0;
+
+	range=375;
+	reloadtime=0.5;
+	energypershot=0.5;
+	weaponvelocity=400;
+	areaofeffect=8;
+	projectiles=2;
+
+	soundstart=cis_i_droideka/fire1;
+	soundstartvolume=10;
+	soundhit=LASRHIT1;
+	soundhitvolume=10;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	avoidfeature=0;
+	collidefeature=1;
+	noselfdamage=1;
+
+	rgbcolor=1.0 0.1 0;
+	rgbcolor2=1.0 0.3 0;
+
+	beamweapon=1;
+	thickness=1.5;
+	duration=0.06;
+	intensity=0.85;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=002_fancy_plasmabolt;
+	texture2=beam_no_ends;
+
+	[damage]
+	{
+		default=25;
+		no_armor=25;
+		light_armor=25;
+		medium_armor=25;
+		heavy_armor=25;
+		ion_damage=25;
+		flag=0.000001;
+	}
+}
+[cis_i_droidekashield]
+{
+	name=Destroyer Shield;
+
+	isshield=1;
+	shieldrepulser=1;
+	smartshield=1;
+	exteriorshield=1;
+	visibleshield=1;
+	visibleshieldrepulse=1;
+	shieldforce=500;
+	shieldradius=30;
+	shieldmaxspeed=500;
+	shieldenergyuse=10;
+	shieldpower=420;
+	shieldstartingpower=420;
+	shieldpowerregen=60;
+	shieldpowerregenenergy=10;
+	shieldintercepttype=2;
+	shieldbadcolor=0.6 0.05 0.75;
+	shieldgoodcolor=0.0 0.05 0.75;
+	shieldalpha=0.5;
+
+	[damage]
+	{
+		default=0;
+		no_armor=0;
+		light_armor=0;
+		medium_armor=0;
+		heavy_armor=0;
+		ion_damage=0;
+		flag=0.000001;
+	}
+}
+[cis_i_droidekarange]
+{
+	name=Range finder;
+	rendertype=1;
+	turret=1;
+	tolerance=500;
+	interceptedbyshieldtype=2;
+	explosiongenerator=custom:hit_red_xs;
+	explosionspeed=65536;
+	cegtag=light_sm_red;
+
+	lineofsight=1;
+	firestarter=0;
+
+	range=470;
+	reloadtime=0.5;
+	energypershot=0.5;
+	weaponvelocity=400;
+	areaofeffect=8;
+	projectiles=2;
+
+	soundstart=cis_i_droideka/fire1;
+	soundstartvolume=10;
+	soundhit=LASRHIT1;
+	soundhitvolume=10;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	avoidfeature=0;
+	collidefeature=1;
+	noselfdamage=1;
+
+	rgbcolor=1.0 0.1 0;
+	rgbcolor2=1.0 0.3 0;
+
+	beamweapon=1;
+	thickness=1.5;
+	duration=0.06;
+	intensity=0.85;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=002_fancy_plasmabolt;
+	texture2=beam_no_ends;
+
+	[damage]
+	{
+		default=0.000001;
+		no_armor=0.000001;
+		light_armor=0.000001;
+		medium_armor=0.000001;
+		heavy_armor=0.000001;
+		ion_damage=0.000001;
+		flag=0.000001;
+	}
+}

@@ -1,0 +1,60 @@
+[unitinfo]
+{
+	unitname=reb_sc_swoop;
+	objectname=rebel/sc-swoop.s3o;
+	buildpic=reb_sc_swoop.png;
+	icontype=veh_scout;
+	soundcategory=imp-sc-swoop;
+	category=VTOL GROUND;
+
+	name=Swoop;
+	description=Scout Vehicle;
+	side=Rebels;
+	maxdamage=170;
+	idleautoheal=0;
+	buildcostmetal=125;
+	buildcostenergy=1100;
+	buildtime=20;
+	footprintx=2;
+	footprintz=2;
+	mass=1600;
+	cobid=94;
+	collisionVolumeType=cylZ;
+	collisionVolumeScales=16 16 36;
+	collisionVolumeOffsets=0 0 0;
+
+	upright=1;
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	sightdistance=750;
+
+	canmove=1;
+	maxvelocity=4.2;
+	maxAcc=.35;
+	brakerate=0.35;
+//	maxElevator=.003;
+//	turnrate=320;
+//	turnradius=25;
+//	maxRudder=.01;
+
+	canfly=1;
+	cruisealt=10;
+	collide=0;
+	canloopbackattack=0;
+
+	selfdestructcountdown=1;
+	explodeas=TIE_BLAST;
+	selfdestructas=TIE_BLAST;
+
+	weapon1=imp_sc_speederbike;
+	onlytargetcategory1=GROUND;
+	weaponmaindir1=0 0 1;
+	maxangledif1=200;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:SMALL_MUZZLE_FLASH_FX_RED;
+		explosiongenerator2=custom:constdust;
+	}
+}

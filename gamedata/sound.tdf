@@ -1,0 +1,517 @@
+[imp_a_tiebomber] {
+	//cant=imp_a_tiebomber/va/cant;
+	ok1=imp_a_tiebomber/va/ok1;
+	ok2=imp_a_tiebomber/va/ok2;
+	ok3=imp_a_tiebomber/va/ok3;
+	ok4=imp_a_tiebomber/va/ok4;
+	select1=imp_a_tiebomber/va/select1;
+	select2=imp_a_tiebomber/va/select2;
+	select3=imp_a_tiebomber/va/select3;
+	select4=imp_a_tiebomber/va/select4;
+	underattack=imp_a_tiebomber/va/underattack;
+}
+[imp_v_mobileartillery] {
+	//cant=imp_v_mobileartillery/va/cant;
+	ok1=imp_v_mobileartillery/va/ok1;
+	ok2=imp_v_mobileartillery/va/ok2;
+	ok3=imp_v_mobileartillery/va/ok3;
+	ok4=imp_v_mobileartillery/va/ok4;
+	select1=imp_v_mobileartillery/va/arrived1; //ianmac didn't record the selects, wtf
+	select2=imp_v_mobileartillery/va/arrived2;
+	select3=imp_v_mobileartillery/va/arrived3;
+	select4=imp_v_mobileartillery/va/arrived4;
+	underattack=imp_v_mobileartillery/va/underattack;
+}
+[reb_a_awing] {
+	ok1=reb_a_awing/va/ok1;
+	ok2=reb_a_awing/va/ok2;
+	ok3=reb_a_awing/va/ok3;
+	ok4=reb_a_awing/va/ok4;
+	select1=reb_a_awing/va/select1;
+	select2=reb_a_awing/va/select2;
+	select3=reb_a_awing/va/select3;
+	select4=reb_a_awing/va/select4;
+	underattack=reb_a_awing/va/underattack;
+}
+[reb_i_sniper] {
+	//cant=reb_i_sniper/va/cant;
+	ok1=reb_i_sniper/va/ok1;
+	ok2=reb_i_sniper/va/ok2;
+	ok3=reb_i_sniper/va/ok3;
+	ok4=reb_i_sniper/va/ok4;
+	ok5=reb_i_sniper/va/ok5;
+	select1=reb_i_sniper/va/select1;
+	select2=reb_i_sniper/va/select2;
+	select3=reb_i_sniper/va/select3;
+	select4=reb_i_sniper/va/select4;
+	select5=reb_i_sniper/va/select5;
+	underattack=reb_i_sniper/va/underattack;
+}
+[reb_sp_spotter] {
+	select1=reb_sp_spotter/va/select1;
+	select2=reb_sp_spotter/va/select2;
+	select3=reb_sp_spotter/va/select3;
+	select4=reb_sp_spotter/va/select4;
+	underattack=reb_sp_spotter/va/underattack;
+}
+[reb_w_espo] {
+	//cant=reb_w_espo/va/cant;
+	ok1=reb_w_espo/va/ok1;
+	ok2=reb_w_espo/va/ok2;
+	ok3=reb_w_espo/va/ok3;
+	ok4=reb_w_espo/va/ok4;
+	select1=reb_w_espo/va/select1;
+	select2=reb_w_espo/va/select2;
+	select3=reb_w_espo/va/select3;
+	select4=reb_w_espo/va/select4;
+	underattack=reb_w_espo/va/underattack;
+}
+
+
+//THESE UNITS DO NOT HAVE SOUND CATEGORIES BECAUSE THEY REFERENCED CATEGORIES THAT DON'T EXIST:
+//    imp_d_AdvAA
+//    imp_d_MissileTurret
+//    imp_p_Solar
+//    REBAAA
+//    REBABAX
+//    REBBAX
+//PLEASE REMOVE THEM FROM THE LIST IF YOU FIX THEM, AND COMMENT THEIR NAMES IN TO THE CORRESPONDING SOUND CATEGORY LIST
+//LIKE I DID BELOW.
+
+//Last edited by El_C 11/12/05 ACDST
+
+//NOT ALL SOUND FILES ARE GUARANTEED TO BE THERE EITHER
+
+[imp-i-droideka]	//imp_inf_Deka
+{
+	select1=kbarmsel;
+	ok1=imp_inf_Deka_ok1;
+	arrived1=kbarmstp;
+	//cant1=CANTDO;
+	underattack=warning1;
+}
+
+[AIRPLANT]	//imp_b_AdvAirPlant imp_b_AirPlant REBAAP REBAP
+{
+	select1=PAIRACTV;
+	unitcomplete=HOVSMOK2;
+	underattack=WARNING1;
+	build=PAIRWORK;
+	working=mexrun1;
+}
+[GUARD]		//imp_d_Artillery imp_d_IonCannon imp_d_Turbolaser
+{
+	select1=TWRTURN3;
+	ok1=TWRTURN3;
+	//cant1=CANTDO;
+	underattack=WARNING1;
+}
+[CORE_TANK]	//imp_sc_ATRT imp_v_CAV IMPHAIL imp_v_TIECrawler
+{
+	select1=TCORSEL;
+	ok1=TCORMOVE;
+	arrived1=TCORST0P;
+	//cant1=CANTDO;
+	underattack=WARNING1;
+}
+[KBOTPLANT]	//imp_b_Barracks IMPDROIDP 
+{
+	select1=PLABACTV;
+	//unitcomplete=HOVLGSL1;
+	underattack=WARNING1;
+	//build=PLABWORK;
+	//working=mexrun1;
+}
+[imp-i-battledroid]	//imp_inf_Battledroid imp_inf_BattledroidC
+{
+	select1=imp_inf_Battledroid_select1;
+	select2=imp_inf_Battledroid_select2;
+	select3=imp_inf_Battledroid_select2;
+	ok1=imp_inf_Battledroid_ok1;
+	ok2=imp_inf_Battledroid_ok2;
+	arrived1=KBCORSTP;
+	underattack1=WARNING1;
+}
+[imp-v-tx130]	//imp_v_RepTank
+{
+	select1=imp_v_RepTank_select1;
+	select2=imp_v_RepTank_select2;
+	select3=imp_v_RepTank_select3;
+	ok1=imp_v_RepTank_ok1;
+	ok2=imp_v_RepTank_ok2;
+	ok3=imp_v_RepTank_ok3;
+	underattack1=WARNING1;
+}
+[imp-a-cloudcar]	//imp_air_Cloud
+{
+	select1=VTOLCRAC;
+	select2=imp_air_Cloud_sel1;
+	select3=imp_air_Cloud_sel2;
+	ok1=VTOLCRMV;
+	ok2=imp_air_Cloud_ok1;
+	ok3=imp_air_Cloud_ok2;
+	ok4=imp_air_Cloud_ok3;
+	arrived1=VTOLCRLD;
+	//cant1=CANTDO;
+	underattack=imp_air_Cloud_underattack1;
+}
+[CORE_COM]	//imp_Commander REBCOM
+{
+	select1=kccorsel;
+	unitcomplete=kccorsel;
+	ok1=kcormov;
+	arrived1=kccorstp;
+	//cant1=CANTDO;
+	underattack=warning2;
+	build=nanlath2;
+	repair=repair2;
+	working=reclaim1;
+	cloak=kloak2;
+	uncloak=kloak2un;
+	Capture=capture2;
+}
+[ARM_CHOVER]	//imp_c_ConDroid REBCONH
+{
+	select1=HOVMDSL1;
+	ok1=HOVMDOK1;
+	arrived1=HOVMDOF1;
+	//cant1=CANTDO;
+	build=nanlath2;
+	repair=REPAIR1;
+	working=RECLAIM1;
+	underattack=WARNING1;
+}
+[reb-c-condroid]//reb_c_ConDroid, duh!
+{
+	select1=reb_c_condroid01;
+	select2=reb_c_condroid02;
+	select3=reb_c_condroid03;
+	ok1=reb_c_condroid01;
+	ok2=reb_c_condroid02;
+	ok3=reb_c_condroid03;
+	arrived1=reb_c_condroid01;
+	arrived2=reb_c_condroid02;
+	arrived3=reb_c_condroid03;
+	//cant1=reb_c_condroid04;
+	underattack=WARNING1;
+}
+[CORE_FUS]	//imp_p_LrgFusion imp_p_SmFusion REBEGEN REBFUS
+{
+	select1=FUSION2;
+	underattack=WARNING1;
+}
+[CORE_ESTOR]	//imp_p_EStore
+{
+	select1=STORNGY2;
+	underattack=WARNING1;
+}
+[LLT]		//imp_inf_EWEB REBARTY REBATGAR reb_d_golan_turret REBMRB
+{
+	select1=SERVMED2;
+	ok1=SERVMED2;
+	//cant1=CANTDO;
+	underattack=WARNING1;
+}
+[imp-i-reptrooper]	//imp_inf_FlameTrooper imp_inf_RepTrooper
+{
+	select1=imp_inf_StormTrooper_select1;
+	select2=imp_inf_StormTrooper_select2;
+	select3=imp_inf_StormTrooper_select3;
+	select4=imp_inf_StormTrooper_select4;
+	arrived1=imp_inf_StormTrooper_arrved1;
+	arrived2=imp_inf_StormTrooper_arrved2;
+	arrived3=imp_inf_StormTrooper_arrved3;
+	ok1=imp_inf_StormTrooper_ok1;
+	ok2=imp_inf_StormTrooper_ok2;
+	ok3=imp_inf_StormTrooper_ok3;
+	ok4=imp_inf_StormTrooper_ok4;
+	ok5=imp_inf_StormTrooper_ok5;
+	//cant1=imp_inf_StormTrooper_cant1;
+	//cant2=imp_inf_StormTrooper_cant2;
+	underattack=imp_inf_StormTrooper_underattack3;
+}
+[CORE_GEO]	//imp_p_Geo
+{
+	select1=GEOTHRM2;
+	underattack=WARNING1;
+}
+[reb-a-vwing]	//IMPLAAT REBVWING
+{
+	select1=rebvwing_select1;
+	ok1=rebvwing_ok1;
+	ok2=rebvwing_ok2;
+	ok3=VTOLCRMV;
+	arrived1=VTOLARLD;
+	underattack1=WARNING1;
+}
+[ARM_KBOT]	//IMPMARK REBAA
+{
+	select1=KBARMSEL;
+	ok1=KBARMMOV;
+	arrived1=KBARMSTP;
+	//cant1=CANTDO;
+	underattack=WARNING1;
+}
+[imp-i-stormtrooper]	//imp_inf_EWEB imp_inf_StormTrooper
+{
+	select1=imp_inf_StormTrooper_select1;
+	select2=imp_inf_StormTrooper_select2;
+	select3=imp_inf_StormTrooper_select3;
+	select4=imp_inf_StormTrooper_select4;
+	arrived1=imp_inf_StormTrooper_arrved1;
+	arrived2=imp_inf_StormTrooper_arrved2;
+	arrived3=imp_inf_StormTrooper_arrved3;
+	ok1=imp_inf_StormTrooper_ok1;
+	ok2=imp_inf_StormTrooper_ok2;
+	ok3=imp_inf_StormTrooper_ok3;
+	ok4=imp_inf_StormTrooper_ok4;
+	ok5=imp_inf_StormTrooper_ok5;
+	//cant1=imp_inf_StormTrooper_cant1;
+	//cant2=imp_inf_StormTrooper_cant2;
+	underattack=imp_inf_StormTrooper_underattack1;
+}
+[COR_MEX]	//imp_p_SmMex
+{
+	select1=MEXON2;
+	underattack=WARNING1;
+	working=MEXRUN2;
+	activate=MEXRUN2;
+	deactivate=MEXOFF2;
+}
+[imp-sc-probedroid]	//imp_sc_ProbeDroid
+{
+	select1=imp_sc_ProbeDroid_select1;
+	select2=imp_sc_ProbeDroid_select2;	
+	ok1=imp_sc_ProbeDroid_ok1;
+	ok2=imp_sc_ProbeDroid_ok2;
+	arrived1=imp_sc_ProbeDroid_arrived1;
+	underattack1=WARNING1;
+}
+[imp-i-rockettrooper]	//imp_inf_RocketTrooper
+{
+	select1=imp_inf_StormTrooper_select1;
+	select2=imp_inf_StormTrooper_select2;
+	select3=imp_inf_StormTrooper_select3;
+	select4=imp_inf_StormTrooper_select4;
+	arrived1=imp_inf_StormTrooper_arrved1;
+	arrived2=imp_inf_StormTrooper_arrved2;
+	arrived3=imp_inf_StormTrooper_arrved3;
+	ok1=imp_inf_StormTrooper_ok1;
+	ok2=imp_inf_StormTrooper_ok2;
+	ok3=imp_inf_StormTrooper_ok3;
+	ok4=imp_inf_StormTrooper_ok4;
+	ok5=imp_inf_StormTrooper_ok5;
+	//cant1=imp_inf_StormTrooper_cant1;
+	//cant2=imp_inf_StormTrooper_cant2;
+	underattack=imp_inf_StormTrooper_underattack4;
+}
+[COR_KBOT]	//IMPSBDROID
+{
+	ok1=KBCORMOV;
+	arrived1=KBCORSTP;
+	//cant1=CANTDO;
+	underattack=WARNING1;
+}
+[imp-sc-speederbike]	//imp_sc_Bike REBSWOOP
+{
+	select1=imp_sc_Bike_select1;
+	select2=imp_sc_Bike_select2;
+	select3=hovsmsl1;
+	ok1=imp_sc_Bike_ok1;
+	ok2=imp_sc_Bike_ok2;
+	//cant1=imp_sc_Bike_cant1;
+	arrived1=imp_sc_Bike_arrived1;
+	arrived2=imp_sc_Bike_arrived2;
+	underattack1=imp_sc_Bike_underattack1;
+	underattack2=imp_sc_Bike_underattack2;
+}
+[CORE_RADAR]	//imp_spc_Sensor
+{
+	select1=RADAR2;
+	underattack=WARNING1;
+	working=RADAR2;
+	activate=RADAR1;
+	deactivate=RADARDE1;
+}
+[imp-a-tiedroid]	//imp_air_TIEDroid
+{
+	ok1=imptie_ok1;
+	arrived1=VTOLCRLD;
+}
+[imp-a-tie]	//imp_air_TIEFighter imp_air_TIEInterceptor imp_air_TIEPhantom imp_air_TIEVanguard
+{
+	select1=imptie_sel1;
+	select2=imp_air_Cloud_sel1;
+	select3=imp_air_Cloud_sel2;
+	ok1=imptie_ok1;
+	ok2=imptie_ok2;
+	ok3=imptie_ok3;
+	arrived1=VTOLCRLD;
+	arrived2=imptie_arrived1;
+	//cant1=imptie_cant;
+	underattack=imptie_underattack1;
+}
+[imp-v-groundtransport]	//imp_v_GrdTransport
+{
+	select1=TCORSEL;
+	select2=imptank_select1;
+	select3=imp_sc_Bike_select2;
+	ok1=TCORMOVE;
+	ok2=imp_inf_StormTrooper_ok1;
+	ok3=imp_sc_Bike_ok1;
+	arrived1=TCORST0P;
+	arrived1=TARMST0P;
+	//cant1=imp_sc_Bike_cant1;
+	underattack=imptank_underattack1;
+	underattack=imptank_underattack2;
+	underattack=imptank_underattack3;
+}
+[TANKPLANT]	//imp_b_VehiclePlant imp_b_WalkerPlant REBAVP REBVP
+{
+	select1=PVEHACTV;
+	unitcomplete=HOVEROK2;
+	underattack=WARNING1;
+	build=PVEHWORK;
+	working=mexrun1;
+}
+[REBHOVER]	//REBAHOVER REBFREE REBHOVER REBHT REBTRANS
+{
+	select1=rebhover_select1;
+	select2=rebhover_select2;
+	select3=HOVMDOK1;
+	ok1=rebhover_ok1;
+	ok2=HOVMDOK2;
+	//cant1=rebhover_cant1;
+	//cant2=rebhover_cant2;
+	arrived1=rebhover_arrived1;
+	underattack1=rebhover_underattack1;
+	underattack2=rebhover_underattack2;
+}
+[reb-i-commando]	//REBAVRKT REBELITE
+{
+	select1=rebhtrooper_select1;
+	select2=rebhtrooper_select2;
+	select3=rebhtrooper_select3;
+	ok1=rebhtrooper_ok1;
+	ok2=rebhtrooper_ok2;
+	ok3=rebhtrooper_ok3;
+	underattack1=WARNING1;
+}
+[Reb_Hover_Light]	//REBCORC REBLAND REBULAV
+{
+	select1=reb_hover01;
+	select2=reb_hover02;
+	ok1=reb_hover_ok01;
+	ok2=reb_hover_ok02;
+	ok3=reb_hover_ok03;
+	ok4=reb_hover_ok04;
+	arrived1=reb_hover03;
+	//cant1=CANTDO;
+	underattack=WARNING1;
+}
+[ARM_ESTOR]	//REBESTOR
+{
+	select1=STORNGY1;
+	underattack=WARNING1;
+}
+[ARM_GEO]	//REBGEO
+{
+	select1=GEOTHRM1;
+	underattack=WARNING1;
+}
+[reb-i-rockettrooper]	//REBRKT
+{
+	select1=reb_inf_trooper_select1;
+	select2=reb_inf_trooper_select2;
+	select3=reb_inf_trooper_select3;
+	select4=reb_inf_trooper_select4;
+	arrived1=reb_inf_trooper_arrved1;
+	arrived2=reb_inf_trooper_arrved2;
+	arrived3=reb_inf_trooper_arrved3;
+	ok1=reb_inf_trooper_ok1;
+	ok2=reb_inf_trooper_ok2;
+	ok3=reb_inf_trooper_ok3;
+	ok4=reb_inf_trooper_ok4;
+	ok5=reb_inf_trooper_ok5;
+	//cant1=reb_inf_trooper_cant1;
+	//cant2=reb_inf_trooper_cant2;
+	underattack1=reb_inf_trooper_underattack3;
+	underattack2=reb_inf_trooper_underattack4;
+}
+[reb-i-trooper]
+{
+	select1=reb_inf_trooper_select1;
+	select2=reb_inf_trooper_select2;
+	select3=reb_inf_trooper_select3;
+	select4=reb_inf_trooper_select4;
+	arrived1=reb_inf_trooper_arrved1;
+	arrived2=reb_inf_trooper_arrved2;
+	arrived3=reb_inf_trooper_arrved3;
+	ok1=reb_inf_trooper_ok1;
+	ok2=reb_inf_trooper_ok2;
+	ok3=reb_inf_trooper_ok3;
+	ok4=reb_inf_trooper_ok4;
+	ok5=reb_inf_trooper_ok5;
+	//cant1=reb_inf_trooper_cant1;
+	//cant2=reb_inf_trooper_cant2;
+	underattack1=reb_inf_trooper_underattack3;
+	underattack2=reb_inf_trooper_underattack4;
+}
+[ARM_RADAR]	//REBSENS
+{
+	select1=RADAR1;
+	underattack=WARNING1;
+	working=RADAR1;
+	activate=RADAR1;
+	deactivate=RADARDE1;
+}
+[ARM_SOLAR]	//REBSOLAR
+{
+	select1=SOLAR1;
+	underattack=WARNING1;
+	activate=SOLAR1;
+	deactivate=SOLAR1;
+}
+[reb-a-airspeeder]	//REBSPEEDER
+{
+	select1=reb_air_CombatSpeeder_select1;
+	select2=reb_air_CombatSpeeder_select2;
+	select3=HOVEROK1;
+	ok1=reb_air_CombatSpeeder_ok1;
+	ok2=reb_air_CombatSpeeder_ok2;
+	ok3=HOVLGOK2;
+	//cant1=reb_air_CombatSpeeder_cant1;
+	arrived1=reb_air_CombatSpeeder_arrived1;
+	arrived2=HOVMDOF2;
+	underattack1=reb_air_CombatSpeeder_underattack1;
+}
+[reb-a-twing]	//REBTWING REBZ95HH
+{
+	select1=rebtwing_select1;
+	select2=rebtwing_select2;
+	ok1=rebtwing_ok1;
+	ok2=rebtwing_ok2;
+	ok3=VTOLCRMV;
+	arrived1=VTOLARLD;
+	underattack1=rebtwing_underattack1;
+	underattack2=rebtwing_underattack2;
+}
+[reb-i-wookiee]	//REBWOOK
+{
+	select1=rebwook_select1;
+	ok1=rebwook_ok1;
+	//cant1=rebwook_cant1;
+	arrived1=rebwook_arrived1;
+	underattack1=rebwook_underattack1;
+}
+[reb-a-ywing]	//reb_air_YWing
+{
+	select1=reb_air_YWing_sel1;
+	select2=reb_air_YWing_sel2;
+	ok1=reb_air_YWing_ok1;
+	ok2=reb_air_YWing_ok2;
+	ok3=VTOLCRMV;
+	arrived1=VTOLARLD;
+	underattack1=reb_air_YWing_underattack1;
+	underattack2=reb_air_YWing_underattack2;
+}

@@ -1,0 +1,11 @@
+[cond_heap]
+{
+	object=heaps/2x2a.s3o;
+	description=Wrecked Con. Droid;
+	metal=16;
+	damage=375;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

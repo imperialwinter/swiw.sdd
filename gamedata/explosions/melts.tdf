@@ -1,0 +1,30 @@
+[melt_sm_40] {
+	[GROUNDFLASH] {
+		flashsize=3.5;
+		flashalpha=0.6;
+		circlegrowth=-0.02;
+		circlealpha=1;
+		ttl=40;
+		color=1,0.5,0;
+	}
+}
+[melt_sm_80] {
+	[GROUNDFLASH] {
+		flashsize=4;
+		flashalpha=0.6;
+		circlegrowth=-0.02;
+		circlealpha=1;
+		ttl=80;
+		color=1,0.5,0;
+	}
+}
+[melt_med_120] {
+	[GROUNDFLASH] {
+		flashsize=8;
+		flashalpha=0.6;
+		circlegrowth=-0.02;
+		circlealpha=1;
+		ttl=120;
+		color=1,0.5,0;
+	}
+}

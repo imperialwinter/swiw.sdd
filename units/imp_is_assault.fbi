@@ -1,0 +1,31 @@
+[unitinfo]
+{
+	unitname=imp_is_assault;
+	objectname=nullpoint.s3o;
+	buildpic=imp_is_assault.png;
+	category=GROUND;
+
+	name=Assault Squad;
+	description=5xStormtrooper, 3xRepeater trooper;
+	side=Empire;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=295;  // sum of individual troop cost *0.8 (appx due to later edits)
+	buildcostenergy=1800;
+	buildtime=41;
+	footprintx=1;
+	footprintz=1;
+	cobid=37;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=10;
+	maxwaterdepth=5;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+}

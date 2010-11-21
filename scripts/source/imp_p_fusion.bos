@@ -1,0 +1,68 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, a1, a2, a3;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define electric1 1024+1
+
+Sounds() {
+//	play-sound("imp_p_fusion/hum",6);
+//	#define hum 0
+	play-sound("electricity/arc1",25);
+	#define electricityfx1 0
+}
+
+Sparks() {
+	var random, hp;
+	while(1) {
+		hp = get HEALTH;
+		random = rand(0,hp);
+		if(random < 6) {
+			emit-sfx electric1 from a1;
+			get PLAY_SOUND(electricityfx1, 196608, 0, 0);
+		}
+		if(random > 5 and random < 11) {
+			emit-sfx electric1 from a2;
+			get PLAY_SOUND(electricityfx1, 196608, 0, 0);
+		}
+		if(random > 10 and random < 16) {
+			emit-sfx electric1 from a3;
+			get PLAY_SOUND(electricityfx1, 196608, 0, 0);
+		}
+	//	get PLAY_SOUND(hum, 65536, 0, 0);
+		sleep 1130;
+	}
+}
+
+Create() {
+	while(get BUILD_PERCENT_LEFT) {
+		sleep 10;
+	}
+	start-script Sparks();
+	start-script SmokeUnit_SWS();
+}
+
+Killed(severity, corpsetype) {
+	explode base type BITMAP;
+	if(severity <= 25) {
+		corpsetype = 1;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		return 0;
+	}
+	corpsetype = 3;
+	return 0;
+}

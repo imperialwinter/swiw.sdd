@@ -1,0 +1,49 @@
+[unitinfo]
+{
+	unitname=imp_d_antiair;
+	objectname=empire/d-antiair.s3o;
+	buildpic=imp_d_antiair.png;
+	corpse=imp_d_antiair_dead;
+	icontype=defense_aa;
+	soundcategory=CORE_TARG;
+	category=GROUND DEFENSE BUILDING;
+	yardmap=oo oo;
+
+	name=Anti-air turret;
+	description=Air defense;
+	side=Empire;
+	maxdamage=1000;
+	idleautoheal=1;
+	buildcostmetal=400;
+	buildcostenergy=2200;
+	buildtime=18;
+	footprintx=2;
+	footprintz=2;
+	cobid=22;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=450;
+
+	maxslope=20;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-imp.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=5;
+	BuildingGroundDecalSizeY=5;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_BUILDING;
+	selfdestructas=SMALL_BUILDNG;
+
+	weapon1=imp_d_antiair;
+	onlytargetcategory1=VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_GREEN;
+	}
+}

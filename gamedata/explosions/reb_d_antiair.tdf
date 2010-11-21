@@ -1,0 +1,33 @@
+[reb_d_antiair] //thanks to quantum, he rocks! Please credit him if you use this effect.
+{
+	[BitmapMuzzleFlame]
+	{
+		class = CBitmapMuzzleFlame;
+		[properties]
+		{
+			dir = dir;
+			colorMap=0 0.2 1 0.1	0 0.1 1 0.01	0 0 0 0.01; 
+			size=10;
+			length=12;
+			sizeGrowth=1;
+			ttl=3;
+			frontOffset=0.1;
+			sideTexture=plasma2;
+			frontTexture=flowerflash;
+		}
+		water=1;
+		air=1;
+		underwater=1;
+		ground=1;
+		count=1;
+	}
+	[groundflash]
+	{
+		flashsize=10;
+		flashalpha=0.9;
+		circlegrowth=0;
+		circlealpha=1;
+		ttl=3;
+		color=0,0,1;
+	}
+}

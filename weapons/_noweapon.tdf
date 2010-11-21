@@ -1,0 +1,30 @@
+[noweapon]
+{
+	model=nullpoint.s3o;
+	rendertype=1;
+	turret=1;
+	tolerance=100;
+	explosiongenerator=custom:NULL_FX;
+	explosionspeed=65536;
+
+	lineofsight=1;
+
+	range=500;
+	reloadtime=50;
+	weaponvelocity=1000;
+	areaofeffect=1;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	noselfdamage=1;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=00000.1;
+	}
+}

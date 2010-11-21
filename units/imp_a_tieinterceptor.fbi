@@ -1,0 +1,62 @@
+[unitinfo]
+{
+	unitname=imp_a_tieinterceptor;
+	objectname=empire/a-tieinterceptor.s3o;
+	buildpic=imp_a_tieinterceptor.png;
+	icontype=air_aa;
+	soundcategory=imp-a-tie;
+	category=VTOL;
+
+	name=TIE Interceptor;
+	description=Interceptor;
+	side=Empire;
+	maxdamage=480;
+	idleautoheal=0;
+	buildcostmetal=550;
+	buildcostenergy=9350;
+	buildtime=48;
+	footprintx=2;
+	footprintz=2;
+	mass=230000;
+	cobid=7;
+	collisionVolumeType=cylZ;
+	collisionVolumeScales=34 28 48;
+	collisionVolumeOffsets=0 1 2;
+
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	energyuse=18;
+
+	sightdistance=550;
+
+	canmove=1;
+	maxvelocity=10.8;
+	acceleration=2;
+	brakerate=0.6;
+	turnrate=450;
+
+	maxAcc=.4;
+	maxRudder=.004;
+	maxElevator=.006;
+	maxAileron=.005;
+
+	canfly=1;
+	cruisealt=250;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=TIE_BLAST;
+	selfdestructas=TIE_BLAST;
+
+	weapon1=imp_a_tieinterceptor;
+	badtargetcategory1=GROUND;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=60;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_GREEN;
+	}
+}

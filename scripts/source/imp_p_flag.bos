@@ -1,0 +1,14 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, logo;
+
+Create() {
+	hide logo;
+	set ARMORED to 1;
+}
+
+Killed(severity, corpsetype) {
+	return 0;
+}

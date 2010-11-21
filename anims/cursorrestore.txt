@@ -1,0 +1,19 @@
+hotspot center
+frame  bitmaps/cursors/restore/restore01.png  0.300
+frame  bitmaps/cursors/restore/restore02.png  0.200
+frame  bitmaps/cursors/restore/restore03.png  0.200
+frame  bitmaps/cursors/restore/restore04.png  0.200
+frame  bitmaps/cursors/restore/restore05.png  0.200
+frame  bitmaps/cursors/restore/restore06.png  0.200
+frame  bitmaps/cursors/restore/restore07.png  0.200
+frame  bitmaps/cursors/restore/restore08.png  0.200
+frame  bitmaps/cursors/restore/restore09.png  0.200
+frame  bitmaps/cursors/restore/restore10.png  0.200
+frame  bitmaps/cursors/restore/restore11.png  0.200
+frame  bitmaps/cursors/restore/restore12.png  0.200
+frame  bitmaps/cursors/restore/restore13.png  0.200
+frame  bitmaps/cursors/restore/restore14.png  0.200
+frame  bitmaps/cursors/restore/restore15.png  0.200
+frame  bitmaps/cursors/restore/restore16.png  0.200
+frame  bitmaps/cursors/restore/restore17.png  0.200
+frame  bitmaps/cursors/restore/restore18.png  0.700

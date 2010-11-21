@@ -1,0 +1,138 @@
+[death_xs] {
+	usedefaultexplosions=0;
+	[mainhit] {
+		class=heatcloud;
+		[properties] {
+			texture = explo;
+			heat = 10;
+			maxheat = 10;
+			heatFalloff = 1;
+			size = 1;
+			sizeGrowth = 3.2;
+			pos = 0, 1, 0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.1, 0;
+			colorMap=1 1 1 0.01   1 1 0.5 0.01   1 0.5 0 0.01   0 0 0 0;
+			Texture=plasma2;
+			airdrag=0.98;
+			particleLife=32;
+			particleLifeSpread=16;
+			numParticles=64;
+			particleSpeed=0.5;
+			particleSpeedSpread=2;
+			particleSize=0.5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[pikes] {
+		class=CExploSpikeProjectile;
+		[properties] {
+			dir= -4 r8, -4 r8, -4 r8;
+			width=2 r2;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.1;
+			color=1,0.75,0.5;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=8; 
+	}
+	
+	[smoke] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=4 r4;
+			sizeMod=0.5;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.1 r0.2, 0;
+			colorMap=0.5 0.5 0.5 1  0.5 0.5 0.5 1  0 0 0 0;
+			Texture=smokesmall;
+			airdrag=0.9;
+			particleLife=24;
+			particleLifeSpread=8;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=2;
+			particleSize=1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=8;
+	}
+	
+	[dust]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.25 0.2 0.15 0.5  0 0 0 0;
+			size=8 r4;
+			length=16 r16;
+			sizeGrowth=1;
+			ttl=24;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=8;
+	}
+	
+	[water]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.45 0.45 0.5 0.5  0 0 0 0; 
+			size=8 r4;
+			length=16 r16;
+			sizeGrowth=1;
+			ttl=24;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		water=1;
+		count=8;
+	}
+	
+	[groundflash]{
+		flashsize=64;
+		flashalpha=0.5;
+		circlegrowth=6;
+		circlealpha=0.25;
+		ttl=10;
+		color=1,0.75,0.5;
+	}
+}

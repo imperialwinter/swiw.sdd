@@ -1,0 +1,65 @@
+[unitinfo]
+{
+	unitname=imp_commander;
+	objectname=empire/commander.s3o;
+	buildpic=imp_commander.png;
+	corpse=imp_commander_dead;
+	icontype=commander_imp;
+	soundcategory=KBOTPLANT;
+	category=COMMANDER GROUND;
+	tedclass=PLANT;
+	yardmap=cccccccccccccccc cccccccccccccccc cccccccooccccccc ccccoooooooocccc ccccoooooooocccc ccccoooooooocccc cccooooooooooccc cccooooooooooccc cccooooccooooccc ccccoooccooocccc ccccoooccooocccc ccccoooccooocccc cccccccccccccccc cccccccccccccccc cccccccccccccccc cccccccccccccccc;
+
+	name=Garrison Base;
+	description=Imperial base;
+	side=Empire;
+	maxdamage=10000;
+	autoheal=5;
+	buildcostmetal=1500;
+	buildcostenergy=10000;
+	buildtime=187;
+	footprintx=16;
+	footprintz=16;
+	cobid=21;
+	collisionVolumeType=box;
+	collisionVolumeScales=160 160 160;
+	collisionVolumeOffsets=0 56 0;
+
+	commander=1;
+	hidedamage=1;
+	reclaimable=0;
+	shownanoframe=0;
+
+	metalmake=3;
+	energymake=110;
+
+	sightdistance=500;
+	radardistance=750;
+	sonardistance=500;
+
+	builder=1;
+	workertime=1;
+
+	activatewhenbuilt=1;
+
+	canmove=1;
+	maxslope=45;
+	maxwaterdepth=255;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/imp_comm_groundscar.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=20;
+	BuildingGroundDecalSizeY=20;
+
+	selfdestructcountdown=10;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	canfight=0;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+	}
+}

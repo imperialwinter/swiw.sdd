@@ -1,0 +1,59 @@
+[unitinfo]
+{
+	unitname=imp_i_superbattledroid;
+	objectname=empire/i-superbattledroid.s3o;
+	buildpic=imp_i_superbattledroid.png;
+	corpse=imp_i_superbattledroid_dead;
+	icontype=inf_heavy;
+	soundcategory=COR_KBOT;
+	category=IONTARGETABLE GROUND DROID;
+
+	name=Super Battle Droid;
+	description=Heavy Combat Droid;
+	side=Empire;
+	maxdamage=605;
+	buildcostmetal=125;
+	buildcostenergy=1600;
+	buildtime=16;
+	footprintx=1;
+	footprintz=1;
+	mass=200;
+	cobid=36;
+
+	upright=1;
+	shownanoframe=0;
+
+	energyuse=4;
+
+	sightdistance=400;
+	seismicsignature=1;
+
+	activatewhenbuilt=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.28;
+	acceleration=0.5;
+	brakerate=0.5;
+	turnrate=800;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=CIS_DROID_BLAST;
+	selfdestructas=CIS_DROID_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=cis_i_superbattledroidlaser;
+	badtargetcategory1=VTOL;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=100;
+	weapon2=cis_i_superbattledroidlaser;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_RED;
+	}
+}

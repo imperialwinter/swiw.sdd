@@ -1,0 +1,164 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  body, wings, ldoor, rdoor, lgun, lpt, rgun, rpt, lhinge, lball, lballpt, rhinge, rball, rballpt;
+piece  link1, link2, link3, link4, link5, link6, cockpit, r_flare, l_flare;
+
+static-var  gun_1, men, height;
+
+#define SMOKEPIECE1 body
+#define SMOKEPIECE2 rdoor
+#define SMOKEPIECE3 wings
+#define SMOKEPIECE4 wings
+#include "general/smokeunit_sws.h"
+
+#define SMALL_MUZZLE_FLASH_FX_RED 1024+1
+#define MED_MUZZLE_FLASH_FX_GREEN 1024+2
+#define imp_a_laat_dust 1024+3
+
+HoverFX() {
+	while(1) {
+		if((get PIECE_Y(body) - get GROUND_HEIGHT(get PIECE_XZ(body))) < 15000) {
+			emit-sfx imp_a_laat_dust from link1;
+		}
+		sleep 200;
+	}
+}
+
+Create() {
+	hide r_flare;
+	hide l_flare;
+	hide lballpt;
+	hide rballpt;
+	gun_1 = 0;
+	start-script SmokeUnit_SWS();
+//	start-script HoverFX();
+}
+
+RestoreAfterDelay() {
+	sleep 5000;
+	turn lball to y-axis <0> speed <50>;
+	turn lball to x-axis <0> speed <50>;
+	turn rball to y-axis <0> speed <50>;
+	turn rball to x-axis <0> speed <50>;
+}
+
+QueryWeapon1(piecenum) {
+	if(!gun_1) {
+		piecenum = lpt;
+	}
+	if(gun_1) {
+		piecenum = rpt;
+	}
+}
+
+FireWeapon1() {
+	if(!gun_1) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from l_flare;
+	}
+	if(gun_1) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from r_flare;
+	}
+	gun_1 = !gun_1;
+}
+
+AimWeapon1(heading, pitch) {
+	turn lpt to x-axis 0 - pitch now;
+	turn lpt to y-axis heading now;
+	turn rpt to x-axis 0 - pitch now;
+	turn rpt to y-axis heading now;
+	return 1;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = cockpit;
+}
+
+QueryWeapon2(piecenum) {
+	piecenum = lballpt;
+}
+
+AimFromWeapon2(piecenum) {
+	piecenum = lball;
+}
+
+AimWeapon2(heading, pitch) {
+	turn lball to y-axis heading now;
+	turn lball to x-axis 0 - pitch now;
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+FireWeapon2() {
+	emit-sfx MED_MUZZLE_FLASH_FX_GREEN from lballpt;
+}
+
+QueryWeapon3(piecenum) {
+	piecenum = rballpt;
+}
+
+AimFromWeapon3(piecenum) {
+	piecenum = rball;
+}
+
+AimWeapon3(heading, pitch) {
+	turn rball to y-axis heading now;
+	turn rball to x-axis 0 - pitch now;
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+FireWeapon3() {
+	emit-sfx MED_MUZZLE_FLASH_FX_GREEN from rballpt;
+}
+
+QueryTransport(piecenum,springsucks) {
+	if(men == 1) {
+		piecenum = link1;
+	}
+	if(men == 2) {
+		piecenum = link2;
+	}
+	if(men == 3) {
+		piecenum = link3;
+	}
+	if(men == 4) {
+		piecenum = link4;
+	}
+	if(men == 5) {
+		piecenum = link5;
+	}
+	if(men == 6) {
+		piecenum = link6;
+	}
+	set UNIT_VAR_START+0 to men;
+}
+
+BeginTransport(springsucks) {
+	++men;
+}
+
+TransportDrop(spring,sucks) {
+	--men;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode body type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode body type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode body type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode body type BITMAP;
+}

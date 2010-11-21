@@ -1,0 +1,22 @@
+[reb_b_repulsorliftplant_dead]
+{
+	object=wreckage/reb_b_repulsorliftplant/seq1.s3o;
+	featuredead=reb_b_repulsorliftplant_heap;
+	description=Wrecked Plant;
+	metal=397;
+	damage=1935;
+	footprintx=6;
+	footprintz=6;
+	reclaimable=1;
+}
+[reb_b_repulsorliftplant_heap]
+{
+	object=heaps/5x5b.s3o;
+	description=Wreckage;
+	metal=132;
+	damage=3870;
+	blocking=0;
+	footprintx=5;
+	footprintz=5;
+	reclaimable=1;
+}

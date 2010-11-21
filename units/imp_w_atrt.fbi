@@ -1,0 +1,63 @@
+[unitinfo]
+{
+	unitname=imp_w_atrt;
+	objectname=empire/w-atrt.S3O;
+	buildpic=imp_w_atrt.png;
+	corpse=imp_w_atrt_dead;
+	icontype=veh_light;
+	soundcategory=CORE_TANK;
+	category=IONTARGETABLE GROUND WALKER;
+	tedclass=WALKER;
+
+	name=AT-RT;
+	description=All Terrain Recon Transport Walker;
+	side=Empire;
+	maxdamage=1070;
+	idleautoheal=0;
+	buildcostmetal=270;
+	buildcostenergy=3000;
+	buildtime=30;
+	footprintx=2;
+	footprintz=2;
+	mass=150;
+	cobid=50;
+	collisionVolumeType=cylY;
+	collisionVolumeScales=16 44 24;
+	collisionVolumeOffsets=0 -2 0;
+
+	upright=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=3;
+
+	sightdistance=600;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=WALKER2x2;
+	maxvelocity=2.5;
+	acceleration=2.5;
+	brakerate=2.5;
+	turnrate=600;
+	maxslope=35;
+	maxwaterdepth=12;
+	turninplace=0;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	nochasecategory=VTOL;
+
+	weapon1=old_w_atrt;
+	onlytargetcategory1=GROUND;
+	weaponmaindir1=0 0 1;
+	maxangledif1=180;
+	weapon2=old_w_atrt;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_RED;
+	}
+}

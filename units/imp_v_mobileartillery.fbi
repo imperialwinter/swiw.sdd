@@ -1,0 +1,65 @@
+[unitinfo]
+{
+	unitname=imp_v_mobileartillery;
+	objectname=empire/v-mobileartillery.s3o;
+	buildpic=imp_v_mobileartillery.png;
+	corpse=imp_v_mobileartillery_dead;
+	icontype=veh_special;
+	soundcategory=imp_v_mobileartillery;
+	category=IONTARGETABLE GROUND TANK;
+
+	name=Mobile Artillery;
+	description=Mobile Artillery Platform;
+	side=Empire;
+	maxdamage=1000;
+	idleautoheal=0;
+	buildcostmetal=800;
+	buildcostenergy=8600;
+	buildtime=73;
+	footprintx=3;
+	footprintz=3;
+	mass=30000;
+	cobid=57;
+	collisionVolumeType=box;
+	collisionVolumeScales=56 36 104;
+	collisionVolumeOffsets=0 16 6;
+
+	upright=1;
+	shownanoframe=0;
+
+	energyuse=18;
+
+	sightdistance=400;
+
+	canmove=1;
+	movementclass=HOVER3x3;
+	maxvelocity=2.28;
+	acceleration=0.013;
+//	brakerate=0.02;
+	turnrate=290;
+	maxslope=12;
+	maxwaterdepth=255;
+	turninplace=0;
+
+	canhover=1;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_UNIT;
+	selfdestructas=MEDIUM_UNIT;
+
+	nochasecategory=VTOL;
+
+	weapon1=imp_artillery;
+	onlytargetcategory1=GROUND;
+	weapon2=imp_artillery_nullgun;
+	onlytargetcategory2=GROUND;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:LARGE_MUZZLE_FLASH_FX_BLUE;
+	}
+	[customparams]
+	{
+		canareaattack=1;
+	}
+}

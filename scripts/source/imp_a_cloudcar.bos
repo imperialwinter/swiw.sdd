@@ -1,0 +1,67 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, flare1, flare2, cockpit;
+
+static-var  gun_1;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 cockpit
+#define SMOKEPIECE3 flare1
+#define SMOKEPIECE4 flare2
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_GREEN 1024+1
+
+Create() {
+	hide flare1;
+	hide flare2;
+	gun_1 = 0;
+	start-script SmokeUnit_SWS();
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = cockpit;
+}
+
+QueryWeapon1(piecenum) {
+	if(gun_1) {
+		piecenum = flare1; }
+	if(!gun_1) {
+		piecenum = flare2; }
+}
+
+FireWeapon1() {
+	if(gun_1) {
+		emit-sfx MED_MUZZLE_FLASH_FX_GREEN from flare1;
+	}
+	if(!gun_1) {
+		emit-sfx MED_MUZZLE_FLASH_FX_GREEN from flare2;
+	}
+	gun_1 = !gun_1;
+}
+
+AimWeapon1() {
+	return 1;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 3;
+		explode base type SHATTER | BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 3;
+		explode base type SHATTER | BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type SHATTER | BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type SHATTER | BITMAP;
+}

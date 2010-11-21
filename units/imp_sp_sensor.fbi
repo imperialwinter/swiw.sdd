@@ -1,0 +1,52 @@
+[unitinfo]
+{
+	unitname=imp_sp_sensor;
+	objectname=empire/sp-sensor.s3o;
+	buildpic=imp_sp_sensor.png;
+	corpse=imp_sp_sensor_dead;
+	icontype=building_scout;
+	soundcategory=CORE_RADAR;
+	category=GROUND BUILDING;
+	yardmap=oooo;
+
+	name=Sensor Tower;
+	description=Sensor Tower;
+	side=Empire;
+	maxdamage=280;
+	idleautoheal=0;
+	buildcostmetal=100;
+	buildcostenergy=400;
+	buildtime=4;
+	footprintx=2;
+	footprintz=2;
+	cobid=54;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	energyuse=12;
+
+	sightdistance=400;
+	radardistance=1700;
+	radardistancejam=500;
+	sonardistance=1500;
+	sonardistancejam=500;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	maxslope=10;
+	maxwaterdepth=5;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_BUILDING;
+	selfdestructas=SMALL_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:impact_dust;
+		explosiongenerator2=custom:reentry_fx;
+	}
+}

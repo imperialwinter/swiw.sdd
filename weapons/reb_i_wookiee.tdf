@@ -1,0 +1,63 @@
+[reb_i_wookiee]
+{
+	name=Bowcaster;
+	rendertype=1;
+	turret=1;
+	tolerance=750;
+	interceptedbyshieldtype=2;
+	explosiongenerator=custom:laser_sm_blue;
+	explosionspeed=65536;
+	cegtag=light_sm_blue;
+
+	lineofsight=1;
+	firestarter=0;
+
+	range=350; //270
+	reloadtime=2.6;
+	energypershot=1;
+	burst=5;
+	burstrate=0;
+	sprayangle=1800;
+	weaponvelocity=450;
+	areaofeffect=48;
+
+	soundstart=rebwook_fire;
+	soundstartvolume=10;
+	soundhit=LASRHIT1;
+	soundhitvolume=10;
+	soundtrigger=1;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	avoidfeature=1;
+	collidefeature=1;
+	noselfdamage=1;
+
+	rgbcolor=0.7 1.0 1.0;
+	rgbcolor2=0 0.2 1.0;
+
+	beamweapon=1;
+	thickness=1.6;
+	duration=0.010;
+	intensity=0.9;
+
+	collisionsize=96;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=002_fancy_plasmabolt;
+	texture2=beam_no_ends;
+
+	[damage]
+	{
+		default=45;
+		no_armor=45;
+		light_armor=45;
+		medium_armor=45;
+		heavy_armor=45;
+		ion_damage=45;
+		flag=0.000001;
+	}
+}

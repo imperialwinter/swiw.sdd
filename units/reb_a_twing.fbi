@@ -1,0 +1,66 @@
+[unitinfo]
+{
+	unitname=reb_a_twing;
+	objectname=rebel/a-twing.s3o;
+	buildpic=reb_a_twing.png;
+	icontype=air_scout;
+	soundcategory=reb-a-twing;
+	category=VTOL;
+
+	name=T-Wing;
+	description=Unarmed Air Scout;
+	side=Rebels;
+	maxdamage=125;
+	idleautoheal=0;
+	buildcostmetal=33;
+	buildcostenergy=650;
+	buildtime=11;
+	footprintx=3;
+	footprintz=3;
+	mass=120000;
+	cobid=64;
+	collisionVolumeType=ellipsoid;
+	collisionVolumeScales=18 18 48;
+	collisionVolumeOffsets=0 2 11;
+
+	shownanoframe=0;
+	levelground=0;
+	collisionspherescale=1.0;
+
+	energyuse=5;
+
+	sightdistance=600;
+	radardistance=800;
+
+	canmove=1;
+	maxvelocity=10.6;
+	acceleration=1.0;
+	brakerate=0.5;
+	turnrate=350;
+
+	maxAcc=.4;
+	maxRudder=.004;
+	maxElevator=.006;
+	maxAileron=.005;
+
+	canfly=1;
+	cruisealt=250;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=TIE_BLAST;
+	selfdestructas=TIE_BLAST;
+
+	nochasecategory=GROUND;
+
+//	weapon1=reb_a_twing;
+//	badtargetcategory1=GROUND;
+//	weaponmaindir1=0 0 1;
+//	maxangledif1=60;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:exhaust_twing;
+		explosiongenerator2=custom:constdust;
+	}
+}

@@ -1,0 +1,191 @@
+[hit_hailfire] {
+	[mainhit1] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=-1 r2, -1 r2, -1 r2;
+			pos=-32 r64, 0, -32 r64;
+			delay=r4;
+			explosionGenerator=custom:hit_hailfire_mainhit2;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=2;
+	}
+	
+	[mainhit2] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=-1 r2, -1 r2, -1 r2;
+			pos=-32 r64, 0, -32 r64;
+			delay=r4;
+			explosionGenerator=custom:hit_hailfire_mainhit2;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=2;
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.1, 0;
+			colorMap=0.9 0.25 1 0.01   0.9 0.25 1 0.01   0.9 0.25 1 0.01   0.9 0.25 1 0.01   0 0 0 0;
+			Texture=plasma2;
+			airdrag=0.95;
+			particleLife=64;
+			particleLifeSpread=32;
+			numParticles=96;
+			particleSpeed=2;
+			particleSpeedSpread=4;
+			particleSize=0.5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -12 r24, -12 r24, -12 r24;
+			width=24 r24;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.125;
+			color=0.9,0.25,1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=8; 
+	}
+	
+	[sphere] {
+		class=CSpherePartSpawner;
+		[properties] {
+			expansionSpeed=6;
+			ttl=16;
+			alpha=0.5;
+			color=1,1,1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[groundflash]{
+		flashsize=96;
+		flashalpha=0.75;
+		circlegrowth=6;
+		circlealpha=0.25;
+		ttl=16;
+		color=0.95,0.675,1;
+	}
+}
+
+[hit_hailfire_mainhit1] {
+	[mainhit] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=4;
+			sizeMod=0.875;
+			pos=0, 16, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=0.225 0.125 0.25 0.01   0.225 0.125 0.25 0.01   0.225 0.125 0.25 0.01   0 0 0 0;
+			Texture=purpleexplo;
+			airdrag=0.1;
+			particleLife=12;
+			particleLifeSpread=8;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=24;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[anim] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=-1 r2, -1 r2, -1 r2;
+			pos=0, 16, 0;
+			delay=0;
+			damage=32;
+			explosionGenerator=custom:inc_explosion1_half;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}
+
+[hit_hailfire_mainhit2] {
+	[mainhit] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=4;
+			sizeMod=0.875;
+			pos=0, 16, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=0.225 0.125 0.25 0.01   0.225 0.125 0.25 0.01   0.225 0.125 0.25 0.01   0 0 0 0;
+			Texture=purpleexplo;
+			airdrag=0.1;
+			particleLife=12;
+			particleLifeSpread=8;
+			numParticles=1;
+			particleSpeed=0.001;
+			particleSpeedSpread=0;
+			particleSize=24;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[anim] {
+		class=CExpGenSpawner;
+		[properties]{
+			dir=-1 r2, -1 r2, -1 r2;
+			pos=0, 16, 0;
+			delay=0;
+			damage=32;
+			explosionGenerator=custom:inc_explosion2_half;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}

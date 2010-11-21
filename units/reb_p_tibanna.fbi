@@ -1,0 +1,53 @@
+[unitinfo]
+{
+	unitname=reb_p_tibanna;
+	objectname=rebel/p-tibanna.s3o;
+	buildpic=reb_p_tibanna.png;
+	icontype=building_heavy;
+	soundcategory=ARM_GEO;
+	category=GROUND RESOURCE BUILDING;
+	tedclass=ENERGY;
+	yardmap=oooo oGGo oGGo oooo;
+
+	name=Tibanna Refinery;
+	description=Converts Tibanna Gas to Power;
+	side=Rebels;
+	maxdamage=1700;
+	idleautoheal=0;
+	buildcostmetal=650;
+	buildcostenergy=5600;
+	buildtime=62;
+	footprintx=8;
+	footprintz=8;
+	cobid=91;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	energymake=800;
+
+	sightdistance=400;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	maxslope=20;
+	maxwaterdepth=5;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-reb.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=10;
+	BuildingGroundDecalSizeY=10;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+	}
+}

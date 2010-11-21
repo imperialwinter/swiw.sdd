@@ -1,0 +1,67 @@
+[reb_i_rockettrooper_dead_seq1_head1]
+{
+	object=corpses/reb_i_rockettrooper/seq1_head1.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_rockettrooper_dead_seq1_head2]
+{
+	object=corpses/reb_i_rockettrooper/seq1_head2.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_rockettrooper_dead_seq1_head3]
+{
+	object=corpses/reb_i_rockettrooper/seq1_head3.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+
+[reb_i_rockettrooper_dead_seq2_head1]
+{
+	object=corpses/reb_i_rockettrooper/seq2_head1.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_rockettrooper_dead_seq2_head2]
+{
+	object=corpses/reb_i_rockettrooper/seq2_head2.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_rockettrooper_dead_seq2_head3]
+{
+	object=corpses/reb_i_rockettrooper/seq2_head3.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}

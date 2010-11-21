@@ -1,0 +1,56 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, tank, tower, conc, rack, guns, smoke1, smoke2;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 tower
+#define SMOKEPIECE3 tank
+#define SMOKEPIECE4 rack
+#include "general/smokeunit_sws.h"
+
+#define smoke 1024+0
+
+SmokeStack() {
+	while(1) {
+		if(get ACTIVATION) {
+			emit-sfx smoke from smoke1;
+			emit-sfx smoke from smoke2;
+		}
+		sleep 100;
+	}
+}
+
+Create() {
+	start-script SmokeStack();
+	start-script SmokeUnit_SWS();
+}
+
+Activate() {
+	return 0;
+}
+
+Deactivate() {
+	return 0;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

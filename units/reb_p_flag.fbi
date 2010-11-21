@@ -1,0 +1,52 @@
+[unitinfo]
+{
+	unitname=reb_p_flag;
+	objectname=rebel/p-flag.s3o;
+	buildpic=reb_p_flag.png;
+	icontype=flag_reb;
+	soundcategory=CORE_FUS;
+	category=FLAG;
+	tedclass=METAL;
+	yardmap=oooooooooooooooo;
+
+	name=Territory Marker;
+	description=Claims Territory;
+	side=Rebels;
+	maxdamage=100;
+	damagemodifier=0;
+	idleautoheal=0;
+	buildcostmetal=1;
+	buildcostenergy=1;
+	buildtime=100;
+	footprintx=4;
+	footprintz=4;
+	cobid=86;
+	collisionVolumeType=box;
+	collisionVolumeScales=48 1 48;
+	collisionVolumeOffsets=0 0 0;
+
+	onoffable=1;
+	canrepeat=0;
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+	maxwaterdepth=10;
+
+	extractsmetal=0.0006;
+	energyuse=5;
+
+	sightdistance=150;
+	stealth=1;
+
+	activatewhenbuilt=1;
+
+	maxslope=30;
+
+	canselfdestruct=0;
+	selfdestructcountdown=1800;
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+	[customparams] {
+		dontcount=1;
+	}
+}

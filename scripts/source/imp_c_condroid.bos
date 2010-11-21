@@ -1,0 +1,134 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece	base, lwing, larm, lclaw, sparks1, rwing, rarm, rclaw, sparks2;
+
+static-var  isBuilding, wake, randSleep, animation;
+
+#define SIG_BUILD	2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 lwing
+#define SMOKEPIECE3 rwing
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define BUILDER_SPARKS_FX 1024+1
+
+Sounds() {
+	play-sound("Argh_Electrical_Crackle_Short",25);
+    #define crackle_short 0
+}
+
+BuilderScript() {
+	randSleep = rand(1000,1500);
+	while(1) {
+		while(isBuilding) {
+			randSleep = rand(1000,1500);
+			animation = rand(1,2);
+			if(animation == 1) {
+				move rarm to z-axis [-5] speed [50];
+				move larm to z-axis [0] speed [50];
+				turn rclaw to z-axis <45> speed <20>;
+				turn lclaw to z-axis <-45> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks1;
+				emit-sfx BUILDER_SPARKS_FX from sparks2;
+				get PLAY_SOUND(crackle_short, 196608, 0, 0);
+			}
+			if(animation == 2) {
+				move rarm to z-axis [0] speed [50];
+				move larm to z-axis [-5] speed [50];
+				turn rclaw to z-axis <0> speed <20>;
+				turn lclaw to z-axis <0> speed <20>;
+				emit-sfx BUILDER_SPARKS_FX from sparks1;
+				emit-sfx BUILDER_SPARKS_FX from sparks2;
+				get PLAY_SOUND(crackle_short, 196608, 0, 0);
+			}
+			sleep randSleep;
+		}
+		sleep randSleep;
+	}		
+}
+
+WakeFX(randomSeed) {
+	while(1) {
+		randomSeed = rand(150,400);
+		sleep randomSeed;
+		if(wake <= 3) {
+			emit-sfx 5 from base;
+			emit-sfx 3 from base;
+		}
+	}
+}
+
+setSFXoccupy(crap) {
+	wake = crap;
+	if(wake > 2) {
+		set UPRIGHT to 0;
+	}
+	if(wake < 3) {
+		set UPRIGHT to 1;
+	}
+}
+
+Create() {
+	hide sparks1;
+	hide sparks2;
+	move rarm to z-axis [-7.5] now;
+	move larm to z-axis [-7.5] now;
+	turn rwing to z-axis <45> now;
+	turn lwing to z-axis <-45> now;
+
+	isBuilding = FALSE;
+	wake = FALSE;
+
+	start-script WakeFX();
+	start-script SmokeUnit_SWS();
+	start-script BuilderScript();
+}
+
+StartBuilding(heading,pitch) {
+	signal SIG_BUILD;
+	isBuilding = 1;
+	turn base to y-axis heading speed <100>;
+	turn rwing to z-axis <45> speed <150>;
+	turn lwing to z-axis <-45> speed <150>;
+	wait-for-turn base around y-axis;
+	set INBUILDSTANCE to 1;
+}
+
+StopBuilding() {
+	set-signal-mask SIG_BUILD;
+	turn base to y-axis <0> speed <100>;
+	turn rwing to z-axis <0> speed <150>;
+	turn lwing to z-axis <0> speed <150>;
+	move rarm to z-axis [-7.5] speed [50];
+	move larm to z-axis [-7.5] speed [50];
+	set INBUILDSTANCE to 0;	
+	isBuilding = 0;
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = sparks1;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

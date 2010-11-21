@@ -1,0 +1,122 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, lengine, rengine, tengine, a1, a2, troop, head, w1, w2, w3, w4;
+
+static-var  wake, bMoving;
+
+#define SMOKEPIECE1 tengine
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 rengine
+#define SMOKEPIECE4 a1
+#include "general/smokeunit_sws.h"
+
+#define UNIT_ROOT base
+#define UNIT_BELOW_GROUND_DIST [-25]
+#define UNIT_RISE_SPEED [4]
+#define DUSTFX 1024+1
+#define DUSTFXPT1 base
+#include "general/rebel_unit_build.h"
+
+StartMoving() {
+	bMoving = 1;
+	while(1) {
+		if(wake <= 3) {
+			emit-sfx 5 from w1;
+			emit-sfx 5 from w2;
+			emit-sfx 5 from w3;
+			emit-sfx 5 from w4;
+			emit-sfx 3 from w1;
+			emit-sfx 3 from w2;
+			emit-sfx 3 from w3;
+			emit-sfx 3 from w4;
+		}
+		sleep rand(150,400);
+	}
+}
+
+StopMoving() {
+	bMoving = 0;
+}
+
+setSFXoccupy(crap) {
+	wake = crap;
+	if(wake > 2) {
+		set UPRIGHT to 0;
+	}
+	if(wake < 3) {
+		set UPRIGHT to 1;
+	}
+}
+
+Antennae() {
+	while(1) {
+		if(bMoving) {
+			turn a1 to x-axis <-1> * rand(0,20) speed <130>;
+			turn a2 to x-axis <-1> * rand(0,20) speed <130>;
+			sleep rand(20,100);
+		}
+		if(!bMoving) {
+			turn a1 to x-axis <0> speed <130>;
+			turn a2 to x-axis <0> speed <130>;
+			sleep 1000;
+		}
+	}
+}
+
+Create() {
+	start-script Antennae();
+	start-script SmokeUnit_SWS();
+	call-script ConstructionAnim();
+	move base to y-axis 0 now;
+}
+
+Restore() {
+	sleep 5000;
+	turn head to y-axis <0> speed <90>;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	turn head to y-axis heading speed <90>;
+	start-script Restore();
+	return 0;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = head;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		explode rengine type BITMAP;
+		explode tengine type BITMAP;
+		explode lengine type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		explode rengine type FALL | SMOKE | BITMAP;
+		explode tengine type FALL | SMOKE | BITMAP;
+		explode lengine type FALL | SMOKE | BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		explode rengine type FALL | SMOKE | BITMAP;
+		explode tengine type FALL | SMOKE | BITMAP;
+		explode lengine type FALL | SMOKE | BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+	explode rengine type FALL | SMOKE | BITMAP;
+	explode tengine type FALL | SMOKE | BITMAP;
+	explode lengine type FALL | SMOKE | BITMAP;
+}

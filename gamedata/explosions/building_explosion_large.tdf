@@ -1,0 +1,198 @@
+[building_explosion_large] {
+	[fireball1] {
+		class=CExpGenSpawner;
+		[properties] {
+			delay=10;
+			explosiongenerator=custom:building_explosion_large_fireball;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[fireball2] {
+		class=CExpGenSpawner;
+		[properties] {
+			delay=13 i1;
+			explosiongenerator=custom:building_explosion_large_fireball;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[fireball3] {
+		class=CExpGenSpawner;
+		[properties] {
+			delay=16 i1;
+			explosiongenerator=custom:building_explosion_large_fireball;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[fireball4] {
+		class=CExpGenSpawner;
+		[properties] {
+			delay=19 i1;
+			explosiongenerator=custom:building_explosion_large_fireball;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[fireball5] {
+		class=CExpGenSpawner;
+		[properties] {
+			delay=22 i1;
+			explosiongenerator=custom:building_explosion_large_fireball;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[fireball6] {
+		class=CExpGenSpawner;
+		[properties] {
+			delay=25 i1;
+			explosiongenerator=custom:building_explosion_large_fireball;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[fireball7] {
+		class=CExpGenSpawner;
+		[properties] {
+			delay=28 i1;
+			explosiongenerator=custom:building_explosion_large_fireball;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[fireball8] {
+		class=CExpGenSpawner;
+		[properties] {
+			delay=31 i1;
+			explosiongenerator=custom:building_explosion_large_fireball;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[fireball9] {
+		class=CExpGenSpawner;
+		[properties] {
+			delay=34 i1;
+			explosiongenerator=custom:building_explosion_large_fireball;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[fireball10] {
+		class=CExpGenSpawner;
+		[properties] {
+			delay=37 i1;
+			explosiongenerator=custom:building_explosion_large_fireball;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[heatcloud] {
+		[properties] {
+			texture=ExplodeHeat;
+			heat=85;
+			maxheat=95;
+			heatFalloff=1;
+			size=8;
+			sizeGrowth=-10;
+			sizemod=0;
+			sizemodmod=0;
+			speed=0, 1, 0;
+			pos=0, 0, 0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	} 
+	[fakesmoke] {
+		class=CSphereParticleSpawner;
+		[properties] {
+			sizegrowth=0.7;
+			sizemod=1;
+			pos=-50 r100, r10, -50 r100;
+			emitvector=-0.2 r0.4, 1, -0.2 r0.4;
+			gravity=0, 0.002, 0;
+			colormap=0.86 0.86 0.5 1	0.86 0.5 0 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0 0 0 0;
+			texture=GenericSmokeCloud;
+			airdrag=1;
+			particlelife=160;
+			particlelifespread=25;
+			numparticles=10;
+			particlespeed=0;
+			particlespeedspread=0.5;
+			particlesize=120;
+			particlesizespread=1;
+			emitRot=90;
+			emitRotSpread=2;
+			directional=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	[groundflash] {
+		alwaysvisible=1;
+		ttl=50;
+		flashsize=360;
+		flashalpha=0.5;
+		circlegrowth=-4;
+		circlealpha=0.3;
+		color=1, 1, 0.7;
+		air=1;
+		ground=1;
+		water=1;
+	}
+}
+[building_explosion_large_fireball] {
+	[fireball] {
+		class=CSphereParticleSpawner;
+		[properties] {
+			sizegrowth=0.2;
+			sizemod=1.0;
+			pos=-40 r80, 10, -40 r80;
+			emitvector=-1 r2, 1, -1 r2;
+			gravity=0, -0.085, 0;
+			colormap=1 1 0.1 0.1	0.86 0.5 0 1	0.86 0.5 0 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0 0 0 0;
+			texture=GenericSmokeCloud;
+			airdrag=1;
+			particlelife=120;
+			particlelifespread=25;
+			numparticles=10;
+			particlespeed=5;
+			particlespeedspread=4;
+			particlesize=10;
+			particlesizespread=12;
+			emitRot=0;
+			emitRotSpread=2;
+			directional=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}

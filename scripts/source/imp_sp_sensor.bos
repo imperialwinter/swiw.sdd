@@ -1,0 +1,102 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, arm1, r2, arm2, r3, arm3, r4, arm4, r5, arm5, emit;
+
+static-var reentering;
+
+#define ONOFF 2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 arm1
+#define SMOKEPIECE3 arm3
+#define SMOKEPIECE4 arm4
+#include "general/smokeunit_sws.h"
+
+#define landcloud 1024+1
+#define reentryfx 1024+2
+
+Sounds() {
+	play-sound("XPLOLRG3",25);
+    #define explosion 0
+}
+
+Falling() {
+	while(reentering) {
+		emit-sfx reentryfx from emit;
+		sleep 5;
+	}
+}
+
+Create() {
+	move base to y-axis [3750] now;
+	turn r2 to y-axis <72> now;
+	turn r3 to y-axis <144> now;
+	turn r4 to y-axis <-72> now;
+	turn r5 to y-axis <-144> now;
+	turn arm1 to x-axis <35> now;
+	turn arm2 to x-axis <35> now;
+	turn arm3 to x-axis <35> now;
+	turn arm4 to x-axis <35> now;
+	turn arm5 to x-axis <35> now;
+	turn base to x-axis rand(<0>,<10>) now;
+	start-script Falling();
+	reentering = 1;
+	move base to y-axis [0] speed [875];
+	wait-for-move base along y-axis;
+	reentering = 0;
+	get PLAY_SOUND(explosion, 196608, 0, 0);
+	emit-sfx landcloud from base;
+	emit-sfx landcloud from arm1;
+	emit-sfx landcloud from arm3;
+	turn arm1 to x-axis <0> speed <20>;
+	turn arm2 to x-axis <0> speed <20>;
+	turn arm3 to x-axis <0> speed <20>;
+	turn arm4 to x-axis <0> speed <20>;
+	turn arm5 to x-axis <0> speed <20>;
+	start-script SmokeUnit_SWS();
+}
+
+RestoreActivation() {
+	set-signal-mask ONOFF;
+	sleep 5000;
+	set ACTIVATION to TRUE;
+	turn arm1 to x-axis <0> speed <20>;
+	turn arm2 to x-axis <0> speed <20>;
+	turn arm3 to x-axis <0> speed <20>;
+	turn arm4 to x-axis <0> speed <20>;
+	turn arm5 to x-axis <0> speed <20>;
+}
+
+HitByWeaponId(z,x,id,damage) {
+	signal ONOFF;
+	set ACTIVATION to FALSE;
+	turn arm1 to x-axis <35> speed <20>;
+	turn arm2 to x-axis <35> speed <20>;
+	turn arm3 to x-axis <35> speed <20>;
+	turn arm4 to x-axis <35> speed <20>;
+	turn arm5 to x-axis <35> speed <20>;
+	start-script RestoreActivation();
+	return 100;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

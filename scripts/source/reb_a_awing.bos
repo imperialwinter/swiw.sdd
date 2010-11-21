@@ -1,0 +1,118 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, cockpit, lgun, lflare, rgun, rflare, rocketpt, e1, e2;
+
+static-var  gun_1, bMoving;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 rgun
+#define SMOKEPIECE3 lgun
+#define SMOKEPIECE4 cockpit
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_RED 1024+1
+#define exhaustfx 1024+2
+
+#define UNIT_ROOT base
+#define UNIT_BELOW_GROUND_DIST [-20]
+#define UNIT_RISE_SPEED [4]
+#define DUSTFX 1024+3
+#define DUSTFXPT1 base
+#include "general/rebel_unit_build.h"
+
+Exhaust() {
+	while(1) {
+		if(bMoving) {
+			emit-sfx exhaustfx from e1;
+			emit-sfx exhaustfx from e2;
+		}		
+		sleep 20;
+	}
+}
+
+StartMoving() {
+	bMoving=1;
+}
+	
+StopMoving() {
+	bMoving=0;
+}
+
+Create() {
+	hide lflare;
+	hide rflare;
+	gun_1 = 0;
+	bMoving = 0;
+	start-script Exhaust();
+	start-script SmokeUnit_SWS();
+	call-script ConstructionAnim();
+	move base to y-axis 0 now;
+}
+
+
+QueryWeapon1(piecenum) {
+	if(gun_1 == 0) {
+		piecenum = lflare;
+	}
+	if(gun_1 == 1) {
+		piecenum = rflare;
+	}
+}
+
+Shot1(seriouslywhatthehellisthisvar) {
+	++gun_1;
+	if(gun_1 > 1) {
+		gun_1 = 0;
+	}
+	if(gun_1 == 0) {
+		emit-sfx MED_MUZZLE_FLASH_FX_RED from lflare;
+		emit-sfx MED_MUZZLE_FLASH_FX_RED from rflare;
+	}
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum=cockpit;
+}
+
+AimWeapon1(heading, pitch) {
+	return 1;
+}
+
+FireWeapon1() {
+	return 0;
+}
+
+AimWeapon2(heading, pitch) {
+	return 1;
+}
+
+QueryWeapon2(piecenum) {
+	piecenum = rocketpt;
+}
+
+FireWeapon2() {
+	return 0;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode lgun type FALL | SMOKE | BITMAP;
+		explode rgun type FALL | SMOKE | BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode cockpit type SHATTER;
+	explode lgun type FALL | SMOKE | BITMAP;
+	explode rgun type FALL | SMOKE | BITMAP;
+}

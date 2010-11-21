@@ -1,0 +1,59 @@
+[imp_i_flametrooper_death] {
+	[heatcloud] {
+		[properties] {
+			texture=ExplodeHeat;
+			heat=35;
+			maxheat=45;
+			heatFalloff=1;
+			size=1.25;
+			sizeGrowth=-2;
+			sizemod=0;
+			sizemodmod=0;
+			speed=0, 1, 0;
+			pos=0, 0, 0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	} 
+	[fakesmoke] {
+		class=CSphereParticleSpawner;
+		[properties] {
+			sizegrowth=0.2;
+			sizemod=1;
+			pos=-15 r30, r10, -15 r30;
+			emitvector=-0.2 r0.4, 1, -0.2 r0.4;
+			gravity=0, 0.002, 0;
+			colormap=0.86 0.86 0.5 1	0.86 0.5 0 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0 0 0 0;
+			texture=GenericSmokeCloud;
+			airdrag=1;
+			particlelife=60;
+			particlelifespread=25;
+			numparticles=10;
+			particlespeed=0;
+			particlespeedspread=0.5;
+			particlesize=20;
+			particlesizespread=1;
+			emitRot=90;
+			emitRotSpread=2;
+			directional=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	[groundflash] {
+		alwaysvisible=1;
+		ttl=20;
+		flashsize=70;
+		flashalpha=0.5;
+		circlegrowth=-2;
+		circlealpha=0.3;
+		color=1, 1, 0.5;
+		air=1;
+		ground=1;
+		water=1;
+	}
+}

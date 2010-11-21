@@ -1,0 +1,132 @@
+// 8 diameter
+
+[hit_blue_xs] {
+	usedefaultexplosions=0;
+	
+	[miss] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;
+			explosionGenerator=custom:hit_blue_xs_miss;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[melt] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;
+			explosionGenerator=custom:inc_melt_xs;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[steam] {
+		class=CExpGenSpawner;
+		[properties]
+		{
+			dir=dir;
+			pos=0, 0, 0; 
+			delay=i1;
+			explosionGenerator=custom:hit_blue_xs_steam; 
+		}
+		nounit=1;
+		count=4;
+	}
+	
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -2 r4, -2 r4, -2 r4;
+			width=1 r0.5;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.125;
+			color=0.1,0.1,1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=2; 
+	}
+	
+	[groundflash]{
+		flashsize=8;
+		flashalpha=0.5;
+		circlegrowth=6;
+		circlealpha=0;
+		ttl=8;
+		color=0,0,1;
+	}
+}
+
+[hit_blue_xs_miss] {
+	[dust]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.5 0.4 0.3 1  0 0 0 0;
+			size=1 r3;
+			length=2 r8;
+			sizeGrowth=1;
+			ttl=8;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=2;
+	}
+	
+	[water]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.45 0.45 0.5 0.5  0 0 0 0; 
+			size=1 r3;
+			length=2 r8;
+			sizeGrowth=1;
+			ttl=8;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		water=1;
+		count=2;
+	}
+}
+
+[hit_blue_xs_steam] {
+	[steam]{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 1, 0;
+			colorMap=0.5 0.5 0.5 0.5   0.05 0.05 0.05 0.05;
+			Texture=smokesmall;
+			airdrag=0.75;
+			particleLife=12;
+			particleLifeSpread=8;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=2;
+			particleSize=3;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=5;
+			directional=0;
+			alwaysVisible=0;
+		}
+		water=1;
+		count=1;
+	}
+}

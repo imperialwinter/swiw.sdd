@@ -1,0 +1,120 @@
+v3.0 -> v3.1
+============
+* Using exactly same code for SWIW and S44 now.
+  - Squad size is now configurable.
+  - Flag radius is now configurable.
+  - Moved config in a directory with modShortName as name ('s44', 'swiw')
+* Added waypoint profiles for:  (credits to Lowdive and hrmph!)
+  - Aberdeen3v3v3
+  - AfterShock_V31
+  - Battle for PlanetXVII-v01
+  - Comet Catcher Redux
+  - Crossing_4_final
+  - DeltaSiegeDry
+  - DesertTriad
+  - Deserted_Gully-v05
+  - FrostBiteV2
+  - GRTS_River_Valley_1.4
+  - Geyser_Plains_TNM04-V3
+  - Glass_Dreams-v01
+  - River Dale-v01
+  - Sierra-v2
+  - Tangerine
+  - TheHunters-v3
+  - neurope_a7
+  - rysia
+
+v2.0 -> v3.0
+============
+* Major technical change: the AI now runs as unsynced code.
+  - CPU usage due to the AI happens only on one client, instead of all.
+  - AI is actually susceptible to network lag now, unfortunately.
+  - Desync bugs like the one in v2 can not exist anymore.
+  - Architecture is more similar to GlobalAI. (AI DLLs)
+  - There is a clear piece of framework code for building unsynced LUA AIs.
+  - AI unit limits still work in synced code.
+  - Properly seeded unsynced RNG, so math.random() can be used in configs.
+  - Credits to lurker and BrainDamage for ideas/suggestions/testing.
+* Gadget properly removes itself now if there are no AI teams.
+* AI difficulty modoption uses numeric keys now, fixes it in TASClient.
+* Reduced cheating at medium from 6% to 5%.
+* Made bot name (as shown in the lobby) mod-agnostic, to ease maintenance.
+* Doesn't try to cap allied flags anymore.
+* Spring: 1944 specific changes:
+  - Increased number of flag cappers from 12 to 24 for GBR, GER and US.
+  - Decreased number of flag cappers from 3 to 2 for Russia.
+    (because it can not properly handle the combined builders/flagcappers yet)
+  - Based ModOptions.lua on the one from Operation Konstantin, instead of SVN.
+* Star Wars Imperial Winter (SWIW) support, big thanks to [RoX]1v0ry_k1ng!
+  - Three different buildorders for both Rebel Alliance and Imperial Remmnants.
+  - Support for SWIW style flag capping (ie. flags swapped out using LUA).
+  - The specific unit types used to to cap flags are now configurable.
+  - Does not use NoSelect units (e.g. Royal Guards) anymore to attack.
+  - Fixed Rebel Alliance commander base building bootstrap.
+    (It tried to build on top of itself and then didn't move away.)
+* Added waypoint profiles for:  (credits to [RoX]1v0ry_k1ng too)
+  - ArcticPlainsV2
+  - Eye_Of_Horus
+  - TitanDuel
+  - Tundra
+  - Xelric_Draw_beta2
+
+v1.5 -> v2.0
+============
+* Added waypoint editor widget.
+  - Can add new waypoints (press N).
+  - Can remove waypoints (hold mouse button and press M).
+  - Can move waypoints.
+  - Can toggle connections between waypoints (drag).
+  - Saves the profile in craig_maps/<mapname>.lua (create the 'craig_maps'
+    directory if you want to try this widget and save your work.)
+  - Automatically saves/loads the profile on shutdown/initialization.
+* Added waypoint manager, to track flags and ownership of waypoints.
+* Added pathfinder to navigate over the waypoint graph.
+* Added flag capping (depends on map waypoint profile).
+* Added some preliminary combat management (depends on map waypoint profile).
+  - It will use multiple paths to your base.
+  - It now sends units in "squads" of 24.
+  - Units move at the speed of the slowest unit in the squad.
+    (ie. tanks, halftracks and other vehicles stay between infantry.)
+  - Units in a squad get their orders jittered around the waypoints,
+    this way pinning/suppression is less effective to them and they magically
+    take line formation when fighting other infantry.
+* Added difficulty mod option.
+  - Easy: no resource cheating.
+  - Medium: cheats in 6% of what fits in storage every 128 game frames (~4 sec)
+            (e.g. when it's stalling and has 1k storage, this means +14 extra)
+  - Hard: infinite resources, as before.
+  - Build order and unit limits can be configured per difficulty level.
+* Included waypoint profiles for:
+  - 1944_BocageSkirmish
+  - 1944_BocageSmall
+  - 1944_Caucasus_Skirmish_V4
+  - 1944_Kiev_V4
+  - 1944_Road_To_Rome_V3
+  - 1944_Terra_Firma
+  - Altair_Crossing-V1
+  - Aquatic_Divide_TNM05-V2
+  - Prokhorovka_1944
+  - SnakeIslandV2
+  - For maps not listed here, the AI falls back to v1.5 behaviour.
+
+v1.1 -> v1.5
+============
+* Added configurable unit limit using gadget:AllowUnitCreation callin.
+  - Construction vehicles are limited to one per AI team for each side.
+  - Advanced engineers are limited to four per AI team for each side.
+* Base building improvements:
+  - Base builders of different types assist each other.
+  - Buildings in base buildorder aren't skipped anymore when units get stuck.
+  - Current build isn't interrupted anymore when units get stuck for a moment.
+  - Current build isn't interrupted anymore when builder is reclaiming features.
+  - Current build isn't interrupted anymore when a unit of same type dies.
+  - Base builders take closest buildsite, instead of random one.
+  - Base builders still take random buildsite if previous build was interrupted.
+  - Speed up building placement algorithm by bumping segmentLength up.
+* It doesn't stall on Command (metal) anymore.
+
+v1 -> v1.1
+==========
+* Plays all sides now, credits to Journier for adding build orders.

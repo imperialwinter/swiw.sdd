@@ -1,0 +1,58 @@
+[unitinfo]
+{
+	unitname=imp_sc_probedroid;
+	objectname=empire/sc-probedroid.s3o;
+	buildpic=imp_sc_probedroid.png;
+	corpse=imp_sc_probedroid_dead;
+	icontype=inf_scout;
+	soundcategory=imp-sc-probedroid;
+	category=IONTARGETABLE GROUND DROID;
+
+	name=Probe Droid;
+	description=Spy/Surveillance Droid;
+	side=Empire;
+	maxdamage=80;
+	idleautoheal=0;
+	buildcostmetal=20;
+	buildcostenergy=200;
+	buildtime=5;
+	footprintx=1;
+	footprintz=1;
+	mass=50;
+	cobid=51;
+
+	upright=1;
+	shownanoframe=0;
+
+	energyuse=3;
+
+	sightdistance=750;
+	stealth=1;
+	radardistance=1050;
+	seismicdistance=900;
+
+	activatewhenbuilt=1;
+
+	canmove=1;
+	movementclass=HOVER2x2;
+	maxvelocity=2.4;
+	acceleration=0.14;
+	brakerate=0.25;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+
+	canhover=1;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_BUILDING;
+	selfdestructas=MEDIUM_BUILDING;
+
+	weapon1=imp_sc_probedroid;
+	onlytargetcategory1=GROUND;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:SMALL_MUZZLE_FLASH_FX_RED;
+	}
+}

@@ -1,0 +1,61 @@
+[MECH_STOMP_FX]
+{
+[particlesystem_dirt_MECH_STOMP_FX01]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+		sizeGrowth=-0.02;
+		sizeMod=1.0;
+		pos=0, 1.0, 0;
+		emitVector=0, 1, 0;
+		gravity=0, -0.125, 0;
+		colorMap=0.65 0.6 0.6 1.0      0.55 0.5 0.5 1.0       0.0 0.0 0.0 0.01;
+		Texture=circularthingy;
+		airdrag=1.0;
+		particleLife=30;
+		particleLifeSpread=10;
+		numParticles=16;
+		particleSpeed=2;
+		particleSpeedSpread=0.5;
+		particleSize=1.5;
+		particleSizeSpread=1;
+		emitRot=0;
+		emitRotSpread=45;
+		directional=0;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+[particlesystem_dust_MECH_STOMP_FX01]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+		sizeGrowth=0.4;
+		sizeMod=1.0;
+		pos=0, 1.0, 0;
+		emitVector=0, 1, 0;
+		gravity=0, 0.005, 0;
+		colorMap=0.65 0.6 0.6 1.0      0.55 0.5 0.5 1.0       0.0 0.0 0.0 0.01;
+		Texture=GenericSmokeCloud;
+		airdrag=0.96;
+		particleLife=30;
+		particleLifeSpread=10;
+		numParticles=3;
+		particleSpeed=0.4;
+		particleSpeedSpread=0.3;
+		particleSize=6;
+		particleSizeSpread=2;
+		emitRot=0;
+		emitRotSpread=90;
+		directional=0;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+}

@@ -1,0 +1,31 @@
+[unitinfo]
+{
+	unitname=imp_is_defense;
+	objectname=nullpoint.s3o;
+	buildpic=imp_is_antiair.png;
+	category=GROUND;
+
+	name=Anti Air Squad;
+	description=5xRocket trooper, 1xStormtrooper;
+	side=Empire;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=245;
+	buildcostenergy=1080;
+	buildtime=28;
+	footprintx=1;
+	footprintz=1;
+	cobid=38;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=10;
+	maxwaterdepth=5;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+}

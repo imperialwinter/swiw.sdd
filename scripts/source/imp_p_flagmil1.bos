@@ -1,0 +1,125 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, turret, rotate, gun, firept, d1, d2, d3, d4, d5, d6, p1, p2, p3, p4, p5, p6;
+
+static-var  bAiming, men;
+
+#define SMOKEPIECE1 turret
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 gun
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_GREEN 1024+1
+
+TransportPickup(unitid) {
+	if(get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [237.5]) {
+		if(men == 0) {
+			attach-unit unitid to p1;
+		}
+		if(men == 1) {
+			attach-unit unitid to p2;
+		}
+		if(men == 2) {
+			attach-unit unitid to p3;
+		}
+		if(men == 3) {
+			attach-unit unitid to p4;
+		}
+		if(men == 4) {
+			attach-unit unitid to p5;
+		}
+		if(men == 5) {
+			attach-unit unitid to p6;
+		}
+		++men;
+	}
+}
+
+TransportDrop(unitid) {
+	set BUSY to 1;
+	if(men == 6) {
+		attach-unit unitid to d6; }
+	if(men == 5) {
+		attach-unit unitid to d5; }
+	if(men == 4) {
+		attach-unit unitid to d4; }
+	if(men == 3) {
+		attach-unit unitid to d3; }
+	if(men == 2) {
+		attach-unit unitid to d2; }
+	if(men == 1) {
+		attach-unit unitid to d1; }
+	sleep 50;
+	drop-unit unitid;
+	--men;
+	set BUSY to 0;
+	return 0;
+}
+
+Create() {
+	hide firept;
+	men = 0;
+	bAiming = 0;
+	start-script SmokeUnit_SWS();
+}
+
+Restore() {
+	sleep 5000;
+	turn rotate to x-axis <0> speed <135>;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	turn turret to y-axis heading speed <110>;
+	turn rotate to x-axis 0 - pitch speed <54>;
+	wait-for-turn turret around y-axis;
+	wait-for-turn rotate around x-axis;
+	start-script Restore();
+	return 1;
+}
+
+FireWeapon1() {
+	emit-sfx MED_MUZZLE_FLASH_FX_GREEN from firept;
+	return 0;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = firept;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = gun;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode gun type FALL | SMOKE | BITMAP;
+		explode turret type FALL | SMOKE | BITMAP;
+		explode rotate type FALL | FIRE | SMOKE;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode gun type FALL | SMOKE | BITMAP;
+		explode turret type FALL | SMOKE | BITMAP;
+		explode rotate type FALL | FIRE | SMOKE;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode gun type FALL | SMOKE | BITMAP;
+		explode turret type FALL | SMOKE | BITMAP;
+		explode rotate type FALL | FIRE | SMOKE;
+		return 0;
+	}
+	corpsetype = 3;
+	explode gun type FALL | SMOKE | BITMAP;
+	explode turret type FALL | SMOKE | BITMAP;
+	explode rotate type FALL | FIRE | SMOKE;
+	return 0;
+}

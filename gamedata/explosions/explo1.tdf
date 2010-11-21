@@ -1,0 +1,72 @@
+[explo1] {
+	/* [explo1] {
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizeGrowth=5;
+			sizeMod=1.0;
+			pos=-15 r30, 0 r20, -15 r30;
+			emitVector=0, 1, 0;
+			gravity= 0, 0, 0;
+			colorMap=1 0.8 0.25 0.1	0.9 0.55 0 1	0.9 0.55 0 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.1 0.1 0.1 1	0.1 0.1 0.1 1	0 0 0 0;
+			Texture=dirt;
+			airdrag=0.5;
+			particleLife=10;
+			particleLifeSpread=10;
+			numParticles=5;
+			particleSpeed=0.2;
+			particleSpeedSpread=1;
+			particleSize=0.5;
+			particleSizeSpread=0.25;
+			emitRot=90;
+			emitRotSpread=0;
+			directional=0;
+			useAirLos=1;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=5;
+	}*/
+	[delay]
+	{
+		class=CExpGenSpawner;
+		[properties]
+		{
+		delay=1;
+		explosionGenerator=custom:asdf;
+		}
+	water=1;
+	air=1;
+	ground=1;
+	count=3;
+	}
+}
+[asdf] {
+	[trail] {
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizeGrowth=0.5;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=-1 r2, 1.5, -1 r2;
+			gravity=0, -0.85, 0;
+			colorMap=1 0.8 0.25 0.1	0.9 0.55 0 1	0.9 0.55 0 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0.2 0.2 0.2 1	0 0 0 0;
+			Texture=gas;
+			airdrag=1;
+			particleLife=90;
+			particleLifeSpread=3;
+			numParticles=60;
+			particleSpeed=5;
+			particleSpeedSpread=2;
+			particleSize=0.25;
+			particleSizeSpread=0;
+			emitRot=r5;
+			emitRotSpread=3;
+			directional=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}

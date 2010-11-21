@@ -1,0 +1,62 @@
+[unitinfo]
+{
+	unitname=reb_a_transport;
+	objectname=rebel/a-transport.s3o;
+	buildpic=reb_a_transport.png;
+	icontype=air_trans;
+	soundcategory=Reb_Hover_Light;
+	category=VTOL TAKESGROUNDFIRE;
+
+	name=Cargo Hauler;
+	description=Corellian Air Transport;
+	side=Rebels;
+	maxdamage=500;
+	idleautoheal=0;
+	buildcostmetal=240;
+	buildcostenergy=4400;
+	buildtime=39;
+	footprintx=5;
+	footprintz=5;
+	mass=1000000;
+	cobid=63;
+	collisionVolumeType=box;
+	collisionVolumeScales=120 18 120;
+	collisionVolumeOffsets=0 3 -7;
+
+	shownanoframe=0;
+	levelground=0;
+	collisonspherescale=1;
+
+	energyuse=25;
+
+	sightdistance=400;
+
+	canmove=1;
+	maxvelocity=3.6;
+	acceleration=0.04;
+	brakerate=1;
+	turnrate=128;
+	maxslope=10;
+
+	transportsize=50;
+	transportcapacity=50;
+	transportmass=50000;
+	mintransportmass=15500;
+	releaseheld=1;
+	transportunloadmethod=2;
+
+	canfly=1;
+	cruisealt=90;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:exhaust_rebtrans;
+		explosiongenerator2=custom:constdust;
+	}
+}

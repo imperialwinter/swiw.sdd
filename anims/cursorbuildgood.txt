@@ -1,0 +1,15 @@
+hotspot center
+frame  bitmaps/cursors/buildgood/buildgood01.png  0.100
+frame  bitmaps/cursors/buildgood/buildgood02.png  0.150
+frame  bitmaps/cursors/buildgood/buildgood03.png  0.200
+frame  bitmaps/cursors/buildgood/buildgood04.png  0.250
+frame  bitmaps/cursors/buildgood/buildgood05.png  0.300
+frame  bitmaps/cursors/buildgood/buildgood06.png  0.400
+frame  bitmaps/cursors/buildgood/buildgood07.png  0.600
+frame  bitmaps/cursors/buildgood/buildgood08.png  1.200
+frame  bitmaps/cursors/buildgood/buildgood07.png  0.600
+frame  bitmaps/cursors/buildgood/buildgood06.png  0.400
+frame  bitmaps/cursors/buildgood/buildgood05.png  0.300
+frame  bitmaps/cursors/buildgood/buildgood04.png  0.250
+frame  bitmaps/cursors/buildgood/buildgood03.png  0.200
+frame  bitmaps/cursors/buildgood/buildgood02.png  0.150

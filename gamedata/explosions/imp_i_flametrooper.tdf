@@ -1,0 +1,16 @@
+[flametrooper_light] {
+	[flametrooper_light] {
+		class=CSimpleGroundFlash;
+		[properties] {
+			texture=groundflash;
+			size=10;
+			sizeGrowth=5;
+			ttl=5;
+			colorMap=0.8 0.8 0.6 0.1    0 0 0 0.01;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}

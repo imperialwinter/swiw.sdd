@@ -1,0 +1,12 @@
+[Ion]
+{
+	[groundflash]
+	{
+		flashSize = 60;
+		flashAlpha = 0.3;
+		circleGrowth = 0;
+		circleAlpha = 0;
+		ttl = 60;
+		color = 0,0.5,0.85;
+	}
+}

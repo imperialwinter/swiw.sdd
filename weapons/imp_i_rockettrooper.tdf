@@ -1,0 +1,59 @@
+[imp_i_rockettrooper]
+{
+	name=Concussion Missile;
+	model=weapons/w_conc_sml.s3o;
+	rendertype=1;
+	turret=1;
+	tolerance=750;
+	explosiongenerator=custom:hit_conc_s;
+	explosionspeed=65536;
+	cegtag=conc_missile;
+
+	lineofsight=1;
+	selfprop=1;
+	firestarter=70;
+
+	range=630;
+	reloadtime=4.75;
+	startvelocity=125; //200
+	weaponacceleration=100; //175
+	weaponvelocity=350;
+	guidance=1;
+	tracks=1;
+	areaofeffect=64;
+	weapontimer=11;
+	burnblow=1;
+	smoketrail=1;
+	canattackground=0;
+	turnrate=32000;
+
+	soundstart=ROCKLIT1;
+	soundstartvolume=10;
+	soundhit=XPLOSML2;
+	soundhitvolume=10;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	avoidfeature=0;
+	collidefeature=1;
+	noselfdamage=1;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=blank;
+
+	[damage]
+	{
+		default=55;
+		no_armor=55;
+		light_armor=55;
+		medium_armor=55;
+		heavy_armor=55;
+		ion_damage=55;
+		flag=0.000001;
+	}
+}

@@ -1,0 +1,193 @@
+Star Wars Spring was developed by the current team members:
+	Warlord_Zsinj		Modelling, texturing, balance lead
+	Gnome			Modelling, UV wrapping, scripting/animations, internal maintenance
+	Maelstrom		Modelling, UV wrapping, Lua programming
+	Guessmyname		Modelling
+	SecurE			Modelling, being a thorn
+	Lynx			UV wrapping, texturing
+	Jamin			Modelling, UV wrapping, texturing
+
+Along with significant contributions from:
+	Argh			Modelling, texturing, scripting/animations
+	Nemo			Text maintenance
+	zwzsg			Technical script assistance
+	aGorm			UV wrapping, texturing
+	DrZais			Concept art
+	stilts			Sound design
+
+Various contributions from:
+	Wolfy			Hawkman
+	Vassago			Runecrafter
+	MR. D			Wankey
+	Dreadus			Daan
+	SpikedHelmet
+
+Voice acting performed by:
+	Warlord_Zsinj
+	Neddiedrow
+	Ianmac
+	Michael L.
+
+Star Wars Spring was derived from the Star Wars Total Annihilation mod
+primarily developed by:
+	Influenza		Kamikaze		Dragon45
+	Element115		SleepWarz		Fes2001
+	HANSOLO			Kirk
+	SOI_Sentinel		Wettis
+
+The Spring engine was developed by:
+	SJ			jcnossen
+	Fnordia			Tobi
+	Yeha			and countless other contributors
+	K-man
+
+Detailed list of credits, units:
+*A dash denotes unimportant work necessary for the unit to function.
+*Person listed first in a category did the bulk of the work. Others listed either
+   contributed tweaks or scripts which were used as a basis.
+*Non-infantry units with infantry models present (such as the Anti-air turrets)
+   are credited under who made the unit in question. The soldiers were already
+   finished before integration.
+
+		GALACTIC EMPIRE
+Unit			Model			Texture			Lua/Animations			Voice Actor
+-------------------------------------------------------------------------------------------------------------------
+Cloud Car		Maelstrom		Wankey/Zsinj		-
+LAAT			Maelstrom/Gnome		Zsinj			Gnome
+LAAT/c			Maelstrom/Gnome		Zsinj			Gnome
+TIE Bomber		Gnome			Zsinj			-				Ianmac
+TIE Droid		Gnome			Zsinj			-
+TIE Fighter		Gnome			Zsinj			-
+TIE Interceptor		Gnome			Zsinj			-
+Airplant		Gnome			Zsinj			Maelstrom/Gnome
+Barracks		Zsinj			Zsinj			Maelstrom/Gnome
+Droid plant		Zsinj/SecurE		Zsinj			Gnome
+Vehicle plant		Zsinj			Zsinj			Maelstrom/Gnome
+Commander		Runecrafter/Zsinj	Zsinj			Maelstrom/Gnome
+Construction droid	SecurE			Zsinj			Gnome
+Proto con. droid	SecurE			Zsinj			Gnome
+Anti-air turret		Zsinj			Zsinj			-
+Wall			SecurE			Zsinj			-
+Ion cannon		Argh			Zsinj			-
+Battle Droid		Zsinj			Argh			Argh/Nemo
+Droideka		Zsinj			Zsinj			Gnome
+E-web trooper		Gnome			Zsinj			Gnome/Argh/Nemo
+Flame trooper		Gnome			Zsinj			Argh/Nemo
+Repeater trooper	Gnome			Zsinj			Argh/Nemo
+Rocket trooper		Gnome			Zsinj			Argh/Nemo
+Royal Guard		Zsinj			Zsinj			Gnome/Argh/Nemo
+Scout trooper		Gnome			Zsinj			Argh/Nemo
+Stormtrooper		Gnome			Zsinj			Argh/Nemo
+Super Battle Droid	Zsinj			Zsinj			Argh
+Capacitor		Zsinj			Zsinj			-
+Territory marker	Maelstrom		Maelstrom		Maelstrom
+Territorial Fort.	Hootie/Gnome		Zsinj			Maelstrom
+Weapons Cache		Zsinj			Zsinj			Maelstrom
+Fusion Generator	Zsinj			Zsinj			-
+Solar panel		Zsinj			Zsinj			Gnome
+Tibanna Refinery	Gnome			Zsinj			-
+Probe droid		Guessmyname		Zsinj			Gnome
+Speederbike		Gnome			Argh/Zsinj		-
+STAP			Zsinj			Zsinj			-
+Sentinel-class shuttle	Zsinj			Zsinj
+Freighter dropship	Zsinj			Zsinj
+Theta-class dropship	Guessmyname		Zsinj
+Sensor tower		Daan/Zsinj		Zsinj			Gnome
+Ground transport	Gnome			Zsinj			Gnome
+Hailfire droid		Gnome			Zsinj			Gnome
+Mobile artillery	Zsinj			Zsinj			Gnome				Ianmac
+TIE Crawler		Argh			Zsinj			Argh
+TX-130			Gnome			Gnome/Zsinj		-
+AT-RT			Gnome			Gnome			Argh
+Crab Droid		Guessmyname		Lynx			Gnome
+
+		REBEL ALLIANCE
+Unit			Model			Texture			Lua/Animations			Voice Actor
+-------------------------------------------------------------------------------------------------------------------
+Combat Airspeeder	Maelstrom		aGorm			-
+A-Wing			Hawkman			Argh/Zsinj		-				Zsinj
+Transport shuttle	Zsinj/Gnome		Zsinj			-
+Vehicle transporter	Guessmyname		Zsinj			Gnome
+T-Wing			Gnome/Wolfy		Gnome/Wolfy		-
+V-Wing			Gnome			Zsinj			-
+Y-Wing			MR. D			MR. D/Zsinj		-
+Z-95 Headhunter		Gnome/Wolfy		Gnome/Wolfy		-
+Airplant		Gnome			Zsinj			Gnome
+Barracks		Argh/Zsinj		SecurE			-
+Repulsorlift Plant	SecurE/Zsinj		Zsinj			Gnome
+Commander		Guessmyname		Zsinj			Gnome
+Construction droid	SecurE			Zsinj			Gnome/Argh
+Anti-air turret		Zsinj			Zsinj			Gnome
+Golan tower		Zsinj			Zsinj			-
+Anti-veh. Commando	Zsinj/Gnome		Zsinj			Argh/Gnome
+Bothan spy		Zsinj			Zsinj			Argh/Gnome
+Med. Repeater Blaster	Zsinj			Zsinj			Gnome/Argh
+Anti-air trooper	Zsinj			Zsinj			Argh/Gnome
+Sniper			Zsinj/Gnome		Dreadus			Argh/Gnome			Zsinj
+Fleet trooper		Zsinj/Gnome		aGorm			Argh
+Veteran trooper		Zsinj/Gnome		Zsinj			Argh/Gnome/jK
+Wookiee			Lynx			Lynx			Argh/Gnome
+Combat Trooper		Zsinj			Zsinj			Gnome
+Capacitor		Zsinj			SecurE			-
+Territory marker	Maelstrom		Maelstrom		Maelstrom
+Territorial Fort.	Zsinj/Gnome		Zsinj			Maelstrom
+Logistical Cache	Gnome			Zsinj			Maelstrom
+Fusion Generator	aGorm			aGorm			-
+Tibanna Refinery	aGorm			aGorm			-
+Variable energy prod.	Gnome/Zsinj		Zsinj			Gnome
+Swoop bike		Jamin			Jamin/aGorm		-
+Sensor tower		SecurE			SecurE			-
+Spotter tower		Zsinj			SecurE			Gnome				Zsinj
+Ground transport	Guessmyname		Zsinj			Gnome
+Landspeeder		Guessmyname		Zsinj			-
+Trackata T1-B		Guessmyname		Zsinj			-
+Trackata T2-B		Guessmyname		Zsinj			-
+ULAV			Guessmyname		Lynx			-
+Espo walker		Zsinj			Lynx			Gnome				Neddiedrow
+
+Non-beta:
+		GALACTIC EMPIRE
+Unit			Model			Texture			Lua/Animations			Voice Actor
+-------------------------------------------------------------------------------------------------------------------
+Assault Gunboat		Maelstrom		aGorm			-				Ianmac
+Scimitar		Gnome			Zsinj							Ianmac
+TIE Defender		Gnome			Zsinj			-				Ianmac
+TIE Phantom		Gnome			Zsinj			-
+Advanced Airplant	Cremuss
+Walker plant		Zsinj
+Construction walker	Guessmyname
+CUV
+TUG
+Adv. Anti-air turret
+Artillery turret	Gnome/Lynx					-
+Turbolaser		Gnome			Vassago			-
+Adv. Fusion Gen.	Zsinj/Gnome		Zsinj			-
+Adv. Sensor station	Zsinj
+AT-AA			Zsinj			Vassago			Gnome
+AT-AR			Gnome/Argh		Lynx
+AT-MD			Zsinj			Vassago			Gnome
+AT-ST			Wolfy										Ianmac
+AT-ST/As		Maelstrom									Ianmac
+AT-XT			Zsinj			Lynx
+
+		REBEL ALLIANCE
+Unit			Model			Texture			Lua/Animations			Voice Actor
+-------------------------------------------------------------------------------------------------------------------
+B-Wing			Hawkman			Gnome			-
+E-Wing			Gnome/Wolfy		Gnome/Wolfy		-
+X-Wing			Wolfy			Wolfy			-
+Adv. Airplant		Cremuss/Zsinj
+Heavy Weapons lab	Zsinj						Gnome
+CUV
+TUG
+Adv. Anti-air turret	Zsinj
+Artillery platform
+Atgar turret		Zsinj
+Adv. Fusion Generator
+Adv. Sensor tower
+AT-PT			Zsinj			SpikedHelmet
+Heavy Tracker		Guessmyname		Jamin
+MPTL
+Scanner Jammer		Guessmyname		Jamin
+Mobile Stormcannon
+Trackata T-4C		Zsinj/Argh		Argh

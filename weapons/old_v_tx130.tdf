@@ -1,0 +1,126 @@
+[old_v_tx130laser]
+{
+	name=Medium Repeating Laser;
+	rendertype=0;
+	turret=1;
+	tolerance=750;
+	interceptedbyshieldtype=2;
+	explosiongenerator=custom:hit_red_s;
+	explosionspeed=65536;
+	cegtag=light_sm_red;
+
+	lineofsight=1;
+	firestarter=0;
+
+	range=350;
+	reloadtime=3.25;
+	energypershot=5;
+	burst=8;
+	burstrate=0.25;
+	sprayangle=800;
+	weaponvelocity=600;
+	areaofeffect=8;
+	weapontimer=1;
+
+	soundtrigger=0;
+	soundstart=imp_inf_RepTrooper_fire;
+	soundstartvolume=10;
+	soundhit=LASRHIT1;
+	soundhitvolume=10;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	avoidfeature=0;
+	collidefeature=1;
+	noselfdamage=1;
+
+	rgbcolor=1.0 0.1 0;
+	rgbcolor2=1 0.3 0.1;
+
+	beamweapon=1;
+	thickness=3.2;
+	duration=0.03;
+	intensity=0.85;
+
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=002_fancy_plasmabolt;
+	texture2=beam_no_ends;
+
+	[damage]
+	{
+		default=15;
+		no_armor=15;
+		light_armor=15;
+		medium_armor=15;
+		heavy_armor=15;
+		ion_damage=15;
+		flag=0;
+	}
+}
+[old_v_tx130blaster]
+{
+	name=TX-130 Heavy Blaster;
+	rendertype=1;
+	turret=1;
+	tolerance=5000;
+	interceptedbyshieldtype=2;
+	explosiongenerator=custom:hit_red_s_heavy;
+	explosionspeed=65536;
+	cegtag=light_med_red;
+
+	lineofsight=1;
+	firestarter=0;
+
+	range=500;
+	reloadtime=5.05;
+	energypershot=60;
+	weaponvelocity=450;
+	areaofeffect=16;
+	projectiles=2;
+	edgeeffectiveness=0.5;
+	sprayangle=800;
+
+	soundstart=reb_d_golan_turret_fire;
+	soundstartvolume=10;
+	soundhit=Argh_Quick_Missile_Blast;
+	soundhitvolume=15;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	avoidfeature=0;
+	collidefeature=1;
+	noselfdamage=1;
+
+	rgbcolor=1.0 0.1 0;
+	rgbcolor2=1 0.3 0.1;
+
+	beamweapon=1;
+	thickness=17;
+	duration=0.14;
+	intensity=0.85;
+
+	collisionsize=16;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=004_BlasterBolt;
+	texture2=beam_no_ends;
+
+	[damage]
+	{
+		default=710;
+		no_armor=710;
+		light_armor=710;
+		medium_armor=710;
+		heavy_armor=710;
+		ion_damage=710;
+		flag=0;
+	}
+}

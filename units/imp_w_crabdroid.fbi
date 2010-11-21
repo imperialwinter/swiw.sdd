@@ -1,0 +1,62 @@
+[unitinfo]
+{
+	unitname=imp_w_crabdroid;
+	objectname=empire/w-crabdroid.s3o;
+	buildpic=imp_w_crabdroid.png;
+	corpse=imp_w_crabdroid_dead;
+	icontype=inf_heavy;
+	soundcategory=imp-i-droideka;
+	category=IONTARGETABLE GROUND WALKER DROID;
+
+	name=Crab Droid;
+	description=All Terrain Droid;
+	side=Empire;
+	maxdamage=1450;
+	idleautoheal=0;
+	buildcostmetal=350;
+	buildcostenergy=4000;
+	buildtime=32;
+	footprintx=3;
+	footprintz=3;
+	mass=320;
+	cobid=28;
+	collisionVolumeType=box;
+	collisionVolumeScales=40 14 28;
+	collisionVolumeOffsets=0 -2 0;
+
+	upright=1;
+	shownanoframe=0;
+
+	energyuse=12;
+
+	sightdistance=350;
+	seismicsignature=1;
+
+	activatewhenbuilt=1;
+
+	canmove=1;
+	movementclass=WALKER2x2AT;
+	maxvelocity=1.5;
+	acceleration=0.08;
+	brakerate=0.15;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+	upright=0;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	weapon1=cis_w_crabdroid;
+	onlytargetcategory1=GROUND;
+	weaponmaindir1=0 0 1;
+	maxangledif1=60;
+	weapon2=cis_w_crabdroid;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_RED;
+	}
+}

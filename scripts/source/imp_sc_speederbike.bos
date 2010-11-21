@@ -1,0 +1,94 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, gun, firept, wake1, wake2, wake3, wake4, wake5;
+
+static-var  bMoving, OverWater;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define SMALL_MUZZLE_FLASH_FX_RED 1024+1
+
+ShowWake() {
+	while(1) {
+		sleep 300;
+		if(OverWater <= 3) {
+			emit-sfx 5 from wake1;
+			emit-sfx 5 from wake2;
+			emit-sfx 5 from wake3;
+			emit-sfx 5 from wake4;
+			emit-sfx 5 from wake5;
+			emit-sfx 3 from wake1;
+			emit-sfx 3 from wake2;
+			emit-sfx 3 from wake3;
+			emit-sfx 3 from wake4;
+			emit-sfx 3 from wake5;
+		}
+	}
+}
+
+Create() {
+	start-script SmokeUnit_SWS();
+	sleep 100;
+	start-script ShowWake();
+}
+
+setSFXoccupy(WaterLevel) {
+	OverWater = WaterLevel;
+}
+
+RestoreAfterDelay() {
+	sleep 3000;
+	turn gun to y-axis <0> now;
+	turn gun to x-axis <0> now;
+}
+
+AimPrimary(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	turn gun to y-axis heading now;
+	turn firept to x-axis 0 - pitch now;
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+FirePrimary() {
+	emit-sfx SMALL_MUZZLE_FLASH_FX_RED from firept;
+}
+
+AimFromPrimary(piecenum) {
+	piecenum = firept;
+}
+
+QueryPrimary(piecenum) {
+	piecenum = firept;
+}
+
+Killed(severity, corpsetype) {
+	if(OverWater >= 4) {
+		if(severity <= 25) {
+			corpsetype = 1;
+			return 0;
+		}
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type SHATTER;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode gun type FALL | SMOKE | BITMAP;
+		explode base type SHATTER;
+		return 0;
+	}
+	corpsetype = 3;
+	explode gun type FALL | SMOKE | BITMAP;
+	explode base type SHATTER;
+	return 0;
+}

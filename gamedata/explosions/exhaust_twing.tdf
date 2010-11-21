@@ -1,0 +1,21 @@
+[exhaust_twing] {
+	[exhaust] {
+		class=CBitmapMuzzleFlame;
+		[properties] {
+			dir=dir;
+			colorMap=0.8 0.9 1 0.03	0.5 0.6 0.8 0.05	0 0 0 0.01;
+			size=4;
+			length=8;
+			sizeGrowth=0.5;
+			ttl=2;
+			frontOffset=0.05;
+			sideTexture=exhaust;
+			frontTexture=blank;
+		}
+		water=1;
+		air=1;
+		underwater=1;
+		ground=1;
+		count=1;
+	}
+}

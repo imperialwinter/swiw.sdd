@@ -1,0 +1,59 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  body, barrel1, firept1, barrel2, firept2;
+
+#define SMOKEPIECE1 body
+#define SMOKEPIECE2 body
+#define SMOKEPIECE3 body
+#define SMOKEPIECE4 body
+#include "general/smokeunit_sws.h"
+
+static-var  gun_1;
+
+#define SMALL_MUZZLE_FLASH_FX_RED 1024+1
+
+Create() {
+	hide firept1;
+	hide firept2;
+	gun_1 = 0;
+	start-script SmokeUnit_SWS();
+}
+
+AimWeapon1(heading, pitch) {
+	return 1;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = body;
+}
+
+QueryWeapon1(piecenum) {
+	if(!gun_1) {
+		piecenum = firept1;
+	}
+	if(gun_1) {
+		piecenum = firept2;
+	}
+}
+
+FireWeapon1() {
+	if(!gun_1) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from firept1;
+		move barrel1 to z-axis [-2.5] now;
+		sleep 150;
+		move barrel1 to z-axis [0] speed [250];
+	}
+	if(gun_1) {
+		emit-sfx SMALL_MUZZLE_FLASH_FX_RED from firept2;
+		move barrel2 to z-axis [-2.5] now;
+		sleep 150;
+		move barrel2 to z-axis [0] speed [250];
+	}
+	gun_1 = !gun_1;
+}
+
+Killed(severity, corpsetype) {
+	return 0;
+}

@@ -1,0 +1,237 @@
+//~384 diameter
+
+[death_xxl] {
+	usedefaultexplosions=0;
+	
+	[initial_fireball] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.1, 0;
+			colorMap=1 1 1 0.25   0 0 0 0.24   0 0 0 0.16   0 0 0 0.08   0 0 0 0;
+			Texture=fireball;
+			airdrag=0.95;
+			particleLife=128;
+			particleLifeSpread=64;
+			numParticles=64;
+			particleSpeed=2;
+			particleSpeedSpread=4;
+			particleSize=32;
+			particleSizeSpread=16;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[rising_fireball] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=-4 r8, i4, -4 r8;
+			delay=i1;
+			explosionGenerator=custom:death_xxl_fireball;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=16;
+	}
+	
+	
+	[dirtclouds] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=16 r16;
+			sizeMod=0.5;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=0.15 0.125 0.1 0.25  0 0 0 0;
+			Texture=dirt;
+			airdrag=0.9;
+			particleLife=128;
+			particleLifeSpread=64;
+			numParticles=1;
+			particleSpeed=1;
+			particleSpeedSpread=16;
+			particleSize=1;
+			particleSizeSpread=0;
+			emitRot=85;
+			emitRotSpread=5;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=32;
+	}
+	
+	[debris] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.2, 0;
+			colorMap=0 0 0 1  0 0 0 1;
+			Texture=debris;
+			airdrag=0.98;
+			particleLife=128;
+			particleLifeSpread=64;
+			numParticles=64;
+			particleSpeed=4;
+			particleSpeedSpread=8;
+			particleSize=2;
+			particleSizeSpread=16;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[debris2] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.2, 0;
+			colorMap=0 0 0 1  0 0 0 1;
+			Texture=debris2;
+			airdrag=0.98;
+			particleLife=128;
+			particleLifeSpread=64;
+			numParticles=64;
+			particleSpeed=4;
+			particleSpeedSpread=8;
+			particleSize=4;
+			particleSizeSpread=32;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.2, 0;
+			colorMap=1 1 1 0.01   1 1 0.5 0.01   1 0.5 0 0.01   0 0 0 0;
+			Texture=plasma2;
+			airdrag=0.95;
+			particleLife=64;
+			particleLifeSpread=32;
+			numParticles=256;
+			particleSpeed=8;
+			particleSpeedSpread=8;
+			particleSize=2;
+			particleSizeSpread=4;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[sphere] {
+		class=CSpherePartSpawner;
+		[properties] {
+			expansionSpeed=16;
+			ttl=16;
+			alpha=0.25;
+			color=1,1,1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[pikes] {
+		class=CExploSpikeProjectile;
+		[properties] {
+			dir= -16 r32, -16 r32, -16 r32;
+			width=32 r8;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.08;
+			color=1,0.675,0.25;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=32; 
+	}
+	
+	[groundflash] {
+		flashsize=192;
+		flashalpha=1;
+		circlegrowth=16;
+		circlealpha=0;
+		ttl=16;
+		color=1,0.75,0.5;
+	}
+}
+
+[death_xxl_fireball] {
+	usedefaultexplosions=0;
+	[fireball] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=16;
+			sizeMod=0.5;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.1, 0;
+			colorMap=1 1 1 0.25  0 0 0 0.25  0 0 0 0;
+			Texture=fireball;
+			airdrag=0.9;
+			particleLife=32;
+			particleLifeSpread=16;
+			numParticles=16;
+			particleSpeed=8;
+			particleSpeedSpread=4;
+			particleSize=1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}

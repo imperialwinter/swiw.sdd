@@ -1,0 +1,72 @@
+[unitinfo]
+{
+	unitname=reb_a_ywing;
+	objectname=rebel/a-ywing.s3o;
+	buildpic=reb_a_ywing.png;
+	icontype=air_special;
+	soundcategory=reb-a-ywing;
+	category=VTOL;
+
+	name=Y-Wing;
+	description=Medium Bomber;
+	side=Rebels;
+	maxdamage=585;
+	idleautoheal=0;
+	buildcostmetal=358;
+	buildcostenergy=7150;
+	buildtime=40;
+	footprintx=3;
+	footprintz=3;
+	mass=330000;
+	cobid=66;
+	collisionVolumeType=box;
+	collisionVolumeScales=48 16 112;
+	collisionVolumeOffsets=0 0 -4;
+
+	energymake=25;
+
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	sightdistance=550;
+
+	canmove=1;
+	maxvelocity=4.8;
+	acceleration=1.0;
+	brakerate=0.5;
+	turnrate=300;
+
+	maxAcc=.18;
+	maxRudder=.004;
+	maxElevator=.006;
+	maxAileron=.005;
+
+	canfly=1;
+	cruisealt=250;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_UNIT;
+	selfdestructas=LARGE_UNIT;
+
+	weapon1=reb_a_ywing;
+	onlytargetcategory1=GROUND;
+	weapon2=reb_a_laser;
+	badtargetcategory2=VTOL;
+	onlytargetcategory2=GROUND VTOL;
+	weaponmaindir2=0 0 1;
+	maxangledif2=60;
+	weapon3=reb_a_ywinglaser;
+	badtargetcategory3=VTOL;
+	onlytargetcategory3=GROUND VTOL;
+	weaponmaindir3=0 1 0;
+	maxangledif3=220;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:SMALL_MUZZLE_FLASH_FX_RED;
+		explosiongenerator2=custom:MED_MUZZLE_FLASH_FX_RED;
+		explosiongenerator3=custom:exhaust_ywing;
+		explosiongenerator4=custom:constdust;
+	}
+}

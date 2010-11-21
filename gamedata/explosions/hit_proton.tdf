@@ -1,0 +1,32 @@
+//128 aoe
+
+[hit_proton] {
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -8 r16, -1 r2, -8 r16;
+			pos= 0, 8, 0;
+			width=32 r32;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.0625;
+			color=0.1,0.5,1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=32; 
+	}
+	
+	[groundflash]{
+		flashsize=128;
+		flashalpha=0.75;
+		circlegrowth=4;
+		circlealpha=1;
+		ttl=16;
+		color=0.1,0.75,1;
+	}
+}
+

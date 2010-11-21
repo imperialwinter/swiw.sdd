@@ -1,0 +1,11 @@
+[imp_sc_probedroid_dead]
+{
+	object=wreckage/imp_sc_probedroid/seq1.s3o;
+	description=Wreckage;
+	metal=7;
+	damage=210;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=1;
+}

@@ -1,0 +1,61 @@
+[unitinfo]
+{
+	unitname=imp_v_tx130;
+	objectname=empire/v-tx130.s3o;
+	buildpic=imp_v_tx130.png;
+	corpse=imp_v_tx130_dead;
+	icontype=veh_medium;
+	soundcategory=imp-v-tx130;
+	category=IONTARGETABLE GROUND TANK;
+
+	name=TX-130 Fighter Tank;
+	description=Anti-armor Repulsorlift Tank;
+	side=Empire;
+	maxdamage=4000;
+	idleautoheal=0;
+	buildcostmetal=740;
+	buildcostenergy=6500;
+	buildtime=46;
+	footprintx=4;
+	footprintz=4;
+	mass=22500;
+	cobid=59;
+	collisionVolumeType=box;
+	collisionVolumeScales=48 20 76;
+	collisionVolumeOffsets=0 6 8;
+
+	shownanoframe=0;
+
+	energyuse=18;
+
+	sightdistance=400;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=HOVER3x3;
+	maxvelocity=2.1;
+	acceleration=0.05;
+	brakerate=0.5;
+	turnrate=300;
+	maxslope=16;
+	turninplace=0;
+
+	canhover=1;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_UNIT;
+	selfdestructas=MEDIUM_UNIT;
+
+	weapon1=old_v_tx130blaster;
+	onlytargetcategory1=GROUND;
+	weaponmaindir1=0 0 1;
+	maxangledif1=100;
+	weapon2=old_v_tx130laser;
+	onlytargetcategory2=GROUND VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:SMALL_MUZZLE_FLASH_FX_RED;
+		explosiongenerator2=custom:LARGE_MUZZLE_FLASH_FX_RED;
+	}
+}

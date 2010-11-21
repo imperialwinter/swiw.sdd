@@ -1,0 +1,51 @@
+[unitinfo]
+{
+	unitname=reb_sp_sensor;
+	objectname=rebel/sp-sensor.s3o;
+	buildpic=reb_sp_sensor.png;
+	corpse=imp_sp_sensor_dead;
+	icontype=building_scout;
+	soundcategory=ARM_RADAR;
+	category=GROUND BUILDING;
+	yardmap=oooo;
+
+	name=Sensor Tower;
+	description=Sensor Tower;
+	side=Rebels;
+	maxdamage=280;
+	idleautoheal=0;
+	buildcostmetal=50;
+	buildcostenergy=400;
+	buildtime=3;
+	footprintx=2;
+	footprintz=2;
+	cobid=96;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	energyuse=10;
+
+	sightdistance=400;
+	radardistance=1600;
+	radardistancejam=300;
+	sonardistance=1400;
+	sonardistancejam=300;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	maxslope=10;
+	maxwaterdepth=5;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_BUILDING;
+	selfdestructas=SMALL_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+	}
+}

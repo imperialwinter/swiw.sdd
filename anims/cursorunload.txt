@@ -1,0 +1,27 @@
+hotspot center
+frame  bitmaps/cursors/unload/unload01.png  0.100
+frame  bitmaps/cursors/unload/unload02.png  0.100
+frame  bitmaps/cursors/unload/unload03.png  0.100
+frame  bitmaps/cursors/unload/unload04.png  0.100
+frame  bitmaps/cursors/unload/unload05.png  0.100
+frame  bitmaps/cursors/unload/unload06.png  0.100
+frame  bitmaps/cursors/unload/unload07.png  0.100
+frame  bitmaps/cursors/unload/unload08.png  0.100
+frame  bitmaps/cursors/unload/unload09.png  0.100
+frame  bitmaps/cursors/unload/unload10.png  0.100
+frame  bitmaps/cursors/unload/unload11.png  0.100
+frame  bitmaps/cursors/unload/unload12.png  0.100
+frame  bitmaps/cursors/unload/unload13.png  0.100
+frame  bitmaps/cursors/unload/unload14.png  0.100
+frame  bitmaps/cursors/unload/unload15.png  0.100
+frame  bitmaps/cursors/unload/unload16.png  0.100
+frame  bitmaps/cursors/unload/unload17.png  0.100
+frame  bitmaps/cursors/unload/unload18.png  0.100
+frame  bitmaps/cursors/unload/unload19.png  0.100
+frame  bitmaps/cursors/unload/unload20.png  0.100
+frame  bitmaps/cursors/unload/unload21.png  0.100
+frame  bitmaps/cursors/unload/unload22.png  0.100
+frame  bitmaps/cursors/unload/unload23.png  0.100
+frame  bitmaps/cursors/unload/unload24.png  0.100
+frame  bitmaps/cursors/unload/unload25.png  0.100
+frame  bitmaps/cursors/unload/unload26.png  0.100

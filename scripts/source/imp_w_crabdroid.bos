@@ -1,0 +1,234 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, fpt1, fpt2,
+	r1thigh, r1shin, r1foot,
+	r2thigh, r2shin, r2foot,
+	r3thigh, r3shin, r3foot,
+	l1thigh, l1shin, l1foot,
+	l2thigh, l2shin, l2foot,
+	l3thigh, l3shin, l3foot;
+
+static-var  bMoving, gun_1, randSeed, bAiming;
+
+#define SIG_MOVE			2
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 l1thigh
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 r1thigh
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_RED 1024+1
+
+Walk() {
+	while(1) {
+		if(!bMoving) {
+		//	turn l1thigh to y-axis <-30> speed <100>;
+			turn l1shin to z-axis <10> speed <100>;
+			turn l1foot to z-axis <-40> speed <100>;
+		//	turn l2thigh to y-axis <0> speed <100>;
+			turn l2shin to z-axis <20> speed <100>;
+			turn l2foot to z-axis <-40> speed <100>;
+		//	turn l3thigh to y-axis <30> speed <100>;
+			turn l3shin to z-axis <30> speed <100>;
+			turn l3foot to z-axis <-50> speed <100>;
+	
+		//	turn r1thigh to y-axis <30> speed <100>;
+			turn r1shin to z-axis <-10> speed <100>;
+			turn r1foot to z-axis <40> speed <100>;
+		//	turn r2thigh to y-axis <0> speed <100>;
+			turn r2shin to z-axis <-20> speed <100>;
+			turn r2foot to z-axis <40> speed <100>;
+		//	turn r3thigh to y-axis <-30> speed <100>;
+			turn r3shin to z-axis <-30> speed <100>;
+			turn r3foot to z-axis <50> speed <100>;
+		}
+
+
+		if(bMoving) {
+			turn r2thigh to y-axis <-20> speed <100>;
+			turn r2shin to z-axis <-20> speed <160>;
+			turn r2foot to z-axis <40> speed <150>;
+			turn l3thigh to y-axis <60> speed <80>;
+			turn l3shin to z-axis <60> speed <100>;
+			turn l3foot to z-axis <-115> speed <150>;
+
+			turn r1shin to z-axis <10> speed <260>;
+			turn l2shin to z-axis <0> speed <260>;
+		//	wait-for-turn r1shin around z-axis;
+		//	wait-for-turn l2shin around z-axis;
+			turn r1thigh to y-axis <80> speed <260>;
+			turn r1foot to z-axis <90> speed <260>;
+			turn l2thigh to y-axis <-20> speed <260>;
+			turn l2foot to z-axis <-80> speed <260>;
+			wait-for-turn r1thigh around y-axis;
+		//	wait-for-turn l2thigh around y-axis;
+			turn r1shin to z-axis <-40> speed <800>;
+			turn l2shin to z-axis <40> speed <800>;
+			wait-for-turn r1shin around z-axis;
+			wait-for-turn l2shin around z-axis;
+		}
+		if(bMoving) {
+			turn r1thigh to y-axis <30> speed <120>;
+			turn r1shin to z-axis <-10> speed <160>;
+			turn r1foot to z-axis <40> speed <150>;
+			turn l2thigh to y-axis <20> speed <100>;
+			turn l2shin to z-axis <20> speed <100>;
+			turn l2foot to z-axis <-40> speed <150>;
+
+			turn r3shin to z-axis <-10> speed <300>;
+			turn l1shin to z-axis <-10> speed <200>;
+		//	wait-for-turn r3shin around z-axis;
+		//	wait-for-turn l1shin around z-axis;
+			turn r3thigh to y-axis <-20> speed <260>;
+			turn r3foot to z-axis <50> speed <260>;
+			turn l1thigh to y-axis <-80> speed <260>;
+			turn l1foot to z-axis <-90> speed <260>;
+			wait-for-turn r3thigh around y-axis;
+		//	wait-for-turn l1thigh around y-axis;
+			turn r3shin to z-axis <-30> speed <800>;
+			turn l1shin to z-axis <40> speed <800>;
+			wait-for-turn r3shin around z-axis;
+			wait-for-turn l1shin around z-axis;
+		}
+		if(bMoving) {
+			turn r3thigh to y-axis <-60> speed <80>;
+			turn r3shin to z-axis <-60> speed <160>;
+			turn r3foot to z-axis <115> speed <150>;
+			turn l1thigh to y-axis <-30> speed <120>;
+			turn l1shin to z-axis <10> speed <100>;
+			turn l1foot to z-axis <-40> speed <150>;
+
+			turn r2shin to z-axis <0> speed <200>;
+			turn l3shin to z-axis <10> speed <300>;
+		//	wait-for-turn r2shin around z-axis;
+		//	wait-for-turn l3shin around z-axis;
+			turn r2thigh to y-axis <20> speed <260>;
+			turn r2foot to z-axis <80> speed <260>;
+			turn l3thigh to y-axis <20> speed <260>;
+			turn l3foot to z-axis <-50> speed <260>;
+			wait-for-turn r2thigh around y-axis;
+		//	wait-for-turn l3thigh around y-axis;
+			turn r2shin to z-axis <-40> speed <800>;
+			turn l3shin to z-axis <30> speed <800>;
+			wait-for-turn r2shin around z-axis;
+			wait-for-turn l3shin around z-axis;
+		}
+		sleep randSeed; //desync the animations relative to each other
+	}
+}
+
+Create() {
+	bMoving = 0;
+	gun_1 = 0;
+	bAiming = 0;
+	randSeed = rand(1,60);
+	start-script SmokeUnit_SWS();
+	start-script Walk();
+	turn l1thigh to y-axis <-30> now;
+	turn l1shin to z-axis <10> now;
+	turn l1foot to z-axis <-40> now;
+	turn l2thigh to y-axis <0> now;
+	turn l2shin to z-axis <20> now;
+	turn l2foot to z-axis <-40> now;
+	turn l3thigh to y-axis <30> now;
+	turn l3shin to z-axis <30> now;
+	turn l3foot to z-axis <-50> now;
+	
+	turn r1thigh to y-axis <30> now;
+	turn r1shin to z-axis <-10> now;
+	turn r1foot to z-axis <40> now;
+	turn r2thigh to y-axis <0> now;
+	turn r2shin to z-axis <-20> now;
+	turn r2foot to z-axis <40> now;
+	turn r3thigh to y-axis <-30> now;
+	turn r3shin to z-axis <-30> now;
+	turn r3foot to z-axis <50> now;
+}
+
+StartMoving() {
+	bMoving = 1;
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+}
+
+StopMoving() {
+	bMoving = 0;
+	signal SIG_MOVE;
+}
+
+Restore() {
+	sleep 3000;
+	bAiming = 0;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	bAiming = 1;
+	start-script Restore();
+	return 1;
+}
+
+QueryWeapon1(piecenum) {
+	if(gun_1 == 0) {
+		piecenum = fpt1;
+	}
+	if(gun_1 == 1) {
+		piecenum = fpt2;
+	}
+}
+
+Shot1(springisgay) {
+	++gun_1;
+	if(gun_1 > 1) {
+		gun_1 = 0;
+	}
+	if(gun_1 == 0) {
+		emit-sfx MED_MUZZLE_FLASH_FX_RED from fpt1;
+		emit-sfx MED_MUZZLE_FLASH_FX_RED from fpt2;
+	}
+}
+
+FireWeapon1() {
+	return 0;
+}
+
+#define TURN_RATE 1300
+
+AimWeapon2(heading, pitch) {
+	if(!bMoving and !bAiming) {
+		if(heading > <95> or heading < <-95>) {
+			while(heading > <95>) {
+				set HEADING to TURN_RATE + get HEADING;
+				heading = heading - TURN_RATE;
+				sleep 30;
+			}
+			while(heading < <-95>) {
+				set HEADING to 0 - TURN_RATE + get HEADING;
+				heading = heading + TURN_RATE;
+				sleep 30;
+			}
+		}
+	}
+	return 0;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		return 0;
+	}
+	corpsetype = 3;
+	return 0;
+}

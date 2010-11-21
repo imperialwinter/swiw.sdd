@@ -1,0 +1,16 @@
+hotspot center
+frame  bitmaps/cursors/capture/capture01.png  0.100
+frame  bitmaps/cursors/capture/capture02.png  0.100
+frame  bitmaps/cursors/capture/capture03.png  0.100
+frame  bitmaps/cursors/capture/capture04.png  0.100
+frame  bitmaps/cursors/capture/capture05.png  0.100
+frame  bitmaps/cursors/capture/capture06.png  0.100
+frame  bitmaps/cursors/capture/capture07.png  0.100
+frame  bitmaps/cursors/capture/capture08.png  0.100
+frame  bitmaps/cursors/capture/capture09.png  0.100
+frame  bitmaps/cursors/capture/capture10.png  0.100
+frame  bitmaps/cursors/capture/capture11.png  0.100
+frame  bitmaps/cursors/capture/capture12.png  0.100
+frame  bitmaps/cursors/capture/capture13.png  0.100
+frame  bitmaps/cursors/capture/capture14.png  0.100
+frame  bitmaps/cursors/capture/capture15.png  0.200

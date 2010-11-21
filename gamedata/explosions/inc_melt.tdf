@@ -1,0 +1,32 @@
+[inc_melt_xs] {
+	[groundflash]{
+		flashsize=4;
+		flashalpha=0.675;
+		circlegrowth=-0.02;
+		circlealpha=1;
+		ttl=48;
+		color=1,0.5,0;
+	}
+}
+
+[inc_melt_s] {
+	[groundflash]{
+		flashsize=8;
+		flashalpha=0.675;
+		circlegrowth=-0.02;
+		circlealpha=1;
+		ttl=64;
+		color=1,0.5,0;
+	}
+}
+
+[inc_melt_m] {
+	[groundflash]{
+		flashsize=12;
+		flashalpha=0.675;
+		circlegrowth=-0.02;
+		circlealpha=1;
+		ttl=96;
+		color=1,0.5,0;
+	}
+}

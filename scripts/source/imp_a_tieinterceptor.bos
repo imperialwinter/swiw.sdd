@@ -1,0 +1,95 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, pod, lwing, rwing, flare1, flare2, flare3, flare4, e1;
+
+static-var  gun_1;
+
+#define SMOKEPIECE1 pod
+#define SMOKEPIECE2 lwing
+#define SMOKEPIECE3 rwing
+#define SMOKEPIECE4 pod
+#include "general/smokeunit_sws.h"
+
+#define MED_MUZZLE_FLASH_FX_GREEN 1024+1
+
+Create() {
+	hide flare1;
+	hide flare2;
+	hide flare3;
+	hide flare4;
+	gun_1 = -1;
+	start-script SmokeUnit_SWS();
+}
+
+QueryWeapon1(piecenum) {
+	if(gun_1 == 0) {
+		piecenum = flare1;
+	}
+	if(gun_1 == 1) {
+		piecenum = flare4;
+	}
+	if(gun_1 == 2) {
+		piecenum = flare2;
+	}
+	if(gun_1 == 3) {
+		piecenum = flare3;
+	}
+}
+
+Shot1(seriouslywhatthehellisthisvar) {
+	++gun_1;
+	if(gun_1 > 3) {
+		gun_1 = 0;
+	}
+	if(gun_1 == 0) {
+		emit-sfx MED_MUZZLE_FLASH_FX_GREEN from flare1;
+		emit-sfx MED_MUZZLE_FLASH_FX_GREEN from flare4;
+	}
+	if(gun_1 == 2) {
+		emit-sfx MED_MUZZLE_FLASH_FX_GREEN from flare2;
+		emit-sfx MED_MUZZLE_FLASH_FX_GREEN from flare3;
+	}
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum=pod;
+}
+
+AimWeapon1(heading, pitch) {
+	return 1;
+}
+
+FireWeapon1() {
+	return 0;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode pod type FALL | SMOKE | FIRE;
+		explode rwing type FALL | SMOKE;
+		explode lwing type FALL | SMOKE | FIRE;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode pod type FALL | SMOKE | FIRE;
+		explode rwing type FALL | SMOKE;
+		explode lwing type FALL | SMOKE | FIRE;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode pod type FALL | SMOKE | FIRE;
+		explode rwing type FALL | SMOKE;
+		explode lwing type FALL | SMOKE | FIRE;
+		return 0;
+	}
+	corpsetype = 3;
+	explode pod type FALL | SMOKE | FIRE;
+	explode rwing type FALL | SMOKE | FIRE;
+	explode lwing type FALL | SMOKE | FIRE;
+	return 0;
+}

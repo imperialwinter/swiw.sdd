@@ -1,0 +1,49 @@
+[unitinfo]
+{
+	unitname=reb_sp_spotter;
+	objectname=rebel/sp-spotter.s3o;
+	buildpic=reb_sp_spotter.png;
+	icontype=building_scout;
+	soundcategory=reb_sp_spotter;
+	category=GROUND BUILDING;
+	yardmap=oooo;
+
+	name=Spotter Tower;
+	description=Spotter Tower;
+	side=Rebels;
+	maxdamage=480;
+	idleautoheal=0;
+	buildcostmetal=50;
+	buildcostenergy=400;
+	buildtime=16;
+	footprintx=2;
+	footprintz=2;
+	cobid=97;
+	collisionVolumeType=cylY;
+	collisionVolumeScales=14 64 14;
+	collisionVolumeOffsets=0 -24 0;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+	smoothanim=1;
+
+	sightdistance=750;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	maxslope=10;
+	maxwaterdepth=5;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_BUILDING;
+	selfdestructas=SMALL_BUILDING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+		explosiongenerator2=custom:SMALL_BUILDING_EXPLOSION_FX;
+	}
+}

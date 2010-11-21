@@ -1,0 +1,22 @@
+[reb_sp_spotter_dead]
+{
+	object=wreckage/reb_sp_spotter/seq1.s3o;
+	featuredead=reb_sp_spotter_heap;
+	description=Wrecked Tower;
+	metal=18;
+	damage=104;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[reb_sp_spotter_heap]
+{
+	object=heaps/2x2C.s3o;
+	description=Wreckage;
+	metal=6;
+	damage=208;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

@@ -1,0 +1,92 @@
+[unitinfo]
+{
+	unitname=imp_com_mil1;
+	objectname=empire/commander.s3o;
+	buildpic=imp_commander.png;
+	corpse=imp_com_wall_dead;
+	icontype=commander_imp;
+	soundcategory=KBOTPLANT;
+	category=COMMANDER GROUND;
+	tedclass=PLANT;
+	yardmap=oooooooooooooooo oooooooooooooooo oooccccooccccooo ooccooooooooccoo ooccooooooooccoo ooccooooooooccoo oocoooooooooocoo oocoooooooooocoo oocooooccoooocoo ooccoooccoooccoo ooccoooccoooccoo ooccoooccoooccoo ooccccccccccccoo oooccccccccccooo ooooooccccoooooo ooooooccccoooooo;
+
+	name=Garrison Base;
+	description=Imperial base;
+	side=Empire;
+	maxdamage=20000;
+	autoheal=5;
+	buildcostmetal=2700;
+	buildcostenergy=7500;
+	buildtime=374;
+	footprintx=16;
+	footprintz=16;
+	cobid=20;
+	collisionVolumeType=box;
+	collisionVolumeScales=240 160 240;
+	collisionVolumeOffsets=0 56 0;
+
+	commander=1;
+	hidedamage=1;
+	reclaimable=0;
+	shownanoframe=0;
+
+	metalmake=5;
+	energymake=110;
+
+	sightdistance=500;
+	radardistance=750;
+	sonardistance=500;
+
+	builder=1;
+	workertime=1;
+
+	activatewhenbuilt=1;
+
+	canmove=1;
+	maxslope=45;
+	maxwaterdepth=255;
+
+	UseBuildingGroundDecal=10;
+	BuildingGroundDecalType=decals/imp_comm_groundscar.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=20;
+	BuildingGroundDecalSizeY=20;
+
+	selfdestructcountdown=1;
+	explodeas=LARGE_BUILDING;
+	selfdestructas=LARGE_BUILDING;
+
+	canfight=0;
+	weapon1=imp_d_turbolaser;
+	badtargetcategory1=VTOL;
+	weaponmaindir1=1 0 1;
+	maxangledif1=240;
+	weapon2=imp_d_turbolaser;
+	badtargetcategory2=VTOL;
+	weaponmaindir2=-1 0 1;
+	maxangledif2=240;
+	weapon3=imp_d_turbolaser;
+	badtargetcategory3=VTOL;
+	weaponmaindir3=1 0 -1;
+	maxangledif3=240;
+	weapon4=imp_d_turbolaser;
+	badtargetcategory4=VTOL;
+	weaponmaindir4=-1 0 -1;
+	maxangledif4=240;
+
+	Weapon5=imp_d_antiair;
+	OnlyTargetCategory5=VTOL;
+	WeaponMainDir5=1 0 0;
+	MaxAngleDif5=270;
+
+	Weapon6=imp_d_antiair;
+	OnlyTargetCategory6=VTOL;
+	WeaponMainDir6=-1 0 0;
+	MaxAngleDif6=270;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_GREEN;
+	}
+}

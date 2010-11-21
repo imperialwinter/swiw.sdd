@@ -1,0 +1,58 @@
+[unitinfo]
+{
+	unitname=reb_a_vwing;
+	objectname=rebel/a-vwing.s3o;
+	buildpic=reb_a_vwing.png;
+	icontype=air_special;
+	soundcategory=reb-a-vwing;
+	category=VTOL TAKESGROUNDFIRE;
+
+	name=V-Wing;
+	description=Atmospheric Gunship;
+	side=Rebels;
+	maxdamage=340;
+	idleautoheal=0;
+	buildcostmetal=325;
+	buildcostenergy=5200;
+	buildtime=45;
+	footprintx=2;
+	footprintz=2;
+	mass=200000;
+	cobid=65;
+	collisionVolumeType=box;
+	collisionVolumeScales=72 16 44;
+	collisionVolumeOffsets=0 8 0;
+
+	shownanoframe=0;
+	collisionspherescale=1.0;
+
+	energyuse=20;
+
+	sightdistance=550;
+
+	canmove=1;
+	maxvelocity=7.2;
+	acceleration=0.1;
+	brakerate=3;
+	turnrate=600;
+
+	canfly=1;
+	hoverattack=1;
+	cruisealt=120;
+	collide=0;
+
+	selfdestructcountdown=1;
+	explodeas=TIE_BLAST;
+	selfdestructas=TIE_BLAST;
+
+	weapon1=reb_a_vwing;
+	badtargetcategory1=VTOL;
+	onlytargetcategory1=GROUND VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:SMALL_MUZZLE_FLASH_FX_RED;
+		explosiongenerator2=custom:exhaust_z95;
+		explosiongenerator3=custom:constdust;
+	}
+}

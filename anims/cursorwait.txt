@@ -1,0 +1,16 @@
+hotspot center
+frame  bitmaps/cursors/wait/wait01.png  0.100
+frame  bitmaps/cursors/wait/wait02.png  0.100
+frame  bitmaps/cursors/wait/wait03.png  0.100
+frame  bitmaps/cursors/wait/wait04.png  0.100
+frame  bitmaps/cursors/wait/wait05.png  0.100
+frame  bitmaps/cursors/wait/wait06.png  0.100
+frame  bitmaps/cursors/wait/wait07.png  0.100
+frame  bitmaps/cursors/wait/wait08.png  0.100
+frame  bitmaps/cursors/wait/wait09.png  0.100
+frame  bitmaps/cursors/wait/wait10.png  0.100
+frame  bitmaps/cursors/wait/wait11.png  0.200
+frame  bitmaps/cursors/wait/wait12.png  0.100
+frame  bitmaps/cursors/wait/wait13.png  0.100
+frame  bitmaps/cursors/wait/wait14.png  0.100
+frame  bitmaps/cursors/wait/wait15.png  0.200

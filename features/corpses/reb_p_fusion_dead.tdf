@@ -1,0 +1,47 @@
+[reb_p_fusion_dead_seq1]
+{
+	object=wreckage/reb_p_fusion/seq1.s3o;
+	featuredead=reb_p_fusion_heap1;
+	description=Wreckage;
+	metal=38;
+	damage=590;
+	blocking=1;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}
+[reb_p_fusion_dead_seq2]
+{
+	object=wreckage/reb_p_fusion/seq2.s3o;
+	featuredead=reb_p_fusion_heap1;
+	description=Wreckage;
+	metal=38;
+	damage=590;
+	blocking=1;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}
+[reb_p_fusion_heap1]
+{
+	object=wreckage/reb_p_fusion/heap1.s3o;
+	featuredead=reb_p_fusion_heap2;
+	description=Wreckage;
+	metal=25;
+	damage=350;
+	blocking=1;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}
+[reb_p_fusion_heap2]
+{
+	object=wreckage/reb_p_fusion/heap2.s3o;
+	description=Wreckage;
+	metal=19;
+	damage=190;
+	blocking=1;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+}

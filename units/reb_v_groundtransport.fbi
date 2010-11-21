@@ -1,0 +1,67 @@
+[unitinfo]
+{
+	unitname=reb_v_groundtransport;
+	objectname=rebel/v-groundtransport.s3o;
+	buildpic=reb_v_groundtransport.png;
+	corpse=reb_v_groundtransport_dead;
+	icontype=veh_trans;
+	soundcategory=REBHOVER;
+	category=IONTARGETABLE GROUND TANK;
+
+	name=Loratus Transport;
+	description=Hover Transport;
+	side=Rebels;
+	maxdamage=5200;
+	idleautoheal=0;
+	buildcostmetal=500;
+	buildcostenergy=4500;
+	buildtime=33;
+	footprintx=4;
+	footprintz=4;
+	mass=300000;
+	cobid=99;
+	collisionVolumeType=box;
+	collisionVolumeScales=64 24 128;
+	collisionVolumeOffsets=0 -4 0;
+
+	shownanoframe=0;
+
+	energymake=2;
+	energyuse=2;
+
+	sightdistance=400;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	canmove=1;
+	movementclass=HOVER3x3;
+	maxvelocity=2.8;
+	acceleration=0.025;
+	brakerate=0.08;
+	turnrate=325;
+	maxslope=16;
+	turninplace=0;
+
+	transportsize=1;
+	transportcapacity=20;
+	transportmass=2000;
+
+	canhover=1;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_UNIT;
+	selfdestructas=MEDIUM_UNIT;
+
+	nochasecategory=VTOL;
+	badtargetcategory=VTOL;
+
+	weapon1=reb_v_groundtransport;
+	onlytargetcategory1=GROUND VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:LARGE_MUZZLE_FLASH_FX_RED;
+		explosiongenerator2=custom:constdust;
+	}
+}

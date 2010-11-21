@@ -1,0 +1,51 @@
+[unitinfo]
+{
+	unitname=reb_d_antiair;
+	objectname=rebel/d-antiair.s3o;
+	buildpic=reb_d_antiair.png;
+	corpse=reb_d_antiair_dead;
+	icontype=defense_aa;
+	soundcategory=ARM_KBOT;
+	category=GROUND DEFENSE BUILDING;
+	yardmap=oo oo;
+
+	name=Anti Air Battery;
+	description=Anti-Aircraft Defense;
+	side=Rebels;
+	maxdamage=1100;
+	idleautoheal=0;
+	buildcostmetal=400;
+	buildcostenergy=2000;
+	buildtime=20;
+	footprintx=2;
+	footprintz=2;
+	cobid=74;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	sightdistance=450;
+
+	maxslope=20;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-reb.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=5;
+	BuildingGroundDecalSizeY=5;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_BUILDING;
+	selfdestructas=MEDIUM_BUILDING;
+
+	weapon1=reb_d_antiair;
+	badtargetcategory1=GROUND;
+	onlytargetcategory1=VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+		explosiongenerator2=custom:reb_d_antiair;
+	}
+}

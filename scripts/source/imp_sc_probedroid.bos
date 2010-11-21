@@ -1,0 +1,168 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, w1, firept;
+piece  a11, a12, a21, a22, a31, a32, a41, a42;
+piece  a51, a52, a61, a62, a71, a72, a81, a82;
+
+static-var  wake, bMoving, randomSeed;
+
+#define SMALL_MUZZLE_FLASH_FX_RED 1024+1
+
+Waggle() {
+	while(1) {
+		if(!bMoving) {
+			randomSeed = rand(12,68);
+			if(randomSeed < 24) {
+				turn a11 to x-axis randomSeed * <-3> speed <70>;
+				turn a12 to x-axis randomSeed * <-2.5> speed <70>;
+				wait-for-turn a11 around x-axis;
+				turn a11 to x-axis 0 speed <70>;
+				turn a12 to x-axis 0 speed <70>;
+			}
+			if(randomSeed > 15 and randomSeed < 24) {
+				turn a21 to x-axis randomSeed * <-2.5> speed <70>;
+				turn a22 to x-axis randomSeed * <3.5> speed <70>;
+				wait-for-turn a22 around x-axis;
+				turn a21 to x-axis 0 speed <70>;
+				turn a22 to x-axis 0 speed <70>;
+			}
+			if(randomSeed > 19 and randomSeed < 32) {
+				turn a31 to x-axis randomSeed * <-2> speed <70>;
+				turn a32 to x-axis randomSeed * <-3> speed <70>;
+				wait-for-turn a32 around x-axis;
+				turn a31 to x-axis 0 speed <70>;
+				turn a32 to x-axis 0 speed <70>;
+			}
+			if(randomSeed > 27 and randomSeed < 40) {
+				turn a41 to x-axis randomSeed * <-1.5> speed <70>;
+				turn a42 to x-axis randomSeed * <2.5> speed <70>;
+				wait-for-turn a42 around x-axis;
+				turn a41 to x-axis 0 speed <70>;
+				turn a42 to x-axis 0 speed <70>;
+			}
+			if(randomSeed > 35 and randomSeed < 48) {
+				turn a51 to x-axis randomSeed * <-1.8> speed <70>;
+				turn a52 to x-axis randomSeed * <-2> speed <70>;
+				wait-for-turn a52 around x-axis;
+				turn a51 to x-axis 0 speed <70>;
+				turn a52 to x-axis 0 speed <70>;
+			}
+			if(randomSeed > 43 and randomSeed < 56) {
+				turn a61 to x-axis randomSeed * <-1.3> speed <70>;
+				turn a62 to x-axis randomSeed * <1.5> speed <70>;
+				wait-for-turn a62 around x-axis;
+				turn a61 to x-axis 0 speed <70>;
+				turn a62 to x-axis 0 speed <70>;
+			}
+			if(randomSeed > 51 and randomSeed < 64) {
+				turn a71 to x-axis randomSeed * <-1> speed <70>;
+				turn a72 to x-axis randomSeed * <-1> speed <70>;
+				wait-for-turn a72 around x-axis;
+				turn a71 to x-axis 0 speed <70>;
+				turn a72 to x-axis 0 speed <70>;
+			}
+			if(randomSeed > 59) {
+				turn a81 to x-axis randomSeed * <-0.75> speed <70>;
+				turn a82 to x-axis randomSeed * <1.5> speed <70>;
+				wait-for-turn a82 around x-axis;
+				turn a81 to x-axis 0 speed <70>;
+				turn a82 to x-axis 0 speed <70>;
+			}
+			sleep randomSeed * 20;
+		}
+		if(bMoving) {
+			turn a11 to x-axis <0> speed <60>;
+			turn a12 to x-axis <0> speed <60>;
+			turn a21 to x-axis <0> speed <60>;
+			turn a22 to x-axis <0> speed <60>;
+			turn a31 to x-axis <0> speed <60>;
+			turn a32 to x-axis <0> speed <60>;
+			turn a41 to x-axis <0> speed <60>;
+			turn a42 to x-axis <0> speed <60>;
+			turn a51 to x-axis <0> speed <60>;
+			turn a52 to x-axis <0> speed <60>;
+			turn a61 to x-axis <0> speed <60>;
+			turn a62 to x-axis <0> speed <60>;
+			turn a71 to x-axis <0> speed <60>;
+			turn a72 to x-axis <0> speed <60>;
+			turn a81 to x-axis <0> speed <60>;
+			turn a82 to x-axis <0> speed <60>;
+			sleep 1000;
+		}
+	}
+}
+
+Create() {
+	hide firept;
+	turn a21 to y-axis <-45> now;
+	turn a31 to y-axis <-90> now;
+	turn a41 to y-axis <-135> now;
+	turn a51 to y-axis <-180> now;
+	turn a61 to y-axis <135> now;
+	turn a71 to y-axis <90> now;
+	turn a81 to y-axis <45> now;
+	start-script Waggle();
+}
+
+StartMoving() {
+	bMoving = 1;
+	while(1) {
+		if(wake <= 3) {
+			emit-sfx 3 from w1;
+			emit-sfx 5 from w1;
+		}
+		sleep 300;
+	}
+}
+
+StopMoving() {
+	bMoving = 0;
+}
+
+setSFXoccupy(crap) {
+	wake = crap;
+}
+
+RestoreAfterDelay() {
+	sleep 4000;
+	turn base to y-axis <0> speed <100>;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = base;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = firept;
+}
+
+FireWeapon1() {
+	emit-sfx SMALL_MUZZLE_FLASH_FX_RED from firept;
+}
+
+AimWeapon1(heading, pitch) {
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	turn base to y-axis heading speed <100>;
+	wait-for-turn base around y-axis;
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		return 0;
+	}
+	corpsetype = 3;
+}

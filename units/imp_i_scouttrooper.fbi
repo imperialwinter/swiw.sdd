@@ -1,0 +1,60 @@
+[unitinfo]
+{
+	unitname=imp_i_scouttrooper;
+	objectname=empire/i-scouttrooper.s3o;
+	buildpic=imp_i_scouttrooper.png;
+	icontype=inf_light;
+	soundcategory=imp-i-scouttrooper;
+	category=GROUND INFANTRY;
+
+	name=Scout Trooper;
+	description=Imperial Scout;
+	side=Empire;
+	maxdamage=130;
+	buildcostmetal=30;
+	buildcostenergy=200;
+	buildtime=7;
+	footprintx=1;
+	footprintz=1;
+	mass=100;
+	cobid=34;
+
+	upright=1;
+	reclaimable=0;
+	shownanoframe=0;
+	smoothanim=0;
+
+	sightdistance=750;
+	stealth=1;
+	seismicdistance=1100;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=INFANTRY1x1;
+	maxvelocity=1.7;
+	acceleration=0.5;
+	brakerate=0.5;
+	turnrate=1300;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+
+	selfdestructcountdown=1;
+	explodeas=IMP_HUMAN_BLAST;
+	selfdestructas=IMP_HUMAN_BLAST;
+
+	nochasecategory=VTOL;
+
+	weapon1=imp_i_scouttrooper;
+	badtargetcategory1=VTOL;
+	onlytargetcategory1=GROUND VTOL;
+	weaponmaindir1=0 0 1;
+	maxangledif1=190;
+	weapon2=imp_i_scouttrooper;
+	badtargetcategory2=VTOL;
+	onlytargetcategory2=GROUND VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_RED;
+	}
+}

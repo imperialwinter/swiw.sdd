@@ -1,0 +1,115 @@
+//~32 radius
+
+[hit_green_s_continuous] {
+	[glow] {
+		class=explspike;
+		[properties] {
+			dir= -8 r16, -8 r16, -8 r16;
+			width=8;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.25;
+			color=0.1,1,0.1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=4; 
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=-1 r2, 0.5 r0.5, -1 r2;
+			gravity=0, -0.1, 0;
+			colorMap=1 1 1 0.01   1 1 0.5 0.01   1 0.5 0 0.01   0 0 0 0;
+			Texture=plasma2;
+			airdrag=0.98;
+			particleLife=32;
+			particleLifeSpread=16;
+			numParticles=4;
+			particleSpeed=0.5;
+			particleSpeedSpread=2;
+			particleSize=0.5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=15 r60;
+			directional=1;
+		}
+		unit=1;
+		count=1;
+	}
+	
+	[miss] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;
+			explosionGenerator=custom:hit_green_s_continuous_miss;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[melt] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;
+			explosionGenerator=custom:inc_melt_xs;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[groundflash]{
+		flashsize=16;
+		flashalpha=0.5;
+		circlegrowth=6;
+		circlealpha=0;
+		ttl=4;
+		color=0,1,0;
+	}
+}
+
+[hit_green_s_continuous_miss] {
+	[dust]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.25 0.2 0.15 0.5  0 0 0 0;
+			size=8 r4;
+			length=16 r16;
+			sizeGrowth=1;
+			ttl=24;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=1;
+	}
+	
+	[water]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.45 0.45 0.5 0.5  0 0 0 0; 
+			size=8 r4;
+			length=16 r16;
+			sizeGrowth=1;
+			ttl=24;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		water=1;
+		count=1;
+	}
+}

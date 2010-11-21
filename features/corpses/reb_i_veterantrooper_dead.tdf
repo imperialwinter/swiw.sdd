@@ -1,0 +1,135 @@
+[reb_i_veterantrooper_dead_seq1_head1]
+{
+	object=corpses/reb_i_veterantrooper/seq1_head1.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_veterantrooper_dead_seq1_head2]
+{
+	object=corpses/reb_i_veterantrooper/seq1_head2.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_veterantrooper_dead_seq1_head3]
+{
+	object=corpses/reb_i_veterantrooper/seq1_head3.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+
+[reb_i_veterantrooper_dead_seq2_head1]
+{
+	object=corpses/reb_i_veterantrooper/seq2_head1.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_veterantrooper_dead_seq2_head2]
+{
+	object=corpses/reb_i_veterantrooper/seq2_head2.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_veterantrooper_dead_seq2_head3]
+{
+	object=corpses/reb_i_veterantrooper/seq2_head3.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+
+[reb_i_veterantrooper_dead_seq3_head1]
+{
+	object=corpses/reb_i_veterantrooper/seq3_head1.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_veterantrooper_dead_seq3_head2]
+{
+	object=corpses/reb_i_veterantrooper/seq3_head2.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_veterantrooper_dead_seq3_head3]
+{
+	object=corpses/reb_i_veterantrooper/seq3_head3.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+
+[reb_i_veterantrooper_dead_seq4_head1]
+{
+	object=corpses/reb_i_veterantrooper/seq4_head1.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_veterantrooper_dead_seq4_head2]
+{
+	object=corpses/reb_i_veterantrooper/seq4_head2.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}
+[reb_i_veterantrooper_dead_seq4_head3]
+{
+	object=corpses/reb_i_veterantrooper/seq4_head3.s3o;
+	description=Dead Trooper;
+	metal=1;
+	damage=50;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}

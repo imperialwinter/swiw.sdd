@@ -1,0 +1,85 @@
+[imp_artillery]
+{
+	name=Artillery Cannon;
+	rendertype=4;
+	turret=1;
+	tolerance=500;
+	interceptedbyshieldtype=2;
+	explosiongenerator=custom:hit_conc_l;
+	explosionspeed=65536;
+
+	ballistic=1;
+	firestarter=50;
+
+	range=1200;
+	reloadtime=5.5;
+	energypershot=100;
+	accuracy=1500;
+	weaponvelocity=450;
+	areaofeffect=200;
+
+	soundstart=imp_v_MobileArty_fire;
+	soundstartvolume=15;
+	soundhit=imp_v_MobileArty_hit;
+	soundhitvolume=15;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	avoidfeature=0;
+	collidefeature=1;
+	noselfdamage=1;
+
+	sizedecay=0.1;
+	alphadecay=0.25;
+	stages=15;
+
+	size=2;
+	collisionsize=8;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=PlasmaBall;
+
+	[damage]
+	{
+		default=400;
+		no_armor=150;
+		light_armor=400;
+		medium_armor=400;
+		heavy_armor=400;
+		ion_damage=150;
+		flag=0.000001;
+	}
+}
+[imp_artillery_nullgun]
+{
+	model=nullpoint.s3o;
+	rendertype=4;
+	turret=1;
+	tolerance=100;
+	explosiongenerator=custom:NULL_FX;
+	explosionspeed=65536;
+
+	lineofsight=1;
+
+	range=200;
+	reloadtime=1;
+	weaponvelocity=1000;
+	areaofeffect=1;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	noselfdamage=1;
+
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	[damage]
+	{
+		default=0.00001;
+	}
+}

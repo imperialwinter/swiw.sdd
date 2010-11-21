@@ -1,0 +1,103 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, door, finr, finl, enginer, rotorsr, enginel, rotorsl, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10;
+
+static-var men;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+#define UNIT_ROOT base
+#define UNIT_BELOW_GROUND_DIST [-55]
+#define UNIT_RISE_SPEED [4]
+#define DUSTFX 1024+1
+#define DUSTFXPT1 base
+#define DUSTFXPT2 door
+#include "general/rebel_unit_build.h"
+
+Create() {
+	turn door to x-axis <-102> now;
+	start-script SmokeUnit_SWS();
+	call-script ConstructionAnim();
+	move base to y-axis 0 now;
+}
+
+QueryTransport(piecenum, springsucks) {
+	if(men == 1) {
+		piecenum = p1;
+	}
+	if(men == 2) {
+		piecenum = p2;
+	}
+	if(men == 3) {
+		piecenum = p3;
+	}
+	if(men == 4) {
+		piecenum = p4;
+	}
+	if(men == 5) {
+		piecenum = p5;
+	}
+	if(men == 6) {
+		piecenum = p6;
+	}
+	if(men == 7) {
+		piecenum = p7;
+	}
+	if(men == 8) {
+		piecenum = p8;
+	}
+	if(men == 9) {
+		piecenum = p9;
+	}
+	if(men == 10) {
+		piecenum = p10;
+	}
+}
+
+BeginTransport(springsucks) {
+	++men;
+	turn door to x-axis <0> speed <120>;
+	sleep 1000;
+	turn door to x-axis <-102> speed <120>;
+}
+
+TransportDrop(spring,sucks) {
+	--men;
+	turn door to x-axis <0> speed <120>;
+	sleep 5000;
+	turn door to x-axis <-102> speed <120>;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		explode enginer type FALL | FIRE | SMOKE;
+		explode enginel type FALL | FIRE | SMOKE;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		explode enginer type FALL | FIRE | SMOKE;
+		explode enginel type FALL | FIRE | SMOKE;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		explode enginer type FALL | FIRE | SMOKE;
+		explode enginel type FALL | FIRE | SMOKE;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+	explode enginer type FALL | FIRE | SMOKE;
+	explode enginel type FALL | FIRE | SMOKE;
+}

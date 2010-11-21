@@ -1,0 +1,55 @@
+[unitinfo]
+{
+	unitname=reb_d_golan;
+	objectname=rebel/d-golan.s3o;
+	buildpic=reb_d_golan.png;
+	corpse=reb_d_golan_dead;
+	icontype=defense_medium;
+	soundcategory=LLT;
+	category=GROUND DEFENSE BUILDING;
+	yardmap=oooo oooo oooo;
+
+	name=Golan Tower;
+	description=Heavy Laser Battery;
+	side=Rebels;
+	maxdamage=1800;
+	idleautoheal=0;
+	buildcostmetal=410;
+	buildcostenergy=3000;
+	buildtime=34;
+	footprintx=4;
+	footprintz=4;
+	cobid=75;
+	collisionVolumeType=cylY;
+	collisionVolumeScales=40 56 40;
+	collisionVolumeOffsets=0 -11 0;
+
+	reclaimable=0;
+	shownanoframe=0;
+	levelground=0;
+
+	energystorage=100;
+
+	sightdistance=400;
+
+	maxslope=20;
+
+	UseBuildingGroundDecal=1;
+	BuildingGroundDecalType=decals/generic-reb.dds;
+	BuildingGroundDecalDecaySpeed=1;
+	BuildingGroundDecalSizeX=7;
+	BuildingGroundDecalSizeY=7;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_BUILDING;
+	selfdestructas=SMALL_BUILDING;
+
+	weapon1=reb_d_golan;
+	onlytargetcategory1=GROUND;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:constdust;
+		explosiongenerator2=custom:MED_MUZZLE_FLASH_FX_RED;
+	}
+}

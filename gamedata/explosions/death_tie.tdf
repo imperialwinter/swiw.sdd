@@ -1,0 +1,121 @@
+[death_tie] {
+	usedefaultexplosions=0;
+	[blue] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=5 r2;
+			sizeMod=0.75;
+			pos=-4 r8, -4 r8, -4 r8;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=1 1 1 0.05  0 0 0 0;
+			Texture=brightblueexplo;
+			airdrag=0.1;
+			particleLife=16;
+			particleLifeSpread=8;
+			numParticles=4;
+			particleSpeed=1;
+			particleSpeedSpread=0;
+			particleSize=1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[fire] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=-4 r8, -4 r8, -4 r8;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0   1 1 1 0.5   0.75 0.75 0.75 0.375   0.5 0.5 0.5 0.25   0.25 0.25 0.25 0.125   0 0 0 0;
+			Texture=fireyexplo;
+			airdrag=0.1;
+			particleLife=80;
+			particleLifeSpread=40;
+			numParticles=2;
+			particleSpeed=1;
+			particleSpeedSpread=0;
+			particleSize=20 r8;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.05, 0;
+			colorMap=1 1 1 0.01   1 1 0.5 0.01   1 0.5 0 0.01   0 0 0 0;
+			Texture=plasma2;
+			airdrag=0.98;
+			particleLife=64;
+			particleLifeSpread=32;
+			numParticles=128;
+			particleSpeed=1;
+			particleSpeedSpread=4;
+			particleSize=1;
+			particleSizeSpread=4;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[sphere] {
+		class=CSpherePartSpawner;
+		[properties] {
+			expansionSpeed=6;
+			ttl=12;
+			alpha=0.125;
+			color=1,1,1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[pikes] {
+		class=CExploSpikeProjectile;
+		[properties] {
+			dir= -8 r16, -8 r16, -8 r16;
+			width=4 r2;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.08;
+			color=1,0.75,0.5;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=16; 
+	}
+}

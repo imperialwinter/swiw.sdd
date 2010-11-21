@@ -1,0 +1,77 @@
+[imp_commander_dead]
+{
+	object=wreckage/imp_commander/com_dead_seq1_1.s3o;
+	featuredead=imp_commander_dead2;
+	description=Wrecked Base;
+	metal=450;
+	damage=2250;
+	footprintx=12;
+	footprintz=12;
+	reclaimable=1;
+}
+[imp_commander_dead2]
+{
+	object=wreckage/imp_commander/com_dead_seq1_2.s3o;
+	featuredead=imp_commander_heap;
+	description=Wrecked Base;
+	metal=200;
+	damage=2250;
+	footprintx=12;
+	footprintz=12;
+	reclaimable=1;
+}
+[imp_commander_heap]
+{
+	object=heaps/5x5b.s3o;
+	description=Wreckage;
+	metal=150;
+	damage=4500;
+	blocking=0;
+	footprintx=5;
+	footprintz=5;
+	reclaimable=1;
+}
+[imp_com_l1aa_dead]
+{
+	object=wreckage/imp_commander/com_l1aa_dead_seq1_1.s3o;
+	featuredead=imp_commander_dead2;
+	description=Wrecked Base;
+	metal=450;
+	damage=2250;
+	footprintx=12;
+	footprintz=12;
+	reclaimable=1;
+}
+[imp_com_radar_dead]
+{
+	object=wreckage/imp_commander/com_radar_dead_seq1_1.s3o;
+	featuredead=imp_commander_dead2;
+	description=Wrecked Base;
+	metal=450;
+	damage=2250;
+	footprintx=12;
+	footprintz=12;
+	reclaimable=1;
+}
+[imp_com_wall_dead]
+{
+	object=wreckage/imp_commander/com_wall_dead_seq1_1.s3o;
+	featuredead=imp_com_wall_dead2;
+	description=Wrecked Base;
+	metal=450;
+	damage=2250;
+	footprintx=12;
+	footprintz=12;
+	reclaimable=1;
+}
+[imp_com_wall_dead2]
+{
+	object=wreckage/imp_commander/com_wall_dead_seq1_2.s3o;
+	featuredead=imp_commander_heap;
+	description=Wrecked Base;
+	metal=200;
+	damage=2250;
+	footprintx=12;
+	footprintz=12;
+	reclaimable=1;
+}

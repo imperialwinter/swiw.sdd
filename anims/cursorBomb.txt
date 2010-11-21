@@ -1,0 +1,11 @@
+hotspot center
+frame  bitmaps/cursors/attack/attack01.png  0.100
+frame  bitmaps/cursors/attack/attack02.png  0.100
+frame  bitmaps/cursors/attack/attack03.png  0.100
+frame  bitmaps/cursors/attack/attack04.png  0.100
+frame  bitmaps/cursors/attack/attack05.png  0.100
+frame  bitmaps/cursors/attack/attack06.png  0.100
+frame  bitmaps/cursors/attack/attack05.png  0.100
+frame  bitmaps/cursors/attack/attack04.png  0.100
+frame  bitmaps/cursors/attack/attack03.png  0.100
+frame  bitmaps/cursors/attack/attack02.png  0.100

@@ -1,0 +1,53 @@
+[imp_i_flametrooper]
+{
+	name=Flame Thrower;
+	rendertype=5;
+	turret=1;
+	tolerance=500;
+	explosiongenerator=custom:IMP_FLAMETHROWER_FX;
+	explosionspeed=65536;
+	cegtag=flametrooper_light;
+
+	lineofsight=1;
+	firestarter=100;
+
+	range=210;
+	reloadtime=0;
+	burst=25;
+	burstrate=0.04;
+	sprayangle=2000;
+	weaponvelocity=188;
+	areaofeffect=96;
+
+	soundstart=imp_i_flametrooper/fire1;
+	soundstartvolume=10;
+	soundtrigger=1;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	avoidfeature=1;
+	collidefeature=1;
+	noselfdamage=1;
+
+	colormap=1.0 1.0 1.0 1.0   1.0 1.0 0.5 1.0   1.0 1.0 0.3 1.0   1.0 1.0 0.3 1.0   1.0 0.5 0.15 1.0   1.0 0.5 0.15 1.0   0.025 0.01 1.0  0 0 0 0.01;
+
+	size=1;
+	sizegrowth=0.5;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	texture1=flame;
+
+	[damage]
+	{
+		default=5;
+		no_armor=5;
+		light_armor=5;
+		medium_armor=5;
+		heavy_armor=5;
+		ion_damage=5;
+		flag=0.000001;
+	}
+}

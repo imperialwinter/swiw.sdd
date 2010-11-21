@@ -1,0 +1,23 @@
+[reb_sp_sensor_dead]
+{
+	object=wreckage/reb_sp_sensor/seq1.s3o;
+	description=Wreckage;
+	featuredead=reb_sp_sensor_heap;
+	metal=7;
+	damage=210;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[reb_sp_sensor_heap]
+{
+	object=heaps/2x2C.s3o;
+	description=Wreckage;
+	metal=3;
+	damage=210;
+	blocking=0;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

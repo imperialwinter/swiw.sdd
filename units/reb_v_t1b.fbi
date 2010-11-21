@@ -1,0 +1,61 @@
+[unitinfo]
+{
+	unitname=reb_v_t1b;
+	objectname=rebel/v-t1b.s3o;
+	buildpic=reb_v_t1b.png;
+	corpse=reb_v_t1b_dead;
+	icontype=veh_medium;
+	soundcategory=Reb_Hover_Light;
+	category=IONTARGETABLE GROUND TANK;
+
+	name=Trackata 1-B;
+	description=Main Hover Tank;
+	side=Rebels;
+	maxdamage=4700;
+	idleautoheal=0;
+	buildcostmetal=770;
+	buildcostenergy=6630;
+	buildtime=46;
+	footprintx=4;
+	footprintz=4;
+	mass=20500;
+	cobid=101;
+	collisionVolumeType=cylZ;
+	collisionVolumeScales=32 30 72;
+	collisionVolumeOffsets=0 3 0;
+
+	shownanoframe=0;
+	levelground=0;
+
+	energyuse=12;
+
+	sightdistance=400;
+
+	canmove=1;
+	movementclass=HOVER3x3;
+	maxvelocity=2.2;
+	acceleration=0.06;
+	brakerate=0.2;
+	turnrate=300;
+	maxslope=16;
+	turninplace=0;
+
+	canhover=1;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_UNIT;
+	selfdestructas=MEDIUM_UNIT;
+
+	nochasecategory=VTOL;
+
+	weapon1=reb_v_t1bcannon;
+	onlytargetcategory1=GROUND VTOL;
+	weapon2=reb_v_t1bmissile;
+	onlytargetcategory2=VTOL;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:LARGE_MUZZLE_FLASH_FX_RED;
+		explosiongenerator2=custom:constdust;
+	}
+}

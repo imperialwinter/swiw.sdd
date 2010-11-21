@@ -1,0 +1,68 @@
+[unitinfo]
+{
+	unitname=imp_v_hailfire;
+	objectname=empire/v-hailfire.s3o;
+	buildpic=imp_v_hailfire.png;
+	corpse=imp_v_hailfire_dead;
+	icontype=veh_special;
+	soundcategory=CORE_TANK;
+	category=IONTARGETABLE GROUND TANK;
+
+	name=Hailfire Tank;
+	description=Missile Barrage Tank;
+	side=Empire;
+	maxdamage=900;
+	idleautoheal=0;
+	buildcostmetal=350;
+	buildcostenergy=4200;
+	buildtime=55;
+	footprintx=4;
+	footprintz=4;
+	mass=30000;
+	cobid=56;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=80 56 64;
+	collisionVolumeOffsets=0 -7 0;
+
+	upright=1;
+	shownanoframe=0;
+
+	sightdistance=400;
+	seismicsignature=1;
+
+	canmove=1;
+	movementclass=TANK3x3;
+	maxvelocity=3.2;
+	acceleration=0.01;
+//	brakerate=0.2;
+	maxslope=12;
+	maxwaterdepth=12;
+	turninplace=0;
+	turnrate=270;
+
+	leavetracks=1;
+	trackwidth=60;
+	trackoffset=4;
+	trackstrength=6;
+	trackstretch=1;
+	tracktype=cis_v_hailfire;
+
+	selfdestructcountdown=1;
+	explodeas=MEDIUM_UNIT;
+	selfdestructas=MEDIUM_UNIT;
+
+	weapon1=cis_v_hailfire;
+	onlytargetcategory1=GROUND;
+	weaponmaindir1=0 0 1;
+	maxangledif1=190;
+	weapon2=cis_v_hailfire;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:hailfire_firefx;
+	}
+	[customparams]
+	{
+		canareaattack=1;
+	}
+}

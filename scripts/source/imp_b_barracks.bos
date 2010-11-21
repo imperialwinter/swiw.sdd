@@ -1,0 +1,170 @@
+#define TAK
+
+#include "general/standard_commands.h"
+
+piece  base, building1, building2, walle, wallw, walln, radar, bpt, shuttle, fint, finl, finr;
+
+#define SMOKEPIECE1 base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 base
+#define SMOKEPIECE4 base
+#include "general/smokeunit_sws.h"
+
+static-var  isBuilding, isBuildingNow, shuttleActive, shuttleLanded, shuttleWantTakeoff;
+
+#define SIG_ACTIVATE			2
+
+Land() {
+	if(!shuttleActive and !shuttleLanded) {
+		shuttleActive = 1;
+		move shuttle to y-axis [250] speed [750];
+		wait-for-move shuttle along y-axis;
+		move shuttle to y-axis [125] speed [325];
+		wait-for-move shuttle along y-axis;
+		move shuttle to y-axis [100] speed [225];
+		turn shuttle to y-axis <0> speed <90>;
+		wait-for-move shuttle along y-axis;
+		move shuttle to y-axis [75] speed [150];
+		wait-for-move shuttle along y-axis;
+		move shuttle to y-axis [50] speed [75];
+		turn finl to z-axis <0> speed <90>;
+		turn finr to z-axis <0> speed <90>;
+		wait-for-move shuttle along y-axis;
+		move shuttle to y-axis [0] speed [37.5];
+		wait-for-move shuttle along y-axis;
+		shuttleActive = 0;
+		shuttleLanded = 1;
+	}
+	return 0;
+}
+
+Takeoff(delay) {
+	sleep delay;
+	while(shuttleWantTakeoff and shuttleActive) {
+		sleep 100; }
+	if(!shuttleActive and shuttleLanded) {
+		shuttleActive = 1;
+		move shuttle to y-axis [25] speed [37.5];
+		wait-for-move shuttle along y-axis;
+		move shuttle to y-axis [50] speed [75];
+		turn finl to z-axis <120> speed <90>;
+		turn finr to z-axis <-120> speed <90>;
+		wait-for-move shuttle along y-axis;
+		move shuttle to y-axis [75] speed [150];
+		wait-for-move shuttle along y-axis;
+		move shuttle to y-axis [100] speed [225];
+		turn shuttle to y-axis <180> speed <90>;
+		wait-for-move shuttle along y-axis;
+		move shuttle to y-axis [250] speed [325];
+		wait-for-move shuttle along y-axis;
+		move shuttle to y-axis [6250] speed [750];
+		wait-for-move shuttle along y-axis;
+		shuttleActive=0;
+		shuttleLanded=0;
+		shuttleWantTakeoff=0;
+	}
+	return 0;
+}
+
+BuildStarted(unitID) {
+	var unitprog;
+	while(get UNIT_BUILD_PERCENT_LEFT(unitID)) {
+		unitprog = get UNIT_BUILD_PERCENT_LEFT(unitID);
+		if(unitprog <= 30) {
+			start-script Land();
+		}
+		sleep 100;
+	}
+	shuttleWantTakeoff=1;
+	start-script Takeoff(3000);
+}
+
+BuildScript() {
+	while(TRUE) {
+		if(isBuilding) {
+			sleep 100;
+			set BUGGER_OFF to 1;
+			set YARD_OPEN to 1;
+			set INBUILDSTANCE to 1;
+			isBuildingNow = TRUE;		
+		}
+		if(isBuilding) {
+			sleep 100;
+		}	
+		while(!isBuilding) {
+			sleep 2000;
+			isBuildingNow = FALSE;
+			sleep 1;
+			set BUGGER_OFF to 0;
+			set YARD_OPEN to 0;
+			set INBUILDSTANCE to 0;
+		}
+	}
+}
+
+Create() {
+	set BUGGER_OFF to 0;
+	set YARD_OPEN to 0;
+	set INBUILDSTANCE to 0;
+	isBuilding = FALSE;
+	shuttleActive = 0;
+	shuttleLanded = 0;
+	shuttleWantTakeoff=0;
+	move shuttle to y-axis [6250] now;
+	turn shuttle to y-axis <180> now;
+	turn finl to z-axis <120> now;
+	turn finr to z-axis <-120> now;
+	while(get BUILD_PERCENT_LEFT) {
+		sleep 100;
+	}
+	spin radar around y-axis speed <40>;
+	start-script BuildScript();
+	start-script SmokeUnit_SWS();
+}
+
+QueryNanoPiece(piecenum) {
+	piecenum = bpt;
+}
+
+Activate() {
+	signal SIG_ACTIVATE;
+	isBuilding = TRUE;
+}
+
+Deactivate() {
+	signal SIG_ACTIVATE;
+	set-signal-mask SIG_ACTIVATE;
+	isBuilding = FALSE;
+}
+
+StartBuilding(heading,pitch) {
+	move bpt to y-axis [-75] now;
+}
+
+StopBuilding() {
+	move bpt to y-axis [0] now;
+}
+
+QueryBuildInfo(piecenum) {
+	piecenum = bpt;
+}
+
+Killed(severity, corpsetype) {
+	if(severity <= 25) {
+		corpsetype = 1;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 50) {
+		corpsetype = 2;
+		explode base type BITMAP;
+		return 0;
+	}
+	if(severity <= 99) {
+		corpsetype = 3;
+		explode base type BITMAP;
+		return 0;
+	}
+	corpsetype = 3;
+	explode base type BITMAP;
+}

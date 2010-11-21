@@ -1,0 +1,27 @@
+hotspot center
+frame  bitmaps/cursors/load/load01.png  0.100
+frame  bitmaps/cursors/load/load02.png  0.100
+frame  bitmaps/cursors/load/load03.png  0.100
+frame  bitmaps/cursors/load/load04.png  0.100
+frame  bitmaps/cursors/load/load05.png  0.100
+frame  bitmaps/cursors/load/load06.png  0.100
+frame  bitmaps/cursors/load/load07.png  0.100
+frame  bitmaps/cursors/load/load08.png  0.100
+frame  bitmaps/cursors/load/load09.png  0.100
+frame  bitmaps/cursors/load/load10.png  0.100
+frame  bitmaps/cursors/load/load11.png  0.100
+frame  bitmaps/cursors/load/load12.png  0.100
+frame  bitmaps/cursors/load/load13.png  0.100
+frame  bitmaps/cursors/load/load14.png  0.100
+frame  bitmaps/cursors/load/load15.png  0.100
+frame  bitmaps/cursors/load/load16.png  0.100
+frame  bitmaps/cursors/load/load17.png  0.100
+frame  bitmaps/cursors/load/load18.png  0.100
+frame  bitmaps/cursors/load/load19.png  0.100
+frame  bitmaps/cursors/load/load20.png  0.100
+frame  bitmaps/cursors/load/load21.png  0.100
+frame  bitmaps/cursors/load/load22.png  0.100
+frame  bitmaps/cursors/load/load23.png  0.100
+frame  bitmaps/cursors/load/load24.png  0.100
+frame  bitmaps/cursors/load/load25.png  0.100
+frame  bitmaps/cursors/load/load26.png  0.100

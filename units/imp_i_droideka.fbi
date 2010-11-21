@@ -1,0 +1,59 @@
+[unitinfo]
+{
+	unitname=imp_i_droideka;
+	objectname=empire/i-droideka.s3o;
+	buildpic=imp_i_droideka.png;
+	corpse=imp_i_droideka_dead;
+	icontype=inf_heavy;
+	soundcategory=imp-i-droideka;
+	category=IONTARGETABLE GROUND DROID;
+
+	name=Destroyer Droid;
+	description=Advanced Combat Droid;
+	side=Empire;
+	maxdamage=400;
+	idleautoheal=0;
+	buildcostmetal=210;
+	buildcostenergy=1200;
+	buildtime=33;
+	footprintx=2;
+	footprintz=2;
+	mass=320;
+	cobid=28;
+
+	upright=1;
+	shownanoframe=0;
+
+	energyuse=7;
+
+	sightdistance=425;
+	seismicsignature=1;
+
+	activatewhenbuilt=1;
+
+	canmove=1;
+	movementclass=WALKER2x2;
+	maxvelocity=2.55;
+	acceleration=0.06;
+//	brakerate=0.15;
+	maxslope=20;
+	maxwaterdepth=12;
+	transportbyenemy=0;
+	turninplace=0;
+	turnrate=450;
+
+	selfdestructcountdown=1;
+	explodeas=SMALL_UNIT;
+	selfdestructas=SMALL_UNIT;
+
+	weapon1=cis_i_droidekalaser;
+	onlytargetcategory1=GROUND;
+	weapon2=cis_i_droidekashield;
+	weapon3=cis_i_droidekarange;
+	onlytargetcategory3=GROUND;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+		explosiongenerator1=custom:SMALL_MUZZLE_FLASH_FX_RED;
+	}
+}
