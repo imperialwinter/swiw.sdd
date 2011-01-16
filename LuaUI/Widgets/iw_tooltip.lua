@@ -25,7 +25,6 @@ local GetUnitRulesParam = Spring.GetUnitRulesParam
 local GetUnitShieldState = Spring.GetUnitShieldState
 local GetCameraDirection = Spring.GetCameraDirection
 local GetUnitResources = Spring.GetUnitResources
-local MakeFont = Spring.MakeFont
 local ValidUnitID = Spring.ValidUnitID
 local ValidFeatureID = Spring.ValidFeatureID
 local GetFeatureDefID = Spring.GetFeatureDefID
@@ -86,9 +85,6 @@ function widget:ViewResize(viewx, viewy)
 	vsy = viewy
 
 	TooltipConfig(vsx, vsy)
-	MakeFont(fontVirtualName,{ inData = VFS.LoadFile(fontRealName), height = namesize, minChar = 0, maxChar = 255, outlineMode = 0, outlineRadius = 0, outlineWeight = 0})
-	MakeFont(fontVirtualName,{ inData = VFS.LoadFile(fontRealName), height = descsize, minChar = 0, maxChar = 255, outlineMode = 0, outlineRadius = 0, outlineWeight = 0})
-	MakeFont(fontVirtualName,{ inData = VFS.LoadFile(fontRealName), height = ressize, minChar = 0, maxChar = 255, outlineMode = 0, outlineRadius = 0, outlineWeight = 0})
 end
 
 function widget:Initialize()

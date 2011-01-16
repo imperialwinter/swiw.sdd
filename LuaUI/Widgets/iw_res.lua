@@ -14,7 +14,6 @@ end
 
 local IsGUIHidden = Spring.IsGUIHidden
 local GetTeamResources = Spring.GetTeamResources
-local MakeFont = Spring.MakeFont
 local GetLocalTeamID = Spring.GetLocalTeamID
 local GetTeamInfo = Spring.GetTeamInfo
 local GetTeamList = Spring.GetTeamList
@@ -62,9 +61,6 @@ function widget:ViewResize(viewSizeX, viewSizeY)
 	vsy = viewSizeY
 
 	ResbarConfig(vsx,vsy)
-	MakeFont(fontVirtualName,{ inData = VFS.LoadFile(fontRealName), height = resbarfontlarge, minChar = 0, maxChar = 255, outlineMode = 0, outlineRadius = 0, outlineWeight = 0})
-	MakeFont(fontVirtualName,{ inData = VFS.LoadFile(fontRealName), height = resbarfontmed, minChar = 0, maxChar = 255, outlineMode = 0, outlineRadius = 0, outlineWeight = 0})
-	MakeFont(fontVirtualName,{ inData = VFS.LoadFile(fontRealName), height = resbarfontsm, minChar = 0, maxChar = 255, outlineMode = 0, outlineRadius = 0, outlineWeight = 0})
 end
 
 function widget:Initialize()

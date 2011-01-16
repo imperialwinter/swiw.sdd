@@ -14,7 +14,6 @@ end
 local GetConfigInt = Spring.GetConfigInt
 local SendCommands = Spring.SendCommands
 local IsGUIHidden = Spring.IsGUIHidden
-local MakeFont = Spring.MakeFont
 
 local fhUseFont = fontHandler.UseFont
 local fhDraw = fontHandler.Draw
@@ -93,7 +92,6 @@ function widget:ViewResize(viewx, viewy)
 	vsy = viewy
 
 	OptionsConfig(vsx, vsy)
-	MakeFont(fontVirtualName,{ inData = VFS.LoadFile(fontRealName), height = namesize, minChar = 0, maxChar = 255, outlineMode = 0, outlineRadius = 0, outlineWeight = 0})
 end
 
 function widget:Initialize()

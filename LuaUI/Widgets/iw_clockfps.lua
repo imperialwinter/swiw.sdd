@@ -13,10 +13,8 @@ end
 -------------- speedups
 
 local IsGUIHidden = Spring.IsGUIHidden
-local MakeFont = Spring.MakeFont
 local GetFPS = Spring.GetFPS
 local GetGameSeconds = Spring.GetGameSeconds
-
 
 local fhUseFont = fontHandler.UseFont
 local fhGetTextWidth = fontHandler.GetTextWidth
@@ -24,12 +22,6 @@ local fhDraw = fontHandler.Draw
 
 local glColor = gl.Color
 local stformat = string.format
-
-
-
-
-
-
 
 -------------- some initialization
 
@@ -52,9 +44,6 @@ function widget:ViewResize(viewx, viewy)
 	vsy = viewy
 
 	TooltipConfig(vsx, vsy)
-	MakeFont(fontVirtualName,{ inData = VFS.LoadFile(fontRealName), height = namesize, minChar = 0, maxChar = 255, outlineMode = 0, outlineRadius = 0, outlineWeight = 0})
-	MakeFont(fontVirtualName,{ inData = VFS.LoadFile(fontRealName), height = descsize, minChar = 0, maxChar = 255, outlineMode = 0, outlineRadius = 0, outlineWeight = 0})
-	MakeFont(fontVirtualName,{ inData = VFS.LoadFile(fontRealName), height = ressize, minChar = 0, maxChar = 255, outlineMode = 0, outlineRadius = 0, outlineWeight = 0})
 end
 
 function widget:Initialize()
