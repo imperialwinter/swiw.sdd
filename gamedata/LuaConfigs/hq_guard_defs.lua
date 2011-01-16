@@ -22,12 +22,42 @@ local config = {
 	
 		-- The positions of the guards, in order of spawn
 	posData = {
-		{x=-40,  z=150},     -- Door, left
-		{x=40,   z=150},      -- Door, right
+	[0] = {
+		{x=-40,  z=180},     -- Door, left
+		{x=40,   z=180},      -- Door, right
 		{x=-150, z=-150}, -- Back, Left
 		{x=150,  z=-150},  -- Back, Righ
 		{x=150,  z=150},    -- Front, Right
 		{x=-150, z=150},   -- Front, Left
+	},
+	
+	[1] = {
+		{x=180,  z=-40},     -- Door, left
+		{x=180,  z=40},      -- Door, right
+		{x=-150, z=-150}, -- Back, Left
+		{x=150,  z=-150},  -- Back, Righ
+		{x=150,  z=150},    -- Front, Right
+		{x=-150, z=150},   -- Front, Left
+	},
+	
+	[2] = {
+		{x=-40,  z=-180},     -- Door, left
+		{x=40,   z=-180},      -- Door, right
+		{x=-150, z=-150}, -- Back, Left
+		{x=150,  z=-150},  -- Back, Righ
+		{x=150,  z=150},    -- Front, Right
+		{x=-150, z=150},   -- Front, Left
+	},
+	
+	[3] = {
+		{x=-180,  z=-40},     -- Door, left
+		{x=-180,  z=40},      -- Door, right
+		{x=-150, z=-150}, -- Back, Left
+		{x=150,  z=-150},  -- Back, Righ
+		{x=150,  z=150},    -- Front, Right
+		{x=-150, z=150},   -- Front, Left
+	}
+	
 	}
 }
 

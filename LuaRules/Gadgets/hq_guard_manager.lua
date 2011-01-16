@@ -21,7 +21,7 @@ function gadget:GetInfo()
 	return {
 		name      = "HQ Royal Guard Manager",
 		desc      = "Manages the Royal Guards around the Imperial HQ",
-		author    = "Maelstrom",
+		author    = "Maelstrom/TheFatController",
 		date      = "31st July 2007",
 		license   = "CC by-nc, version 3.0",
 		layer     = -5,
@@ -37,7 +37,7 @@ local SPAWN_DIST_RAND = 0
 local ATTACK_RESET = 0
 local GUARD_NAME = ''
 local HQ_NAME = ''
-
+local GUARD_SPEED = 0
 
 	-- Speed Up
 local GetTeamUnits     = Spring.GetTeamUnits
@@ -63,9 +63,9 @@ if (gadgetHandler:IsSyncedCode()) then
 	]]--
 	
 	local HQ = { }
+	local guardList = { }
 	
 	local function AddHQ(unitID, teamID)
-		
 			-- Set up the HQ array, and fill it with data
 		HQ[unitID] = { }
 		HQ[unitID].x, HQ[unitID].y, HQ[unitID].z = Spring.GetUnitBasePosition(unitID)
@@ -74,6 +74,8 @@ if (gadgetHandler:IsSyncedCode()) then
 		HQ[unitID].numGuards = 0
 		HQ[unitID].lastSpawn = 0
 		HQ[unitID].lastAttack = ATTACK_RESET
+		HQ[unitID].lastShuffle = Spring.GetGameFrame()
+		HQ[unitID].posData = posData[Spring.GetUnitBuildFacing(unitID)]
 	end
 	
 	local function RemoveHQ(unitID)
@@ -90,9 +92,11 @@ if (gadgetHandler:IsSyncedCode()) then
 		for i = 1, MAX_GUARDS do
 			guardID = HQ.guards[i]
 			if guardID ~= nil then
-				local posData2 = posData[i]
-				Spring.GiveOrderToUnit(guardID, CMD.MOVE, {HQ.x + posData2.x, HQ.y, HQ.z + posData2.z}, 0)
-				
+				local moveX = HQ.x + HQ.posData[i].x
+				local moveZ = HQ.z + HQ.posData[i].z
+				local moveY = Spring.GetGroundHeight(moveX,moveZ)
+				Spring.GiveOrderToUnit(guardID, CMD.MOVE, {moveX, moveY, moveZ}, 0)
+				Spring.GiveOrderToUnit(guardID, CMD.SET_WANTED_MAX_SPEED, {[1] = GUARD_SPEED}, 16)
 			end
 		end
 	end
@@ -123,8 +127,12 @@ if (gadgetHandler:IsSyncedCode()) then
 							local dir = math.random() * 2 * math.pi
 							local dist = math.random(SPAWN_DIST - SPAWN_DIST_RAND, SPAWN_DIST + SPAWN_DIST_RAND)
 							
-							local newUnit = Spring.CreateUnit(GUARD_NAME, HQData.x + math.floor(math.cos(dir) * dist), HQData.y, HQData.z + math.floor(math.sin(dir) * dist), 0, HQData.teamID)
+							local spawnX = HQData.x + math.floor(math.cos(dir) * dist)
+							local spawnZ = HQData.z + math.floor(math.sin(dir) * dist)
+							local spawnY = Spring.GetGroundHeight(spawnX,spawnZ)
+							local newUnit = Spring.CreateUnit(GUARD_NAME, spawnX, spawnY, spawnZ, 0, HQData.teamID)
 							Spring.SetUnitNoSelect(newUnit, true)
+							guardList[newUnit] = true
 							
 							for i = 1, MAX_GUARDS do
 								if HQData.guards[i] == nil then
@@ -140,6 +148,18 @@ if (gadgetHandler:IsSyncedCode()) then
 						end
 					end
 				end
+				if ((n - HQData.lastShuffle) > 1400) then
+					if (HQData.numGuards == 6) then
+						local tempGuard = HQData.guards[HQData.numGuards]
+						HQData.guards[HQData.numGuards] = nil
+						table.insert(HQData.guards,1,tempGuard)
+						HQData.lastShuffle = n
+						SendToPositions(HQData)
+					else
+						HQData.lastShuffle = n
+						SendToPositions(HQData)
+					end
+				end
 			end
 		end
 	end
@@ -150,6 +170,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		
 			-- If it was a HQ that died
 		if (HQ[unitID] ~= nil) or (unitDefID == GUARD_DEF_ID) then
+			guardList[unitID] = nil
 				-- Loops through the HQ's
 			for HQID, HQData in pairs(HQ) do
 					-- If ID's match, remove it from the function
@@ -228,6 +249,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		GG.gHQIDUpdate = HQIDUpdate
 		HQ_DEF_ID = UnitDefNames[HQ_NAME].id
 		GUARD_DEF_ID = UnitDefNames[GUARD_NAME].id
+		GUARD_SPEED = UnitDefs[GUARD_DEF_ID].speed/30
 		
 		gadgetHandler:RegisterGlobal('HQ_GUARD_IDUpdate', HQ_GUARD_IDUpdate)
 		
@@ -246,6 +268,13 @@ if (gadgetHandler:IsSyncedCode()) then
 				AddHQ(unitID, teamID)
 			end
 		end
+	end
+	
+	function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions, cmdTag, synced)
+		if guardList[unitID] and (not synced) then
+			return false
+		end
+		return true
 	end
 
 end
