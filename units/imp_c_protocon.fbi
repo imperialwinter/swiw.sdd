@@ -37,7 +37,7 @@
 	radardistance=60;
 
 	builder=1;
-	builddistance=50;
+	builddistance=128;
 	canbuild=1;
 	workertime=0.75;
 	canassist=1;

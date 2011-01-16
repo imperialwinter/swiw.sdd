@@ -35,7 +35,7 @@
 	initcloaked=1;
 
 	builder=1;
-	builddistance=50;
+	builddistance=128;
 	canbuild=1;
 	workertime=1;
 	shownanospray=0;

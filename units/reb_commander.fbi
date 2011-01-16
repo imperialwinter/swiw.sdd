@@ -40,7 +40,7 @@
 	sonardistance=450;
 
 	builder=1;
-	builddistance=60;
+	builddistance=128;
 	canbuild=1;
 	workertime=1.2;
 	shownanospray=0;
