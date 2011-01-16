@@ -98,8 +98,8 @@ function gadget:Initialize()
 	for i = 1,#teams do
 		local teamID = teams[i]
 		if (teamID ~= gaiaTeamID) then
-			Spring.SetTeamResource(teamID, "ms", 0)
-			Spring.SetTeamResource(teamID, "es", 0)
+			Spring.SetTeamResource(teamID, "ms", 20)
+			Spring.SetTeamResource(teamID, "es", 20)
 		end
 	end
 end
