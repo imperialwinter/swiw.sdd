@@ -16,7 +16,7 @@
 	reloadtime=0.5;
 	areaofeffect=32;
 
-	soundstart=LASFIR3;
+	soundstart=lasrfir3;
 	soundstartvolume=20;
 
 	avoidfriendly=0;

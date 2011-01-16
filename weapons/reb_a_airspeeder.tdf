@@ -17,7 +17,7 @@
 	weaponvelocity=600;
 	areaofeffect=8;
 
-	soundstart=LASRMAS2;
+	soundstart=rebahover1_fire;
 	soundstartvolume=10;
 	soundhit=LASRHIT1;
 	soundhitvolume=10;
