@@ -14,7 +14,7 @@
 function gadget:GetInfo()
 	return {
 		name      = "Spawn",
-		desc      = "spawns start unit and sets storage levels",
+		desc      = "spawns start units",
 		author    = "Tobi Vollebregt/TheFatController",
 		date      = "January, 2010",
 		license   = "GNU GPL, v2 or later",
@@ -35,8 +35,12 @@ end
 --------------------------------------------------------------------------------
 
 local modOptions = Spring.GetModOptions()
+local GetUnitPosition = Spring.GetUnitPosition
 
 local coopMode = tonumber(Spring.GetModOptions().mo_coop) or 0
+
+local IMPERIAL_HQ = UnitDefNames['imp_commander'].id
+local startShips = {}
 
 local function GetStartUnit(teamID)
 	-- get the team startup info
@@ -88,7 +92,8 @@ local function SpawnStartUnit(teamID)
 			Spring.SetTeamResource(teamID, "e", 0)
 			Spring.AddTeamResource(teamID, "e", tonumber(e))
 		end
-	
+		
+		return commanderID, facing
 	end
 end
 
@@ -102,6 +107,13 @@ function gadget:Initialize()
 			Spring.SetTeamResource(teamID, "es", 20)
 		end
 	end
+end
+
+function gadget:AllowCommand(u,ud,team,cmd,param,opt)
+	if startShips[u] then
+		return false
+	end
+	return true
 end
 
 function gadget:GameStart()
@@ -127,7 +139,31 @@ function gadget:GameStart()
 		local teamID = teams[i]
 		-- don't spawn a start unit for the Gaia team
 		if (teamID ~= gaiaTeamID) and (not excludeTeams[teamID]) then
-			SpawnStartUnit(teamID)
+			local commanderID, facing = SpawnStartUnit(teamID)
+			if (Spring.GetUnitDefID(commanderID) == IMPERIAL_HQ) then
+				local x,y,z = GetUnitPosition(commanderID)
+				local dropUnit = Spring.CreateUnit("imp_sh_theta",x,y,z,facing,teamID)
+				Spring.SetUnitNeutral(dropUnit,true)
+				Spring.SetUnitNoSelect(dropUnit,true)
+				Spring.MoveCtrl.Enable(dropUnit,true)
+				local vx = (math.random() - 0.5)
+				local vz = (math.random() - 0.5)
+				Spring.MoveCtrl.SetVelocity(dropUnit,vx,2,vz)
+				startShips[dropUnit] = {x=vx,y=2,z=vz}
+			end
 		end
 	end
 end
+
+function gadget:GameFrame(n)
+	for unitID,defs in pairs(startShips) do	
+		startShips[unitID].y = startShips[unitID].y * 1.015
+		Spring.MoveCtrl.SetVelocity(unitID,defs.x,defs.y,defs.z)
+		local _,Y = GetUnitPosition(unitID)
+		if Y > 15000 then
+		  startShips[unitID] = nil
+		  Spring.DestroyUnit(unitID,false,true)
+		end
+	end
+end
+

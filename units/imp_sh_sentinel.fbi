@@ -3,7 +3,7 @@
 	unitname=imp_sh_sentinel;
 	objectname=empire/dropships/sentinel.s3o;
 	buildpic=imp_sh_sentinel.png;
-	icontype=air_trans;
+	icontype=air_trans_sh;
 	soundcategory=reb-a-vwing;
 	category=FLAG; //extra layer to trick units into not firing on it
 	tedclass=VTOL;

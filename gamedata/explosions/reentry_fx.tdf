@@ -29,6 +29,7 @@
 		count=2;
 	}
 }
+
 [impact_dust] {
 	[impact_dust] {
 		class=CSimpleParticleSystem;
@@ -58,5 +59,38 @@
 		air=1;
 		ground=1;
 		count=1;
+	}
+}
+
+
+[impact_dust_med] {
+	[impact_dust_med] {
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizeGrowth=0.2;
+			sizeMod=1.0;
+			pos = 0 r15, 1, 0 r15;
+			emitVector=0, 1, 0;
+			gravity= 0, 0, 0;
+			colorMap=0.5 0.4 0.3 0.5	0 0 0 0.0;
+			Texture=dirt;
+			airdrag=0.5;
+			particleLife=90;
+			particleLifeSpread=30;
+			numParticles=3;
+			particleSpeed=0.2;
+			particleSpeedSpread=1;
+			particleSize=70;
+			particleSizeSpread=50;
+			emitRot=90;
+			emitRotSpread=0;
+			directional=0;
+			useAirLos=0;
+			alwaysVisible=0;
+		}
+		water=1;
+		air=1;
+		ground=1;
+		count=2;
 	}
 }

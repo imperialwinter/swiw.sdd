@@ -10,7 +10,7 @@ local icontypes = {
 		bitmap = 'bitmaps/radar/commander_imp.tga',
 		size = 3,
 		radiusadjust = 0,
-		distance = 0.5,
+		distance = 0.7,
 	},
 	commander_reb = {
 		bitmap = 'bitmaps/radar/commander_reb.tga',
@@ -299,6 +299,13 @@ local icontypes = {
 		radiusadjust = 0,
 		distance = 0.3,
 	},
+	air_trans_sh = {
+		bitmap = 'bitmaps/radar/air_trans.tga',
+		size = 2.4,
+		radiusadjust = 0,
+		distance = 10,
+	},
+
 }
 
 return icontypes
