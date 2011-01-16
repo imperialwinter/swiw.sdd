@@ -57,8 +57,8 @@ end
 local function SpawnStartUnit(teamID)
 	local startUnit = GetStartUnit(teamID)
 	if (startUnit and startUnit ~= "") then
-		Spring.SetTeamResource(teamID, "ms", 0)
-		Spring.SetTeamResource(teamID, "es", 0)
+		Spring.SetTeamResource(teamID, "ms", 20)
+		Spring.SetTeamResource(teamID, "es", 20)
 		-- spawn the specified start unit
 		local x,y,z = Spring.GetTeamStartPosition(teamID)
 		-- snap to 16x16 grid
