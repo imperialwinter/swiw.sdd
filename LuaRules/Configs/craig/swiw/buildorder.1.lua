@@ -1,9 +1,9 @@
 -- unit names must be lowercase!
 
 -- Format: factory = { "unit to build 1", "unit to build 2", ... }
-gadget.unitBuildOrder = {
+gadget.unitBuildOrder = UnitBag{
 	-- rebel alliance
-	reb_b_barracks = {
+	reb_b_barracks = UnitArray{
 		"reb_i_rockettrooper", "reb_i_trooper",
 		"reb_i_trooper", "reb_i_trooper",
 		"reb_i_trooper", "reb_i_trooper",
@@ -56,7 +56,7 @@ gadget.unitBuildOrder = {
 		"reb_i_combat", "reb_i_combat",
 		"reb_i_mrb", "reb_i_combat",
 	},
-	reb_b_repulsorliftplant = {
+	reb_b_repulsorliftplant = UnitArray{
 		"reb_v_ulav", "reb_v_ulav",
 		"reb_v_ulav", "reb_v_ulav",
 		"reb_v_t1b", "reb_v_t2b",
@@ -69,7 +69,7 @@ gadget.unitBuildOrder = {
 		"reb_v_t2b", "reb_v_ulav",
 		"reb_v_t1b", "reb_v_t2b",
 	},
-	reb_b_airplant = {
+	reb_b_airplant = UnitArray{
 		"reb_a_z95", "reb_a_z95",
 		"reb_a_z95", "reb_a_z95",
 		"reb_a_z95", "reb_a_z95",
@@ -78,7 +78,7 @@ gadget.unitBuildOrder = {
 		"reb_a_ywing", "reb_a_ywing",
 	},
 	-- Imperial Remmnants
-	imp_commander = {
+	imp_commander = UnitArray{
 		"imp_i_scouttrooper", "imp_i_scouttrooper",
 		"imp_i_scouttrooper", "imp_i_scouttrooper",
 		"imp_i_scouttrooper", "imp_c_protocon",
@@ -110,7 +110,7 @@ gadget.unitBuildOrder = {
 		"imp_i_scouttrooper", "imp_sc_speederbike",
 		"imp_sc_probedroid", "imp_sc_speederbike",
 	},
-	imp_b_barracks = {
+	imp_b_barracks = UnitArray{
 		"imp_is_assault", "imp_is_heavy",
 		"imp_c_condroid", "imp_d_antiair",
 		"imp_is_assault", "imp_is_heavy",
@@ -119,7 +119,7 @@ gadget.unitBuildOrder = {
 		"imp_is_scout", "imp_is_heavy",
 		"imp_is_defense",
 	},
-	imp_b_droidplant = {
+	imp_b_droidplant = UnitArray{
 		"imp_is_b1",
 		"imp_is_b1",
 		"imp_i_superbattledroid",
@@ -147,13 +147,13 @@ gadget.unitBuildOrder = {
 		"imp_i_superbattledroid",
 		"imp_is_b1",
 	},
-	imp_b_vehicleplant = {
+	imp_b_vehicleplant = UnitArray{
 		"imp_v_tiecrawler", "imp_v_tx130",
 		"imp_v_mobileartillery", "imp_v_tiecrawler",
 		"imp_v_tiecrawler", "imp_v_tx130",
 		"imp_v_mobileartillery",
 	},
-	imp_b_airplant = {
+	imp_b_airplant = UnitArray{
 		"imp_a_tiefighter",
 		"imp_a_tiefighter", "imp_a_laat",
 		"imp_a_tiefighter", "imp_a_tiefighter",
@@ -169,7 +169,7 @@ gadget.unitBuildOrder = {
 
 -- Format: side = { "unit to build 1", "unit to build 2", ... }
 gadget.baseBuildOrder = {
-	["galactic empire"] = {
+	["galactic empire"] = UnitArray{
 		"imp_b_barracks", "imp_p_solar", "imp_p_solar",
 		"imp_p_solar", "imp_b_barracks", "imp_p_solar",
 		"imp_b_vehicleplant", "imp_p_solar", "imp_p_solar",
@@ -183,10 +183,10 @@ gadget.baseBuildOrder = {
 		"imp_b_barracks", "imp_p_fusion", "imp_b_barracks",
 		"imp_b_barracks", "imp_d_antiair", "imp_p_fusion",
 	},
-	["rebel alliance"] = {
+	["rebel alliance"] = UnitArray{
 		"reb_b_barracks", "reb_p_fusion", "reb_p_fusion",
 		"reb_b_barracks", "reb_p_fusion", "reb_b_barracks",
-		"reb_i_sniper",  "reb_p_fusion",
+		"reb_i_sniper",  "reb_p_fusion", "reb_i_rockettrooper",
 		"reb_b_repulsorliftplant", "reb_p_fusion", "reb_i_sniper",
 		"reb_b_repulsorliftplant", "reb_p_fusion", "reb_p_fusion",
 		"reb_i_sniper", "reb_p_fusion", "reb_b_barracks",
@@ -201,3 +201,5 @@ gadget.baseBuildOrder = {
 		"reb_d_atgar", "reb_p_fusion", "reb_i_sniper",
 	},
 }
+
+-- commit: 7b17e5e6741b7ce8e2299e550b4373f84411980f

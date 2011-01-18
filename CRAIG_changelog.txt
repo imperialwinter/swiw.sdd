@@ -1,3 +1,26 @@
+v3.1 -> v3.2
+============
+* Fixed spring lockup (infinite loop) when all base buildings where limited
+  and the base building algorithm reached end of the queue.
+* New constructor syntax used in configuration.  (UnitArray, UnitSet, UnitBag)
+* Moved unitlimits out of buildorder.lua into it's own file: unitlimits.lua
+* Default difficulty level changed to medium.
+* Waypoint editor changes:
+  - Brush size in waypoint editor is now in world coordinates.
+  - Loads from LuaRules/Configs/craig/maps as fallback.
+  - Only need to hover over the waypoint when pressing M to delete it.
+* S44: Huge nerf because of the complaints it was too hard
+  - Now in all difficulties all factories are limited.
+  - Barracks: 3 on easy, 3 on medium, 4 on hard.
+  - Vehicle yard: 1 on easy and medium, 2 on hard.
+  - Tank yard: 1 on easy, 2 on medium, 4 on hard.
+  - Supply depot: 1 on easy and medium, 2 on hard.
+* S44: Supply depot is now used to spam halftracks.
+* S44: Fixed buildorder for Russia.  (now commissars can't clone themselves)
+* Added waypoint profiles for:
+  - 1944_Village_Crossing_v2
+  - CenterrockV12
+
 v3.0 -> v3.1
 ============
 * Using exactly same code for SWIW and S44 now.

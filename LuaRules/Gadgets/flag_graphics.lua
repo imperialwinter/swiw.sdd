@@ -13,7 +13,7 @@ end
 if (gadgetHandler:IsSyncedCode()) then
 
 	function gadget:GameFrame(n)
-		SendToUnsynced("GameFrame", n)
+		SendToUnsynced("fg_GameFrame", n)
 	end
 
 	function gadget:UnitCreated(unitID, unitDefID, teamID)
@@ -144,7 +144,7 @@ function gadget:Initialize()
 	else
 		Spring.Echo("Flag range display - Bad weapon '" .. weaponID .. "'")
 	end
-	gadgetHandler:AddSyncAction("GameFrame", GameFrame)
+	gadgetHandler:AddSyncAction("fg_GameFrame", GameFrame)
 	gadgetHandler:AddSyncAction("MexCreated", MexCreated)
 	gadgetHandler:AddSyncAction("MexDestroyed", MexDestroyed)
 	gadgetHandler:AddSyncAction("MexSteal", MexSteal)

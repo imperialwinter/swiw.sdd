@@ -9,3 +9,5 @@ local bots = {
 }
 
 return bots
+
+-- commit: 7b17e5e6741b7ce8e2299e550b4373f84411980f

@@ -361,7 +361,7 @@ local function AddConnection(a, b)
 end
 
 -- load chunk
-local chunk = LoadFile("LuaRules/Configs/craig/maps/" .. Game.mapName .. ".lua")
+local chunk = LoadFile("LuaRules/Configs/craig/maps/" .. Game.mapName .. ".smf.lua")
 if (chunk == nil) then
 	Warning("No waypoint profile found. Will not use waypoints on this map.")
 	return false
@@ -388,3 +388,5 @@ GAIA_ALLYTEAM_ID = at
 end
 return WaypointMgr
 end
+
+-- commit: 7b17e5e6741b7ce8e2299e550b4373f84411980f
