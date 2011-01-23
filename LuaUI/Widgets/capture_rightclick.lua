@@ -81,7 +81,6 @@ function widget:UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, 
 			for _,flagID in ipairs(nearUnits) do
 				if flags[GetUnitDefID(flagID)] and (GetUnitAllyTeam(flagID) ~= GetLocalAllyTeamID()) then
 					GiveOrderToUnit(unitID, CMD_CAPTURE_FLAG, {GetUnitPosition(flagID)}, {"shift"})
-					return
 				end
 			end
 		end

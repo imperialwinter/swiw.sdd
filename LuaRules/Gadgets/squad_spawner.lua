@@ -111,7 +111,7 @@ if (gadgetHandler:IsSyncedCode()) then
 				end
 				watchUnits[squad_spawner] = nil
 
-				table.remove(newSquads[index])
+				table.remove(newSquads,index)
 				DestroyUnit(squad_spawner, false, true)
 			end
 		end
@@ -153,7 +153,6 @@ if (gadgetHandler:IsSyncedCode()) then
 					xSpace = xSpace + 10
 				end
 			end
-
 			table.insert(newSquads, {unitID = unitID, builderID = builderID, members = unitArray})
 		end
 	end

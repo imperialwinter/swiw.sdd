@@ -135,6 +135,7 @@ if (gadgetHandler:IsSyncedCode()) then
 
 				local unitList = { }
 				local unitRepairList = { }
+				local teamCounts = { }
 				local totalMultiplier = 0
                                 
 				if not badFlagNames[flag.name] then
@@ -147,36 +148,43 @@ if (gadgetHandler:IsSyncedCode()) then
 
 							-- Loop through all the units we found
 						for _,unitID in ipairs(units) do
+						
+							
 							
 							-- if unit can capture and is not allied with the flags team amd not being transported
 							if captureList[unitID] and (not cappingUnits[unitID] or cappingUnits[unitID] == flag.unitID) and (not GetUnitTransporter(unitID)) then
-								
-								if (captureList[unitID].allyID ~= flag.allyID) then
-								
-									-- Check if it is able to capture right now (ie it isnt shooting)
-									local _, canCapture = CallCOBScript(unitID, "CanCapture", 1, 1)
-									if (canCapture ~= 0) then
-										-- It can capture, so add it to the list
-										table.insert(unitList,unitID)
-										cappingUnits[unitID] = flag.unitID
-										-- and update the total captue multiplier
+								if (not teamCounts[captureList[unitID].allyID]) then teamCounts[captureList[unitID].allyID] = 0 end
+								if teamCounts[captureList[unitID].allyID] < 15 then
+									
+									if (captureList[unitID].allyID ~= flag.allyID) then
+									
+										-- Check if it is able to capture right now (ie it isnt shooting)
+										local _, canCapture = CallCOBScript(unitID, "CanCapture", 1, 1)
+										if (canCapture ~= 0) then
+											-- It can capture, so add it to the list
+											table.insert(unitList,unitID)
+											cappingUnits[unitID] = flag.unitID
+											-- and update the total captue multiplier
 
-										totalMultiplier = totalMultiplier + captureDefs[captureList[unitID].unitDefID]
-										SendToUnsynced(UPDATE_FLAG, flagID, unitID)
+											totalMultiplier = totalMultiplier + captureDefs[captureList[unitID].unitDefID]
+											teamCounts[captureList[unitID].allyID] = teamCounts[captureList[unitID].allyID] + 1
+											SendToUnsynced(UPDATE_FLAG, flagID, unitID)
+										end
+
+									else -- repair the flag
+										local _, canCapture = CallCOBScript(unitID, "CanCapture", 1, 1)
+										if (canCapture ~= 0) then
+											-- It can capture, so add it to the list
+											table.insert(unitRepairList,unitID)
+
+											-- and update the total capture multiplier
+
+											totalMultiplier = totalMultiplier + captureDefs[captureList[unitID].unitDefID]
+											teamCounts[captureList[unitID].allyID] = teamCounts[captureList[unitID].allyID] + 1
+											SendToUnsynced(UPDATE_FLAG, flagID, unitID)
+										end
 									end
-
-								else -- repair the flag
-									local _, canCapture = CallCOBScript(unitID, "CanCapture", 1, 1)
-									if (canCapture ~= 0) then
-										-- It can capture, so add it to the list
-										table.insert(unitRepairList,unitID)
-
-										-- and update the total capture multiplier
-
-										totalMultiplier = totalMultiplier + captureDefs[captureList[unitID].unitDefID]
-										SendToUnsynced(UPDATE_FLAG, flagID, unitID)
-									end
-								end
+								end				
 							end
 						end
 					end

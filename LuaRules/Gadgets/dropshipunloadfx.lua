@@ -142,6 +142,7 @@ function gadget:UnitCreated(u, ud, team, builder)
 				team=team,
 				speed=dropshipUnits[UnitDefs[ud].name].speed,
 				frames=dropshipUnits[UnitDefs[ud].name].frames,
+				buildProgress=0,
 			}
 			Spring.SetUnitNoDraw(u,true)
 		end
@@ -191,6 +192,7 @@ function gadget:GameFrame(f)
 		for tu,d in pairs(dropshipWait) do
 			if not d.dropship then
 				local _,_,_,_,b = Spring.GetUnitHealth(tu) --build progress
+				dropshipWait[tu].buildProgress = b
 				if b >= d.atBuild then
 					local pos = d.pos
 					nu = Spring.CreateUnit(d.ds.unitname,pos[1],pos[2],pos[3],0,d.team)
@@ -253,15 +255,16 @@ function gadget:DrawWorld()
 	--gl.MultiTexGen(1,GL.S,GL.TEXTURE_GEN_MODE,GL.EYE_LINEAR)
 	gl.MultiTexGen(1,GL.T,GL.TEXTURE_GEN_MODE,GL.EYE_LINEAR)
 	gl.MultiTexGen(1,GL.T,GL.EYE_PLANE,0,.1,0,offset)
-	if flicker then
-		gl.Color(0.7,0.7,0.7,1)
-	else
-		gl.Color(1,1,1,1)
-	end
 	gl.Blending(GL.ONE,GL.ONE)
 	gl.DepthTest(GL.LEQUAL)
 	gl.Texture(1,":a:LuaRules/Images/interference.png")
 	for u,d in spairs(SYNCED.dropshipWait) do
+		local bp = math.min(d.buildProgress + 0.15,1)
+		if flicker then
+			gl.Color(bp*0.7,bp*0.7,bp*0.7,bp*0.7)
+		else
+			gl.Color(bp,bp,bp,bp)
+		end
 		local pos = d.pos
 		gl.Texture(0,"%"..d.ud..":0")
 		gl.Unit(u,true,0)

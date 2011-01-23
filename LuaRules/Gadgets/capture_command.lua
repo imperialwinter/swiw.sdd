@@ -28,6 +28,7 @@ if (gadgetHandler:IsSyncedCode()) then
 local capturers={}
 local flags={}
 local closeDist=capDist*.7 --Distance to the flag to take when capping
+local sqcloseDist = closeDist * closeDist
 
 local GetUnitsInCylinder=Spring.GetUnitsInCylinder
 local GetUnitAllyTeam=Spring.GetUnitAllyTeam
@@ -88,8 +89,8 @@ end
 function gadget:CommandFallback(u, ud, team, cmd, param, opt)
 	if cmd == CMD_CAPTURE_FLAG then
 		local x,_,z=GetUnitPosition(u)
-		local dist=sqrt((param[1]-x)*(param[1]-x) + (param[3]-z)*(param[3]-z))
-		if dist < closeDist then --Don't magically know what to do, at least not from too far away
+		local dist=(param[1]-x)*(param[1]-x) + (param[3]-z)*(param[3]-z)
+		if dist < sqcloseDist then --Don't magically know what to do, at least not from too far away
 			local fl=GetUnitsInCylinder(param[1],param[3],capDist)
 			local target=nil
 			local allyteam=GetUnitAllyTeam(u)
