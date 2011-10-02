@@ -1,6 +1,6 @@
 local modinfo = {
-	name = "Imperial Winter 1.5.055 SVN",
-	version = "1.5.055",
+	name = "Imperial Winter",
+	version = "1.5.055 SVN",
 	description = "A long time ago in a galaxy far, far away....",
 	url = "http://www.imperialwinter.com",
 
@@ -19,3 +19,4 @@ local modinfo = {
 }
 
 return modinfo
+
