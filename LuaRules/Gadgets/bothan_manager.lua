@@ -156,7 +156,7 @@ if (gadgetHandler:IsSyncedCode()) then
 				local units = GetUnitsInCylinder(bothan.x, bothan.z, STEAL_RANGE)
 
 					-- it will always be 1 or greater, cause of the bothan
-				if units.n > 1 then
+				if #units > 1 then
 					local make
 					local use
 					local metal

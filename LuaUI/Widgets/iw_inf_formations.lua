@@ -58,7 +58,7 @@ end
 function widget:CommandNotify(id, params, options)
 	if (id == CMD.MOVE) and params[3] and (not myOrder) and (not options.ctrl) and options.coded then
 	    local selUnits = GetSelectedUnits()
-	    local count = selUnits.n
+	    local count = #selUnits
 		if (count > 1) then
 			for i=1,count,1 do
 				if (not INFANTRY[GetUnitDefID(selUnits[i])]) then

@@ -227,7 +227,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		Spring.SetUnitExperience(newUnit, Spring.GetUnitExperience(unitID))
 			-- Command queue
 		local cmds = Spring.GetUnitCommands(unitID)
-		for i = 2, cmds.n do  -- skip the first command (CMD_UPGRADE)
+		for i = 2, #cmds do  -- skip the first command (CMD_UPGRADE)
 			local cmd = cmds[i]
 			Spring.GiveOrderToUnit(newUnit, cmd.id, cmd.params, cmd.options.coded)
 		end
