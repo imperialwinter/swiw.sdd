@@ -1,5 +1,5 @@
 local messages = {
-	["Team%i(%s) is no more"] = {
+	["Team %i (lead by %s) is no more"] = {
 		"Team%i(%s) has become one with the Force",
 		"Team%i(%s) has been driven from the sector",
 		"Team%i(%s) has become Bantha fodder",

@@ -6,7 +6,7 @@
 
 -- Do not limit units spawned through LUA! (infantry that is build in platoons,
 -- deployed supply trucks, deployed guns, etc.)
-
+--[[
 if (gadget.difficulty == "easy") then
 
 	-- On easy, limit both engineers and buildings until I've made an economy
@@ -53,6 +53,6 @@ else
 		imp_c_protocon       = 2,
 		imp_c_condroid	   = 2,
 	}
-end
-
+end]]--
+	gadget.unitLimits = UnitBag{}
 -- commit: 7b17e5e6741b7ce8e2299e550b4373f84411980f
