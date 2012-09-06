@@ -6,7 +6,7 @@
 	corpse=imp_d_fence;
 	icontype=building_light;
 	category=GROUND;
-	yardmap=f;
+	yardmap=fffffffff;
 
 	name=Wall;
 	description=Makeshift Defense;

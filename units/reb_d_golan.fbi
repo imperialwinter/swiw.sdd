@@ -7,7 +7,7 @@
 	icontype=defense_medium;
 	soundcategory=LLT;
 	category=GROUND DEFENSE BUILDING;
-	yardmap=oooo oooo oooo;
+	yardmap=oooo oooo oooo oooo;
 
 	name=Golan Tower;
 	description=Heavy Laser Battery;

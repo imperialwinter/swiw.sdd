@@ -6,7 +6,7 @@
 	corpse=reb_d_fence;
 	icontype=building_light;
 	category=GROUND;
-	yardmap=f;
+	yardmap=fffffffff;
 
 	name=Tank Trap;
 	description=Makeshift Defense;

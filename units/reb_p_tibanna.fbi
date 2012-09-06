@@ -7,7 +7,7 @@
 	soundcategory=ARM_GEO;
 	category=GROUND RESOURCE BUILDING;
 	tedclass=ENERGY;
-	yardmap=oooo oGGo oGGo oooo;
+	yardmap=oooo oGGo oGGo oooo oooooooooooooooooooooooooooooooooooooooooooo oooo;
 
 	name=Tibanna Refinery;
 	description=Converts Tibanna Gas to Power;

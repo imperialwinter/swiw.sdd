@@ -7,7 +7,7 @@
 	soundcategory=COR_MEX;
 	category=GROUND RESOURCE BUILDING;
 	tedclass=METAL;
-	yardmap=ooooooooo;
+	yardmap=oooooooooooooooo;
 
 	name=Territorial Weapon Cache;
 	description=Increases Territory Importance;

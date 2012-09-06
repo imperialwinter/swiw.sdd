@@ -8,7 +8,7 @@
 	soundcategory=CORE_ESTOR;
 	category=GROUND RESOURCE BUILDING;
 	tedclass=ENERGY;
-	yardmap=oooo oooo oooo oooo;
+	yardmap=ooooo ooooo ooooo ooooo ooooo;
 
 	name=Capacitor;
 	description=Increases Power Storage;

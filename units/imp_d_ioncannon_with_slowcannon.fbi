@@ -7,7 +7,7 @@
 	icontype=defense_medium;
 	soundcategory=GUARD;
 	category=GROUND DEFENSE BUILDING;
-	yardmap=oooooo;
+	yardmap=ooooooooo;
 
 	name=Ion Turret;
 	description=Anti-Vehicle Defense;

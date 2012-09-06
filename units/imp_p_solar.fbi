@@ -8,7 +8,7 @@
 	soundcategory=ARM_WIND;
 	category=GROUND RESOURCE BUILDING;
 	tedclass=ENERGY;
-	yardmap=o;
+	yardmap=oooo;
 
 	name=Solar Panel;
 	description=Produces Variable Amounts of Power;

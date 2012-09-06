@@ -7,7 +7,7 @@
 	soundcategory=COR_MEX;
 	category=GROUND RESOURCE DEFENSE BUILDING;
 	tedclass=METAL;
-	yardmap=ooooooooo;
+	yardmap=oooooooooooooooo;
 
 	name=Territorial Fortification;
 	description=Holds Territory;

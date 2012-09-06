@@ -7,7 +7,7 @@
 	icontype=defense_medium;
 	soundcategory=LLT;
 	category=GROUND DEFENSE BUILDING;
-	yardmap=oooo oooo oooo;
+	yardmap=oooo oooo oooo oooo;
 
 	name=Atgar 1.4FD Laser Cannon;
 	description=Anti Vehicular Laser Cannon;

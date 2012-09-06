@@ -8,7 +8,7 @@
 	soundcategory=CORE_FUS;
 	category=GROUND RESOURCE BUILDING;
 	tedclass=ENERGY;
-	yardmap=oooooooooooooooo;
+	yardmap=ooooooooooooooooooooooooo;
 
 	name=Fusion Generator;
 	description=Produces Power;
