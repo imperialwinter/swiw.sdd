@@ -43,15 +43,13 @@ if ghosts then ghosts = "Enabled" else ghosts = "Disabled" end
 local endMode = Spring.GetModOptions().deathmode
 if endMode == "com" then endMode = "Command death" else endMode = "Annihilate" end
 
-local versionCutoffPos = string.find(Game.version,"(", 1, true)
-
 local info = {
 	{
 		name = "Imperial Winter version:",
 		val = string.gsub(Game.modName, "Imperial Winter ", " "),
 	}, {
 		name = "Spring Engine version:",
-		val = string.sub(Game.version, 1, versionCutoffPos - 2),
+		val = Game.version,
 	}, {
 		name = "Victory condition:",
 		val = endMode,

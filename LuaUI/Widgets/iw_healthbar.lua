@@ -262,7 +262,7 @@ function widget:Update(deltaTime)
 					local teamID = GetUnitTeam(uid)
 					r,g,b = GetTeamColor(teamID)
 					x,y,z = GetUnitBasePosition(uid)
-				    heightscale = mathMax((camX - x) / scalefactor, (camY - y) / scalefactor, (camZ - z) / scalefactor)
+					heightscale = mathMax((camX - x) / scalefactor, (camY - y) / scalefactor, (camZ - z) / scalefactor)
 					
 					
 					glPushMatrix()
@@ -280,8 +280,8 @@ function widget:Update(deltaTime)
 						glTex(ICON_TYPE[udid])
 						glTexRect(radius*-0.65-(6 * heightscale), -3*heightscale, radius*-0.65, 3*heightscale)
 						glTex(false)
-					end	
-				
+					end
+					glPopMatrix()
 				end
 				if display then
 
@@ -306,7 +306,6 @@ function widget:Update(deltaTime)
 					glTex(false)
 					
 				end
-				glPopMatrix()
 			end
 			glColor(1,1,1,1)
 			glDepthTest(false)
