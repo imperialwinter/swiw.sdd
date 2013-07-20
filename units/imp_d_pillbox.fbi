@@ -3,7 +3,7 @@
 	unitname=imp_d_pillbox;
 	objectname=empire/d-pillbox.s3o;
 	buildpic=imp_d_pillbox.png;
-	corpse=imp_d_pillbox;
+	corpse=imp_d_pillbox_dead;
 	icontype=defense_light;
 	soundcategory=COR_MEX;
 	category=GROUND DEFENSE BUILDING;
