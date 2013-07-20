@@ -36,7 +36,7 @@ FoldUp() {
 		turn thigh3 to x-axis <-90> speed <160>;
 		turn leg3 to x-axis <-20> speed <160>;
 		move pelvis to y-axis [-2.5] speed [60];
-		set MAX_SPEED to maxSpeed;
+		//set MAX_SPEED to maxSpeed;
 		packedUp=1;
 		canFire=0;
 	}
@@ -44,7 +44,7 @@ FoldUp() {
 
 Unfold() {
 	if(packedUp) {
-		set MAX_SPEED to maxSpeed / 3;
+		//set MAX_SPEED to maxSpeed / 3;
 		turn pelvis to x-axis <0> speed <200>;
 		wait-for-turn pelvis around x-axis;
 		turn thigh1 to x-axis <0> speed <160>;
@@ -141,7 +141,7 @@ MotionControl() {
 
 Create() {
 	maxSpeed = get MAX_SPEED;
-	set MAX_SPEED to maxSpeed / 4;
+	//set MAX_SPEED to maxSpeed / 4;
 	packedUp=0;
 	gun_1=0;
 	canFire=1;

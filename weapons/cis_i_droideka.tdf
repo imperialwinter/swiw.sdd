@@ -62,7 +62,6 @@
 {
 	name=Destroyer Shield;
 
-	isshield=1;
 	shieldrepulser=1;
 	smartshield=1;
 	exteriorshield=1;
@@ -80,6 +79,7 @@
 	shieldbadcolor=0.6 0.05 0.75;
 	shieldgoodcolor=0.0 0.05 0.75;
 	shieldalpha=0.5;
+	weapontype=Shield;
 
 	[damage]
 	{

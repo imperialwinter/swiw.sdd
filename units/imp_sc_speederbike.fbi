@@ -33,25 +33,27 @@
 	maxvelocity=4.0;
 	maxAcc=.3;
 	brakerate=0.35;
-//	maxElevator=.003;
+	maxElevator=.003;
 
-//	acceleration=2.5;
-//	turnrate=320;
-//	maxRudder=.005;
+	acceleration=2.5;
+	turnrate=320;
+	maxRudder=.005;
 
-//	maxAileron=.005;
-//	maxbank=0.10;
-//	maxpitch=0.25;
-//	turnradius=75;
+	maxAileron=.005;
+	maxbank=0.10;
+	maxpitch=0.25;
+	turnradius=75;
 
 	canfly=1;
 	cruisealt=10;
 	collide=0;
-	canloopbackattack=0;
+//	canloopbackattack=0;
 
 	selfdestructcountdown=1;
 	explodeas=TIE_BLAST;
 	selfdestructas=TIE_BLAST;
+	usesmoothmesh=0;
+	factoryheadingtakeoff=0;
 
 	weapon1=imp_sc_speederbike;
 	onlytargetcategory1=GROUND;
