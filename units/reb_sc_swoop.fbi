@@ -33,15 +33,16 @@
 	maxvelocity=4.2;
 	maxAcc=.35;
 	brakerate=0.35;
-//	maxElevator=.003;
-//	turnrate=320;
-//	turnradius=25;
-//	maxRudder=.01;
+	maxElevator=.003;
+	turnrate=320;
+	turnradius=25;
+	maxRudder=.01;
 
 	canfly=1;
 	cruisealt=10;
 	collide=0;
 	canloopbackattack=0;
+	usesmoothmesh=0;
 
 	selfdestructcountdown=1;
 	explodeas=TIE_BLAST;
