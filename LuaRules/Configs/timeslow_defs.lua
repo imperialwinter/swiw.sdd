@@ -26,7 +26,7 @@ local weapons = {
 for name,data in pairs(WeaponDefNames) do
 	
 	if weapons[name] then 
-		Spring.Echo(name)
+		--Spring.Echo(name)
 		array[data.id] = weapons[name] 
 	end
 end

@@ -12,7 +12,7 @@
 	weaponvelocity=1000;
 	areaofeffect=1;
 
-	soundstart=rebspotter_warning;
+	soundstart=reb_sp_spotter\va\underattack; //rebspotter_warning;
 
 	impulsefactor=0;
 	impulseboost=0;
