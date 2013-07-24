@@ -18,9 +18,9 @@
 	weaponvelocity=450;
 	areaofeffect=200;
 
-	soundstart=imp_v_MobileArty_fire;
+	soundstart=Argh_LargeGun; //imp_v_MobileArty_fire;
 	soundstartvolume=15;
-	soundhit=imp_v_MobileArty_hit;
+	soundhit=xplolrg4; //imp_v_MobileArty_hit;
 	soundhitvolume=15;
 
 	avoidfriendly=0;
