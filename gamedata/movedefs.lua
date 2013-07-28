@@ -42,13 +42,13 @@ local moveDefs = {
 	},
 	{						--large hovers
 		name = 'HOVER3x3',
-		footprintX = 4,
+		footprintX = 3,
 		maxSlope = 40,
 		crushStrength = 20,
 	},
 	{						--large hovers with poor slope tolerance
 		name = 'HOVER3x3LOWSLOPE',
-		footprintX = 4,
+		footprintX = 3,
 		maxSlope = 25,
 		crushStrength = 30,
 	},
