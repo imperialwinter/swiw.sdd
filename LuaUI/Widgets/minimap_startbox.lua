@@ -13,7 +13,7 @@
 
 function widget:GetInfo()
   return {
-    name      = "MiniMap Start Boxes",
+    name      = "IW/MiniMap Start Boxes",
     desc      = "MiniMap Start Boxes",
     author    = "trepan, jK",
     date      = "2007-2009",

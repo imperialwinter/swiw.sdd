@@ -37,7 +37,7 @@ end
 
 function gadget:CommandFallback(u,ud,team,cmd,param,opt)
 	if cmd == CMD_AREAATTACK then
-		table.insert(attackList, {unit = u, x=param[1], y=param[2], z=param[3], radius=param[4]})
+		table.insert(attackList, {unit = u, x=param[1], y=param[2], z=param[3], radius= math.max (1, param[4])})
 		return true, false
 	end
 	return false
