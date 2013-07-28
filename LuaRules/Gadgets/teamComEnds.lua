@@ -52,10 +52,13 @@ function gadget:GameFrame(t)
 end
 
 function gadget:UnitCreated(u, udid, team)
+	Spring.Echo("TEAM ENDS GADGET DOIN STUFF")
 	isAlive[u] = true
 	local ud = UnitDefs[udid]
-	local cp = ud.customparams
+	local cp = ud.customParams
+	Spring.Echo(ud, cp, cp and cp.commander)
 	if cp and cp.commander then
+		Spring.Echo("TEAM ENDS GADGET DOIN LOADS OF COOL STUFF")
 		local allyTeam = GetUnitAllyTeam(u)
 		aliveCount[allyTeam] = aliveCount[allyTeam] + 1
 	end
@@ -63,7 +66,7 @@ end
 
 function gadget:UnitGiven(u, udid, team)
 	local ud = UnitDefs[udid]
-	local cp = ud.customparams
+	local cp = ud.customParams
 	if cp and cp.commander then
 		local allyTeam = GetUnitAllyTeam(u)
 		aliveCount[allyTeam] = aliveCount[allyTeam] + 1
@@ -73,7 +76,7 @@ end
 function gadget:UnitDestroyed(u, udid, team)
 	isAlive[u] = nil
 	local ud = UnitDefs[udid]
-	local cp = ud.customparams
+	local cp = ud.customParams
 	if cp and cp.commander then
 		local allyTeam = GetUnitAllyTeam(u)
 		aliveCount[allyTeam] = aliveCount[allyTeam] - 1
@@ -85,7 +88,7 @@ end
 
 function gadget:UnitTaken(u, udid, team)
 	local ud = UnitDefs[udid]
-	local cp = ud.customparams
+	local cp = ud.customParams
 	if isAlive[u] and cp and cp.commander then
 		local allyTeam = GetUnitAllyTeam(u)
 		aliveCount[allyTeam] = aliveCount[allyTeam] - 1
