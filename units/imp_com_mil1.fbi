@@ -25,7 +25,6 @@
 	collisionVolumeScales=240 160 240;
 	collisionVolumeOffsets=0 56 0;
 
-	commander=1;
 	hidedamage=1;
 	reclaimable=0;
 	shownanoframe=0;
@@ -88,5 +87,9 @@
 	{
 		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
 		explosiongenerator1=custom:MED_MUZZLE_FLASH_FX_GREEN;
+	}
+	[customparams]
+	{
+		commander=1;
 	}
 }

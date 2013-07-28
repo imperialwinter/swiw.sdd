@@ -25,7 +25,6 @@
 	collisionVolumeScales=160 160 160;
 	collisionVolumeOffsets=0 56 0;
 
-	commander=1;
 	hidedamage=1;
 	reclaimable=0;
 	shownanoframe=0;
@@ -61,5 +60,9 @@
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_SWS_FX;
+	}
+	[customparams]
+	{
+		commander=1;
 	}
 }
