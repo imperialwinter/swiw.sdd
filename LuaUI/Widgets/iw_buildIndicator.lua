@@ -44,7 +44,7 @@ end
 
 function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
-	if ud.buildDistance then
+	if ud.buildDistance and ud.speed > 0 then
 		--table.insert(builders, unitID)
 		builders[unitID] = true
 	end
