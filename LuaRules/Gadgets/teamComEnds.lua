@@ -51,24 +51,30 @@ function gadget:GameFrame(t)
 	end
 end
 
-function gadget:UnitCreated(u, ud, team)
+function gadget:UnitCreated(u, udid, team)
 	isAlive[u] = true
-	if UnitDefs[ud].customparams.commander then
+	local ud = UnitDefs[udid]
+	local cp = ud.customparams
+	if cp and cp.commander then
 		local allyTeam = GetUnitAllyTeam(u)
 		aliveCount[allyTeam] = aliveCount[allyTeam] + 1
 	end
 end
 
-function gadget:UnitGiven(u, ud, team)
-	if UnitDefs[ud].customparams.commander then
+function gadget:UnitGiven(u, udid, team)
+	local ud = UnitDefs[udid]
+	local cp = ud.customparams
+	if cp and cp.commander then
 		local allyTeam = GetUnitAllyTeam(u)
 		aliveCount[allyTeam] = aliveCount[allyTeam] + 1
 	end
 end
 
-function gadget:UnitDestroyed(u, ud, team)
+function gadget:UnitDestroyed(u, udid, team)
 	isAlive[u] = nil
-	if UnitDefs[ud].customparams.commander then
+	local ud = UnitDefs[udid]
+	local cp = ud.customparams
+	if cp and cp.commander then
 		local allyTeam = GetUnitAllyTeam(u)
 		aliveCount[allyTeam] = aliveCount[allyTeam] - 1
 		if aliveCount[allyTeam] <= 0 then
@@ -77,8 +83,10 @@ function gadget:UnitDestroyed(u, ud, team)
 	end
 end
 
-function gadget:UnitTaken(u, ud, team)
-	if isAlive[u] and UnitDefs[ud].customparams.commander then
+function gadget:UnitTaken(u, udid, team)
+	local ud = UnitDefs[udid]
+	local cp = ud.customparams
+	if isAlive[u] and cp and cp.commander then
 		local allyTeam = GetUnitAllyTeam(u)
 		aliveCount[allyTeam] = aliveCount[allyTeam] - 1
 		if aliveCount[allyTeam] <= 0 then
