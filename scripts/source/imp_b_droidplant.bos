@@ -19,21 +19,21 @@ static-var  isBuilding, isBuildingNow, randomSeed, isOpen;
 Sounds() {
 	play-sound("imp_b_droidplant/fan_whoosh",6);
 	#define fan 0
-	play-sound("imp_b_droidplant/slam",25);
+	play-sound("imp_b_droidplant/slam",12);
 	#define slam 1
-	play-sound("imp_b_droidplant/whir",60);
+	play-sound("imp_b_droidplant/whir",20);
 	#define whir 2
-	play-sound("imp_b_droidplant/lid",25);
+	play-sound("imp_b_droidplant/lid",12);
 	#define lid 3
-	play-sound("imp_b_droidplant/door",25);
+	play-sound("imp_b_droidplant/door",12);
 	#define door 4
-	play-sound("imp_b_droidplant/ambient1100",6);
+	play-sound("imp_b_droidplant/ambient1100",3);
 	#define ambient 5
-	play-sound("imp_b_droidplant/const1",25);
+	play-sound("imp_b_droidplant/const1",12);
 	#define const1 6
-	play-sound("imp_b_droidplant/const2",25);
+	play-sound("imp_b_droidplant/const2",12);
 	#define const2 7
-	play-sound("imp_b_droidplant/const3",25);
+	play-sound("imp_b_droidplant/const3",12);
 	#define const3 8
 }
 
@@ -96,11 +96,11 @@ ConstAnims() {
 	if(isBuildingNow and !isOpen) {
 		randsound = rand(1,5);
 		if(randsound == 1) {
-			get PLAY_SOUND(const1, 196608, 0, 0);
+			//get PLAY_SOUND(const1, 196608, 0, 0);
 		} if(randsound == 2) {
-			get PLAY_SOUND(const2, 196608, 0, 0);
+			//get PLAY_SOUND(const2, 196608, 0, 0);
 		} if(randsound == 3) {
-			get PLAY_SOUND(const3, 196608, 0, 0);
+			//get PLAY_SOUND(const3, 196608, 0, 0);
 		}
 		emit-sfx droidpflash from fm;
 	}
