@@ -52,13 +52,10 @@ function gadget:GameFrame(t)
 end
 
 function gadget:UnitCreated(u, udid, team)
-	Spring.Echo("TEAM ENDS GADGET DOIN STUFF")
 	isAlive[u] = true
 	local ud = UnitDefs[udid]
 	local cp = ud.customParams
-	Spring.Echo(ud, cp, cp and cp.commander)
 	if cp and cp.commander then
-		Spring.Echo("TEAM ENDS GADGET DOIN LOADS OF COOL STUFF")
 		local allyTeam = GetUnitAllyTeam(u)
 		aliveCount[allyTeam] = aliveCount[allyTeam] + 1
 	end
