@@ -10,12 +10,6 @@ local modinfo = {
 	mutator = "Official",
 	
 	modtype = "1",
-
-	--[[depend = {
-		"swsdata.v036.sdz",		--with the move to svn, screw dependencies
-		"swssounds.v024.sd7",
-		"swstextures.v036.sd7",
-	}]]
 }
 
 return modinfo
