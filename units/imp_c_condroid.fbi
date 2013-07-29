@@ -40,7 +40,7 @@
 	seismicsignature=1;
 
 	builder=1;
-	builddistance=160;//128;
+	builddistance=196;//128;
 	canbuild=1;
 	workertime=1;
 	shownanospray=0;
