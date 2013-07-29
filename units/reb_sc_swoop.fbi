@@ -31,12 +31,12 @@
 
 	canmove=1;
 	maxvelocity=4.2;
-	maxAcc=.35;
+//	maxAcc=.35;
 	brakerate=0.35;
-	maxElevator=.003;
+//	maxElevator=.003;
 	turnrate=320;
-	turnradius=25;
-	maxRudder=.01;
+//	turnradius=25;
+//	maxRudder=.01;
 
 	canfly=1;
 	cruisealt=10;

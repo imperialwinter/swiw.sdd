@@ -61,9 +61,8 @@
 	{
 		explosiongenerator0=custom:SMALL_MUZZLE_FLASH_FX_RED;
 	}
-}
-
-[customparams]
+	[customparams]
 	{
-		decloakdistance=65;
+		decloakdistance=165;
 	}
+}

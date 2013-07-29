@@ -67,8 +67,9 @@
 	{
 		explosiongenerator0=custom:builder_eye;
 	}
-}
-[customparams]
+	[customparams]
 	{
-		decloakdistance=70;
+		decloakdistance=170;
 	}
+}
+

@@ -32,7 +32,7 @@ function gadget:Initialize()
 		if(udid) then auras[udid] = defs end
 	end]]
 
-	for udid=1,#UnitDefs do
+	for udid in pairs(UnitDefs) do
 		if(UnitDefs[udid].canCloak == true) then
 			cloakable[udid] = true
 			--Spring.Echo(UnitDefs[udid].name)
@@ -73,7 +73,7 @@ function gadget:GameFrame(n)
 			local ux, uy, uz = GetUnitPosition(uid)
 			local ud = UnitDefs[cdat.udid]
 			local team = cdat.tid
-			local decloakDistance = ud.customParams.decloakdistance or 500
+			local decloakDistance = tonumber(ud.customParams.decloakdistance) or 500
 
 			local nearbyUnits = GetUnitsInCylinder(ux,uz,decloakDistance)
 
