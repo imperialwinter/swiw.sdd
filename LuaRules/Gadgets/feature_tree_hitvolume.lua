@@ -15,43 +15,20 @@ if (not gadgetHandler:IsSyncedCode()) then
 end
 
 --horizontal radius of trees
-local horizScale = 1
+local horizScale = 6
 
 local GetFeatureDefID = Spring.GetFeatureDefID
 local SetFeatureCollisionVolumeData = Spring.SetFeatureCollisionVolumeData
 local strFind = string.find
 
-function gadget:Initialize()
-	for _, featureID in ipairs(Spring.GetAllFeatures()) do
-		local featureDef = FeatureDefs[GetFeatureDefID(featureID)]
-		local name = featureDef.name
-		local height = featureDef.radius
-		local metal = featureDef.metal
-		if (name and strFind(name, "treetype"))
-				or metal == 0 then
-			SetFeatureCollisionVolumeData(featureID, 
-					horizScale, height, horizScale, --scales
-					0, 0, 0, --offset
-					1, -- cylinder
-					1, -- ray-trace
-					1 -- y-axis
-					)
-			--debug
-			--Spring.Echo("tree changed")
-		end
-	end
-end
-
-function gadget:FeatureCreated(featureID)
+local function SetColVol(featureID)
 	local featureDef = FeatureDefs[GetFeatureDefID(featureID)]
-	local tooltip = featureDef.tooltip
-	local height = featureDef.radius
+	local name = featureDef.name
+	local description = featureDef.description
+	local height = featureDef.height * 1.2
 	local metal = featureDef.metal
-	if not (
-			strFind(tooltip, "Dead") 
-			or strFind(tooltip, "Wreck")
-			or metal > 0
-			) then
+	if (name and strFind(name, "tree" or strFind(description, "tree")))
+			or metal == 0 then
 		SetFeatureCollisionVolumeData(featureID, 
 				horizScale, height, horizScale, --scales
 				0, 0, 0, --offset
@@ -62,4 +39,15 @@ function gadget:FeatureCreated(featureID)
 		--debug
 		--Spring.Echo("tree changed")
 	end
+end
+
+
+function gadget:Initialize()
+	for _, featureID in ipairs(Spring.GetAllFeatures()) do
+		SetColVol(featureID)
+	end
+end
+
+function gadget:FeatureCreated(featureID)
+	SetColVol(featureID)
 end

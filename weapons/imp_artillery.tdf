@@ -19,9 +19,9 @@
 	areaofeffect=200;
 
 	soundstart=Argh_LargeGun; //imp_v_MobileArty_fire;
-	soundstartvolume=15;
+	soundstartvolume=120; //15;
 	soundhit=xplolrg4; //imp_v_MobileArty_hit;
-	soundhitvolume=15;
+	soundhitvolume=120; //15
 
 	avoidfriendly=0;
 	collidefriendly=0;

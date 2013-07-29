@@ -1,12 +1,30 @@
 local Sounds = {
 	SoundItems = {
-		Argh_LargeGun = {
-			gain = 4.0,
+		-- Base content sound items
+		IncomingChat = {
+		--- always play on the front speaker(s)
+		file = "sounds/beep4.wav",
+		in3d = "false",
 		},
-		xplolrg4 = {
-			gain = 4.0,
+		MultiSelect = {
+		--- always play on the front speaker(s)
+		file = "sounds/button9.wav",
+		in3d = "false",
 		},
-		
+		MapPoint = {
+		--- respect where the point was set, but don't attenuate in distance
+		--- also, when moving the camera, don't pitch it
+		file = "sounds/beep6.wav",
+		rolloff = 0,
+		dopplerscale = 0,
+		},
+		default = {
+			gainmod = 0.35,
+			pitchmod = 0.3,
+			pitch = 0.7,
+			in3d = true,
+		},
+		-- SWIW sound items	
 	},
 }
 
