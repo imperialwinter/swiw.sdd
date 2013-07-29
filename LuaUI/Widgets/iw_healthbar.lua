@@ -266,45 +266,47 @@ function widget:Update(deltaTime)
 					
 					
 					glPushMatrix()
-					glTranslate(x, y, z)
-					glBillboard()
-					glTranslate(0, 0-radius, 0)
+						glTranslate(x, y, z)
+						glBillboard()
+						glTranslate(0, 0-radius, 0)
 					
-					local alpha = 1
-					if (not display) then
-						alpha = (heightscale/3.4)
-					end
+						local alpha = 1
+						if (not display) then
+							alpha = (heightscale/3.4)
+						end
 					
-					if(ICON_TYPE[udid]) and (alpha > 0.3) then
-						glColor(r,g,b,alpha)
-						glTex(ICON_TYPE[udid])
-						glTexRect(radius*-0.65-(6 * heightscale), -3*heightscale, radius*-0.65, 3*heightscale)
-						glTex(false)
+						if(ICON_TYPE[udid]) and (alpha > 0.3) then
+							glColor(r,g,b,alpha)
+							glTex(ICON_TYPE[udid])
+							glTexRect(radius*-0.65-(6 * heightscale), -3*heightscale, radius*-0.65, 3*heightscale)
+							glTex(false)
+						end
 					end
-					glPopMatrix()
-				end
-				if display then
+					if display then
 
-					local counter = 0
-					if(aura) then
-						for type, data in pairs(aura) do
-							if(data > 0) then
-								DrawAuraIndicator(counter, type, radius, heightscale * 1.5)
+						local counter = 0
+						if(aura) then
+							for type, data in pairs(aura) do
+								if(data > 0) then
+									DrawAuraIndicator(counter, type, radius, heightscale * 1.5)
+									counter = counter + 1
+								end
+							end
+							counter = 0
+						end
+						
+						glTex('LuaUI/zui/bars/hp.png')
+						for bar, bardata in pairs({	health,shield,build,upgrade,transport}) do
+							if(bardata.pct) then
+								DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, bardata.pct, bardata.color, bardata.paralyze)
 								counter = counter + 1
 							end
 						end
-						counter = 0
-					end
+						glTex(false)
 					
-					glTex('LuaUI/zui/bars/hp.png')
-					for bar, bardata in pairs({	health,shield,build,upgrade,transport}) do
-						if(bardata.pct) then
-							DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, bardata.pct, bardata.color, bardata.paralyze)
-							counter = counter + 1
-						end
 					end
-					glTex(false)
-					
+				if display or (SHOW_ICON[udid]) then 
+					glPopMatrix() 
 				end
 			end
 			glColor(1,1,1,1)
