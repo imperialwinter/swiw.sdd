@@ -45,7 +45,7 @@ BuildScript() {
 }
 
 Create() {
-	start-script BuildScript();
+	//start-script BuildScript();
 }
 
 QueryNanoPiece(piecenum) {
@@ -55,12 +55,18 @@ QueryNanoPiece(piecenum) {
 Activate() {
 	signal SIG_ACTIVATE;
 	isBuilding = TRUE;
+	set BUGGER_OFF to 1;
+	set YARD_OPEN to 1;
+	set INBUILDSTANCE to 1;
 }
 
 Deactivate() {
 	signal SIG_ACTIVATE;
 	set-signal-mask SIG_ACTIVATE;
 	isBuilding = FALSE;
+	set BUGGER_OFF to 0;
+	set YARD_OPEN to 0;
+	set INBUILDSTANCE to 0;
 }
 
 QueryBuildInfo(piecenum) {

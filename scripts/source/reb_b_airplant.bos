@@ -171,7 +171,7 @@ Create() {
 	isBuilding = 0;
 	isBuildingNow = 0;
 	start-script SmokeUnit_SWS();
-	start-script BuildScript();
+	//start-script BuildScript();
 	call-script ConstructionAnim();
 	move BUILDING_ROOT to y-axis [0] now;
 	//start-script DroidAnim();
@@ -184,12 +184,18 @@ QueryNanoPiece(piecenum) {
 Activate() {
 	signal SIG_ACTIVATE;
 	isBuilding = TRUE;
+	set BUGGER_OFF to 1;
+	set YARD_OPEN to 1;
+	set INBUILDSTANCE to 1;
 }
 
 Deactivate() {
 	signal SIG_ACTIVATE;
 	set-signal-mask SIG_ACTIVATE;
 	isBuilding = FALSE;
+	set BUGGER_OFF to 0;
+	set YARD_OPEN to 0;
+	set INBUILDSTANCE to 0;
 }
 
 QueryBuildInfo(piecenum) {

@@ -23,6 +23,7 @@ BuildStarted(unitID) {
 	move door2 to x-axis [0] speed [12.5];
 }
 
+/* This is no longer used - causes performance drop due to PathManager::Update
 BuildScript() {
 	isBuilding = 0;
 	isBuildingNow = 0;
@@ -46,7 +47,7 @@ BuildScript() {
 			set INBUILDSTANCE to 0;
 		}
 	}
-}
+}*/
 
 QueryNanoPiece(piecenum) {
 	piecenum = bpt;
@@ -55,12 +56,18 @@ QueryNanoPiece(piecenum) {
 Activate() {
 	signal SIG_ACTIVATE;
 	isBuilding = TRUE;
+	set BUGGER_OFF to 1;
+	set YARD_OPEN to 1;
+	set INBUILDSTANCE to 1;
 }
 
 Deactivate() {
 	signal SIG_ACTIVATE;
 	set-signal-mask SIG_ACTIVATE;
 	isBuilding = FALSE;
+	set BUGGER_OFF to 0;
+	set YARD_OPEN to 0;
+	set INBUILDSTANCE to 0;
 }
 
 QueryBuildInfo(piecenum) {

@@ -35,7 +35,7 @@ Create()
 	move banners to y-axis [200] now;
 	turn dish to z-axis <30> now;
 	start-script SmokeUnit_SWS();
-	start-script BuildScript();
+	//start-script BuildScript();
 }
 
 Killed(severity, corpsetype) {

@@ -20,8 +20,8 @@ local Sounds = {
 		},
 		default = {
 			gainmod = 0.35,
-			pitchmod = 0.3,
-			pitch = 0.7,
+			pitchmod = 0.05,
+			pitch = 1.0,
 			in3d = true,
 		},
 		-- SWIW sound items	

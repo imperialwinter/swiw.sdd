@@ -225,7 +225,7 @@ for udName, ud in pairs(UnitDefs) do
   end
 end
 
-local WEAPON_VOL_MULT = 0.5
+local WEAPON_VOL_MULT = 0.25
 
 for wdName, wd in pairs(WeaponDefs) do
   if (isstring(wdName) and istable(wd)) then

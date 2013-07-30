@@ -40,7 +40,7 @@ Create()
 	aa_2 = -1;
 
 	start-script SmokeUnit_SWS();
-	start-script BuildScript();
+	//start-script BuildScript();
 }
 
 Killed(severity, corpsetype) {

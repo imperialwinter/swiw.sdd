@@ -32,7 +32,7 @@ Create() {
 	hide l2aa2base; hide l2aa2turret; hide l2aa2b1; hide l2aa2b2; hide l2aa2b3; hide l2aa2b4;
 
 	start-script SmokeUnit_SWS();
-	start-script BuildScript();
+	//start-script BuildScript();
 }
 
 Killed(severity, corpsetype) {
