@@ -20,7 +20,7 @@ local Sounds = {
 		},
 		default = {
 			gainmod = 0.35,
-			pitchmod = 0.05,
+			pitchmod = 0.18,
 			pitch = 1.0,
 			in3d = true,
 		},
