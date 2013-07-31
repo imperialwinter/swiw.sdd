@@ -14,6 +14,7 @@ piece  base, pelvis, thigh1, leg1, thigh2, leg2, thigh3, leg3, spine, torso, lup
 
 static-var gun_1, packedUp, bMoving, bAiming, canFire, maxSpeed;
 
+
 FoldUp() {
 	if(!packedUp and !bAiming) {
 		turn luparm to y-axis <45> speed <160>;
@@ -36,7 +37,7 @@ FoldUp() {
 		turn thigh3 to x-axis <-90> speed <160>;
 		turn leg3 to x-axis <-20> speed <160>;
 		move pelvis to y-axis [-2.5] speed [60];
-		//set MAX_SPEED to maxSpeed;
+		set MAX_SPEED to maxSpeed * 10;
 		packedUp=1;
 		canFire=0;
 	}
@@ -44,7 +45,7 @@ FoldUp() {
 
 Unfold() {
 	if(packedUp) {
-		//set MAX_SPEED to maxSpeed / 3;
+		set MAX_SPEED to maxSpeed / 3;
 		turn pelvis to x-axis <0> speed <200>;
 		wait-for-turn pelvis around x-axis;
 		turn thigh1 to x-axis <0> speed <160>;
@@ -163,7 +164,7 @@ RestoreAfterDelay() {
 
 AimWeapon3(heading,pitch) {
 	bAiming=1;
-	start-script RestoreAfterDelay();
+	//start-script RestoreAfterDelay();
 	return 0;
 }
 
