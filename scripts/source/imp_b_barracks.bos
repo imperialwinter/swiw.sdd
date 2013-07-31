@@ -82,28 +82,14 @@ BuildStarted(unitID) {
 BuildScript() {
 	while(TRUE) {
 		if(isBuilding) {
-			sleep 100;
 			set BUGGER_OFF to 1;
-			set YARD_OPEN to 1;
-			set INBUILDSTANCE to 1;
 			isBuildingNow = TRUE;		
 		}
-		if(isBuilding) {
-			sleep 100;
-		}	
-		while(!isBuilding) {
-			sleep 2000;
-			isBuildingNow = FALSE;
-			sleep 1;
-			set BUGGER_OFF to 0;
-			set YARD_OPEN to 0;
-			set INBUILDSTANCE to 0;
-		}
+		sleep 2000;
 	}
 }
 
 Create() {
-	set BUGGER_OFF to 0;
 	set YARD_OPEN to 0;
 	set INBUILDSTANCE to 0;
 	isBuilding = FALSE;
@@ -118,9 +104,10 @@ Create() {
 		sleep 100;
 	}
 	spin radar around y-axis speed <40>;
-	//start-script BuildScript();
+	start-script BuildScript();
 	start-script SmokeUnit_SWS();
 }
+
 
 QueryNanoPiece(piecenum) {
 	piecenum = bpt;
@@ -138,7 +125,6 @@ Deactivate() {
 	signal SIG_ACTIVATE;
 	set-signal-mask SIG_ACTIVATE;
 	isBuilding = FALSE;
-	set BUGGER_OFF to 0;
 	set YARD_OPEN to 0;
 	set INBUILDSTANCE to 0;
 }

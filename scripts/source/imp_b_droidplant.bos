@@ -111,6 +111,7 @@ BuildScript() {
 		if(isBuilding) {
 			sleep rand(40,100) + randomSeed;
 			start-script ConstAnims();
+			set BUGGER_OFF to 1;
 		}
 		while(!isBuilding) {
 			isBuildingNow = FALSE;
@@ -133,7 +134,6 @@ Create() {
 	move lift to y-axis [-14.5] now;
 	turn blast to y-axis <180> now;
 	randomSeed = rand(20,50);
-	set BUGGER_OFF to 0;
 	set YARD_OPEN to 0;
 	set INBUILDSTANCE to 0;
 	isBuilding = FALSE;
@@ -166,7 +166,6 @@ Deactivate() {
 	signal SIG_ACTIVATE;
 	set-signal-mask SIG_ACTIVATE;
 	isBuilding = FALSE;
-	set BUGGER_OFF to 0;
 	set YARD_OPEN to 0;
 	set INBUILDSTANCE to 0;
 }
