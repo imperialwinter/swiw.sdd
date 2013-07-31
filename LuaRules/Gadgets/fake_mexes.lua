@@ -94,13 +94,13 @@ function gadget:GameFrame(n)
     if (mex.lastM ~= metal) then
       mex.counter = 0
       mex.lastM = metal
-      SetUnitResourcing(unitID, { cmm = (metal*2), cue = (drain*2)})
+      SetUnitResourcing(unitID, { cmm = (metal), cue = (drain)})
     else
       mex.counter = (mex.counter + 1)
       if (mex.counter > 180) then
         watchList[unitID] = nil
         idleList[unitID] = mex.unitID
-        SetUnitResourcing(mex.unitID, {ume = (drain*2)})
+        SetUnitResourcing(mex.unitID, {ume = (drain)})
       end
     end
   end
