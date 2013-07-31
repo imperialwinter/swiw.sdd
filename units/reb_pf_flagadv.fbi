@@ -15,6 +15,7 @@
 	buildtime=1;
 	footprintx=1;
 	footprintz=1;
+	yardmap=o;
 	cobid=93;
 
 	canrepeat=0;
