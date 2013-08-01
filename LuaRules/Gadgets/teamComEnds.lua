@@ -31,22 +31,37 @@ local aliveCount = {}
 
 local isAlive = {}
 
+
+local allyTeamsRemaining = Spring.GetAllyTeamList()
+local numAllyTeamsRemaining = #allyTeamsRemaining - 1 -- ignore GAIA allyTeam
+local GAIA_ALLY_TEAM = select(6, Spring.GetTeamInfo(Spring.GetGaiaTeamID()))
+
 local GetTeamList=Spring.GetTeamList
 local GetTeamUnits = Spring.GetTeamUnits
 local GetUnitAllyTeam = Spring.GetUnitAllyTeam
 local DestroyUnit=Spring.DestroyUnit
 
 function gadget:GameFrame(t)
-	if t % 32 < .1 then
+	if t % 32 < .1 and t > 0 then
 		for at,_ in pairs(destroyQueue) do
 			if aliveCount[at] <= 0 then --safety check, triggers on transferring the last com otherwise
 				for _,team in ipairs(GetTeamList(at)) do
-					for _,u in ipairs(GetTeamUnits(team)) do
+					Spring.KillTeam(team)
+					--[[for _,u in ipairs(GetTeamUnits(team)) do
 						DestroyUnit(u, true)
-					end
+					end]]
+				end
+				numAllyTeamsRemaining = numAllyTeamsRemaining - 1
+				for i, allyTeam in pairs(allyTeamsRemaining) do 
+					if allyTeam == at or allyTeam == GAIA_ALLY_TEAM then 
+						allyTeamsRemaining[i] = nil 
+					end 
+				end
+				if numAllyTeamsRemaining < 2 then
+					Spring.GameOver(allyTeamsRemaining)
 				end
 			end
-			destroyQueue[t]=nil
+			destroyQueue[at]=nil
 		end
 	end
 end
@@ -79,6 +94,7 @@ function gadget:UnitDestroyed(u, udid, team)
 		aliveCount[allyTeam] = aliveCount[allyTeam] - 1
 		if aliveCount[allyTeam] <= 0 then
 			destroyQueue[allyTeam] = true
+			
 		end
 	end
 end
