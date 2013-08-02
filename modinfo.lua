@@ -12,5 +12,5 @@ local modinfo = {
 	modtype = "1",
 }
 
-return modinfo 
+return modinfo
 
