@@ -8,7 +8,7 @@
 	soundcategory=reb-i-trooper;
 	category=GROUND INFANTRY;
 
-	name=Fleet Trooper;
+	name=Mobile Repeater Trooper;
 	description=Mobile Medium-Repeater Blaster;
 	side=Rebels;
 	maxdamage=260;
