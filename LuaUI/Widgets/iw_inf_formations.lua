@@ -23,7 +23,7 @@ local SPACING = 30
 
 local INFANTRY = {}
 for defId,defs in pairs(UnitDefs) do
-	if defs.moveData.name == "infantry1x1" then
+	if defs.moveDef.name == "infantry1x1" then
 	  INFANTRY[defId] = true
 	end
 end
