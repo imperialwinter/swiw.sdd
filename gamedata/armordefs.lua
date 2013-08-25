@@ -128,12 +128,4 @@ ion_damage = {
 
 }
 
-for categoryName, categoryTable in pairs(armorDefs) do --function shamelessly stolen from CA
-	local t = {}
-	for _, unitName in pairs(categoryTable) do
-		t[unitName] = 99
-	end
-	armorDefs[categoryName] = t
-end
-
 return armorDefs
