@@ -10,6 +10,8 @@ function gadget:GetInfo()
    }
 end
 
+if (gadgetHandler:IsSyncedCode()) then
+
 local solar = UnitDefNames["imp_p_solar"].id
 local eMin = 18
 local eMax = 28
@@ -31,4 +33,6 @@ function gadget:GameFrame(n)
 			end
 		end
 	end
+end
+
 end
