@@ -22,7 +22,7 @@
 	cobid=58;
 	collisionVolumeType=box;
 	collisionVolumeScales=60 22 56;
-	collisionVolumeOffsets=0 11 0;
+	collisionVolumeOffsets=0 1 0;
 
 	shownanoframe=0;
 
