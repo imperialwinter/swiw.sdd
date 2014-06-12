@@ -71,7 +71,8 @@ local GetUnitVectors = Spring.GetUnitVectors
 
 function widget:UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, userOrders)
 	-- Scouts coming out of the imperial base with no orders should capture nearby flags
-	if UnitDefs[factDefID].isCommander and (not userOrders) and capturers[unitDefID] and (#GetCommandQueue(factID) == 0) then
+	if UnitDefs[factDefID].customParams.isCommander and (not userOrders) and capturers[unitDefID] and (#GetCommandQueue(factID) == 0) then
+
 		local vec = GetUnitVectors(factID)
 		local x,_,z = GetUnitPosition(unitID)
 		x = x + (vec[1]*125)
