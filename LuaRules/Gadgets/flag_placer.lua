@@ -16,7 +16,6 @@ if (gadgetHandler:IsSyncedCode()) then
 
 local spawnList = {}
 local placedList = {}
-local hideFlags = {}
 local flagDefs
 local mapProfile
 local flagnum = 1
@@ -123,14 +122,12 @@ function gadget:GameFrame(n)
 		for i,spawnDef in pairs(spawnList) do
 			local flagID = Spring.CreateUnit(spawnDef.unitName,spawnDef.x,0,spawnDef.z,0,gaiaID)
 			SetUnitNeutral(flagID,true)
-			Spring.SetUnitNoDraw(flagID, true)
-			Spring.SetUnitNoMinimap(flagID, true)
+--			Spring.SetUnitNoDraw(flagID, true)
+--			Spring.SetUnitNoMinimap(flagID, true)
 			SetUnitAlwaysVisible(flagID,true)
 			counter=counter+1
 			SetUnitCOBValue(flagID,4096,counter) --4096 = first global var
 			SetUnitCOBValue(flagID,4096+counter,GetUnitCOBValue(flagID,9)) --9 = UNIT_XZ
-
-			hideFlags[flagID] = true
 
 			local flag = {}
 			flag.x = spawnDef.x
@@ -157,25 +154,12 @@ function gadget:GameFrame(n)
 			  break
 			end
 			
-		end	
-	
+		end
+	-- all flags spawned, disable gadget
+	if #spawnList == 0 then
+		gadgetHandler:RemoveGadget()
+	end
     end
-    
-    if n == (updateFrame+25) then
-      for flagID in pairs(hideFlags) do
-        SetUnitAlwaysVisible(flagID,false)
-      end
-    end
-    
-    if n > (updateFrame+35) then
-      for flagID in pairs(hideFlags) do
-		Spring.SetUnitNoDraw(flagID, false)
-		Spring.SetUnitNoMinimap(flagID, false)
-	  end
-      gadgetHandler:RemoveGadget()
-    end
-    
-        
 end --end GameFrame()
 
 end --end synced
