@@ -145,7 +145,7 @@ if (gadgetHandler:IsSyncedCode()) then
 				end
 
 				if upgrade.buildpic then
-					upgradeCmdDesc.texture = "&.9x.9&unitpics/" .. upgrade.buildpic .. "&bitmaps/frame.tga"
+					upgradeCmdDesc.texture = "&.9x.9&unitpics/" .. upgrade.buildpic .. "&bitmaps/icons/frame.png"
 				end
 
 				if upgrade.notext == true then
