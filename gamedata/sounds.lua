@@ -11,6 +11,11 @@ local Sounds = {
 		file = "sounds/button9.wav",
 		in3d = "false",
 		},
+		FailedCommand = {
+		--- always play on the front speaker(s)
+		file = "sounds/beep3.wav",
+		in3d = "false",
+		},
 		MapPoint = {
 		--- respect where the point was set, but don't attenuate in distance
 		--- also, when moving the camera, don't pitch it
