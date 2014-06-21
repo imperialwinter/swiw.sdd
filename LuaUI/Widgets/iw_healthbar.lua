@@ -178,6 +178,7 @@ function widget:Update(deltaTime)
 				end
 
 				if(maxHP) then
+					curHP = mathMax(0, curHP)
 					local pct = (curHP / maxHP)
 					health = {
 						cur = curHP,
