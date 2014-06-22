@@ -25,6 +25,10 @@ function WordWrap(line, size, maxLen)
 	fhUseFont(fontBaseName .. size)
 	maxLen = maxLen or 200						--these are both in pixels
 	local strLen = fhGetTextWidth(line)
+
+	if (maxLen < size) then -- font size is bigger then line: not a single char can be shown
+		return {}
+	end
 	if(strLen > maxLen) then
 		local lines = {}
 		while(strLen > maxLen) do
