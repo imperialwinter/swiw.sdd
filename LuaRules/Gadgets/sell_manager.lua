@@ -140,7 +140,7 @@ if (gadgetHandler:IsSyncedCode()) then
 			end
 
 			if sellDef.buildpic then
-				sellCmdDesc.texture = "&.9x.9&unitpics/" .. sellDef.buildpic .. "&bitmaps/icons/frame.png"
+				sellCmdDesc.texture = "&.1x.1&unitpics/" .. sellDef.buildpic .. "&bitmaps/icons/frame.png"
 			end
 
 			if sellDef.notext == true then

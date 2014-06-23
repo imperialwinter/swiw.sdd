@@ -86,7 +86,7 @@ local plantCmdDesc = {
   cursor  = 'PlantBomb', --Attack',
   action  = 'plantbomb',
   tooltip = 'LX-3 Charge: Plants a timed LX-3 proton charge on an enemy unit.',
-  texture = "&.9x.9&unitpics/reb_sp_bomb.png&bitmaps/icons/frame.png",
+  texture = "&.1x.1&unitpics/reb_sp_bomb.png&bitmaps/icons/frame.png",
   onlyTexture = true,
   params  = {}
 }
