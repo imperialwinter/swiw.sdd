@@ -1,0 +1,4 @@
+# Declare files that will always have LF line endings on checkout.
+*.lua text eol=lf
+*.txt text eol=lf
+*.tdf text eol=lf
