@@ -12,7 +12,7 @@
 	firestarter=100;
 
 	range=210;
-	reloadtime=0;
+	reloadtime=0.1;
 	burst=25;
 	burstrate=0.04;
 	sprayangle=2000;
