@@ -52,16 +52,24 @@ local function GetStartUnit(teamID)
 		if (sidedata and #sidedata > 0) then
 			startUnit = sidedata[1 + teamID % #sidedata].startUnit
 		end
-	else
-		startUnit = Spring.GetSideData(side)
 	end
-	return startUnit
+	if not startUnit then
+		startUnit =  Spring.GetSideData(side)
+	end
+	if not startUnit then
+		Spring.Log(gadget:GetInfo().name, LOG.ERROR, "Invalid side: " .. side)
+		startUnit = IMPERIAL_HQ
+	end
+	if startUnit and UnitDefNames[startUnit] then
+		return UnitDefNames[startUnit].id
+	end
+	return nil
 end
 
 local function SpawnStartUnit(teamID)
 	local startUnit = GetStartUnit(teamID)
-	if not (startUnit and startUnit ~= "") then
-		Spring.Log(widget:GetInfo().name, LOG.ERROR, "Couldn't get start unit!")
+	if not startUnit then
+		Spring.Log(gadget:GetInfo().name, LOG.ERROR, "Couldn't get start unit for team " .. teamID)
 		return
 	end
 	Spring.SetTeamResource(teamID, "ms", 20)
