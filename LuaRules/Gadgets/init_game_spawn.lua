@@ -60,39 +60,41 @@ end
 
 local function SpawnStartUnit(teamID)
 	local startUnit = GetStartUnit(teamID)
-	if (startUnit and startUnit ~= "") then
-		Spring.SetTeamResource(teamID, "ms", 20)
-		Spring.SetTeamResource(teamID, "es", 20)
-		-- spawn the specified start unit
-		local x,y,z = Spring.GetTeamStartPosition(teamID)
-		-- snap to 16x16 grid
-		x, z = 16*math.floor((x+8)/16), 16*math.floor((z+8)/16)
-		y = Spring.GetGroundHeight(x, z)
-		-- facing toward map center
-		local facing=math.abs(Game.mapSizeX/2 - x) > math.abs(Game.mapSizeZ/2 - z)
-			and ((x>Game.mapSizeX/2) and "west" or "east")
-			or ((z>Game.mapSizeZ/2) and "north" or "south")
-		local commanderID = Spring.CreateUnit(startUnit, x, y, z, facing, teamID)
-	
-		-- set start resources, either from mod options or custom team keys
-		local teamOptions = select(7, Spring.GetTeamInfo(teamID))
-		local m = modOptions.startmetal or 1000
-		local e = modOptions.startenergy or 1000
-
-		if (m and tonumber(m) ~= 0) then
-			Spring.SetUnitResourcing(commanderID, "m", 0)
-			Spring.SetTeamResource(teamID, "m", 0)
-			Spring.AddTeamResource(teamID, "m", tonumber(m))
-		end
-		
-		if (e and tonumber(e) ~= 0) then
-			Spring.SetUnitResourcing(commanderID, "e", 0)
-			Spring.SetTeamResource(teamID, "e", 0)
-			Spring.AddTeamResource(teamID, "e", tonumber(e))
-		end
-		
-		return commanderID, facing
+	if not (startUnit and startUnit ~= "") then
+		Spring.Log(widget:GetInfo().name, LOG.ERROR, "Couldn't get start unit!")
+		return
 	end
+	Spring.SetTeamResource(teamID, "ms", 20)
+	Spring.SetTeamResource(teamID, "es", 20)
+	-- spawn the specified start unit
+	local x,y,z = Spring.GetTeamStartPosition(teamID)
+	-- snap to 16x16 grid
+	x, z = 16*math.floor((x+8)/16), 16*math.floor((z+8)/16)
+	y = Spring.GetGroundHeight(x, z)
+	-- facing toward map center
+	local facing=math.abs(Game.mapSizeX/2 - x) > math.abs(Game.mapSizeZ/2 - z)
+		and ((x>Game.mapSizeX/2) and "west" or "east")
+		or ((z>Game.mapSizeZ/2) and "north" or "south")
+	local commanderID = Spring.CreateUnit(startUnit, x, y, z, facing, teamID)
+
+	-- set start resources, either from mod options or custom team keys
+	local teamOptions = select(7, Spring.GetTeamInfo(teamID))
+	local m = modOptions.startmetal or 1000
+	local e = modOptions.startenergy or 1000
+
+	if (m and tonumber(m) ~= 0) then
+		Spring.SetUnitResourcing(commanderID, "m", 0)
+		Spring.SetTeamResource(teamID, "m", 0)
+		Spring.AddTeamResource(teamID, "m", tonumber(m))
+	end
+		
+	if (e and tonumber(e) ~= 0) then
+		Spring.SetUnitResourcing(commanderID, "e", 0)
+		Spring.SetTeamResource(teamID, "e", 0)
+		Spring.AddTeamResource(teamID, "e", tonumber(e))
+	end
+
+	return commanderID, facing
 end
 
 function gadget:Initialize()
@@ -138,6 +140,8 @@ function gadget:GameStart()
 		-- don't spawn a start unit for the Gaia team
 		if (teamID ~= gaiaTeamID) and (not excludeTeams[teamID]) then
 			local commanderID, facing = SpawnStartUnit(teamID)
+			if not (commanderID and facing)
+				return
 			if (Spring.GetUnitDefID(commanderID) == IMPERIAL_HQ) then
 				local x,y,z = GetUnitPosition(commanderID)
 				local dropUnit = Spring.CreateUnit("imp_sh_theta",x,y,z,facing,teamID)
