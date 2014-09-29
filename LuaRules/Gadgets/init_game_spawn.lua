@@ -140,8 +140,9 @@ function gadget:GameStart()
 		-- don't spawn a start unit for the Gaia team
 		if (teamID ~= gaiaTeamID) and (not excludeTeams[teamID]) then
 			local commanderID, facing = SpawnStartUnit(teamID)
-			if not (commanderID and facing)
+			if not (commanderID and facing) then
 				return
+			end
 			if (Spring.GetUnitDefID(commanderID) == IMPERIAL_HQ) then
 				local x,y,z = GetUnitPosition(commanderID)
 				local dropUnit = Spring.CreateUnit("imp_sh_theta",x,y,z,facing,teamID)
