@@ -11,7 +11,8 @@ function widget:GetInfo()
 end
 
 function widget:GameFrame(n)
-	if(n > 5 and n < 10) then
+	local spectating, _, _ = Spring.GetSpectatingState()
+	if(n > 5 and n < 10) and not spectating then
 		local teamID = Spring.GetLocalTeamID()
 		local units = Spring.GetTeamUnits(teamID)
 		local x,y,z = Spring.GetUnitPosition(units[1])
@@ -22,3 +23,4 @@ function widget:GameFrame(n)
 		widgetHandler:RemoveWidget()
 	end
 end
+
